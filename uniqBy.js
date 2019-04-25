@@ -1,15 +1,9 @@
 import curryRight from './curryRight'
 
 const uniqBy = (arr, uniqCond) => {
-  const uniqFn = arrayItem => {
-    if (typeof uniqCond === 'function') return uniqCond
-    if (typeof uniqCond === 'string') {
-      return arrayItem[uniqCond]
-    }
-  }
   const uniqResult = arr.reduce(
     (acc, val) => {
-      const uniqByVal = uniqFn(val)
+      const uniqByVal = uniqCond(val)
       const isUnique = !acc.uniqBy.contains(uniqByVal)
       return {
         newArr: isUnique ? acc.newArr.concat(val) : acc.newArr,

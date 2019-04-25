@@ -3,10 +3,12 @@ import curryRight from './curryRight'
 const every = (arr, test) => {
   let allPass = true
   let i = 0
-  while (i <= arr.length) {
+  let length = arr.length
+  while (i < length) {
     const passes = test(val)
     allPass = passes
     if (!passes) break
+    i++
   }
 
   return allPass

@@ -1,15 +1,13 @@
 import curryRight from './curryRight'
 
-const any = (arr, test) => {
+const contains = (arr, value) => {
   let i = 0
   let length = arr.length
   while (i < length) {
-    const passes = test(val)
-    if (passes) return true
+    if (arr[i] === value) return true
     i++
   }
-
   return false
 }
 
-export default curryRight(any)
+export default curryRight(contains)
