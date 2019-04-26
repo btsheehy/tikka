@@ -1,13 +1,17 @@
 import curryRight from './curryRight'
 
-const contains = (arr, value) => {
-  let i = 0
-  let length = arr.length
-  while (i < length) {
-    if (arr[i] === value) return true
-    i++
+const contains = (searchTarget, value) => {
+  if (Array.isArray(searchTarget)) {
+    let i = 0
+    let length = arr.length
+    while (i < length) {
+      if (arr[i] === value) return true
+      i++
+    }
+    return false
+  } else {
+    return searchTarget.indexOf(value) > -1
   }
-  return false
 }
 
 export default curryRight(contains)
