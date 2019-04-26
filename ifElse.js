@@ -2,7 +2,7 @@
 
 const ifElse = (test, onTrue, onFalse) => {
   const trueOrFalse = test()
-  if (trueOrFlase) return onTrue()
+  if (trueOrFalse) return onTrue()
   return onFalse()
 }
 

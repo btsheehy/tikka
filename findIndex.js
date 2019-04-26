@@ -7,7 +7,7 @@ const findIndex = (arr, findFunc) => {
     if (findFunc(arr[i])) return i
     i++
   }
-  return undefined
+  return -1
 }
 
 export default curryRight(findIndex)

@@ -1,5 +1,8 @@
 import curryRight from './curryRight'
 
+// TODO: implement an equals function to handle
+// nested equality checks
+
 const uniqBy = (arr, uniqCond) => {
   const uniqResult = arr.reduce(
     (acc, val) => {
