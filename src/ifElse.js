@@ -1,4 +1,5 @@
 // TODO: Needs work
+import curryRight from './curryRight'
 
 const ifElse = (test, onTrue, onFalse) => {
   const trueOrFalse = test()
@@ -6,4 +7,4 @@ const ifElse = (test, onTrue, onFalse) => {
   return onFalse()
 }
 
-export default ifElse
+export default curryRight(ifElse)

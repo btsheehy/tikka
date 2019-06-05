@@ -17,7 +17,7 @@
     "utils",
     "curry"
   ],
-  "author": "Brandon Sheehy",
+  "author": "Brandon Sheehy <dev@btsheehy.com>",
   "license": "GPL-3.0-or-later",
   "bugs": {
     "url": "https://github.com/btsheehy/tikka/issues"
