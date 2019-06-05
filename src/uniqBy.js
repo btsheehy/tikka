@@ -18,4 +18,4 @@ const uniqBy = (arr, uniqCond) => {
   return uniqResult.newArr
 }
 
-return curryRight(uniqBy)
+export default curryRight(uniqBy)

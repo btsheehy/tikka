@@ -2,9 +2,13 @@
   "name": "tikka",
   "version": "1.0.0",
   "description": "Minimal Functional Programming Library",
-  "main": "index.js",
   "sideEffects": false,
+  "main": "dist/tikka.cjs.js",
+  "module": "dist/tikka.esm.js",
+  "browser": "dist/tikka.umd.js",
   "scripts": {
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -22,5 +26,10 @@
   "bugs": {
     "url": "https://github.com/btsheehy/tikka/issues"
   },
-  "homepage": "https://github.com/btsheehy/tikka#readme"
+  "homepage": "https://github.com/btsheehy/tikka#readme",
+  "devDependencies": {
+    "rollup": "^1.13.1",
+    "rollup-plugin-commonjs": "^10.0.0",
+    "rollup-plugin-node-resolve": "^5.0.1"
+  }
 }
