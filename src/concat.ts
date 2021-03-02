@@ -1,6 +1,5 @@
 import curryRight from './curryRight'
 
-const concat = (original: Array<any>, addition: any) =>
-  original.concat(addition)
+const concat = <T>(original: Array<T>, addition: T) => original.concat(addition)
 
 export default curryRight(concat)

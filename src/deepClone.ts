@@ -12,8 +12,6 @@ const cloneRegex = (regex: RegExp) => {
   )
 }
 
-function cloneValue<T>(val: T): T
-
 function cloneValue(val: any) {
   if (type(val) === 'Date') return new Date(val.valueOf())
   if (type(val) === 'RegExp') return cloneRegex(val)

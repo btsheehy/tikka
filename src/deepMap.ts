@@ -4,7 +4,7 @@ import map from './map'
 import mapValues from './mapValues'
 import type from './type'
 
-function deepMap<T>(data: Array<T>, func: (x: T) => any): Array<any>
+function deepMap<T, R>(data: Array<T>, func: (x: T) => R): Array<R>
 function deepMap(data: object, func: (x: any) => any): object
 
 function deepMap(data: any, func: Function) {

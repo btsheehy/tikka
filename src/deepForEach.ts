@@ -13,7 +13,7 @@ function deepForEach(data: any, func: Function) {
     if (type(data) === 'Object') return forEachValues(func, data)
     return func(data)
   }
-  return recurseFunc(data)
+  recurseFunc(data)
 }
 
 export default curryRight(deepForEach)

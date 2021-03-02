@@ -1,7 +1,9 @@
 const curry = (fn: Function, arity = fn.length): Function => {
-  const createCachedFunc = (fn: Function, arity: number, existingArgs = []) => (
-    ...args
-  ) => {
+  const createCachedFunc = (
+    fn: Function,
+    arity: number,
+    existingArgs: any[] = []
+  ) => (...args: any[]) => {
     return (function (fn, arity, existingArgs = []) {
       const newArgs = Array.from(args)
       const currentArgs = existingArgs.concat(newArgs)

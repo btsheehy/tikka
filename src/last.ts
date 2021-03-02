@@ -1,7 +1,9 @@
-const last = <T>(arr: T[]) => {
+function last<T>(a: T[]): T
+function last(a: string): string
+
+function last(arr: any) {
   const l = arr.length
-  if (!l) return undefined
-  else return arr[l - 1]
+  return arr[l - 1]
 }
 
 export default last
