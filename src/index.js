@@ -30,6 +30,7 @@ import ifElse from './ifElse'
 import includes from './includes'
 import isEven from './isEven'
 import isOdd from './isOdd'
+import last from './last'
 import lt from './lt'
 import lte from './lte'
 import map from './map'
@@ -42,6 +43,7 @@ import placeholder from './placeholder'
 import pluck from './pluck'
 import select from './select'
 import self from './self'
+import tail from './tail'
 import take from './take'
 import test from './test'
 import toLower from './toLower'
@@ -84,6 +86,7 @@ export default {
   includes,
   isEven,
   isOdd,
+  last,
   lt,
   lte,
   map,
@@ -96,6 +99,7 @@ export default {
   pluck,
   select,
   self,
+  tail,
   take,
   test,
   toLower,
