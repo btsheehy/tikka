@@ -5,7 +5,7 @@ const mapKeys = <T extends {}, K extends keyof T>(
   fn: (x: K) => string
 ) => {
   const keys = Object.keys(obj) as K[]
-  const newObj: Record<string, any> = {}
+  const newObj: Record<string, T[K]> = {}
   keys.forEach((k) => {
     newObj[fn(k)] = obj[k]
   })
