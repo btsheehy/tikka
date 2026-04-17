@@ -13,7 +13,7 @@ function grab<T, K extends keyof T>(data: T[], props: K[]): Partial<T>[]
 function grab<T, K extends keyof T>(data: T, props: K[]): Partial<T>
 
 function grab(data: any, props: string[]) {
-  if (Array.isArray(data)) return data.map(x => grabFromOne(x, props))
+  if (Array.isArray(data)) return data.map((x) => grabFromOne(x, props))
   else return grabFromOne(data, props)
 }
 

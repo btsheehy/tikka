@@ -1,7 +1,7 @@
 import curryRight from './curryRight'
 
 const forEach = <T>(arr: T[], func: (x: T) => any) => {
-  arr.forEach(val => func(val))
+  arr.forEach((val) => func(val))
   return arr
 }
 
