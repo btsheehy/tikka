@@ -4,7 +4,7 @@ const curry = (fn: Function, arity = fn.length): Function => {
     arity: number,
     existingArgs: any[] = []
   ) => (...args: any[]) => {
-    return (function (fn, arity, existingArgs = []) {
+    return ((fn, arity, existingArgs = []) => {
       const newArgs = Array.from(args)
       const currentArgs = existingArgs.concat(newArgs)
       if (currentArgs.length === arity) return fn(...currentArgs)

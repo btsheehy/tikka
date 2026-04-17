@@ -1,5 +1,5 @@
 const flatten = <T>(arr: T[]) => {
-  let result: any[] = []
+  const result: any[] = []
   const flat = (val: any): void => {
     if (!Array.isArray(val)) result.push(val)
     else {
