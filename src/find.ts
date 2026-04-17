@@ -7,4 +7,4 @@ const find = <T>(arr: Array<T>, findFunc: (x: T) => boolean) => {
   return undefined
 }
 
-export default curryRight(find)
+export default /*#__PURE__*/ curryRight(find)

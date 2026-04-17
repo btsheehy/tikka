@@ -1,8 +1,6 @@
 import curryRight from './curryRight'
-import map from './map'
-import get from './get'
 
 const pluck = <T, K extends keyof T>(collection: T[], prop: K): T[K][] =>
-  map(get(prop), collection)
+  collection.map((item) => item[prop])
 
-export default curryRight(pluck)
+export default /*#__PURE__*/ curryRight(pluck)

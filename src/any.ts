@@ -13,4 +13,4 @@ const any = <T>(arr: Array<T>, test: (t: T) => boolean) => {
   return false
 }
 
-export default curryRight(any)
+export default /*#__PURE__*/ curryRight(any)

@@ -7,4 +7,4 @@ const ifElse = (test: () => boolean, onTrue: Function, onFalse: Function) => {
   return onFalse()
 }
 
-export default curryRight(ifElse)
+export default /*#__PURE__*/ curryRight(ifElse)

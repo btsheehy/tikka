@@ -1,19 +1,39 @@
 {
   "name": "tikka",
   "version": "1.0.0",
-  "description": "Minimal Functional Programming Library",
+  "description": "Minimal dependency-free functional programming utilities for TypeScript and JavaScript",
   "sideEffects": false,
-  "main": "dist/tikka.cjs.js",
-  "module": "dist/tikka.esm.js",
-  "browser": "dist/tikka.umd.js",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./all": {
+      "types": "./dist/tikka.d.ts",
+      "import": "./dist/tikka.js",
+      "require": "./dist/tikka.cjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
   "scripts": {
-    "build": "rollup -c",
-    "dev": "rollup -c -w",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "check": "npx @biomejs/biome check src/",
-    "check:write": "npx @biomejs/biome check src/ --write",
-    "format": "npx @biomejs/biome format src/",
-    "format:write": "npx @biomejs/biome format src/ --write"
+    "clean": "rm -rf dist",
+    "build": "npm run clean && rollup -c",
+    "lint": "biome check .",
+    "lint:fix": "biome check . --write",
+    "format": "biome format . --write",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "check": "npm run lint && npm run typecheck && npm run test && npm run build"
   },
   "repository": {
     "type": "git",
@@ -22,8 +42,9 @@
   "keywords": [
     "functional",
     "programming",
-    "utils",
-    "curry"
+    "utilities",
+    "typescript",
+    "tree-shaking"
   ],
   "author": "Brandon Sheehy <dev@btsheehy.com>",
   "license": "GPL-3.0-or-later",
@@ -33,11 +54,11 @@
   "homepage": "https://github.com/btsheehy/tikka#readme",
   "devDependencies": {
     "@biomejs/biome": "^2.4.12",
-    "@rollup/plugin-typescript": "^8.2.0",
-    "rollup": "^1.13.1",
-    "rollup-plugin-commonjs": "^10.0.0",
-    "rollup-plugin-node-resolve": "^5.0.1",
-    "tslib": "^2.1.0",
-    "typescript": "^4.2.2"
+    "@rollup/plugin-typescript": "^12.1.4",
+    "@types/node": "^24.6.1",
+    "rollup": "^4.52.5",
+    "tslib": "^2.8.1",
+    "typescript": "^5.9.3",
+    "vitest": "^3.2.4"
   }
 }

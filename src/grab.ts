@@ -17,4 +17,4 @@ function grab(data: any, props: string[]) {
   else return grabFromOne(data, props)
 }
 
-export default curryRight(grab)
+export default /*#__PURE__*/ curryRight(grab)

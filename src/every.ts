@@ -14,4 +14,4 @@ const every = <T>(arr: Array<T>, test: (x: T) => boolean) => {
   return allPass
 }
 
-export default curryRight(every)
+export default /*#__PURE__*/ curryRight(every)

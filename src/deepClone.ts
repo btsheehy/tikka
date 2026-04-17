@@ -12,16 +12,16 @@ const cloneRegex = (regex: RegExp) => {
   )
 }
 
-function cloneValue(val: any) {
-  if (type(val) === 'Date') return new Date(val.valueOf())
-  if (type(val) === 'RegExp') return cloneRegex(val)
-  else return val
+function cloneValue(val: unknown) {
+  if (type(val) === 'Date') return new Date((val as Date).valueOf())
+  if (type(val) === 'RegExp') return cloneRegex(val as RegExp)
+  return val
 }
 
 function deepClone<T>(data: Array<T>): Array<T>
-function deepClone<T>(data: object): object
-function deepClone(data: any): any {
-  deepMap(data, cloneValue)
+function deepClone<T extends object>(data: T): T
+function deepClone(data: unknown): unknown {
+  return deepMap(cloneValue, data as object | unknown[])
 }
 
 export default deepClone

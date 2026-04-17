@@ -2,4 +2,4 @@ import curryRight from './curryRight'
 
 const test = (str: string, regex: RegExp) => regex.test(str)
 
-export default curryRight(test)
+export default /*#__PURE__*/ curryRight(test)

@@ -1,10 +1,10 @@
 import curryRight from './curryRight'
 
-interface Searchable {
-  includes: (a: any) => boolean
+export type IncludesTarget = {
+  includes: (value: unknown) => boolean
 }
 
-const contains = <T extends Searchable>(searchTarget: T, value: any): boolean =>
+const contains = (searchTarget: IncludesTarget, value: unknown): boolean =>
   searchTarget.includes(value)
 
-export default curryRight(contains)
+export default /*#__PURE__*/ curryRight(contains)

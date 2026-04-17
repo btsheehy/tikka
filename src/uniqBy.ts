@@ -1,10 +1,7 @@
 import curryRight from './curryRight'
 
-// TODO: implement an equals function to handle
-// nested equality checks
-
-const uniqBy = <T>(arr: T[], uniqCond: (x: T) => boolean): T[] => {
-  const uniqResult = arr.reduce(
+const uniqBy = <T, U>(arr: T[], uniqCond: (x: T) => U): T[] => {
+  const uniqResult = arr.reduce<{ uniqBy: U[]; newArr: T[] }>(
     (acc, val) => {
       const uniqByVal = uniqCond(val)
       const isUnique = !acc.uniqBy.includes(uniqByVal)
@@ -15,7 +12,8 @@ const uniqBy = <T>(arr: T[], uniqCond: (x: T) => boolean): T[] => {
     },
     { uniqBy: [], newArr: [] }
   )
+
   return uniqResult.newArr
 }
 
-export default curryRight(uniqBy)
+export default /*#__PURE__*/ curryRight(uniqBy)

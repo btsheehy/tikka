@@ -1,9 +1,6 @@
 import curryRight from './curryRight'
 
-const mapKeys = <T extends {}, K extends keyof T>(
-  obj: T,
-  fn: (x: K) => string
-) => {
+const mapKeys = <T extends {}, K extends keyof T>(obj: T, fn: (x: K) => string) => {
   const keys = Object.keys(obj) as K[]
   const newObj: Record<string, T[K]> = {}
   keys.forEach((k) => {
@@ -12,4 +9,4 @@ const mapKeys = <T extends {}, K extends keyof T>(
   return newObj
 }
 
-export default curryRight(mapKeys)
+export default /*#__PURE__*/ curryRight(mapKeys)

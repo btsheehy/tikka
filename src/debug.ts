@@ -6,4 +6,4 @@ const debug = <T>(value: T, msg: string): T => {
   return value
 }
 
-export default curryRight(debug)
+export default /*#__PURE__*/ curryRight(debug)
