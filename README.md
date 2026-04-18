@@ -296,6 +296,30 @@ Example: `uniq([1,2,1,3]) // [1,2,3]`
 Returns unique items by computed key.
 Example: `uniqBy((x)=>x.id, [{id:1},{id:1},{id:2}])`
 
+## Performance benchmark suites (large datasets)
+
+This repo includes dedicated performance benchmark suites to compare identical function workloads across `tikka`, `lodash/fp`, and `ramda` on very large deterministic datasets.
+
+Benchmarked functions:
+- `map`
+- `filter`
+- `find`
+- `groupBy`
+- `uniq`
+- `uniqBy`
+- `flatten` / `flattenDeep`
+- `contains` / `includes`
+
+Dataset sizes (generated in `test/perf/fixtures.ts`):
+- `numbers`: 60,000 items
+- `users`: 80,000 objects
+- `nestedNumbers`: 5,000 nested groups
+
+Commands:
+- Parity validation (same output across all three libs): `vitest run test/perf/parity.test.ts`
+- Performance suite: `npm run perf`
+- Watch performance suite: `npm run perf:watch`
+
 ## Quality gates in this repo
 
 - Lint: `npm run lint`
