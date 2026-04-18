@@ -35,6 +35,7 @@
     "test:watch": "vitest",
     "perf": "vitest bench test/perf/library-comparison.bench.ts",
     "perf:watch": "vitest bench --watch test/perf/library-comparison.bench.ts",
+    "perf:test": "sh -c 'vitest bench test/perf/library-comparison.bench.ts --testNamePattern \"$1\"' --",
     "check": "npm run lint && npm run typecheck && npm run test && npm run build"
   },
   "repository": {
