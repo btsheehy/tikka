@@ -3,10 +3,12 @@ import curryRight from './curryRight.js';
 const groupBy = (arr, groupingFunction) => {
     return arr.reduce((acc, val) => {
         const group = groupingFunction(val);
-        if (acc[group])
-            acc[group] = acc[group].concat(val);
-        else
+        if (acc[group]) {
+            acc[group].push(val);
+        }
+        else {
             acc[group] = [val];
+        }
         return acc;
     }, {});
 };

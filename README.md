@@ -319,7 +319,7 @@ Commands:
 - Parity validation (same output across all three libs): `vitest run test/perf/parity.test.ts`
 - Performance suite: `npm run perf`
 - Watch performance suite: `npm run perf:watch`
-- Run a specific benchmark group by test name pattern: `npm run perf:test -- "map(users -> score)"`
+- Run a specific benchmark group by test name pattern: `npm run perf:test -- map`
 
 ## Quality gates in this repo
 
