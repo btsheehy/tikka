@@ -11,6 +11,23 @@ Tikka is a minimal, dependency-free functional utility library for TypeScript an
 - Tested with Vitest
 - Bundled with Rollup and validated for tree-shaking
 
+## Why teams switch from larger FP utility libraries
+
+A common pain point with utility libraries is bundle bloat when a project imports a broad FP API surface.
+
+Measured with the same browser bundling setup (esbuild, minified, loading each library's full FP API object):
+
+- `tikka/all`: 5.25 KiB minified / 2.29 KiB gzip
+- `lodash/fp`: 82.27 KiB minified / 29.15 KiB gzip
+- `ramda`: 68.04 KiB minified / 20.30 KiB gzip
+
+That means `tikka/all` is roughly:
+
+- ~15.7x smaller than `lodash/fp` (minified)
+- ~13.0x smaller than `ramda` (minified)
+
+If you only import specific named utilities from `tikka`, tree-shaking can reduce this even further.
+
 ## Installation
 
 npm install tikka
