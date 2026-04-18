@@ -8,10 +8,11 @@ const uniqBy = (arr, uniqCond) => {
     const uniqResult = arr.reduce((acc, val) => {
         const uniqByVal = uniqCond(val);
         const isUnique = !acc.uniqBy.includes(uniqByVal);
-        return {
-            newArr: isUnique ? acc.newArr.concat(val) : acc.newArr,
-            uniqBy: isUnique ? acc.uniqBy.concat(uniqByVal) : acc.uniqBy,
-        };
+        if (isUnique) {
+            acc.newArr.push(val);
+            acc.uniqBy.push(uniqByVal);
+        }
+        return acc;
     }, { uniqBy: [], newArr: [] });
     return uniqResult.newArr;
 };

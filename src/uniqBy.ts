@@ -5,10 +5,13 @@ const uniqBy = <T, U>(arr: T[], uniqCond: (x: T) => U): T[] => {
     (acc, val) => {
       const uniqByVal = uniqCond(val)
       const isUnique = !acc.uniqBy.includes(uniqByVal)
-      return {
-        newArr: isUnique ? acc.newArr.concat(val) : acc.newArr,
-        uniqBy: isUnique ? acc.uniqBy.concat(uniqByVal) : acc.uniqBy,
+
+      if (isUnique) {
+        acc.newArr.push(val)
+        acc.uniqBy.push(uniqByVal)
       }
+
+      return acc
     },
     { uniqBy: [], newArr: [] }
   )
