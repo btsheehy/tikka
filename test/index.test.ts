@@ -5,6 +5,7 @@ import {
   compact,
   concat,
   contains,
+  countBy,
   countWhere,
   curry,
   curryRight,
@@ -14,10 +15,14 @@ import {
   deepMap,
   every,
   filter,
+  keepWhere,
+  selectIf,
   find,
   findIndex,
   first,
   flatten,
+  flat,
+  smoosh,
   forEach,
   forEachValues,
   get,
@@ -46,10 +51,13 @@ import {
   placeholder,
   pluck,
   plus,
+  sum,
   select,
   self,
   sortBy,
   sort,
+  order,
+  orderOn,
   tail,
   take,
   test,
@@ -86,7 +94,8 @@ describe('tikka exports', () => {
   })
 
   it('concat', () => {
-    expect(concat(3, [1, 2])).toEqual([1, 2, 3])
+    expect(concat([1, 2], [3, 4])).toEqual([1, 2, 3, 4])
+    expect(concat('ab', 'cd')).toBe('abcd')
   })
 
   it('contains and includes', () => {
@@ -94,8 +103,12 @@ describe('tikka exports', () => {
     expect(includes('b', 'abc')).toBe(true)
   })
 
-  it('countWhere', () => {
+  it('countWhere and countBy', () => {
     expect(countWhere((x: number) => x % 2 === 0, [1, 2, 3, 4])).toBe(2)
+    expect(countBy((x: number) => (x % 2 === 0 ? 'even' : 'odd'), [1, 2, 3, 4])).toEqual({
+      odd: 2,
+      even: 2,
+    })
   })
 
   it('curry', () => {
@@ -145,7 +158,10 @@ describe('tikka exports', () => {
   })
 
   it('filter', () => {
-    expect(filter((x: number) => x > 1, [1, 2, 3])).toEqual([2, 3])
+    const predicate = (x: number) => x > 1
+    expect(filter(predicate, [1, 2, 3])).toEqual([2, 3])
+    expect(keepWhere(predicate, [1, 2, 3])).toEqual([2, 3])
+    expect(selectIf(predicate, [1, 2, 3])).toEqual([2, 3])
   })
 
   it('find and findIndex', () => {
@@ -157,11 +173,15 @@ describe('tikka exports', () => {
     expect(first([1, 2, 3] as any)).toBe(1)
     expect(head([1, 2, 3] as any)).toBe(1)
     expect(last([1, 2, 3])).toBe(3)
-    expect(tail([1, 2, 3])).toBe(3)
+    expect(tail([1, 2, 3])).toEqual([2, 3])
+    expect(tail('hello')).toBe('ello')
   })
 
   it('flatten', () => {
-    expect(flatten([1, [2, [3]], 4])).toEqual([1, 2, 3, 4])
+    const nested = [1, [2, [3]], 4]
+    expect(flatten(nested)).toEqual([1, 2, 3, 4])
+    expect(flat(nested)).toEqual([1, 2, 3, 4])
+    expect(smoosh(nested)).toEqual([1, 2, 3, 4])
   })
 
   it('forEach', () => {
@@ -242,6 +262,7 @@ describe('tikka exports', () => {
 
   it('minus and plus', () => {
     expect(plus(2, 3)).toBe(5)
+    expect(sum(2, 3)).toBe(5)
     expect(minus(3, 10)).toBe(7)
   })
 
@@ -309,6 +330,8 @@ describe('tikka exports', () => {
       { name: 'bob', age: 25 },
       { name: 'charlie', age: 30 },
     ])
+    expect(order((user: { name: string; age: number }) => user.age, users)).toEqual(sorted)
+    expect(orderOn((user: { name: string; age: number }) => user.age, users)).toEqual(sorted)
     expect(users).toEqual([
       { name: 'charlie', age: 30 },
       { name: 'alice', age: 20 },

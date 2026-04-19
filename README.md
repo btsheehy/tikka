@@ -81,13 +81,19 @@ Example: `any((x) => x > 2, [1,2,3]) // true`
 Removes `null` and `undefined` values from an array.
 Example: `compact([1, null, 2, undefined]) // [1,2]`
 
-### concat(value, arr)
-Returns a new array with `value` appended.
-Example: `concat(3, [1,2]) // [1,2,3]`
+### concat(left, right)
+Concatenates arrays or strings.
+Examples:
+- `concat([1,2], [3,4]) // [1,2,3,4]`
+- `concat('ab', 'cd') // 'abcd'`
 
 ### contains(value, searchTarget)
 Checks whether `searchTarget.includes(value)` is true.
 Example: `contains(2, [1,2,3]) // true`
+
+### countBy(iteratee, arr)
+Builds a frequency object keyed by `iteratee(value)`.
+Example: `countBy((x)=>x%2?'odd':'even', [1,2,3,4]) // { odd: 2, even: 2 }`
 
 ### countWhere(test, arr)
 Counts array elements matching `test`.
@@ -271,8 +277,10 @@ Examples:
 - `sortBy((x)=>x.age, 'asc', [{age:3},{age:1}]) // [{age:1},{age:3}]`
 
 ### tail(arrOrString)
-Alias of `last`.
-Example: `tail([1,2,3]) // 3`
+Returns everything except the first element/character.
+Examples:
+- `tail([1,2,3]) // [2,3]`
+- `tail('hello') // 'ello'`
 
 ### take(num, arr)
 Returns first `num` elements.

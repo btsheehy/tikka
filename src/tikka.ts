@@ -3,6 +3,7 @@ import any from './any'
 import compact from './compact'
 import concat from './concat'
 import contains from './contains'
+import countBy from './countBy'
 import countWhere from './countWhere'
 import curry from './curry'
 import curryRight from './curryRight'
@@ -64,6 +65,7 @@ const tikka = {
   compact,
   concat,
   contains,
+  countBy,
   countWhere,
   curry,
   curryRight,
@@ -118,6 +120,225 @@ const tikka = {
   type,
   uniq,
   uniqBy,
+
+  // Alias properties
+  both: and,
+  conjunction: and,
+
+  some: any,
+  anyPass: any,
+
+  compactNil: compact,
+  removeNil: compact,
+  filterNil: compact,
+  nonNil: compact,
+
+  append: concat,
+  conj: concat,
+
+  includesValue: contains,
+  containsValue: contains,
+  member: contains,
+  memberOf: contains,
+  inList: contains,
+
+  countIf: countWhere,
+  tallyWhere: countWhere,
+
+  autoCurry: curry,
+
+  curryR: curryRight,
+  rightCurry: curryRight,
+  reverseCurry: curryRight,
+
+  trace: debug,
+  inspect: debug,
+  peek: debug,
+
+  cloneDeep: deepClone,
+  copyDeep: deepClone,
+  deepCopy: deepClone,
+
+  sortWith: sort,
+  sortOn: sort,
+  orderWith: sort,
+  order: sort,
+  orderOn: sort,
+
+  forEachDeep: deepForEach,
+  eachDeep: deepForEach,
+  walkDeep: deepForEach,
+
+  mapDeep: deepMap,
+  deepTransform: deepMap,
+
+  all: every,
+  allPass: every,
+  eachPasses: every,
+
+  where: filter,
+  selectWhere: filter,
+  keep: filter,
+  keepIf: filter,
+  keepWhere: filter,
+  selectIf: filter,
+
+  findFirst: find,
+  firstWhere: find,
+
+  indexWhere: findIndex,
+  findPosition: findIndex,
+  positionWhere: findIndex,
+
+  headValue: first,
+  firstItem: first,
+  firstValue: first,
+
+  flattenDeep: flatten,
+  deepFlatten: flatten,
+  concatAll: flatten,
+  smoosh: flatten,
+  flat: flatten,
+
+  each: forEach,
+  forEachItem: forEach,
+  walk: forEach,
+
+  eachValue: forEachValues,
+  forEachValue: forEachValues,
+  walkValues: forEachValues,
+
+  prop: get,
+  property: get,
+  lookup: get,
+
+  propOr: getOr,
+  getDefault: getOr,
+  getWithDefault: getOr,
+
+  pick: grab,
+  pickKeys: grab,
+  selectKeys: grab,
+
+  classify: groupBy,
+  bucketBy: groupBy,
+  partitionByKey: groupBy,
+
+  greaterThan: gt,
+  isGreaterThan: gt,
+
+  greaterThanOrEqual: gte,
+  isAtLeast: gte,
+
+  hasKey: has,
+  hasProp: has,
+  hasOwnKey: has,
+
+  id: identity,
+  selfRef: identity,
+  noopValue: identity,
+  identityValue: identity,
+  same: identity,
+  idValue: identity,
+
+  cond: ifElse,
+  whenElse: ifElse,
+  branch: ifElse,
+
+  even: isEven,
+  isDivisibleBy2: isEven,
+
+  odd: isOdd,
+  isNotDivisibleBy2: isOdd,
+
+  lastItem: last,
+  end: last,
+  lastValue: last,
+  endValue: last,
+
+  lessThan: lt,
+  isLessThan: lt,
+
+  lessThanOrEqual: lte,
+  isAtMost: lte,
+
+  transformKeys: mapKeys,
+  renameKeys: mapKeys,
+  mapObjectKeys: mapKeys,
+
+  transformValues: mapValues,
+  mapObjectValues: mapValues,
+
+  subtract: minus,
+  sub: minus,
+  difference: minus,
+
+  doNothing: noop,
+  noopFn: noop,
+  pass: noop,
+
+  either: or,
+  disjunction: or,
+
+  flow: pipe,
+  composeLeft: pipe,
+  chain: pipe,
+
+  __: placeholder,
+  hole: placeholder,
+  argPlaceholder: placeholder,
+
+  mapProp: pluck,
+  projectProp: pluck,
+  extractProp: pluck,
+  propertyValues: pluck,
+
+  add: plus,
+  sum2: plus,
+  add2: plus,
+  sum: plus,
+
+  orderBy: sortBy,
+  sortByKey: sortBy,
+
+  rest: tail,
+  dropFirst: tail,
+
+  takeLeft: take,
+  firstN: take,
+  headN: take,
+  takeN: take,
+
+  matches: test,
+  regexTest: test,
+  isMatch: test,
+  testRegex: test,
+
+  lower: toLower,
+  lowerCase: toLower,
+  downcase: toLower,
+
+  upper: toUpper,
+  upperCase: toUpper,
+  upcase: toUpper,
+
+  strip: trim,
+  trimWhitespace: trim,
+
+  typeOf: type,
+  kindOf: type,
+  tagOf: type,
+
+  distinct: uniq,
+  unique: uniq,
+  dedupe: uniq,
+  nub: uniq,
+
+  distinctBy: uniqBy,
+  uniqueBy: uniqBy,
+  dedupeBy: uniqBy,
+  nubBy: uniqBy,
 }
 
 export default tikka
+

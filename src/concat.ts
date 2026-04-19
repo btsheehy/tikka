@@ -1,5 +1,8 @@
-import curryRight from './curryRight'
+function concat<T>(left: T[], right: T[]): T[]
+function concat(left: string, right: string): string
 
-const concat = <T>(original: Array<T>, addition: T) => original.concat(addition)
+function concat(left: any, right: any) {
+  return left.concat(right)
+}
 
-export default /*#__PURE__*/ curryRight(concat)
+export default concat

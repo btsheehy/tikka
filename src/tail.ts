@@ -1,3 +1,8 @@
-import last from './last'
+function tail<T>(arr: T[]): T[]
+function tail(str: string): string
 
-export default last
+function tail(value: any) {
+  return value.slice(1)
+}
+
+export default tail
