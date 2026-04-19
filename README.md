@@ -260,6 +260,16 @@ Example: `select(['id'], { id:1, name:'x' }) // { id:1 }`
 Returns input unchanged.
 Example: `self(42) // 42`
 
+### sort(iteratee, arr)
+Sorts an array by a computed key (non-mutating).
+Example: `sort((x)=>x.age, [{age:3},{age:1}]) // [{age:1},{age:3}]`
+
+### sortBy(fieldOrIteratee, direction, arr)
+Sorts an array of objects by either a field name or a value-selector function, using `'asc'` or `'desc'` direction.
+Examples:
+- `sortBy('age', 'desc', [{age:1},{age:3},{age:2}]) // [{age:3},{age:2},{age:1}]`
+- `sortBy((x)=>x.age, 'asc', [{age:3},{age:1}]) // [{age:1},{age:3}]`
+
 ### tail(arrOrString)
 Alias of `last`.
 Example: `tail([1,2,3]) // 3`

@@ -48,6 +48,8 @@ import {
   plus,
   select,
   self,
+  sortBy,
+  sort,
   tail,
   take,
   test,
@@ -64,6 +66,8 @@ describe('tikka exports', () => {
   it('has a default export object with function members', () => {
     expect(typeof tikka.and).toBe('function')
     expect(typeof tikka.map).toBe('function')
+    expect(typeof tikka.sortBy).toBe('function')
+    expect(typeof tikka.sort).toBe('function')
     expect(tikka.placeholder).toBeNull()
   })
 
@@ -264,6 +268,52 @@ describe('tikka exports', () => {
 
   it('pluck', () => {
     expect(pluck('name', [{ name: 'a' }, { name: 'b' }])).toEqual(['a', 'b'])
+  })
+
+  it('sortBy', () => {
+    const users = [
+      { name: 'charlie', age: 30 },
+      { name: 'alice', age: 20 },
+      { name: 'bob', age: 25 },
+    ]
+
+    expect(sortBy('age', 'asc', users)).toEqual([
+      { name: 'alice', age: 20 },
+      { name: 'bob', age: 25 },
+      { name: 'charlie', age: 30 },
+    ])
+
+    expect(sortBy('name', 'desc', users)).toEqual([
+      { name: 'charlie', age: 30 },
+      { name: 'bob', age: 25 },
+      { name: 'alice', age: 20 },
+    ])
+
+    expect(sortBy((user: { name: string; age: number }) => user.age, 'asc', users)).toEqual([
+      { name: 'alice', age: 20 },
+      { name: 'bob', age: 25 },
+      { name: 'charlie', age: 30 },
+    ])
+  })
+
+  it('sort', () => {
+    const users = [
+      { name: 'charlie', age: 30 },
+      { name: 'alice', age: 20 },
+      { name: 'bob', age: 25 },
+    ]
+
+    const sorted = sort((user: { name: string; age: number }) => user.age, users)
+    expect(sorted).toEqual([
+      { name: 'alice', age: 20 },
+      { name: 'bob', age: 25 },
+      { name: 'charlie', age: 30 },
+    ])
+    expect(users).toEqual([
+      { name: 'charlie', age: 30 },
+      { name: 'alice', age: 20 },
+      { name: 'bob', age: 25 },
+    ])
   })
 
   it('take', () => {

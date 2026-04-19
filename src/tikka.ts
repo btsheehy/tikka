@@ -8,6 +8,7 @@ import curry from './curry'
 import curryRight from './curryRight'
 import debug from './debug'
 import deepClone from './deepClone'
+import sort from './sort'
 import deepForEach from './deepForEach'
 import deepMap from './deepMap'
 import every from './every'
@@ -46,6 +47,7 @@ import pluck from './pluck'
 import plus from './plus'
 import select from './select'
 import self from './self'
+import sortBy from './sortBy'
 import tail from './tail'
 import take from './take'
 import test from './test'
@@ -67,6 +69,7 @@ const tikka = {
   curryRight,
   debug,
   deepClone,
+  sort,
   deepForEach,
   deepMap,
   every,
@@ -105,6 +108,7 @@ const tikka = {
   plus,
   select,
   self,
+  sortBy,
   tail,
   take,
   test,
