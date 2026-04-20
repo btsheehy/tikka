@@ -52,6 +52,17 @@ import tikka from 'tikka/all'
 const out = tikka.map((x) => x * 2, [1, 2, 3])
 ```
 
+Data-first wrappers (underscore-prefixed):
+
+```ts
+import { _get, _map, _sortBy } from 'tikka/data-first'
+
+const user = { name: 'Brandon', score: 7 }
+const name = _get(user, 'name')
+const doubled = _map([1, 2, 3], (n) => n * 2)
+const sorted = _sortBy([{ score: 2 }, { score: 1 }], 'score', 'asc')
+```
+
 ## Tree-shaking
 
 Use named ESM imports from `tikka`:

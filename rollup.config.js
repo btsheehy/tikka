@@ -6,7 +6,7 @@ const treeshake = {
   tryCatchDeoptimization: false,
 }
 
-const input = ['src/index.ts', 'src/tikka.ts']
+const input = ['src/index.ts', 'src/tikka.ts', 'src/data-first.ts']
 
 module.exports = [
   {

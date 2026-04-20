@@ -17,6 +17,11 @@
       "import": "./dist/tikka.js",
       "require": "./dist/tikka.cjs"
     },
+    "./data-first": {
+      "types": "./dist/data-first.d.ts",
+      "import": "./dist/data-first.js",
+      "require": "./dist/data-first.cjs"
+    },
     "./package.json": "./package.json"
   },
   "files": [
@@ -33,9 +38,9 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
-    "perf": "vitest bench test/perf/library-comparison.bench.ts",
-    "perf:watch": "vitest bench --watch test/perf/library-comparison.bench.ts",
-    "perf:test": "sh -c 'vitest bench test/perf/library-comparison.bench.ts --testNamePattern \"$1\"' --",
+    "perf": "vitest bench test/perf/library-comparison.bench.ts test/perf/short-circuit.bench.ts test/perf/object-and-deep.bench.ts test/perf/pipe.bench.ts",
+    "perf:watch": "vitest bench --watch test/perf/library-comparison.bench.ts test/perf/short-circuit.bench.ts test/perf/object-and-deep.bench.ts test/perf/pipe.bench.ts",
+    "perf:test": "sh -c 'vitest bench test/perf/library-comparison.bench.ts test/perf/short-circuit.bench.ts test/perf/object-and-deep.bench.ts test/perf/pipe.bench.ts --testNamePattern \"$1\"' --",
     "check": "npm run lint && npm run typecheck && npm run test && npm run build"
   },
   "repository": {
