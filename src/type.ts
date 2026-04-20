@@ -1,3 +1,6 @@
+/**
+ * Returns internal type label (for example: `Array`, `Object`, `Null`, `Undefined`).
+ */
 const type = (val: any): string => {
   if (val === null) return 'Null'
   if (val === undefined) return 'Undefined'

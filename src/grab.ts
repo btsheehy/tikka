@@ -1,3 +1,6 @@
+/**
+ * grab utility function.
+ */
 import curryRight from './curryRight'
 import get from './get'
 

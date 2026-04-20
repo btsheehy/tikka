@@ -1,5 +1,8 @@
 import curryRight from './curryRight'
 
+/**
+ * Checks whether `searchTarget.includes(value)` is true.
+ */
 export type IncludesTarget = {
   includes: (value: unknown) => boolean
 }

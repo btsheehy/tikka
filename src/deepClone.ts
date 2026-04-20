@@ -1,6 +1,9 @@
 import deepMap from './deepMap'
 import type from './type'
 
+/**
+ * Deep-clones arrays/objects recursively (supports Date and RegExp cloning).
+ */
 const cloneRegex = (regex: RegExp) => {
   return new RegExp(
     regex.source,

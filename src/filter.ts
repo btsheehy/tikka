@@ -1,3 +1,6 @@
+/**
+ * filter utility function.
+ */
 import curryRight from './curryRight'
 
 const filter = <T>(arr: Array<T>, filterFunc: (x: T) => boolean) => {

@@ -1,3 +1,9 @@
+/**
+ * Returns everything except the first element/character.
+ *
+ * @example
+ * tail([1,2,3]) // [2,3]
+ */
 function tail<T>(arr: T[]): T[]
 function tail(str: string): string
 

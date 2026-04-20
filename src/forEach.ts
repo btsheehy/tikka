@@ -1,3 +1,6 @@
+/**
+ * forEach utility function.
+ */
 import curryRight from './curryRight'
 
 const forEach = <T>(arr: T[], func: (x: T) => unknown) => {

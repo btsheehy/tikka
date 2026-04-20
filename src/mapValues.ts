@@ -1,3 +1,6 @@
+/**
+ * mapValues utility function.
+ */
 import curryRight from './curryRight'
 
 const mapValues = <T extends Record<string, unknown>, R>(

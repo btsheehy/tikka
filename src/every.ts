@@ -1,5 +1,8 @@
 import curryRight from './curryRight'
 
+/**
+ * Returns true if all elements pass `test`.
+ */
 const every = <T>(arr: Array<T>, test: (x: T) => boolean) => {
   let allPass = true
   let i = 0

@@ -1,5 +1,8 @@
 import curryRight from './curryRight'
 
+/**
+ * Returns true if at least one array element passes `test`.
+ */
 const any = <T>(arr: Array<T>, test: (t: T) => boolean) => {
   let i = 0
   const length = arr.length

@@ -1,3 +1,6 @@
+/**
+ * Returns final element/character.
+ */
 function last<T>(a: T[]): T
 function last(a: string): string
 

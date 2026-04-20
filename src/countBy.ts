@@ -1,5 +1,9 @@
 import curryRight from './curryRight'
 
+/**
+ * Builds a frequency object keyed by `iteratee(value)`.
+ */
+
 const countBy = <T>(arr: T[], iteratee: (value: T) => string): Record<string, number> => {
   const counts: Record<string, number> = {}
   let index = 0

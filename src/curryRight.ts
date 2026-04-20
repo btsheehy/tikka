@@ -1,23 +1,48 @@
-function curryRight<T1, T2, R>(fn: (a: T1, b: T2) => R, arity?: number): (b: T2, a: T1) => R
+/**
+ * Right-to-left curry helper.
+ *
+ * @example
+ * curryRight((a,b)=>a/b)(2,8) // 4
+ */
+type CurryRight2<A, B, R> = {
+  (b: B, a: A, ...extra: unknown[]): R
+  (b: B): (a: A, ...extra: unknown[]) => R
+}
 
-function curryRight<T1, T2, T3, R>(
-  fn: (a: T1, b: T2, c: T3) => R,
+type CurryRight3<A, B, C, R> = {
+  (c: C, b: B, a: A, ...extra: unknown[]): R
+  (c: C, b: B): (a: A, ...extra: unknown[]) => R
+  (
+    c: C
+  ): {
+    (b: B, a: A, ...extra: unknown[]): R
+    (b: B): (a: A, ...extra: unknown[]) => R
+  }
+}
+
+function curryRight<A, B, R>(fn: (a: A, b: B) => R, arity?: number): CurryRight2<A, B, R>
+function curryRight<A, B, C, R>(
+  fn: (a: A, b: B, c: C) => R,
   arity?: number
-): (c: T3, b: T2, a: T1) => R
-
+): CurryRight3<A, B, C, R>
 function curryRight(fn: Function, arity = fn.length): Function {
-  const createCachedFunc =
-    (fn: Function, arity: number, existingArgs: any[] = []) =>
-    (...args: any[]) => {
-      return ((fn, arity, existingArgs = []) => {
-        const newArgs = Array.from(args)
-        const currentArgs = existingArgs.concat(newArgs)
-        if (currentArgs.length === arity) return fn(...currentArgs.reverse())
-        if (currentArgs.length > arity) console.warn('Too many arguments passed to curried func.')
-        return createCachedFunc(fn, arity, currentArgs)
-      })(fn, arity, existingArgs)
+  const createCachedFunc = (existingArgs: unknown[] = []): Function => {
+    return (...args: unknown[]) => {
+      const currentArgs = existingArgs.concat(args)
+
+      if (currentArgs.length >= arity) {
+        if (currentArgs.length > arity) {
+          console.warn('Too many arguments passed to curried func.')
+        }
+
+        return fn(...currentArgs.slice(0, arity).reverse())
+      }
+
+      return createCachedFunc(currentArgs)
     }
-  return createCachedFunc(fn, arity)
+  }
+
+  return createCachedFunc()
 }
 
 export default curryRight

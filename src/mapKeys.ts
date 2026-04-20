@@ -1,3 +1,6 @@
+/**
+ * mapKeys utility function.
+ */
 import curryRight from './curryRight'
 
 const mapKeys = <T extends {}, K extends keyof T>(obj: T, fn: (x: K) => string) => {

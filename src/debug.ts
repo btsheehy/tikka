@@ -1,5 +1,8 @@
 import curryRight from './curryRight'
 
+/**
+ * Logs `msg` and `value`, then returns `value`.
+ */
 const debug = <T>(value: T, msg: string): T => {
   console.log(msg)
   console.log(value)

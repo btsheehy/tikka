@@ -1,3 +1,6 @@
+/**
+ * Deep-flattens nested arrays.
+ */
 const flatten = <T>(arr: T[]) => {
   const result: any[] = []
   const flat = (val: any): void => {

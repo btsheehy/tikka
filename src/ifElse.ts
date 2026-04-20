@@ -1,3 +1,6 @@
+/**
+ * Runs `test()`, then executes `onTrue()` or `onFalse()`.
+ */
 // TODO: Needs work
 import curryRight from './curryRight'
 

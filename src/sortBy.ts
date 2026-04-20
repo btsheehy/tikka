@@ -1,6 +1,13 @@
 import curryRight from './curryRight'
 import get from './get'
 
+/**
+ * Sorts an array of objects by either a field name or a value-selector function, using `'asc'` or `'desc'` direction.
+ *
+ * @example
+ * sortBy('age', 'desc', [{age:1},{age:3},{age:2}]) // [{age:3},{age:2},{age:1}]
+ */
+
 export type SortDirection = 'asc' | 'desc'
 
 const sortBy = <T extends Record<string, unknown>, K extends keyof T>(

@@ -3,6 +3,9 @@ import map from './map'
 import mapValues from './mapValues'
 import type from './type'
 
+/**
+ * Recursively maps leaf values in nested arrays/objects.
+ */
 function deepMap<T, R>(data: Array<T>, func: (x: T) => R): Array<R>
 function deepMap(data: object, func: (x: unknown) => unknown): object
 
