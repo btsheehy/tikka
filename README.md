@@ -39,12 +39,10 @@ Named imports (recommended for tree-shaking):
 ```ts
 import { filter, isEven, map, pipe, plus } from 'tikka'
 
-const incrementEvenNumbers = pipe(
-  (nums: number[]) => filter(isEven, nums),
-  (nums) => map((n) => plus(n, 1), nums),
-)
-
-const result = incrementEvenNumbers([1, 2, 3, 4])
+const result = pipe(
+  filter(isEven),
+  map(plus(1)),
+)([1, 2, 3, 4])
 // [3, 5]
 ```
 
@@ -407,9 +405,9 @@ Common tikka composition pattern:
 import { filter, isEven, map, pipe, plus, take } from 'tikka'
 
 const firstThreeIncrementedEvens = pipe(
-  (nums: number[]) => filter(isEven, nums),
-  (nums) => map((n) => plus(n, 1), nums),
-  (nums) => take(3, nums),
+  filter(isEven),
+  map(plus(1)),
+  take(3),
 )
 
 firstThreeIncrementedEvens([1, 2, 3, 4, 5, 6, 7, 8])
@@ -421,9 +419,8 @@ Pipeline with object helpers:
 import { grab, map, pipe, sortBy } from 'tikka'
 
 const selectLeaderboardFields = pipe(
-  (users: Array<{ name: string; score: number; email: string }>) =>
-    sortBy('score', 'desc', users),
-  (users) => map((user) => grab(['name', 'score'], user), users),
+  sortBy('score', 'desc'),
+  map(grab(['name', 'score'])),
 )
 
 selectLeaderboardFields([
