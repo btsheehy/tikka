@@ -96,6 +96,12 @@ describe('tikka exports', () => {
   it('concat', () => {
     expect(concat([1, 2], [3, 4])).toEqual([1, 2, 3, 4])
     expect(concat('ab', 'cd')).toBe('abcd')
+
+    const curriedArrayConcat = concat as <T>(left: T[]) => (right: T[]) => T[]
+    const curriedStringConcat = concat as (left: string) => (right: string) => string
+
+    expect(curriedArrayConcat([1, 2])([3, 4])).toEqual([1, 2, 3, 4])
+    expect(curriedStringConcat('ab')('cd')).toBe('abcd')
   })
 
   it('contains and includes', () => {
@@ -264,6 +270,12 @@ describe('tikka exports', () => {
     expect(plus(2, 3)).toBe(5)
     expect(sum(2, 3)).toBe(5)
     expect(minus(3, 10)).toBe(7)
+
+    const curriedPlus = plus as (a: number) => (b: number) => number
+    const curriedSum = sum as (a: number) => (b: number) => number
+
+    expect(curriedPlus(2)(3)).toBe(5)
+    expect(curriedSum(2)(3)).toBe(5)
   })
 
   it('noop', () => {
