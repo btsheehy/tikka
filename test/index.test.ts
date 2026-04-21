@@ -96,6 +96,9 @@ describe('tikka exports', () => {
   it('concat', () => {
     expect(concat([1, 2], [3, 4])).toEqual([1, 2, 3, 4])
     expect(concat('ab', 'cd')).toBe('abcd')
+
+    expect((concat as any)([1, 2])([3, 4])).toEqual([1, 2, 3, 4])
+    expect((concat as any)('ab')('cd')).toBe('abcd')
   })
 
   it('contains and includes', () => {
@@ -264,6 +267,9 @@ describe('tikka exports', () => {
     expect(plus(2, 3)).toBe(5)
     expect(sum(2, 3)).toBe(5)
     expect(minus(3, 10)).toBe(7)
+
+    expect((plus as any)(2)(3)).toBe(5)
+    expect((sum as any)(2)(3)).toBe(5)
   })
 
   it('noop', () => {
