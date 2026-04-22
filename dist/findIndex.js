@@ -1,5 +1,8 @@
 import curryRight from './curryRight.js';
 
+/**
+ * Returns index of first matching element or `-1`.
+ */
 const findIndex = (arr, findFunc) => {
     let i = 0;
     const length = arr.length;

@@ -4,7 +4,10 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var curryRight = require('./curryRight.cjs');
 
-const mapKeys = (obj, fn) => {
+/**
+ * mapKeys utility function.
+ */
+const mapKeysImpl = (obj, fn) => {
     const keys = Object.keys(obj);
     const newObj = {};
     keys.forEach((k) => {
@@ -12,7 +15,7 @@ const mapKeys = (obj, fn) => {
     });
     return newObj;
 };
-var mapKeys$1 = /*#__PURE__*/ curryRight.default(mapKeys);
+const mapKeys = /*#__PURE__*/ curryRight.default(mapKeysImpl);
 
-exports.default = mapKeys$1;
+exports.default = mapKeys;
 //# sourceMappingURL=mapKeys.cjs.map

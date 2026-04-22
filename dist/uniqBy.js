@@ -1,5 +1,11 @@
 import curryRight from './curryRight.js';
 
+/**
+ * Returns unique items by computed key.
+ *
+ * @example
+ * uniqBy((x)=>x.id, [{id:1},{id:1},{id:2}])
+ */
 const uniqBy = (arr, uniqCond) => {
     const uniqResult = arr.reduce((acc, val) => {
         const uniqByVal = uniqCond(val);

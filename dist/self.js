@@ -1,3 +1,6 @@
+/**
+ * Returns input unchanged.
+ */
 const self = (a) => a;
 
 export { self as default };

@@ -4,6 +4,9 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var curryRight = require('./curryRight.cjs');
 
+/**
+ * filter utility function.
+ */
 const filter = (arr, filterFunc) => {
     const result = [];
     let index = 0;

@@ -1,7 +1,10 @@
 import curryRight from './curryRight.js';
 
-const pluck = (collection, prop) => collection.map((item) => item[prop]);
-var pluck$1 = /*#__PURE__*/ curryRight(pluck);
+/**
+ * pluck utility function.
+ */
+const pluckImpl = (collection, prop) => collection.map((item) => item[prop]);
+const pluck = /*#__PURE__*/ curryRight(pluckImpl);
 
-export { pluck$1 as default };
+export { pluck as default };
 //# sourceMappingURL=pluck.js.map

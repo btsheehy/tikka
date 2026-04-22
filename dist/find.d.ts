@@ -1,3 +1,6 @@
-declare const _default: <T>(b: (x: T) => boolean, a: T[]) => T;
+declare const _default: {
+    (b: unknown, a: unknown, ...extra: unknown[]): unknown;
+    (b: unknown): (a: unknown, ...extra: unknown[]) => unknown;
+};
 export default _default;
 //# sourceMappingURL=find.d.ts.map

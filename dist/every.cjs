@@ -4,6 +4,9 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var curryRight = require('./curryRight.cjs');
 
+/**
+ * Returns true if all elements pass `test`.
+ */
 const every = (arr, test) => {
     let allPass = true;
     let i = 0;

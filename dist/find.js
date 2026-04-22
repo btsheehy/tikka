@@ -1,6 +1,9 @@
 import curryRight from './curryRight.js';
 import findIndex from './findIndex.js';
 
+/**
+ * Returns first matching element or `undefined`.
+ */
 const find = (arr, findFunc) => {
     const i = findIndex(findFunc, arr);
     if (i > -1)

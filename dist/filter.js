@@ -1,5 +1,8 @@
 import curryRight from './curryRight.js';
 
+/**
+ * filter utility function.
+ */
 const filter = (arr, filterFunc) => {
     const result = [];
     let index = 0;

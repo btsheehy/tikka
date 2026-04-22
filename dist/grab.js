@@ -1,6 +1,9 @@
 import curryRight from './curryRight.js';
 import get from './get.js';
 
+/**
+ * grab utility function.
+ */
 const grabFromOne = (obj, props) => {
     const result = {};
     return props.reduce((acc, p) => {
@@ -8,13 +11,13 @@ const grabFromOne = (obj, props) => {
         return acc;
     }, result);
 };
-function grab(data, props) {
-    if (Array.isArray(data))
-        return data.map((x) => grabFromOne(x, props));
-    else
-        return grabFromOne(data, props);
+function grabImpl(data, props) {
+    if (Array.isArray(data)) {
+        return data.map((item) => grabFromOne(item, props));
+    }
+    return grabFromOne(data, props);
 }
-var grab$1 = /*#__PURE__*/ curryRight(grab);
+const grab = /*#__PURE__*/ curryRight(grabImpl);
 
-export { grab$1 as default };
+export { grab as default };
 //# sourceMappingURL=grab.js.map

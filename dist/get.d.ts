@@ -1,3 +1,7 @@
-declare const _default: <T, K extends keyof T>(b: K, a: T) => T[K];
-export default _default;
+type Get = {
+    <T, K extends keyof T>(property: K, object: T): T[K];
+    <K extends PropertyKey>(property: K): <T extends Record<K, unknown>>(object: T) => T[K];
+};
+declare const get: Get;
+export default get;
 //# sourceMappingURL=get.d.ts.map

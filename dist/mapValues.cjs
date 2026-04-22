@@ -4,6 +4,9 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var curryRight = require('./curryRight.cjs');
 
+/**
+ * mapValues utility function.
+ */
 const mapValues = (obj, fn) => {
     const keys = Object.keys(obj);
     const newObj = {};

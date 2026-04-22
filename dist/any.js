@@ -1,5 +1,8 @@
 import curryRight from './curryRight.js';
 
+/**
+ * Returns true if at least one array element passes `test`.
+ */
 const any = (arr, test) => {
     let i = 0;
     const length = arr.length;

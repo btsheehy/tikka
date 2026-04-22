@@ -4,6 +4,9 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var curryRight = require('./curryRight.cjs');
 
+/**
+ * Returns true if at least one array element passes `test`.
+ */
 const any = (arr, test) => {
     let i = 0;
     const length = arr.length;

@@ -1,3 +1,6 @@
+/**
+ * Lowercases string with locale support.
+ */
 const toLower = (str) => str.toLocaleLowerCase();
 
 export { toLower as default };

@@ -4,6 +4,9 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var curryRight = require('./curryRight.cjs');
 
+/**
+ * Returns first `num` elements.
+ */
 const take = (arr, num) => {
     return arr.slice(0, num);
 };

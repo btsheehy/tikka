@@ -5,6 +5,9 @@ Object.defineProperty(exports, '__esModule', { value: true });
 var curryRight = require('./curryRight.cjs');
 var findIndex = require('./findIndex.cjs');
 
+/**
+ * Returns first matching element or `undefined`.
+ */
 const find = (arr, findFunc) => {
     const i = findIndex.default(findFunc, arr);
     if (i > -1)
