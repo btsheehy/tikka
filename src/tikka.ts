@@ -40,6 +40,7 @@ import map from './map'
 import mapKeys from './mapKeys'
 import mapValues from './mapValues'
 import minus from './minus'
+import multiply from './multiply'
 import noop from './noop'
 import or from './or'
 import pipe from './pipe'
@@ -102,6 +103,7 @@ const tikka = {
   mapKeys,
   mapValues,
   minus,
+  multiply,
   noop,
   or,
   pipe,
@@ -341,4 +343,3 @@ const tikka = {
 }
 
 export default tikka
-
