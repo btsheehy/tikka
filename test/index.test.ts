@@ -45,6 +45,7 @@ import {
   mapKeys,
   mapValues,
   minus,
+  subtract,
   noop,
   or,
   pipe,
@@ -52,6 +53,7 @@ import {
   pluck,
   plus,
   sum,
+  add,
   select,
   self,
   sortBy,
@@ -96,6 +98,12 @@ describe('tikka exports', () => {
   it('concat', () => {
     expect(concat([1, 2], [3, 4])).toEqual([1, 2, 3, 4])
     expect(concat('ab', 'cd')).toBe('abcd')
+
+    const curriedArrayConcat = concat as <T>(left: T[]) => (right: T[]) => T[]
+    const curriedStringConcat = concat as (left: string) => (right: string) => string
+
+    expect(curriedArrayConcat([1, 2])([3, 4])).toEqual([1, 2, 3, 4])
+    expect(curriedStringConcat('ab')('cd')).toBe('abcd')
   })
 
   it('contains and includes', () => {
@@ -215,6 +223,29 @@ describe('tikka exports', () => {
   it('groupBy', () => {
     const grouped = groupBy((x: number) => (x % 2 === 0 ? 'even' : 'odd'), [1, 2, 3, 4])
     expect(grouped).toEqual({ odd: [1, 3], even: [2, 4] })
+
+    const users = [
+      { id: 1, role: 'admin' },
+      { id: 2, role: 'user' },
+      { id: 3, role: 'admin' },
+    ]
+
+    expect(groupBy('role', users)).toEqual({
+      admin: [
+        { id: 1, role: 'admin' },
+        { id: 3, role: 'admin' },
+      ],
+      user: [{ id: 2, role: 'user' }],
+    })
+
+    const groupByRole = groupBy('role')
+    expect(groupByRole(users)).toEqual({
+      admin: [
+        { id: 1, role: 'admin' },
+        { id: 3, role: 'admin' },
+      ],
+      user: [{ id: 2, role: 'user' }],
+    })
   })
 
   it('comparison helpers', () => {
@@ -263,7 +294,16 @@ describe('tikka exports', () => {
   it('minus and plus', () => {
     expect(plus(2, 3)).toBe(5)
     expect(sum(2, 3)).toBe(5)
+    expect(add(2, 3)).toBe(5)
+
     expect(minus(3, 10)).toBe(7)
+    expect(subtract(3, 10)).toBe(7)
+
+    const curriedPlus = plus as (a: number) => (b: number) => number
+    const curriedSum = sum as (a: number) => (b: number) => number
+
+    expect(curriedPlus(2)(3)).toBe(5)
+    expect(curriedSum(2)(3)).toBe(5)
   })
 
   it('noop', () => {

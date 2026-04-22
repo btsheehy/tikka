@@ -37,10 +37,9 @@ npm install tikka
 Named imports (recommended for tree-shaking):
 
 ```ts
-import { map, filter, plus } from 'tikka'
+import { filter, isEven, map, pipe, plus } from 'tikka'
 
-const nums = [1, 2, 3, 4]
-const result = map((n) => plus(n, 1), filter((n) => n % 2 === 0, nums))
+const result = pipe(filter(isEven), map(plus(1)))([1, 2, 3, 4])
 // [3, 5]
 ```
 
@@ -49,7 +48,7 @@ Default aggregate import (all utilities):
 ```ts
 import tikka from 'tikka/all'
 
-const out = tikka.map((x) => x * 2, [1, 2, 3])
+const out = tikka.map(tikka.multiply(2), [1, 2, 3]) // [2, 4, 6]
 ```
 
 Data-first wrappers (underscore-prefixed):
@@ -82,248 +81,474 @@ Notes:
 
 ### and(a, b)
 Boolean AND over two values.
-Example: `and(true, false) // false`
+Example:
+```ts
+and(true, false) // false
+```
 
 ### any(test, arr)
 Returns true if at least one array element passes `test`.
-Example: `any((x) => x > 2, [1,2,3]) // true`
+Example:
+```ts
+any((x) => x > 2, [1, 2, 3]) // true
+any(gt(2), [1, 2, 3]) // true
+```
 
 ### compact(arr)
 Removes `null` and `undefined` values from an array.
-Example: `compact([1, null, 2, undefined]) // [1,2]`
+Example:
+```ts
+compact([1, null, 2, undefined]) // [1,2]
+```
 
 ### concat(left, right)
 Concatenates arrays or strings.
 Examples:
-- `concat([1,2], [3,4]) // [1,2,3,4]`
-- `concat('ab', 'cd') // 'abcd'`
+```ts
+concat([1, 2], [3, 4]) // [1,2,3,4]
+concat('ab', 'cd') // 'abcd'
+```
 
 ### contains(value, searchTarget)
 Checks whether `searchTarget.includes(value)` is true.
-Example: `contains(2, [1,2,3]) // true`
+Example:
+```ts
+contains(2, [1, 2, 3]) // true
+```
 
 ### countBy(iteratee, arr)
 Builds a frequency object keyed by `iteratee(value)`.
-Example: `countBy((x)=>x%2?'odd':'even', [1,2,3,4]) // { odd: 2, even: 2 }`
+Example:
+```ts
+countBy((x) => (isOdd(x) ? 'odd' : 'even'), [1, 2, 3, 4]) // { odd: 2, even: 2 }
+```
 
 ### countWhere(test, arr)
 Counts array elements matching `test`.
-Example: `countWhere((x) => x % 2 === 0, [1,2,3,4]) // 2`
+Example:
+```ts
+countWhere((x) => x % 2 === 0, [1, 2, 3, 4]) // 2
+countWhere(isEven, [1, 2, 3, 4]) // 2
+```
 
 ### curry(fn, arity?)
 Left-to-right curry helper.
-Example: `curry((a,b,c)=>a+b+c)(1)(2)(3) // 6`
+Example:
+```ts
+curry((a, b, c) => a + b + c)(1)(2)(3) // 6
+```
 
 ### curryRight(fn, arity?)
 Right-to-left curry helper.
-Example: `curryRight((a,b)=>a/b)(2,8) // 4`
+Example:
+```ts
+curryRight((a, b) => a / b)(2, 8) // 4
+```
 
 ### debug(msg, value)
 Logs `msg` and `value`, then returns `value`.
-Example: `debug('current', 42) // 42`
+Example:
+```ts
+debug('current', 42) // 42
+```
+This is most useful for debugging a particularly long `pipe` command.
 
 ### deepClone(data)
 Deep-clones arrays/objects recursively (supports Date and RegExp cloning).
-Example: `deepClone({ a: { b: [1] } })`
+Example:
+```ts
+deepClone({ a: { b: [1] } })
+```
 
 ### deepForEach(func, data)
 Recursively visits nested arrays/objects and runs `func` on leaf values.
-Example: `deepForEach(console.log, { a:[1,{b:2}] })`
+Example:
+```ts
+deepForEach(console.log, { a: [1, { b: 2 }] })
+// 1
+// 2
+```
 
 ### deepMap(func, data)
 Recursively maps leaf values in nested arrays/objects.
-Example: `deepMap((x)=>typeof x==='number'?x*2:x, { a:[1,2] })`
+Example:
+```ts
+deepMap((x) => (typeof x === 'number' ? x * 2 : x), { a: [1, 2, 'c'] })
+// { a: [2, 4, 'c'] }
+```
 
 ### every(test, arr)
 Returns true if all elements pass `test`.
-Example: `every((x)=>x>0, [1,2,3]) // true`
+Example:
+```ts
+every((x) => x > 0, [1, 2, 3]) // true
+every(lt(0))([-4, -5, 2]) // false
+```
 
 ### filter(test, arr)
 Filters an array by predicate.
-Example: `filter((x)=>x>1, [1,2,3]) // [2,3]`
+Example:
+```ts
+filter((x) => x > 1, [1, 2, 3]) // [ 2,3 ]
+filter(gt(1), [1, 2, 3]) // [2, 3]
+```
 
 ### find(test, arr)
 Returns first matching element or `undefined`.
-Example: `find((x)=>x>1, [1,2,3]) // 2`
+Example:
+```ts
+find((x) => x > 1, [1, 2, 3]) // 2
+find(gt(1), [1, 2, 3]) // 2
+```
 
 ### findIndex(test, arr)
 Returns index of first matching element or `-1`.
-Example: `findIndex((x)=>x>1, [1,2,3]) // 1`
+Example:
+```ts
+findIndex(gt(1), [1, 2, 3]) // 1
+```
 
 ### first(arr)
 Alias of `head`.
-Example: `first([1,2,3]) // 1`
+Example:
+```ts
+first([1, 2, 3]) // 1
+```
 
 ### flatten(arr)
 Deep-flattens nested arrays.
-Example: `flatten([1,[2,[3]],4]) // [1,2,3,4]`
+Example:
+```ts
+flatten([1, [2, [3]], 4]) // [1,2,3,4]
+```
 
 ### forEach(func, arr)
 Runs `func` for each element and returns original array.
-Example: `forEach(console.log, [1,2])`
+Example:
+```ts
+forEach(console.log, [1, 2])
+// 1
+// 2
+```
 
 ### forEachValues(func, obj)
 Runs `func` for each object value and returns original object.
-Example: `forEachValues(console.log, { a:1, b:2 })`
+Example:
+```ts
+forEachValues(console.log, { a: 1, b: 2 })
+// 1
+// 2
+```
 
 ### get(prop, obj)
 Gets property by key.
-Example: `get('a', { a: 1 }) // 1`
+Example:
+```ts
+get('a', { a: 1 }) // 1
+```
 
 ### getOr(defaultValue, prop, obj)
 Gets property if present, otherwise returns `defaultValue`.
-Example: `getOr(0, 'a', {}) // 0`
+Example:
+```ts
+getOr(0, 'a', {}) // 0
+```
 
 ### grab(props, data)
 Picks listed keys from an object, or from each object in an array.
-Example: `grab(['a'], { a:1,b:2 }) // { a:1 }`
+Example:
+```ts
+grab(['a'], { a: 1, b: 2 }) // { a: 1 }
+grab(['a'], [{ a: 1, b: 2 }, { a: 5, c: 9 }]) // [{ a: 1 }, { a: 5 }]
+```
 
 ### groupBy(groupingFunction, arr)
-Groups array values by string key.
-Example: `groupBy((x)=>x%2?'odd':'even', [1,2,3])`
+Groups array values by iteratee or string key.
+Example:
+```ts
+groupBy((x) => isOdd(x) ? 'odd' : 'even', [1, 2, 3]) // { odd: [ 1, 3 ], even: [ 2 ] }
+groupBy('foo', [{ foo: 1, bar: 300, baz: 'abc'}, { foo: 2, bar: 9, baz: 'def'}, { foo: 2, bar: 1000 }]) 
+// {
+//   '1': [ { foo: 1, bar: 300, baz: 'abc' } ],
+//   '2': [ { foo: 2, bar: 9, baz: 'def' }, { foo: 2, bar: 1000 } ]
+// }
+```
 
 ### gt(a, b)
 Greater-than comparison.
-Example: `gt(3,2) // true`
+Example:
+```ts
+gt(3, 2) // true
+```
 
 ### gte(a, b)
 Greater-than-or-equal comparison.
-Example: `gte(3,3) // true`
+Example:
+```ts
+gte(3, 3) // true
+```
 
 ### has(prop, obj)
 Own-property existence check.
-Example: `has('a', { a:1 }) // true`
+Example:
+```ts
+has('a', { a: 1 }) // true
+```
 
 ### head(arr)
 Returns first element.
-Example: `head([1,2,3]) // 1`
+Example:
+```ts
+head([1, 2, 3]) // 1
+```
 
 ### identity(value)
 Alias of `self`; returns input unchanged.
-Example: `identity('x') // 'x'`
+Example:
+```ts
+identity('x') // 'x'
+```
 
 ### ifElse(onFalse, onTrue, test)
 Runs `test()`, then executes `onTrue()` or `onFalse()`.
-Example: `ifElse(()=>0, ()=>1, ()=>true) // 1`
+Example:
+```ts
+ifElse(
+  () => 0,
+  () => 1,
+  () => true
+) // 1
+```
 
 ### includes(value, searchTarget)
 Alias of `contains`.
-Example: `includes('a', 'cat') // true`
+Example:
+```ts
+includes('a', 'cat') // true
+```
 
 ### isEven(num)
 Returns true for even numbers.
-Example: `isEven(4) // true`
+Example:
+```ts
+isEven(4) // true
+```
 
 ### isOdd(num)
 Returns true for odd numbers.
-Example: `isOdd(3) // true`
+Example:
+```ts
+isOdd(3) // true
+```
 
 ### last(arrOrString)
 Returns final element/character.
-Example: `last([1,2,3]) // 3`
+Example:
+```ts
+last([1, 2, 3]) // 3
+```
 
 ### lt(a, b)
 Less-than comparison.
-Example: `lt(2,3) // true`
+Example:
+```ts
+lt(2, 3) // true
+```
 
 ### lte(a, b)
 Less-than-or-equal comparison.
-Example: `lte(3,3) // true`
+Example:
+```ts
+lte(3, 3) // true
+```
 
 ### map(fn, arr)
 Maps array values.
-Example: `map((x)=>x*2, [1,2,3]) // [2,4,6]`
+Example:
+```ts
+map((x) => x * 2, [1, 2, 3]) // [2,4,6]
+```
 
 ### mapKeys(fn, obj)
 Transforms object keys, preserving values.
-Example: `mapKeys((k)=>k.toUpperCase(), { a:1 }) // { A:1 }`
+Example:
+```ts
+mapKeys((k) => k.toUpperCase(), { a: 1 }) // { A: 1 }
+```
 
 ### mapValues(fn, obj)
 Transforms object values, preserving keys.
-Example: `mapValues((v)=>v*2, { a:1 }) // { a:2 }`
+Example:
+```ts
+mapValues((v) => v * 2, { a: 1 }) // { a: 2 }
+```
 
 ### minus(b, a)
 Subtracts second arg from first in curried-right style.
-Example: `minus(3, 10) // 7`
+Example:
+```ts
+minus(3, 10) // 7
+```
 
 ### noop()
 No-op function.
-Example: `noop() // undefined`
+Example:
+```ts
+noop() // undefined
+```
 
 ### or(a, b)
 Boolean OR over two values.
-Example: `or(false, true) // true`
+Example:
+```ts
+or(false, true) // true
+```
 
 ### pipe(...fns)
-Creates left-to-right function pipeline.
-Example: `pipe((x)=>x+1, (x)=>x*2)(2) // 6`
+Creates a left-to-right function pipeline. This is the core composition primitive in tikka.
 
-### placeholder
-Exported placeholder value (`null`).
+Example:
+```ts
+import { pipe } from 'tikka'
+
+const transform = pipe(
+  (value: number) => value + 1,
+  (value) => value * 2
+)
+
+transform(2)
+// 6
+```
+
+Common tikka composition pattern:
+```ts
+import { filter, isEven, map, pipe, plus, take } from 'tikka'
+
+const firstThreeIncrementedEvens = pipe(filter(isEven), map(plus(1)), take(3))
+
+firstThreeIncrementedEvens([1, 2, 3, 4, 5, 6, 7, 8])
+// [3, 5, 7]
+```
+
+Pipeline with object helpers:
+```ts
+import { grab, map, pipe, sortBy } from '@btsheehy/tikka'
+
+const selectLeaderboardFields = pipe(sortBy('score', 'desc'), map(grab(['name', 'score'])))
+
+selectLeaderboardFields([
+  { name: 'Ari', score: 12, email: 'ari@example.com' },
+  { name: 'Bea', score: 19, email: 'bea@example.com' },
+])
+// [{ name: 'Bea', score: 19 }, { name: 'Ari', score: 12 }]
+```
 
 ### pluck(prop, collection)
 Extracts property values from array of objects.
-Example: `pluck('name', [{name:'a'},{name:'b'}]) // ['a','b']`
+Example:
+```ts
+pluck('name', [{ name: 'a' }, { name: 'b' }]) // ['a','b']
+```
 
 ### plus(a, b)
 Adds two numbers.
-Example: `plus(2,3) // 5`
+Example:
+```ts
+plus(2, 3) // 5
+```
 
 ### select(props, data)
 Alias of `grab`.
-Example: `select(['id'], { id:1, name:'x' }) // { id:1 }`
+Example:
+```ts
+select(['id'], { id: 1, name: 'x' }) // { id:1 }
+```
 
 ### self(value)
 Returns input unchanged.
-Example: `self(42) // 42`
+Example:
+```ts
+self(42) // 42
+```
 
 ### sort(iteratee, arr)
 Sorts an array by a computed key (non-mutating).
-Example: `sort((x)=>x.age, [{age:3},{age:1}]) // [{age:1},{age:3}]`
+Example:
+```ts
+sort((x) => x.age, [{ age: 3 }, { age: 1 }]) // [{age:1},{age:3}]
+```
 
 ### sortBy(fieldOrIteratee, direction, arr)
 Sorts an array of objects by either a field name or a value-selector function, using `'asc'` or `'desc'` direction.
 Examples:
-- `sortBy('age', 'desc', [{age:1},{age:3},{age:2}]) // [{age:3},{age:2},{age:1}]`
-- `sortBy((x)=>x.age, 'asc', [{age:3},{age:1}]) // [{age:1},{age:3}]`
+```ts
+sortBy('age', 'desc', [{ age: 1 }, { age: 3 }, { age: 2 }]) // [{age:3},{age:2},{age:1}]
+sortBy((x) => x.age, 'asc', [{ age: 3 }, { age: 1 }]) // [{age:1},{age:3}]
+```
 
 ### tail(arrOrString)
 Returns everything except the first element/character.
 Examples:
-- `tail([1,2,3]) // [2,3]`
-- `tail('hello') // 'ello'`
+```ts
+tail([1, 2, 3]) // [2,3]
+tail('hello') // 'ello'
+```
 
 ### take(num, arr)
 Returns first `num` elements.
-Example: `take(2, [1,2,3]) // [1,2]`
+Example:
+```ts
+take(2, [1, 2, 3]) // [1,2]
+```
 
 ### test(regex, str)
 Runs `regex.test(str)`.
-Example: `test(/ab/, 'zabx') // true`
+Example:
+```ts
+test(/ab/, 'zabx') // true
+```
 
 ### toLower(str)
 Lowercases string with locale support.
-Example: `toLower('AbC') // 'abc'`
+Example:
+```ts
+toLower('AbC') // 'abc'
+```
 
 ### toUpper(str)
 Uppercases string with locale support.
-Example: `toUpper('AbC') // 'ABC'`
+Example:
+```ts
+toUpper('AbC') // 'ABC'
+```
 
 ### trim(str)
 Trims string whitespace.
-Example: `trim('  x  ') // 'x'`
+Example:
+```ts
+trim('  x  ') // 'x'
+```
 
 ### type(val)
 Returns internal type label (for example: `Array`, `Object`, `Null`, `Undefined`).
-Example: `type([]) // 'Array'`
+Example:
+```ts
+type([]) // 'Array'
+```
 
 ### uniq(arr)
 Returns array with duplicate values removed (first occurrence kept).
-Example: `uniq([1,2,1,3]) // [1,2,3]`
+Example:
+```ts
+uniq([1, 2, 1, 3]) // [1,2,3]
+```
 
 ### uniqBy(uniqCond, arr)
 Returns unique items by computed key.
-Example: `uniqBy((x)=>x.id, [{id:1},{id:1},{id:2}])`
+Example:
+```ts
+uniqBy(get('id'), [{ id: 1 }, { id: 1 }, { id: 2 }])
+```
 
 ## Performance benchmark suites (large datasets)
 
