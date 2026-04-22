@@ -48,7 +48,7 @@ Default aggregate import (all utilities):
 ```ts
 import tikka from 'tikka/all'
 
-const out = tikka.map((x) => x * 2, [1, 2, 3])
+const out = tikka.map(tikka.multiply(2), [1, 2, 3]) // [2, 4, 6]
 ```
 
 Data-first wrappers (underscore-prefixed):
@@ -91,6 +91,7 @@ Returns true if at least one array element passes `test`.
 Example:
 ```ts
 any((x) => x > 2, [1, 2, 3]) // true
+any(gt(2), [1, 2, 3]) // true
 ```
 
 ### compact(arr)
@@ -119,7 +120,7 @@ contains(2, [1, 2, 3]) // true
 Builds a frequency object keyed by `iteratee(value)`.
 Example:
 ```ts
-countBy((x) => (x % 2 ? 'odd' : 'even'), [1, 2, 3, 4]) // { odd: 2, even: 2 }
+countBy((x) => (isOdd(x) ? 'odd' : 'even'), [1, 2, 3, 4]) // { odd: 2, even: 2 }
 ```
 
 ### countWhere(test, arr)
@@ -127,6 +128,7 @@ Counts array elements matching `test`.
 Example:
 ```ts
 countWhere((x) => x % 2 === 0, [1, 2, 3, 4]) // 2
+countWhere(isEven, [1, 2, 3, 4]) // 2
 ```
 
 ### curry(fn, arity?)
@@ -149,6 +151,7 @@ Example:
 ```ts
 debug('current', 42) // 42
 ```
+This is most useful for debugging a particularly long `pipe` command.
 
 ### deepClone(data)
 Deep-clones arrays/objects recursively (supports Date and RegExp cloning).
@@ -162,13 +165,16 @@ Recursively visits nested arrays/objects and runs `func` on leaf values.
 Example:
 ```ts
 deepForEach(console.log, { a: [1, { b: 2 }] })
+// 1
+// 2
 ```
 
 ### deepMap(func, data)
 Recursively maps leaf values in nested arrays/objects.
 Example:
 ```ts
-deepMap((x) => (typeof x === 'number' ? x * 2 : x), { a: [1, 2] })
+deepMap((x) => (typeof x === 'number' ? x * 2 : x), { a: [1, 2, 'c'] })
+// { a: [2, 4, 'c'] }
 ```
 
 ### every(test, arr)
@@ -176,13 +182,15 @@ Returns true if all elements pass `test`.
 Example:
 ```ts
 every((x) => x > 0, [1, 2, 3]) // true
+every(lt(0))([-4, -5, 2]) // false
 ```
 
 ### filter(test, arr)
 Filters an array by predicate.
 Example:
 ```ts
-filter((x) => x > 1, [1, 2, 3]) // [2,3]
+filter((x) => x > 1, [1, 2, 3]) // [ 2,3 ]
+filter(gt(1), [1, 2, 3]) // [2, 3]
 ```
 
 ### find(test, arr)
@@ -190,13 +198,14 @@ Returns first matching element or `undefined`.
 Example:
 ```ts
 find((x) => x > 1, [1, 2, 3]) // 2
+find(gt(1), [1, 2, 3]) // 2
 ```
 
 ### findIndex(test, arr)
 Returns index of first matching element or `-1`.
 Example:
 ```ts
-findIndex((x) => x > 1, [1, 2, 3]) // 1
+findIndex(gt(1), [1, 2, 3]) // 1
 ```
 
 ### first(arr)
@@ -218,6 +227,8 @@ Runs `func` for each element and returns original array.
 Example:
 ```ts
 forEach(console.log, [1, 2])
+// 1
+// 2
 ```
 
 ### forEachValues(func, obj)
@@ -225,6 +236,8 @@ Runs `func` for each object value and returns original object.
 Example:
 ```ts
 forEachValues(console.log, { a: 1, b: 2 })
+// 1
+// 2
 ```
 
 ### get(prop, obj)
@@ -245,14 +258,20 @@ getOr(0, 'a', {}) // 0
 Picks listed keys from an object, or from each object in an array.
 Example:
 ```ts
-grab(['a'], { a: 1, b: 2 }) // { a:1 }
+grab(['a'], { a: 1, b: 2 }) // { a: 1 }
+grab(['a'], [{ a: 1, b: 2 }, { a: 5, c: 9 }]) // [{ a: 1 }, { a: 5 }]
 ```
 
 ### groupBy(groupingFunction, arr)
-Groups array values by string key.
+Groups array values by iteratee or string key.
 Example:
 ```ts
-groupBy((x) => (x % 2 ? 'odd' : 'even'), [1, 2, 3])
+groupBy((x) => isOdd(x) ? 'odd' : 'even', [1, 2, 3]) // { odd: [ 1, 3 ], even: [ 2 ] }
+groupBy('foo', [{ foo: 1, bar: 300, baz: 'abc'}, { foo: 2, bar: 9, baz: 'def'}, { foo: 2, bar: 1000 }]) 
+// {
+//   '1': [ { foo: 1, bar: 300, baz: 'abc' } ],
+//   '2': [ { foo: 2, bar: 9, baz: 'def' }, { foo: 2, bar: 1000 } ]
+// }
 ```
 
 ### gt(a, b)
@@ -354,14 +373,14 @@ map((x) => x * 2, [1, 2, 3]) // [2,4,6]
 Transforms object keys, preserving values.
 Example:
 ```ts
-mapKeys((k) => k.toUpperCase(), { a: 1 }) // { A:1 }
+mapKeys((k) => k.toUpperCase(), { a: 1 }) // { A: 1 }
 ```
 
 ### mapValues(fn, obj)
 Transforms object values, preserving keys.
 Example:
 ```ts
-mapValues((v) => v * 2, { a: 1 }) // { a:2 }
+mapValues((v) => v * 2, { a: 1 }) // { a: 2 }
 ```
 
 ### minus(b, a)
@@ -413,7 +432,7 @@ firstThreeIncrementedEvens([1, 2, 3, 4, 5, 6, 7, 8])
 
 Pipeline with object helpers:
 ```ts
-import { grab, map, pipe, sortBy } from 'tikka'
+import { grab, map, pipe, sortBy } from '@btsheehy/tikka'
 
 const selectLeaderboardFields = pipe(sortBy('score', 'desc'), map(grab(['name', 'score'])))
 
@@ -423,9 +442,6 @@ selectLeaderboardFields([
 ])
 // [{ name: 'Bea', score: 19 }, { name: 'Ari', score: 12 }]
 ```
-
-### placeholder
-Exported placeholder value (`null`).
 
 ### pluck(prop, collection)
 Extracts property values from array of objects.
@@ -531,7 +547,7 @@ uniq([1, 2, 1, 3]) // [1,2,3]
 Returns unique items by computed key.
 Example:
 ```ts
-uniqBy((x) => x.id, [{ id: 1 }, { id: 1 }, { id: 2 }])
+uniqBy(get('id'), [{ id: 1 }, { id: 1 }, { id: 2 }])
 ```
 
 ## Performance benchmark suites (large datasets)
