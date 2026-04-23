@@ -1,4 +1,5 @@
 import curryRight from './curryRight'
+import get from './get'
 
 /**
  * Groups array values by string key.
@@ -17,27 +18,21 @@ type GroupBy = {
   ): <T extends Record<K, string | number>>(arr: T[]) => Record<string, T[]>
 }
 
-const groupByImpl = <T, K extends keyof T>(arr: T[], grouper: Grouper<T, K>): Record<string, T[]> => {
-  const groupingFunction =
-    typeof grouper === 'function'
-      ? grouper
-      : (item: T) => {
-          const value = item[grouper]
-          if (typeof value === 'string' || typeof value === 'number') {
-            return value
-          }
-          return String(value)
-        }
+const groupByImpl = <T, K extends keyof T>(
+  arr: T[],
+  grouper: Grouper<T, K>
+): Record<string, T[]> => {
+  const groupingFunction = typeof grouper === 'function' ? grouper : get(grouper)
 
-  return arr.reduce<Record<string, T[]>>((acc, value) => {
-    const group = String(groupingFunction(value))
-    if (acc[group]) {
-      acc[group].push(value)
-    } else {
-      acc[group] = [value]
-    }
-    return acc
-  }, {})
+  const groups = {}
+  let i = 0
+  while (i < arr.length) {
+    const group = groupingFunction(arr[i])
+    if (groups[group]) groups[group].push(arr[i])
+    else groups[group] = [arr[i]]
+    i++
+  }
+  return groups
 }
 
 const groupBy = /*#__PURE__*/ curryRight(groupByImpl) as GroupBy

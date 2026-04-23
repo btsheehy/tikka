@@ -4,6 +4,9 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var curryRight = require('./curryRight.cjs');
 
+/**
+ * Runs `func` for each object value and returns original object.
+ */
 const forEachValues = (obj, fn) => {
     Object.entries(obj).forEach(([_key, value]) => {
         fn(value);

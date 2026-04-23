@@ -1,0 +1,133 @@
+import placeholder from './placeholder.js';
+import getOr from './getOr.js';
+import and from './and.js';
+import any from './any.js';
+import compact from './compact.js';
+import concat from './concat.js';
+import contains from './contains.js';
+import countBy from './countBy.js';
+import countWhere from './countWhere.js';
+import curry from './curry.js';
+import curryRight from './curryRight.js';
+import debug from './debug.js';
+import deepClone from './deepClone.js';
+import sort from './sort.js';
+import deepForEach from './deepForEach.js';
+import deepMap from './deepMap.js';
+import every from './every.js';
+import filter from './filter.js';
+import find from './find.js';
+import findIndex from './findIndex.js';
+import head from './head.js';
+import flatten from './flatten.js';
+import forEach from './forEach.js';
+import forEachValues from './forEachValues.js';
+import get from './get.js';
+import grab from './grab.js';
+import groupBy from './groupBy.js';
+import gt from './gt.js';
+import gte from './gte.js';
+import has from './has.js';
+import identity from './identity.js';
+import ifElse from './ifElse.js';
+import isEven from './isEven.js';
+import isOdd from './isOdd.js';
+import last from './last.js';
+import lt from './lt.js';
+import lte from './lte.js';
+import map from './map.js';
+import mapKeys from './mapKeys.js';
+import mapValues from './mapValues.js';
+import minus from './minus.js';
+import noop from './noop.js';
+import or from './or.js';
+import pipe from './pipe.js';
+import pluck from './pluck.js';
+import plus from './plus.js';
+import self from './self.js';
+import sortBy from './sortBy.js';
+import tail from './tail.js';
+import take from './take.js';
+import test from './test.js';
+import toLower from './toLower.js';
+import toUpper from './toUpper.js';
+import trim from './trim.js';
+import type from './type.js';
+import uniq from './uniq.js';
+import uniqBy from './uniqBy.js';
+
+/**
+ * Creates a data-first wrapper by moving the final argument to the front.
+ *
+ * This is intended for ergonomic imperative usage where the data value is
+ * supplied first (for example `_get(obj, 'key')`) while preserving the
+ * existing data-last functional core implementation.
+ */
+const dataFirst = (fn) => {
+    return (data, ...args) => {
+        return fn(...args, data);
+    };
+};
+const _and = dataFirst(and);
+const _any = dataFirst(any);
+const _compact = dataFirst(compact);
+const _concat = dataFirst(concat);
+const _contains = dataFirst(contains);
+const _countBy = dataFirst(countBy);
+const _countWhere = dataFirst(countWhere);
+const _curry = dataFirst(curry);
+const _curryRight = dataFirst(curryRight);
+const _debug = dataFirst(debug);
+const _deepClone = dataFirst(deepClone);
+const _sort = dataFirst(sort);
+const _deepForEach = dataFirst(deepForEach);
+const _deepMap = dataFirst(deepMap);
+const _every = dataFirst(every);
+const _filter = dataFirst(filter);
+const _find = dataFirst(find);
+const _findIndex = dataFirst(findIndex);
+const _first = dataFirst(head);
+const _flatten = dataFirst(flatten);
+const _forEach = dataFirst(forEach);
+const _forEachValues = dataFirst(forEachValues);
+const _get = dataFirst(get);
+const _getOr = (obj, prop, defaultValue) => getOr(defaultValue, prop, obj);
+const _grab = dataFirst(grab);
+const _groupBy = dataFirst(groupBy);
+const _gt = dataFirst(gt);
+const _gte = dataFirst(gte);
+const _has = dataFirst(has);
+const _head = dataFirst(head);
+const _identity = dataFirst(identity);
+const _ifElse = dataFirst(ifElse);
+const _includes = dataFirst(contains);
+const _isEven = dataFirst(isEven);
+const _isOdd = dataFirst(isOdd);
+const _last = dataFirst(last);
+const _lt = dataFirst(lt);
+const _lte = dataFirst(lte);
+const _map = dataFirst(map);
+const _mapKeys = dataFirst(mapKeys);
+const _mapValues = dataFirst(mapValues);
+const _minus = dataFirst(minus);
+const _noop = dataFirst(noop);
+const _or = dataFirst(or);
+const _pipe = dataFirst(pipe);
+const _placeholder = placeholder;
+const _pluck = dataFirst(pluck);
+const _plus = dataFirst(plus);
+const _select = dataFirst(grab);
+const _self = dataFirst(self);
+const _sortBy = dataFirst(sortBy);
+const _tail = dataFirst(tail);
+const _take = dataFirst(take);
+const _test = dataFirst(test);
+const _toLower = dataFirst(toLower);
+const _toUpper = dataFirst(toUpper);
+const _trim = dataFirst(trim);
+const _type = dataFirst(type);
+const _uniq = dataFirst(uniq);
+const _uniqBy = dataFirst(uniqBy);
+
+export { _and, _any, _compact, _concat, _contains, _countBy, _countWhere, _curry, _curryRight, _debug, _deepClone, _deepForEach, _deepMap, _every, _filter, _find, _findIndex, _first, _flatten, _forEach, _forEachValues, _get, _getOr, _grab, _groupBy, _gt, _gte, _has, _head, _identity, _ifElse, _includes, _isEven, _isOdd, _last, _lt, _lte, _map, _mapKeys, _mapValues, _minus, _noop, _or, _pipe, _placeholder, _pluck, _plus, _select, _self, _sort, _sortBy, _tail, _take, _test, _toLower, _toUpper, _trim, _type, _uniq, _uniqBy };
+//# sourceMappingURL=data-first.js.map

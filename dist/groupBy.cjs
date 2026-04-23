@@ -3,20 +3,23 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 var curryRight = require('./curryRight.cjs');
+var get = require('./get.cjs');
 
-const groupBy = (arr, groupingFunction) => {
-    return arr.reduce((acc, val) => {
-        const group = groupingFunction(val);
-        if (acc[group]) {
-            acc[group].push(val);
-        }
-        else {
-            acc[group] = [val];
-        }
-        return acc;
-    }, {});
+const groupByImpl = (arr, grouper) => {
+    const groupingFunction = typeof grouper === 'function' ? grouper : get.default(grouper);
+    const groups = {};
+    let i = 0;
+    while (i < arr.length) {
+        const group = groupingFunction(arr[i]);
+        if (groups[group])
+            groups[group].push(arr[i]);
+        else
+            groups[group] = [arr[i]];
+        i++;
+    }
+    return groups;
 };
-var groupBy$1 = /*#__PURE__*/ curryRight.default(groupBy);
+const groupBy = /*#__PURE__*/ curryRight.default(groupByImpl);
 
-exports.default = groupBy$1;
+exports.default = groupBy;
 //# sourceMappingURL=groupBy.cjs.map

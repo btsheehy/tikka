@@ -5,6 +5,9 @@ Object.defineProperty(exports, '__esModule', { value: true });
 var curryRight = require('./curryRight.cjs');
 var get = require('./get.cjs');
 
+/**
+ * grab utility function.
+ */
 const grabFromOne = (obj, props) => {
     const result = {};
     return props.reduce((acc, p) => {

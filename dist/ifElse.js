@@ -1,5 +1,8 @@
 import curryRight from './curryRight.js';
 
+/**
+ * Runs `test()`, then executes `onTrue()` or `onFalse()`.
+ */
 // TODO: Needs work
 const ifElse = (test, onTrue, onFalse) => {
     const trueOrFalse = test();

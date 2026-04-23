@@ -1,3 +1,6 @@
-declare const _default: <T extends {}, K extends keyof T>(b: (x: K) => string, a: T) => Record<string, T[K]>;
+declare const _default: {
+    (b: unknown, a: unknown, ...extra: unknown[]): Record<string, never>;
+    (b: unknown): (a: unknown, ...extra: unknown[]) => Record<string, never>;
+};
 export default _default;
 //# sourceMappingURL=mapKeys.d.ts.map

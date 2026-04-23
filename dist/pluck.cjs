@@ -4,6 +4,9 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var curryRight = require('./curryRight.cjs');
 
+/**
+ * pluck utility function.
+ */
 const pluck = (collection, prop) => collection.map((item) => item[prop]);
 var pluck$1 = /*#__PURE__*/ curryRight.default(pluck);
 

@@ -2,6 +2,9 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
+/**
+ * Deep-flattens nested arrays.
+ */
 const flatten = (arr) => {
     const result = [];
     const flat = (val) => {

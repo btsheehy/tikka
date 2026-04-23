@@ -1,6 +1,9 @@
 import curryRight from './curryRight.js';
 import get from './get.js';
 
+/**
+ * getOr utility function.
+ */
 function getOr(obj, prop, defaultValue) {
     if (Object.hasOwn(obj, prop))
         return get(prop, obj);

@@ -1,4 +1,22 @@
-declare function curryRight<T1, T2, R>(fn: (a: T1, b: T2) => R, arity?: number): (b: T2, a: T1) => R;
-declare function curryRight<T1, T2, T3, R>(fn: (a: T1, b: T2, c: T3) => R, arity?: number): (c: T3, b: T2, a: T1) => R;
+/**
+ * Right-to-left curry helper.
+ *
+ * @example
+ * curryRight((a,b)=>a/b)(2,8) // 4
+ */
+type CurryRight2<A, B, R> = {
+    (b: B, a: A, ...extra: unknown[]): R;
+    (b: B): (a: A, ...extra: unknown[]) => R;
+};
+type CurryRight3<A, B, C, R> = {
+    (c: C, b: B, a: A, ...extra: unknown[]): R;
+    (c: C, b: B): (a: A, ...extra: unknown[]) => R;
+    (c: C): {
+        (b: B, a: A, ...extra: unknown[]): R;
+        (b: B): (a: A, ...extra: unknown[]) => R;
+    };
+};
+declare function curryRight<A, B, R>(fn: (a: A, b: B) => R, arity?: number): CurryRight2<A, B, R>;
+declare function curryRight<A, B, C, R>(fn: (a: A, b: B, c: C) => R, arity?: number): CurryRight3<A, B, C, R>;
 export default curryRight;
 //# sourceMappingURL=curryRight.d.ts.map

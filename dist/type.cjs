@@ -2,6 +2,9 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
+/**
+ * Returns internal type label (for example: `Array`, `Object`, `Null`, `Undefined`).
+ */
 const type = (val) => {
     if (val === null)
         return 'Null';

@@ -1,5 +1,8 @@
 import curryRight from './curryRight.js';
 
+/**
+ * Runs `regex.test(str)`.
+ */
 const test = (str, regex) => regex.test(str);
 var test$1 = /*#__PURE__*/ curryRight(test);
 

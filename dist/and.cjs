@@ -4,6 +4,9 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var curry = require('./curry.cjs');
 
+/**
+ * Boolean AND over two values.
+ */
 const and = (a, b) => !!(a && b);
 var and$1 = /*#__PURE__*/ curry.default(and);
 

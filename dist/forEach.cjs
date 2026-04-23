@@ -4,6 +4,9 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var curryRight = require('./curryRight.cjs');
 
+/**
+ * forEach utility function.
+ */
 const forEach = (arr, func) => {
     arr.forEach((val) => {
         func(val);

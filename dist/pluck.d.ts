@@ -1,3 +1,6 @@
-declare const _default: <T, K extends keyof T>(b: K, a: T[]) => T[K][];
+declare const _default: {
+    (b: unknown, a: unknown, ...extra: unknown[]): never[];
+    (b: unknown): (a: unknown, ...extra: unknown[]) => never[];
+};
 export default _default;
 //# sourceMappingURL=pluck.d.ts.map

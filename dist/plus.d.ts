@@ -1,3 +1,6 @@
-declare const plus: (a: number, b: number) => number;
-export default plus;
+declare const _default: {
+    (a: number, b: number, ...extra: unknown[]): number;
+    (a: number): (b: number, ...extra: unknown[]) => number;
+};
+export default _default;
 //# sourceMappingURL=plus.d.ts.map

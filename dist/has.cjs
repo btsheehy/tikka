@@ -4,6 +4,9 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var curryRight = require('./curryRight.cjs');
 
+/**
+ * has utility function.
+ */
 const has = (obj, prop) => Object.hasOwn(obj, prop);
 var has$1 = /*#__PURE__*/ curryRight.default(has);
 

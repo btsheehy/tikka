@@ -1,6 +1,9 @@
 import curryRight from './curryRight.js';
 import get from './get.js';
 
+/**
+ * grab utility function.
+ */
 const grabFromOne = (obj, props) => {
     const result = {};
     return props.reduce((acc, p) => {

@@ -1,5 +1,8 @@
 import curryRight from './curryRight.js';
 
+/**
+ * Runs `func` for each object value and returns original object.
+ */
 const forEachValues = (obj, fn) => {
     Object.entries(obj).forEach(([_key, value]) => {
         fn(value);

@@ -1,5 +1,8 @@
 import curryRight from './curryRight.js';
 
+/**
+ * Returns true if all elements pass `test`.
+ */
 const every = (arr, test) => {
     let allPass = true;
     let i = 0;

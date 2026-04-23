@@ -2,6 +2,9 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
+/**
+ * Returns input unchanged.
+ */
 const self = (a) => a;
 
 exports.default = self;

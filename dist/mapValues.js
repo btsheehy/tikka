@@ -1,5 +1,8 @@
 import curryRight from './curryRight.js';
 
+/**
+ * mapValues utility function.
+ */
 const mapValues = (obj, fn) => {
     const keys = Object.keys(obj);
     const newObj = {};

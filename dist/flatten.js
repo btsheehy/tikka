@@ -1,3 +1,6 @@
+/**
+ * Deep-flattens nested arrays.
+ */
 const flatten = (arr) => {
     const result = [];
     const flat = (val) => {

@@ -4,6 +4,9 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var curryRight = require('./curryRight.cjs');
 
+/**
+ * Runs `regex.test(str)`.
+ */
 const test = (str, regex) => regex.test(str);
 var test$1 = /*#__PURE__*/ curryRight.default(test);
 

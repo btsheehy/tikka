@@ -1,5 +1,8 @@
 import curry from './curry.js';
 
+/**
+ * gt utility function.
+ */
 const gt = (a, b) => a > b;
 var gt$1 = /*#__PURE__*/ curry(gt);
 
