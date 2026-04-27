@@ -45,6 +45,7 @@ import or from './or.js';
 import pipe from './pipe.js';
 import pluck from './pluck.js';
 import plus from './plus.js';
+import reverse from './reverse.js';
 import self from './self.js';
 import slice from './slice.js';
 import sortBy from './sortBy.js';
@@ -122,6 +123,7 @@ const _pipe = dataFirst(pipe);
 const _placeholder = placeholder;
 const _pluck = dataFirst(pluck);
 const _plus = dataFirst(plus);
+const _reverse = dataFirst(reverse);
 const _select = dataFirst(grab);
 const _self = dataFirst(self);
 const _slice = dataFirst(slice);
@@ -139,5 +141,5 @@ const _type = dataFirst(type);
 const _uniq = dataFirst(uniq);
 const _uniqBy = dataFirst(uniqBy);
 
-export { _and, _any, _coalesce, _compact, _concat, _contains, _countBy, _countWhere, _curry, _curryRight, _debug, _deepClone, _deepForEach, _deepMap, _endsWith, _every, _filter, _find, _findIndex, _first, _flatten, _forEach, _forEachValues, _get, _getOr, _grab, _groupBy, _gt, _gte, _has, _head, _identity, _ifElse, _includes, _isEven, _isOdd, _last, _lt, _lte, _map, _mapKeys, _mapValues, _minus, _noop, _or, _pipe, _placeholder, _pluck, _plus, _select, _self, _slice, _sort, _sortBy, _split, _startsWith, _tail, _take, _test, _toLower, _toUpper, _trim, _type, _uniq, _uniqBy };
+export { _and, _any, _coalesce, _compact, _concat, _contains, _countBy, _countWhere, _curry, _curryRight, _debug, _deepClone, _deepForEach, _deepMap, _endsWith, _every, _filter, _find, _findIndex, _first, _flatten, _forEach, _forEachValues, _get, _getOr, _grab, _groupBy, _gt, _gte, _has, _head, _identity, _ifElse, _includes, _isEven, _isOdd, _last, _lt, _lte, _map, _mapKeys, _mapValues, _minus, _noop, _or, _pipe, _placeholder, _pluck, _plus, _reverse, _select, _self, _slice, _sort, _sortBy, _split, _startsWith, _tail, _take, _test, _toLower, _toUpper, _trim, _type, _uniq, _uniqBy };
 //# sourceMappingURL=data-first.js.map

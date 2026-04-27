@@ -6,6 +6,7 @@ import {
   _getOr,
   _groupBy,
   _map,
+  _reverse,
   _sort,
   _sortBy,
   _tail,
@@ -19,6 +20,7 @@ describe('data-first wrappers', () => {
     expect(_getOr(obj, 'b', 9)).toBe(9)
     expect(_map([1, 2, 3], (x: number) => x * 2)).toEqual([2, 4, 6])
     expect(_filter([1, 2, 3], (x: number) => x > 1)).toEqual([2, 3])
+    expect(_reverse([1, 2, 3])).toEqual([3, 2, 1])
     expect(_tail([1, 2, 3])).toEqual([2, 3])
   })
 

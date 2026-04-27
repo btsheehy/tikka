@@ -53,6 +53,7 @@ var placeholder = require('./placeholder.cjs');
 var pluck = require('./pluck.cjs');
 var plus = require('./plus.cjs');
 var replace = require('./replace.cjs');
+var reverse = require('./reverse.cjs');
 var self = require('./self.cjs');
 var slice = require('./slice.cjs');
 var sortBy = require('./sortBy.cjs');
@@ -123,6 +124,7 @@ const tikka = {
     pluck: pluck.default,
     plus: plus.default,
     replace: replace.default,
+    reverse: reverse.default,
     select: grab.default,
     self: self.default,
     slice: slice.default,

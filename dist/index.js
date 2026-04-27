@@ -48,6 +48,7 @@ export { default as __, default as argPlaceholder, default as hole, default as p
 export { default as extractProp, default as mapProp, default as pluck, default as projectProp, default as propertyValues } from './pluck.js';
 export { default as add, default as add2, default as plus, default as sum, default as sum2 } from './plus.js';
 export { default as replace, default as replaceAll } from './replace.js';
+export { default as reverse } from './reverse.js';
 export { default as self } from './self.js';
 export { default as slice } from './slice.js';
 export { default as orderBy, default as sortBy, default as sortByKey } from './sortBy.js';
