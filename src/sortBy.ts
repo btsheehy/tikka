@@ -2,12 +2,14 @@ import curryRight from './curryRight'
 import get from './get'
 
 /**
- * Sorts an array of objects by either a field name or a value-selector function, using `'asc'` or `'desc'` direction.
+ * Sorts object arrays by a property key or accessor in ascending/descending order.
+ * @param arr - Array of objects to sort.
+ * @param direction - Sort order: `'asc'` or `'desc'`.
+ * @param fieldOrIteratee - Property key or accessor used to compute sort values.
+ * @returns A new sorted array; original input array is unchanged.
  *
  * @example
- * sortBy('age', 'desc', [{age:1},{age:3},{age:2}]) // [{age:3},{age:2},{age:1}]
- * @param _unused - This function takes no explicit parameters.
- * @returns The computed result.
+ * sortBy('age', 'desc', [{ age: 1 }, { age: 3 }, { age: 2 }])
  */
 
 export type SortDirection = 'asc' | 'desc'

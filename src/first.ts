@@ -2,10 +2,10 @@ import head from './head'
 
 /**
  * Alias of `head`.
- * @param _unused - This function takes no explicit parameters.
- * @returns The computed result.
+ * @param arr - Array (or tuple) to read.
+ * @returns The first element in `arr`.
  *
  * @example
- * first()
+ * first([10, 20, 30]) // 10
  */
 export default head

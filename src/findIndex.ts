@@ -1,13 +1,13 @@
 import curryRight from './curryRight'
 
 /**
- * Returns index of first matching element or `-1`.
- * @param arr - Input value for arr.
- * @param findFunc - Input value for findFunc.
- * @returns The computed result.
+ * Finds the index of the first array element that satisfies a predicate.
+ * @param arr - Array to search.
+ * @param findFunc - Predicate used to test each element in order.
+ * @returns Index of the first match, or `-1` when no element matches.
  *
  * @example
- * findIndex(arr, findFunc)
+ * findIndex((n) => n < 0, [3, 2, -1, 5]) // 2
  */
 const findIndex = <T>(arr: Array<T>, findFunc: (x: T) => boolean) => {
   let i = 0

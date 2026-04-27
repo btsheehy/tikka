@@ -1,11 +1,11 @@
 /**
- * forEach utility function.
- * @param arr - Input value for arr.
- * @param func - Input value for func.
- * @returns The computed result.
+ * Runs a callback for each array item and returns the original array.
+ * @param arr - Array to iterate.
+ * @param func - Side-effect callback executed for each element.
+ * @returns The same `arr` instance.
  *
  * @example
- * forEach(arr, func)
+ * forEach((n) => console.log(n), [1, 2, 3])
  */
 import curryRight from './curryRight'
 

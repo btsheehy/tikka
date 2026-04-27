@@ -1,13 +1,13 @@
 import curryRight from './curryRight'
 
 /**
- * Runs `regex.test(str)`.
- * @param str - Input value for str.
- * @param regex - Input value for regex.
- * @returns The computed result.
+ * Tests whether a string matches a regular expression.
+ * @param str - String to test.
+ * @param regex - Regular expression to run.
+ * @returns `true` when `regex.test(str)` matches.
  *
  * @example
- * test(str, regex)
+ * test(/^v\d+$/, 'v12') // true
  */
 const test = (str: string, regex: RegExp) => regex.test(str)
 

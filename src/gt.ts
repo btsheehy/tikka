@@ -1,11 +1,11 @@
 /**
- * gt utility function.
- * @param a - Input value for a.
- * @param b - Input value for b.
- * @returns The computed result.
+ * Compares numbers with `>`.
+ * @param a - Left numeric operand.
+ * @param b - Right numeric operand.
+ * @returns `true` when `a` is greater than `b`.
  *
  * @example
- * gt(a, b)
+ * gt(10, 4) // true
  */
 import curry from './curry'
 

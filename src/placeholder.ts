@@ -1,10 +1,7 @@
 /**
- * Exported placeholder value used in APIs that need an explicit placeholder sentinel.
- * @param _unused - This function takes no explicit parameters.
- * @returns The computed result.
+ * Placeholder sentinel export (`__` / `hole` aliases in the public API).
  *
  * @example
- * placeholder()
+ * import { __ } from './index'
  */
-// TODO
 export default null

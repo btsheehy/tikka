@@ -1,13 +1,13 @@
 import curryRight from './curryRight'
 
 /**
- * Runs `str.endsWith(suffix)`.
- * @param str - Input value for str.
- * @param suffix - Input value for suffix.
- * @returns The computed result.
+ * Checks whether a string ends with a suffix.
+ * @param str - Full string to inspect.
+ * @param suffix - Trailing substring to match.
+ * @returns `true` when `str` ends with `suffix`.
  *
  * @example
- * endsWith(str, suffix)
+ * endsWith('.ts', 'index.ts') // true
  */
 const endsWith = (str: string, suffix: string) => str.endsWith(suffix)
 

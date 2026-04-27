@@ -1,13 +1,13 @@
 import curryRight from './curryRight'
 
 /**
- * Runs `str.startsWith(prefix)`.
- * @param str - Input value for str.
- * @param prefix - Input value for prefix.
- * @returns The computed result.
+ * Checks whether a string starts with a prefix.
+ * @param str - Full string to inspect.
+ * @param prefix - Leading substring to match.
+ * @returns `true` when `str` starts with `prefix`.
  *
  * @example
- * startsWith(str, prefix)
+ * startsWith('user:', 'user:42') // true
  */
 const startsWith = (str: string, prefix: string) => str.startsWith(prefix)
 

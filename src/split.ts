@@ -1,13 +1,13 @@
 import curryRight from './curryRight'
 
 /**
- * Runs `str.split(separator)`.
- * @param str - Input value for str.
- * @param separator - Input value for separator.
- * @returns The computed result.
+ * Splits a string using a separator string or regex.
+ * @param str - String to split.
+ * @param separator - Delimiter used by `String.prototype.split`.
+ * @returns Array of substrings.
  *
  * @example
- * split(str, separator)
+ * split(',', 'a,b,c') // ['a', 'b', 'c']
  */
 const split = (str: string, separator: string | RegExp) => str.split(separator)
 
