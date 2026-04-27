@@ -3,12 +3,12 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 /**
- * Uppercases string with locale support.
- * @param str - Input value for str.
- * @returns The computed result.
+ * Converts a string to locale-aware upper case.
+ * @param str - String to transform.
+ * @returns Uppercased string.
  *
  * @example
- * toUpper(str)
+ * toUpper('istanbul')
  */
 const toUpper = (str) => str.toLocaleUpperCase();
 

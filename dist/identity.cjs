@@ -5,12 +5,12 @@ Object.defineProperty(exports, '__esModule', { value: true });
 var self = require('./self.cjs');
 
 /**
- * Alias of `self`; returns input unchanged.
- * @param _unused - This function takes no explicit parameters.
- * @returns The computed result.
+ * Alias of `self`; returns the provided value unchanged.
+ * @param value - Any value.
+ * @returns The exact same value reference.
  *
  * @example
- * identity()
+ * identity({ ok: true })
  */
 const identity = self.default;
 

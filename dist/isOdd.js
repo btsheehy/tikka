@@ -1,12 +1,12 @@
 import isEven from './isEven.js';
 
 /**
- * Returns true for odd numbers.
- * @param number - Input value for number.
- * @returns The computed result.
+ * Checks whether a number is odd.
+ * @param number - Number to test.
+ * @returns `true` when `number` is not divisible by `2`.
  *
  * @example
- * isOdd(number)
+ * isOdd(7) // true
  */
 const isOdd = (number) => !isEven(number);
 

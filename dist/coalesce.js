@@ -1,15 +1,15 @@
 import curryRight from './curryRight.js';
 
 /**
- * Returns `value` unless it is `null` or `undefined`, otherwise returns `fallback`.
- * @param value - Input value for value.
- * @param fallback - Input value for fallback.
- * @returns The computed result.
+ * Falls back when a value is `null` or `undefined`.
+ * @param value - Preferred value.
+ * @param fallback - Value used only when `value` is nullish.
+ * @returns `value` when present, otherwise `fallback`.
  *
  * @example
- * coalesce(value, fallback)
+ * coalesce('Anonymous', profile.nickname)
  */
-const coalesce = (value, fallback) => (value ?? fallback);
+const coalesce = (value, fallback) => value ?? fallback;
 var coalesce$1 = /*#__PURE__*/ curryRight(coalesce);
 
 export { coalesce$1 as default };

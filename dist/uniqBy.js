@@ -1,13 +1,13 @@
 import curryRight from './curryRight.js';
 
 /**
- * Returns unique items by computed key.
+ * Removes duplicates based on a derived key function.
+ * @param arr - Source array.
+ * @param uniqCond - Function that computes each item's uniqueness key.
+ * @returns A new array containing the first item seen for each key.
  *
  * @example
- * uniqBy((x)=>x.id, [{id:1},{id:1},{id:2}])
- * @param arr - Input value for arr.
- * @param uniqCond - Input value for uniqCond.
- * @returns The computed result.
+ * uniqBy((user) => user.id, [{ id: 1 }, { id: 1 }, { id: 2 }])
  */
 const uniqBy = (arr, uniqCond) => {
     const uniqBy = new Set();

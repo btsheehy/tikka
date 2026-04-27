@@ -5,13 +5,13 @@ Object.defineProperty(exports, '__esModule', { value: true });
 var curryRight = require('./curryRight.cjs');
 
 /**
- * filter utility function.
- * @param arr - Input value for arr.
- * @param filterFunc - Input value for filterFunc.
- * @returns The computed result.
+ * Filters an array by predicate.
+ * @param arr - Source array.
+ * @param filterFunc - Predicate that decides which items to keep.
+ * @returns A new array containing only elements where `filterFunc` returned `true`.
  *
  * @example
- * filter(arr, filterFunc)
+ * filter((user) => user.active, users)
  */
 const filter = (arr, filterFunc) => {
     const result = [];

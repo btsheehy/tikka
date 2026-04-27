@@ -5,13 +5,13 @@ Object.defineProperty(exports, '__esModule', { value: true });
 var curryRight = require('./curryRight.cjs');
 
 /**
- * Sorts an array by a computed key (non-mutating).
- * @param arr - Input value for arr.
- * @param iteratee - Input value for iteratee.
- * @returns The computed result.
+ * Sorts an array by a computed key without mutating the input.
+ * @param arr - Array to sort.
+ * @param iteratee - Function that computes the sortable value for each item.
+ * @returns A new array sorted ascending by `iteratee(item)`.
  *
  * @example
- * sort(arr, iteratee)
+ * sort((user) => user.age, users)
  */
 const sort = (arr, iteratee) => {
     return [...arr].sort((left, right) => {

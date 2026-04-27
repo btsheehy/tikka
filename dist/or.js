@@ -1,13 +1,13 @@
 import curry from './curry.js';
 
 /**
- * or utility function.
- * @param a - Input value for a.
- * @param b - Input value for b.
- * @returns The computed result.
+ * Returns `true` when either value is truthy.
+ * @param a - Left operand to evaluate.
+ * @param b - Right operand to evaluate.
+ * @returns `true` if at least one operand is truthy.
  *
  * @example
- * or(a, b)
+ * or(user.isAdmin, user.isOwner)
  */
 const or = (a, b) => !!(a || b);
 var or$1 = /*#__PURE__*/ curry(or);

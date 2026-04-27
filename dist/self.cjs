@@ -3,12 +3,12 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 /**
- * Returns input unchanged.
- * @param a - Input value for a.
- * @returns The computed result.
+ * Returns the provided value unchanged.
+ * @param a - Any input value.
+ * @returns The same value reference.
  *
  * @example
- * self(a)
+ * self('keep me') // 'keep me'
  */
 const self = (a) => a;
 

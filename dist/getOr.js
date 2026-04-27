@@ -2,14 +2,14 @@ import curryRight from './curryRight.js';
 import get from './get.js';
 
 /**
- * getOr utility function.
- * @param obj - Input value for obj.
- * @param prop - Input value for prop.
- * @param defaultValue - Input value for defaultValue.
- * @returns The computed result.
+ * Reads a property from an object, with a fallback when the key is missing.
+ * @param obj - Object to inspect.
+ * @param prop - Property key to read.
+ * @param defaultValue - Value returned when `obj` does not own `prop`.
+ * @returns Existing property value, or `defaultValue` when absent.
  *
  * @example
- * getOr(obj, prop, defaultValue)
+ * getOr('guest', 'role', { name: 'Lin' }) // 'guest'
  */
 function getOr(obj, prop, defaultValue) {
     if (Object.hasOwn(obj, prop))

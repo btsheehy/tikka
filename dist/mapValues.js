@@ -1,12 +1,13 @@
 import curryRight from './curryRight.js';
 
 /**
- * mapValues utility function.
- * @param _unused - This function takes no explicit parameters.
- * @returns The computed result.
+ * Transforms object values while preserving keys.
+ * @param obj - Object whose values will be mapped.
+ * @param fn - Mapper run for each value.
+ * @returns A new object with the same keys and mapped values.
  *
  * @example
- * mapValues()
+ * mapValues((n) => n * 10, { a: 1, b: 2 }) // { a: 10, b: 20 }
  */
 const mapValues = (obj, fn) => {
     const keys = Object.keys(obj);

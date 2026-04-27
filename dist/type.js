@@ -1,10 +1,10 @@
 /**
- * Returns internal type label (for example: `Array`, `Object`, `Null`, `Undefined`).
- * @param val - Input value for val.
- * @returns The computed result.
+ * Returns a normalized runtime type label.
+ * @param val - Value to inspect.
+ * @returns `'Null'`, `'Undefined'`, or the internal tag (for example `'Array'`, `'Date'`).
  *
  * @example
- * type(val)
+ * type([1, 2, 3]) // 'Array'
  */
 const type = (val) => {
     if (val === null)

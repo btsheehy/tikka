@@ -1,11 +1,11 @@
 /**
- * Checks whether `searchTarget.includes(value)` is true.
- * @param searchTarget - Input value for searchTarget.
- * @param value - Input value for value.
- * @returns The computed result.
+ * Checks whether a target with an `includes` method contains a value.
+ * @param searchTarget - Array/string/set-like object that implements `includes`.
+ * @param value - Value to look for.
+ * @returns `true` when `searchTarget.includes(value)` is truthy.
  *
  * @example
- * contains(searchTarget, value)
+ * contains('berry', ['apple', 'berry', 'citrus']) // true
  */
 export type IncludesTarget = {
     includes: (value: unknown) => boolean;

@@ -3,12 +3,12 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 /**
- * Returns true for even numbers.
- * @param num - Input value for num.
- * @returns The computed result.
+ * Checks whether a number is even.
+ * @param num - Number to test.
+ * @returns `true` when `num` is divisible by `2`.
  *
  * @example
- * isEven(num)
+ * isEven(14) // true
  */
 const isEven = (num) => {
     return num % 2 === 0;
