@@ -6,6 +6,12 @@ var curryRight = require('./curryRight.cjs');
 
 /**
  * Builds a frequency object keyed by `iteratee(value)`.
+ * @param arr - Input value for arr.
+ * @param iteratee - Input value for iteratee.
+ * @returns The computed result.
+ *
+ * @example
+ * countBy(arr, iteratee)
  */
 const countBy = (arr, iteratee) => {
     const counts = {};

@@ -1,1 +1,1 @@
-{"version":3,"file":"sortBy.d.ts","sourceRoot":"","sources":["../src/sortBy.ts"],"names":[],"mappings":"AAGA;;;;;GAKG;AAEH,MAAM,MAAM,aAAa,GAAG,KAAK,GAAG,MAAM,CAAA;;;;;;;;;AA6B1C,wBAA+C"}
+{"version":3,"file":"sortBy.d.ts","sourceRoot":"","sources":["../src/sortBy.ts"],"names":[],"mappings":"AAGA;;;;;;;GAOG;AAEH,MAAM,MAAM,aAAa,GAAG,KAAK,GAAG,MAAM,CAAA;;;;;;;;;AA6B1C,wBAA+C"}

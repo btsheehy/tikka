@@ -1,5 +1,12 @@
 /**
  * getOr utility function.
+ * @param obj - Input value for obj.
+ * @param prop - Input value for prop.
+ * @param defaultValue - Input value for defaultValue.
+ * @returns The computed result.
+ *
+ * @example
+ * getOr(obj, prop, defaultValue)
  */
 import curryRight from './curryRight'
 import get from './get'

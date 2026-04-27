@@ -5,6 +5,9 @@ import curry from './curry'
  *
  * @example
  * concat([1,2], [3,4]) // [1,2,3,4]
+ * @param left - Input value for left.
+ * @param right - Input value for right.
+ * @returns The computed result.
  */
 function concatRaw<T>(left: T[], right: T[]): T[]
 function concatRaw(left: string, right: string): string

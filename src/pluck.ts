@@ -1,5 +1,11 @@
 /**
  * pluck utility function.
+ * @param collection - Input value for collection.
+ * @param prop - Input value for prop.
+ * @returns The computed result.
+ *
+ * @example
+ * pluckImpl(collection, prop)
  */
 import curryRight from './curryRight'
 

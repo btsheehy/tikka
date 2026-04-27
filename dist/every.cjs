@@ -6,6 +6,12 @@ var curryRight = require('./curryRight.cjs');
 
 /**
  * Returns true if all elements pass `test`.
+ * @param arr - Input value for arr.
+ * @param test - Input value for test.
+ * @returns The computed result.
+ *
+ * @example
+ * every(arr, test)
  */
 const every = (arr, test) => {
     let allPass = true;

@@ -5,6 +5,12 @@ import type from './type'
 
 /**
  * Recursively maps leaf values in nested arrays/objects.
+ * @param data - Input value for data.
+ * @param func - Input value for func.
+ * @returns The computed result.
+ *
+ * @example
+ * deepMap(data, func)
  */
 function deepMap<T, R>(data: Array<T>, func: (x: T) => R): Array<R>
 function deepMap(data: object, func: (x: unknown) => unknown): object

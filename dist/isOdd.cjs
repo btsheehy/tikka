@@ -6,6 +6,11 @@ var isEven = require('./isEven.cjs');
 
 /**
  * Returns true for odd numbers.
+ * @param number - Input value for number.
+ * @returns The computed result.
+ *
+ * @example
+ * isOdd(number)
  */
 const isOdd = (number) => !isEven.default(number);
 

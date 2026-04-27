@@ -1,5 +1,11 @@
 /**
  * mapKeys utility function.
+ * @param obj - Input value for obj.
+ * @param fn - Input value for fn.
+ * @returns The computed result.
+ *
+ * @example
+ * mapKeysImpl(obj, fn)
  */
 import curryRight from './curryRight'
 

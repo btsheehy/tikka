@@ -2,6 +2,12 @@ import curryRight from './curryRight'
 
 /**
  * Sorts an array by a computed key (non-mutating).
+ * @param arr - Input value for arr.
+ * @param iteratee - Input value for iteratee.
+ * @returns The computed result.
+ *
+ * @example
+ * sort(arr, iteratee)
  */
 
 const sort = <T, U>(arr: T[], iteratee: (value: T) => U): T[] => {

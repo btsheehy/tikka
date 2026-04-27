@@ -10,6 +10,9 @@ var filter = require('./filter.cjs');
  *
  * @example
  * countWhere((x) => x % 2 === 0, [1,2,3,4]) // 2
+ * @param arr - Input value for arr.
+ * @param test - Input value for test.
+ * @returns The computed result.
  */
 const countWhere = (arr, test) => {
     return filter.default(test, arr).length;

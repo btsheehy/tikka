@@ -1,5 +1,11 @@
 /**
  * forEach utility function.
+ * @param arr - Input value for arr.
+ * @param func - Input value for func.
+ * @returns The computed result.
+ *
+ * @example
+ * forEach(arr, func)
  */
 import curryRight from './curryRight'
 

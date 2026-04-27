@@ -6,6 +6,10 @@ import get from './get'
  *
  * @example
  * groupBy((x)=>x%2?'odd':'even', [1,2,3])
+ * @param arr - Input value for arr.
+ * @param grouper - Input value for grouper.
+ * @param K> - Input value for K>.
+ * @returns The computed result.
  */
 type Grouper<T, K extends keyof T = keyof T> = K | ((x: T) => string | number)
 

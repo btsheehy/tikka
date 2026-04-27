@@ -9,6 +9,9 @@ var curryRight = require('./curryRight.cjs');
  *
  * @example
  * uniqBy((x)=>x.id, [{id:1},{id:1},{id:2}])
+ * @param arr - Input value for arr.
+ * @param uniqCond - Input value for uniqCond.
+ * @returns The computed result.
  */
 const uniqBy = (arr, uniqCond) => {
     const uniqBy = new Set();

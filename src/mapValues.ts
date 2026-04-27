@@ -1,5 +1,10 @@
 /**
  * mapValues utility function.
+ * @param _unused - This function takes no explicit parameters.
+ * @returns The computed result.
+ *
+ * @example
+ * mapValues()
  */
 import curryRight from './curryRight'
 

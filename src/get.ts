@@ -5,6 +5,9 @@ import curryRight from './curryRight'
  *
  * @example
  * get('a', { a: 1 }) // 1
+ * @param object - Input value for object.
+ * @param property - Input value for property.
+ * @returns The computed result.
  */
 const getImpl = <T, K extends keyof T>(object: T, property: K): T[K] => object[property]
 

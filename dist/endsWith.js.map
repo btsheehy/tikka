@@ -1,1 +1,1 @@
-{"version":3,"file":"endsWith.js","sources":["../src/endsWith.ts"],"sourcesContent":[null],"names":[],"mappings":";;AAEA;;AAEG;AACH,MAAM,QAAQ,GAAG,CAAC,GAAW,EAAE,MAAc,KAAK,GAAG,CAAC,QAAQ,CAAC,MAAM,CAAC;AAEtE,iBAAe,cAAc,UAAU,CAAC,QAAQ,CAAC;;;;"}
+{"version":3,"file":"endsWith.js","sources":["../src/endsWith.ts"],"sourcesContent":[null],"names":[],"mappings":";;AAEA;;;;;;;;AAQG;AACH,MAAM,QAAQ,GAAG,CAAC,GAAW,EAAE,MAAc,KAAK,GAAG,CAAC,QAAQ,CAAC,MAAM,CAAC;AAEtE,iBAAe,cAAc,UAAU,CAAC,QAAQ,CAAC;;;;"}

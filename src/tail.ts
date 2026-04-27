@@ -3,6 +3,8 @@
  *
  * @example
  * tail([1,2,3]) // [2,3]
+ * @param arr - Input value for arr.
+ * @returns The computed result.
  */
 function tail<T>(arr: T[]): T[]
 function tail(str: string): string

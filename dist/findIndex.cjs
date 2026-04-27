@@ -6,6 +6,12 @@ var curryRight = require('./curryRight.cjs');
 
 /**
  * Returns index of first matching element or `-1`.
+ * @param arr - Input value for arr.
+ * @param findFunc - Input value for findFunc.
+ * @returns The computed result.
+ *
+ * @example
+ * findIndex(arr, findFunc)
  */
 const findIndex = (arr, findFunc) => {
     let i = 0;

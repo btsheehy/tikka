@@ -2,6 +2,12 @@ import curryRight from './curryRight'
 
 /**
  * Returns true if at least one array element passes `test`.
+ * @param arr - Input value for arr.
+ * @param test - Input value for test.
+ * @returns The computed result.
+ *
+ * @example
+ * any(arr, test)
  */
 const any = <T>(arr: Array<T>, test: (t: T) => boolean) => {
   let i = 0

@@ -6,6 +6,12 @@ var curryRight = require('./curryRight.cjs');
 
 /**
  * mapKeys utility function.
+ * @param obj - Input value for obj.
+ * @param fn - Input value for fn.
+ * @returns The computed result.
+ *
+ * @example
+ * mapKeysImpl(obj, fn)
  */
 const mapKeysImpl = (obj, fn) => {
     const keys = Object.keys(obj);

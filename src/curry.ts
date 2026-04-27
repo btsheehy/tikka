@@ -1,5 +1,11 @@
 /**
  * curry utility function.
+ * @param fn - Input value for fn.
+ * @param b - Input value for b.
+ * @returns The computed result.
+ *
+ * @example
+ * curry(fn, b)
  */
 type Curry2<A, B, R> = {
   (a: A, b: B, ...extra: unknown[]): R

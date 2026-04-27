@@ -1,5 +1,11 @@
 /**
  * filter utility function.
+ * @param arr - Input value for arr.
+ * @param filterFunc - Input value for filterFunc.
+ * @returns The computed result.
+ *
+ * @example
+ * filter(arr, filterFunc)
  */
 import curryRight from './curryRight'
 

@@ -1,1 +1,1 @@
-{"version":3,"file":"noop.d.ts","sourceRoot":"","sources":["../src/noop.ts"],"names":[],"mappings":"AAAA;;GAEG;AACH,QAAA,MAAM,IAAI,YAAW,CAAA;AAErB,eAAe,IAAI,CAAA"}
+{"version":3,"file":"noop.d.ts","sourceRoot":"","sources":["../src/noop.ts"],"names":[],"mappings":"AAAA;;;;;;;GAOG;AACH,QAAA,MAAM,IAAI,YAAW,CAAA;AAErB,eAAe,IAAI,CAAA"}

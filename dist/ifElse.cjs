@@ -6,6 +6,11 @@ var curryRight = require('./curryRight.cjs');
 
 /**
  * Runs `test()`, then executes `onTrue()` or `onFalse()`.
+ * @param test - Input value for test.
+ * @returns The computed result.
+ *
+ * @example
+ * ifElse(test)
  */
 // TODO: Needs work
 const ifElse = (test, onTrue, onFalse) => {

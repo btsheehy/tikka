@@ -5,6 +5,9 @@ import curryRight from './curryRight'
  *
  * @example
  * uniqBy((x)=>x.id, [{id:1},{id:1},{id:2}])
+ * @param arr - Input value for arr.
+ * @param uniqCond - Input value for uniqCond.
+ * @returns The computed result.
  */
 const uniqBy = <T, U>(arr: T[], uniqCond: (x: T) => U): T[] => {
   const uniqBy: Set<U> = new Set()

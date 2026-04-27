@@ -1,5 +1,11 @@
 /**
  * grab utility function.
+ * @param obj - Input value for obj.
+ * @param props - Input value for props.
+ * @returns The computed result.
+ *
+ * @example
+ * grabFromOne(obj, props)
  */
 import curryRight from './curryRight'
 import get from './get'

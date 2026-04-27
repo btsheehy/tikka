@@ -7,6 +7,11 @@ var type = require('./type.cjs');
 
 /**
  * Deep-clones arrays/objects recursively (supports Date and RegExp cloning).
+ * @param regex - Input value for regex.
+ * @returns The computed result.
+ *
+ * @example
+ * cloneRegex(regex)
  */
 const cloneRegex = (regex) => {
     return new RegExp(regex.source, (regex.global ? 'g' : '') +

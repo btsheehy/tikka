@@ -1,1 +1,1 @@
-{"version":3,"file":"minus.cjs","sources":["../src/minus.ts"],"sourcesContent":[null],"names":["curryRight"],"mappings":";;;;;;AAEA;;AAEG;AACH,MAAM,KAAK,GAAG,CAAC,CAAS,EAAE,CAAS,KAAK,CAAC,GAAG,CAAC;AAE7C,cAAe,cAAcA,kBAAU,CAAC,KAAK,CAAC;;;;"}
+{"version":3,"file":"minus.cjs","sources":["../src/minus.ts"],"sourcesContent":[null],"names":["curryRight"],"mappings":";;;;;;AAEA;;;;;;;;AAQG;AACH,MAAM,KAAK,GAAG,CAAC,CAAS,EAAE,CAAS,KAAK,CAAC,GAAG,CAAC;AAE7C,cAAe,cAAcA,kBAAU,CAAC,KAAK,CAAC;;;;"}

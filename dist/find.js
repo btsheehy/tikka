@@ -2,6 +2,12 @@ import curryRight from './curryRight.js';
 
 /**
  * Returns first matching element or `undefined`.
+ * @param arr - Input value for arr.
+ * @param findFunc - Input value for findFunc.
+ * @returns The computed result.
+ *
+ * @example
+ * find(arr, findFunc)
  */
 const find = (arr, findFunc) => {
     let i = 0;
