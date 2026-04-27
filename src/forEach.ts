@@ -9,7 +9,7 @@
  */
 import curryRight from './curryRight'
 
-const forEach = <T>(arr: T[], func: (x: T) => unknown) => {
+const forEach = <T>(arr: T[], func: (x: T) => void) => {
   arr.forEach((val) => {
     func(val)
   })
@@ -17,8 +17,8 @@ const forEach = <T>(arr: T[], func: (x: T) => unknown) => {
 }
 
 type ForEach = {
-  <T>(func: (x: T) => unknown, arr: T[]): T[]
-  <T>(func: (x: T) => unknown): (arr: T[]) => T[]
+  <T>(func: (x: T) => void, arr: T[]): T[]
+  <T>(func: (x: T) => void): (arr: T[]) => T[]
 }
 
 const forEachCurried = /*#__PURE__*/ curryRight(forEach) as ForEach

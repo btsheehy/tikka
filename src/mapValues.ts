@@ -9,7 +9,7 @@
  */
 import curryRight from './curryRight'
 
-const mapValues = <T extends Record<string, unknown>, R>(
+const mapValues = <T extends Record<string, any>, R>(
   obj: T,
   fn: (x: T[keyof T]) => R
 ): Record<keyof T, R> => {
@@ -24,8 +24,8 @@ const mapValues = <T extends Record<string, unknown>, R>(
 }
 
 type MapValues = {
-  <T extends Record<string, unknown>, R>(fn: (x: T[keyof T]) => R, obj: T): Record<keyof T, R>
-  <T extends Record<string, unknown>, R>(
+  <T extends Record<string, any>, R>(fn: (x: T[keyof T]) => R, obj: T): Record<keyof T, R>
+  <T extends Record<string, any>, R>(
     fn: (x: T[keyof T]) => R
   ): (obj: T) => Record<keyof T, R>
 }

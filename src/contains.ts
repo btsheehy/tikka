@@ -9,16 +9,16 @@ import curryRight from './curryRight'
  * @example
  * contains('berry', ['apple', 'berry', 'citrus']) // true
  */
-export type IncludesTarget = {
-  includes: (value: unknown) => boolean
+export type IncludesTarget<T> = {
+  includes: (value: T) => boolean
 }
 
-const contains = (searchTarget: IncludesTarget, value: unknown): boolean =>
+const contains = <T>(searchTarget: IncludesTarget<T>, value: T): boolean =>
   searchTarget.includes(value)
 
 type Contains = {
-  (value: unknown, searchTarget: IncludesTarget): boolean
-  (value: unknown): (searchTarget: IncludesTarget) => boolean
+  <T>(value: T, searchTarget: IncludesTarget<T>): boolean
+  <T>(value: T): (searchTarget: IncludesTarget<T>) => boolean
 }
 
 const containsCurried = /*#__PURE__*/ curryRight(contains) as Contains

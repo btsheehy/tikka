@@ -11,7 +11,7 @@ type AnyFn = (...args: any[]) => any
 
 type UnaryFn<Input = any, Output = any> = (input: Input) => Output
 
-type Last<T extends readonly unknown[]> = T extends readonly [...infer _, infer Tail] ? Tail : never
+type Last<T extends readonly any[]> = T extends readonly [...infer _, infer Tail] ? Tail : never
 
 type ValidPipeChain<Fns extends readonly AnyFn[]> = Fns extends readonly [AnyFn]
   ? Fns

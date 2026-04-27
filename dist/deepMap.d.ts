@@ -1,8 +1,8 @@
 type DeepMap = {
     <T, R>(func: (x: T) => R, data: Array<T>): Array<R>;
-    (func: (x: unknown) => unknown, data: object): object;
+    <T extends object, R>(func: (x: any) => R, data: T): object;
     <T, R>(func: (x: T) => R): (data: Array<T>) => Array<R>;
-    (func: (x: unknown) => unknown): (data: object) => object;
+    <T extends object, R>(func: (x: any) => R): (data: T) => object;
 };
 declare const deepMapCurried: DeepMap;
 export default deepMapCurried;

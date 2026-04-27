@@ -1,6 +1,6 @@
 type Identical = {
-    (b: unknown, a: unknown): boolean;
-    (b: unknown): (a: unknown) => boolean;
+    <T>(b: T, a: T): boolean;
+    <T>(b: T): (a: T) => boolean;
 };
 declare const identicalCurried: Identical;
 export default identicalCurried;

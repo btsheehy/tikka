@@ -10,8 +10,8 @@
  */
 export type SortDirection = 'asc' | 'desc';
 type SortBy = {
-    <T extends Record<string, unknown>, K extends keyof T>(fieldOrIteratee: K | ((value: T) => unknown), direction: SortDirection, arr: T[]): T[];
-    <T extends Record<string, unknown>, K extends keyof T>(fieldOrIteratee: K | ((value: T) => unknown), direction: SortDirection): (arr: T[]) => T[];
+    <T extends Record<string, any>, K extends keyof T>(fieldOrIteratee: K | ((value: T) => any), direction: SortDirection, arr: T[]): T[];
+    <T extends Record<string, any>, K extends keyof T>(fieldOrIteratee: K | ((value: T) => any), direction: SortDirection): (arr: T[]) => T[];
 };
 declare const sortByCurried: SortBy;
 export default sortByCurried;

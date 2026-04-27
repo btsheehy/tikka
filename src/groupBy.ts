@@ -30,7 +30,7 @@ const groupByImpl = <T, K extends keyof T>(
   const groups = {} as Record<string, T[]>
   let i = 0
   while (i < arr.length) {
-    const group = groupingFunction(arr[i]).toString()
+    const group = String(groupingFunction(arr[i]))
     if (groups[group]) groups[group].push(arr[i])
     else groups[group] = [arr[i]]
     i++

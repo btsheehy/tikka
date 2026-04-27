@@ -13,7 +13,7 @@ const getImpl = <T, K extends keyof T>(object: T, property: K): T[K] => object[p
 
 type Get = {
   <T, K extends keyof T>(property: K, object: T): T[K]
-  <K extends PropertyKey>(property: K): <T extends Record<K, unknown>>(object: T) => T[K]
+  <K extends PropertyKey>(property: K): <T extends Record<K, any>>(object: T) => T[K]
 }
 
 const get = /*#__PURE__*/ curryRight(getImpl) as Get

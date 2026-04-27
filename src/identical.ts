@@ -10,11 +10,11 @@ import curryRight from './curryRight'
  * @example
  * identical(NaN, NaN) // true
  */
-const identical = (a: unknown, b: unknown) => Object.is(a, b)
+const identical = <T>(a: T, b: T) => Object.is(a, b)
 
 type Identical = {
-  (b: unknown, a: unknown): boolean
-  (b: unknown): (a: unknown) => boolean
+  <T>(b: T, a: T): boolean
+  <T>(b: T): (a: T) => boolean
 }
 
 const identicalCurried = /*#__PURE__*/ curryRight(identical) as Identical
