@@ -1,3 +1,4 @@
+export { default as always } from './always.js';
 export { default as and, default as both, default as conjunction } from './and.js';
 export { default as any, default as anyPass, default as some } from './any.js';
 export { default as compact, default as compactNil, default as filterNil, default as nonNil, default as removeNil } from './compact.js';
@@ -29,7 +30,7 @@ export { default as greaterThan, default as gt, default as isGreaterThan } from 
 export { default as greaterThanOrEqual, default as gte, default as isAtLeast } from './gte.js';
 export { default as has, default as hasKey, default as hasOwnKey, default as hasProp } from './has.js';
 export { default as id, default as idValue, default as identity, default as identityValue, default as noopValue, default as same, default as selfRef } from './identity.js';
-export { default as branch, default as cond, default as ifElse, default as whenElse } from './ifElse.js';
+export { default as branch, default as ifElse, default as whenElse } from './ifElse.js';
 export { default as even, default as isDivisibleBy2, default as isEven } from './isEven.js';
 export { default as isNotDivisibleBy2, default as isOdd, default as odd } from './isOdd.js';
 export { default as end, default as endValue, default as last, default as lastItem, default as lastValue } from './last.js';
@@ -46,6 +47,7 @@ export { default as chain, default as composeLeft, default as flow, default as p
 export { default as __, default as argPlaceholder, default as hole, default as placeholder } from './placeholder.js';
 export { default as extractProp, default as mapProp, default as pluck, default as projectProp, default as propertyValues } from './pluck.js';
 export { default as add, default as add2, default as plus, default as sum, default as sum2 } from './plus.js';
+export { default as replace, default as replaceAll } from './replace.js';
 export { default as self } from './self.js';
 export { default as slice } from './slice.js';
 export { default as orderBy, default as sortBy, default as sortByKey } from './sortBy.js';
@@ -61,4 +63,5 @@ export { default as strip, default as trim, default as trimWhitespace } from './
 export { default as kindOf, default as tagOf, default as type, default as typeOf } from './type.js';
 export { default as dedupe, default as distinct, default as nub, default as uniq, default as unique } from './uniq.js';
 export { default as dedupeBy, default as distinctBy, default as nubBy, default as uniqBy, default as uniqueBy } from './uniqBy.js';
+export { default as cond, default as condition } from './cond.js';
 //# sourceMappingURL=index.js.map

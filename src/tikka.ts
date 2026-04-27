@@ -1,8 +1,10 @@
+import always from './always'
 import and from './and'
 import any from './any'
 import compact from './compact'
 import coalesce from './coalesce'
 import concat from './concat'
+import cond from './cond'
 import contains from './contains'
 import countBy from './countBy'
 import countWhere from './countWhere'
@@ -48,6 +50,7 @@ import pipe from './pipe'
 import placeholder from './placeholder'
 import pluck from './pluck'
 import plus from './plus'
+import replace from './replace'
 import select from './select'
 import self from './self'
 import slice from './slice'
@@ -66,11 +69,13 @@ import uniq from './uniq'
 import uniqBy from './uniqBy'
 
 const tikka = {
+  always,
   and,
   any,
   compact,
   coalesce,
   concat,
+  cond,
   contains,
   countBy,
   countWhere,
@@ -116,6 +121,7 @@ const tikka = {
   placeholder,
   pluck,
   plus,
+  replace,
   select,
   self,
   slice,
@@ -147,6 +153,8 @@ const tikka = {
 
   append: concat,
   conj: concat,
+
+  condition: cond,
 
   includesValue: contains,
   containsValue: contains,
@@ -253,7 +261,6 @@ const tikka = {
   same: identity,
   idValue: identity,
 
-  cond: ifElse,
   whenElse: ifElse,
   branch: ifElse,
 
@@ -350,6 +357,8 @@ const tikka = {
   uniqueBy: uniqBy,
   dedupeBy: uniqBy,
   nubBy: uniqBy,
+
+  replaceAll: replace,
 }
 
 export default tikka

@@ -7,22 +7,18 @@ import curryRight from './curryRight'
  * uniqBy((x)=>x.id, [{id:1},{id:1},{id:2}])
  */
 const uniqBy = <T, U>(arr: T[], uniqCond: (x: T) => U): T[] => {
-  const uniqResult = arr.reduce<{ uniqBy: U[]; newArr: T[] }>(
-    (acc, val) => {
-      const uniqByVal = uniqCond(val)
-      const isUnique = !acc.uniqBy.includes(uniqByVal)
-
-      if (isUnique) {
-        acc.newArr.push(val)
-        acc.uniqBy.push(uniqByVal)
-      }
-
-      return acc
-    },
-    { uniqBy: [], newArr: [] }
-  )
-
-  return uniqResult.newArr
+  const uniqBy: Set<U> = new Set()
+  const newArr: T[] = []
+  let i = 0
+  while (i < arr.length) {
+    const uniqByVal = uniqCond(arr[i])
+    if (!uniqBy.has(uniqByVal)) {
+      newArr.push(arr[i])
+      uniqBy.add(uniqByVal)
+    }
+    i++
+  }
+  return newArr
 }
 
 export default /*#__PURE__*/ curryRight(uniqBy)

@@ -6,6 +6,7 @@ import pipe from './pipe';
 import slice from './slice';
 import tail from './tail';
 declare const tikka: {
+    always: <T>(arg: T) => () => T;
     and: {
         (a: any, b: any, ...extra: unknown[]): boolean;
         (a: any): (b: any, ...extra: unknown[]) => boolean;
@@ -24,6 +25,10 @@ declare const tikka: {
         <T>(left: T[]): (right: T[]) => T[];
         (left: string, right: string): string;
         (left: string): (right: string) => string;
+    };
+    cond: {
+        (a: unknown, b: unknown, ...extra: unknown[]): unknown;
+        (a: unknown): (b: unknown, ...extra: unknown[]) => unknown;
     };
     contains: {
         (b: unknown, a: import("./contains").IncludesTarget, ...extra: unknown[]): boolean;
@@ -180,6 +185,14 @@ declare const tikka: {
         (a: number, b: number, ...extra: unknown[]): number;
         (a: number): (b: number, ...extra: unknown[]) => number;
     };
+    replace: {
+        (c: string, b: RegExp, a: string, ...extra: unknown[]): string;
+        (c: string, b: RegExp): (a: string, ...extra: unknown[]) => string;
+        (c: string): {
+            (b: RegExp, a: string, ...extra: unknown[]): string;
+            (b: RegExp): (a: string, ...extra: unknown[]) => string;
+        };
+    };
     select: {
         <T, K extends keyof T>(props: readonly K[], data: T): Partial<Pick<T, K>>;
         <T, K extends keyof T>(props: readonly K[], data: T[]): Array<Partial<Pick<T, K>>>;
@@ -259,6 +272,10 @@ declare const tikka: {
         <T>(left: T[]): (right: T[]) => T[];
         (left: string, right: string): string;
         (left: string): (right: string) => string;
+    };
+    condition: {
+        (a: unknown, b: unknown, ...extra: unknown[]): unknown;
+        (a: unknown): (b: unknown, ...extra: unknown[]) => unknown;
     };
     includesValue: {
         (b: unknown, a: import("./contains").IncludesTarget, ...extra: unknown[]): boolean;
@@ -547,14 +564,6 @@ declare const tikka: {
     identityValue: <T>(a: T) => T;
     same: <T>(a: T) => T;
     idValue: <T>(a: T) => T;
-    cond: {
-        (c: Function, b: Function, a: () => boolean, ...extra: unknown[]): any;
-        (c: Function, b: Function): (a: () => boolean, ...extra: unknown[]) => any;
-        (c: Function): {
-            (b: Function, a: () => boolean, ...extra: unknown[]): any;
-            (b: Function): (a: () => boolean, ...extra: unknown[]) => any;
-        };
-    };
     whenElse: {
         (c: Function, b: Function, a: () => boolean, ...extra: unknown[]): any;
         (c: Function, b: Function): (a: () => boolean, ...extra: unknown[]) => any;
@@ -756,6 +765,14 @@ declare const tikka: {
     nubBy: {
         (b: unknown, a: unknown, ...extra: unknown[]): unknown[];
         (b: unknown): (a: unknown, ...extra: unknown[]) => unknown[];
+    };
+    replaceAll: {
+        (c: string, b: RegExp, a: string, ...extra: unknown[]): string;
+        (c: string, b: RegExp): (a: string, ...extra: unknown[]) => string;
+        (c: string): {
+            (b: RegExp, a: string, ...extra: unknown[]): string;
+            (b: RegExp): (a: string, ...extra: unknown[]) => string;
+        };
     };
 };
 export default tikka;
