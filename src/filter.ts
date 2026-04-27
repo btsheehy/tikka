@@ -5,14 +5,13 @@ import curryRight from './curryRight'
 
 const filter = <T>(arr: Array<T>, filterFunc: (x: T) => boolean) => {
   const result: T[] = []
-  let index = 0
+  let i = 0
 
-  while (index < arr.length) {
-    const value = arr[index]
-    if (filterFunc(value)) {
-      result.push(value)
+  while (i < arr.length) {
+    if (filterFunc(arr[i])) {
+      result.push(arr[i])
     }
-    index += 1
+    i++
   }
 
   return result

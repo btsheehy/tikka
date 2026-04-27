@@ -1,5 +1,6 @@
 'use strict';
 
+var always = require('./always.cjs');
 var and = require('./and.cjs');
 var any = require('./any.cjs');
 var compact = require('./compact.cjs');
@@ -47,6 +48,7 @@ var pipe = require('./pipe.cjs');
 var placeholder = require('./placeholder.cjs');
 var pluck = require('./pluck.cjs');
 var plus = require('./plus.cjs');
+var replace = require('./replace.cjs');
 var self = require('./self.cjs');
 var sortBy = require('./sortBy.cjs');
 var tail = require('./tail.cjs');
@@ -58,9 +60,11 @@ var trim = require('./trim.cjs');
 var type = require('./type.cjs');
 var uniq = require('./uniq.cjs');
 var uniqBy = require('./uniqBy.cjs');
+var cond = require('./cond.cjs');
 
 
 
+exports.always = always.default;
 exports.and = and.default;
 exports.both = and.default;
 exports.conjunction = and.default;
@@ -185,7 +189,6 @@ exports.noopValue = identity.default;
 exports.same = identity.default;
 exports.selfRef = identity.default;
 exports.branch = ifElse.default;
-exports.cond = ifElse.default;
 exports.ifElse = ifElse.default;
 exports.whenElse = ifElse.default;
 exports.even = isEven.default;
@@ -243,6 +246,8 @@ exports.add2 = plus.default;
 exports.plus = plus.default;
 exports.sum = plus.default;
 exports.sum2 = plus.default;
+exports.replace = replace.default;
+exports.replaceAll = replace.default;
 exports.self = self.default;
 exports.orderBy = sortBy.default;
 exports.sortBy = sortBy.default;
@@ -285,4 +290,6 @@ exports.distinctBy = uniqBy.default;
 exports.nubBy = uniqBy.default;
 exports.uniqBy = uniqBy.default;
 exports.uniqueBy = uniqBy.default;
+exports.cond = cond.default;
+exports.condition = cond.default;
 //# sourceMappingURL=index.cjs.map

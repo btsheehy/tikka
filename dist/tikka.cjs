@@ -2,10 +2,12 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
+var always = require('./always.cjs');
 var and = require('./and.cjs');
 var any = require('./any.cjs');
 var compact = require('./compact.cjs');
 var concat = require('./concat.cjs');
+var cond = require('./cond.cjs');
 var contains = require('./contains.cjs');
 var countBy = require('./countBy.cjs');
 var countWhere = require('./countWhere.cjs');
@@ -49,6 +51,7 @@ var pipe = require('./pipe.cjs');
 var placeholder = require('./placeholder.cjs');
 var pluck = require('./pluck.cjs');
 var plus = require('./plus.cjs');
+var replace = require('./replace.cjs');
 var self = require('./self.cjs');
 var sortBy = require('./sortBy.cjs');
 var tail = require('./tail.cjs');
@@ -62,10 +65,12 @@ var uniq = require('./uniq.cjs');
 var uniqBy = require('./uniqBy.cjs');
 
 const tikka = {
+    always: always.default,
     and: and.default,
     any: any.default,
     compact: compact.default,
     concat: concat.default,
+    cond: cond.default,
     contains: contains.default,
     countBy: countBy.default,
     countWhere: countWhere.default,
@@ -111,6 +116,7 @@ const tikka = {
     placeholder: placeholder.default,
     pluck: pluck.default,
     plus: plus.default,
+    replace: replace.default,
     select: grab.default,
     self: self.default,
     sortBy: sortBy.default,
@@ -134,6 +140,7 @@ const tikka = {
     nonNil: compact.default,
     append: concat.default,
     conj: concat.default,
+    condition: cond.default,
     includesValue: contains.default,
     containsValue: contains.default,
     member: contains.default,
@@ -214,7 +221,6 @@ const tikka = {
     identityValue: identity.default,
     same: identity.default,
     idValue: identity.default,
-    cond: ifElse.default,
     whenElse: ifElse.default,
     branch: ifElse.default,
     even: isEven.default,
@@ -287,6 +293,7 @@ const tikka = {
     uniqueBy: uniqBy.default,
     dedupeBy: uniqBy.default,
     nubBy: uniqBy.default,
+    replaceAll: replace.default,
 };
 
 exports.default = tikka;

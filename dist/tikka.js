@@ -1,7 +1,9 @@
+import always from './always.js';
 import and from './and.js';
 import any from './any.js';
 import compact from './compact.js';
 import concat from './concat.js';
+import cond from './cond.js';
 import contains from './contains.js';
 import countBy from './countBy.js';
 import countWhere from './countWhere.js';
@@ -45,6 +47,7 @@ import pipe from './pipe.js';
 import placeholder from './placeholder.js';
 import pluck from './pluck.js';
 import plus from './plus.js';
+import replace from './replace.js';
 import self from './self.js';
 import sortBy from './sortBy.js';
 import tail from './tail.js';
@@ -58,10 +61,12 @@ import uniq from './uniq.js';
 import uniqBy from './uniqBy.js';
 
 const tikka = {
+    always,
     and,
     any,
     compact,
     concat,
+    cond,
     contains,
     countBy,
     countWhere,
@@ -107,6 +112,7 @@ const tikka = {
     placeholder,
     pluck,
     plus,
+    replace,
     select: grab,
     self,
     sortBy,
@@ -130,6 +136,7 @@ const tikka = {
     nonNil: compact,
     append: concat,
     conj: concat,
+    condition: cond,
     includesValue: contains,
     containsValue: contains,
     member: contains,
@@ -210,7 +217,6 @@ const tikka = {
     identityValue: identity,
     same: identity,
     idValue: identity,
-    cond: ifElse,
     whenElse: ifElse,
     branch: ifElse,
     even: isEven,
@@ -283,6 +289,7 @@ const tikka = {
     uniqueBy: uniqBy,
     dedupeBy: uniqBy,
     nubBy: uniqBy,
+    replaceAll: replace,
 };
 
 export { tikka as default };
