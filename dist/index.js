@@ -1,6 +1,7 @@
 export { default as and, default as both, default as conjunction } from './and.js';
 export { default as any, default as anyPass, default as some } from './any.js';
 export { default as compact, default as compactNil, default as filterNil, default as nonNil, default as removeNil } from './compact.js';
+export { default as coalesce } from './coalesce.js';
 export { default as append, default as concat, default as conj } from './concat.js';
 export { default as contains, default as containsValue, default as inList, default as includes, default as includesValue, default as member, default as memberOf } from './contains.js';
 export { default as countBy } from './countBy.js';
@@ -46,7 +47,11 @@ export { default as __, default as argPlaceholder, default as hole, default as p
 export { default as extractProp, default as mapProp, default as pluck, default as projectProp, default as propertyValues } from './pluck.js';
 export { default as add, default as add2, default as plus, default as sum, default as sum2 } from './plus.js';
 export { default as self } from './self.js';
+export { default as slice } from './slice.js';
 export { default as orderBy, default as sortBy, default as sortByKey } from './sortBy.js';
+export { default as split } from './split.js';
+export { default as startsWith } from './startsWith.js';
+export { default as endsWith } from './endsWith.js';
 export { default as dropFirst, default as rest, default as tail } from './tail.js';
 export { default as firstN, default as headN, default as take, default as takeLeft, default as takeN } from './take.js';
 export { default as isMatch, default as matches, default as regexTest, default as test, default as testRegex } from './test.js';

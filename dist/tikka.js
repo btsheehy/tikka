@@ -1,6 +1,7 @@
 import and from './and.js';
 import any from './any.js';
 import compact from './compact.js';
+import coalesce from './coalesce.js';
 import concat from './concat.js';
 import contains from './contains.js';
 import countBy from './countBy.js';
@@ -46,7 +47,11 @@ import placeholder from './placeholder.js';
 import pluck from './pluck.js';
 import plus from './plus.js';
 import self from './self.js';
+import slice from './slice.js';
 import sortBy from './sortBy.js';
+import split from './split.js';
+import startsWith from './startsWith.js';
+import endsWith from './endsWith.js';
 import tail from './tail.js';
 import take from './take.js';
 import test from './test.js';
@@ -61,6 +66,7 @@ const tikka = {
     and,
     any,
     compact,
+    coalesce,
     concat,
     contains,
     countBy,
@@ -109,7 +115,11 @@ const tikka = {
     plus,
     select: grab,
     self,
+    slice,
     sortBy,
+    split,
+    startsWith,
+    endsWith,
     tail,
     take,
     test,

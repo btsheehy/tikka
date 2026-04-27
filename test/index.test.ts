@@ -66,6 +66,11 @@ import {
   toLower,
   toUpper,
   trim,
+  split,
+  startsWith,
+  endsWith,
+  slice,
+  coalesce,
   type,
   uniq,
   uniqBy,
@@ -391,6 +396,25 @@ describe('tikka exports', () => {
     expect(toLower('AbC')).toBe('abc')
     expect(toUpper('AbC')).toBe('ABC')
     expect(trim('  x  ')).toBe('x')
+    expect(split(',', 'a,b,c')).toEqual(['a', 'b', 'c'])
+    expect(startsWith('tik', 'tikka')).toBe(true)
+    expect(endsWith('kka', 'tikka')).toBe(true)
+    expect(slice(1, 'tikka')).toBe('ikka')
+    expect(slice(1, 4, 'tikka')).toBe('ikk')
+    expect(coalesce('fallback', null)).toBe('fallback')
+    expect(coalesce('fallback', undefined)).toBe('fallback')
+    expect(coalesce('fallback', 'value')).toBe('value')
+
+    const splitOnComma = split(',')
+    const startsWithTik = startsWith('tik')
+    const endsWithKka = endsWith('kka')
+    const withFallback = coalesce('fallback')
+
+    expect(splitOnComma('d,e')).toEqual(['d', 'e'])
+    expect(startsWithTik('tikka')).toBe(true)
+    expect(endsWithKka('tikka')).toBe(true)
+    expect(withFallback(null)).toBe('fallback')
+    expect(withFallback('value')).toBe('value')
   })
 
   it('type', () => {

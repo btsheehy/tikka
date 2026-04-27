@@ -5,6 +5,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 var and = require('./and.cjs');
 var any = require('./any.cjs');
 var compact = require('./compact.cjs');
+var coalesce = require('./coalesce.cjs');
 var concat = require('./concat.cjs');
 var contains = require('./contains.cjs');
 var countBy = require('./countBy.cjs');
@@ -50,7 +51,11 @@ var placeholder = require('./placeholder.cjs');
 var pluck = require('./pluck.cjs');
 var plus = require('./plus.cjs');
 var self = require('./self.cjs');
+var slice = require('./slice.cjs');
 var sortBy = require('./sortBy.cjs');
+var split = require('./split.cjs');
+var startsWith = require('./startsWith.cjs');
+var endsWith = require('./endsWith.cjs');
 var tail = require('./tail.cjs');
 var take = require('./take.cjs');
 var test = require('./test.cjs');
@@ -65,6 +70,7 @@ const tikka = {
     and: and.default,
     any: any.default,
     compact: compact.default,
+    coalesce: coalesce.default,
     concat: concat.default,
     contains: contains.default,
     countBy: countBy.default,
@@ -113,7 +119,11 @@ const tikka = {
     plus: plus.default,
     select: grab.default,
     self: self.default,
+    slice: slice.default,
     sortBy: sortBy.default,
+    split: split.default,
+    startsWith: startsWith.default,
+    endsWith: endsWith.default,
     tail: tail.default,
     take: take.default,
     test: test.default,

@@ -3,6 +3,7 @@ import curryRight from './curryRight';
 import deepClone from './deepClone';
 import last from './last';
 import pipe from './pipe';
+import slice from './slice';
 import tail from './tail';
 declare const tikka: {
     and: {
@@ -14,6 +15,10 @@ declare const tikka: {
         (b: unknown): (a: unknown, ...extra: unknown[]) => boolean;
     };
     compact: <T>(arr: Array<T | null | undefined>) => T[];
+    coalesce: {
+        (b: unknown, a: unknown, ...extra: unknown[]): unknown;
+        (b: unknown): (a: unknown, ...extra: unknown[]) => unknown;
+    };
     concat: {
         <T>(left: T[], right: T[]): T[];
         <T>(left: T[]): (right: T[]) => T[];
@@ -184,6 +189,7 @@ declare const tikka: {
         };
     };
     self: <T>(a: T) => T;
+    slice: typeof slice;
     sortBy: {
         (c: unknown, b: unknown, a: unknown, ...extra: unknown[]): Record<string, unknown>[];
         (c: unknown, b: unknown): (a: unknown, ...extra: unknown[]) => Record<string, unknown>[];
@@ -191,6 +197,18 @@ declare const tikka: {
             (b: unknown, a: unknown, ...extra: unknown[]): Record<string, unknown>[];
             (b: unknown): (a: unknown, ...extra: unknown[]) => Record<string, unknown>[];
         };
+    };
+    split: {
+        (b: string | RegExp, a: string, ...extra: unknown[]): string[];
+        (b: string | RegExp): (a: string, ...extra: unknown[]) => string[];
+    };
+    startsWith: {
+        (b: string, a: string, ...extra: unknown[]): boolean;
+        (b: string): (a: string, ...extra: unknown[]) => boolean;
+    };
+    endsWith: {
+        (b: string, a: string, ...extra: unknown[]): boolean;
+        (b: string): (a: string, ...extra: unknown[]) => boolean;
     };
     tail: typeof tail;
     take: {
