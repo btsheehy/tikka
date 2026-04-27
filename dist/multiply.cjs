@@ -5,13 +5,13 @@ Object.defineProperty(exports, '__esModule', { value: true });
 var curry = require('./curry.cjs');
 
 /**
- * Adds two numbers.
- * @param a - Input value for a.
- * @param b - Input value for b.
- * @returns The computed result.
+ * Multiplies two numbers.
+ * @param a - Left factor.
+ * @param b - Right factor.
+ * @returns Product `a * b`.
  *
  * @example
- * multiply(a, b)
+ * multiply(6, 7) // 42
  */
 const multiply = (a, b) => a * b;
 var multiply$1 = /*#__PURE__*/ curry.default(multiply);

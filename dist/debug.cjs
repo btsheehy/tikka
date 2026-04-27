@@ -5,13 +5,13 @@ Object.defineProperty(exports, '__esModule', { value: true });
 var curryRight = require('./curryRight.cjs');
 
 /**
- * Logs `msg` and `value`, then returns `value`.
- * @param value - Input value for value.
- * @param msg - Input value for msg.
- * @returns The computed result.
+ * Logs a label and value, then returns the original value.
+ * @param value - Value to pass through unchanged.
+ * @param msg - Label printed before the value.
+ * @returns The same `value`, enabling debug taps in pipelines.
  *
  * @example
- * debug(value, msg)
+ * debug('after parse', record)
  */
 const debug = (value, msg) => {
     console.log(msg);

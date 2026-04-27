@@ -1,10 +1,10 @@
 /**
- * uniq utility function.
- * @param arr - Input value for arr.
- * @returns The computed result.
+ * Removes duplicate values from an array using `Set` equality.
+ * @param arr - Source array.
+ * @returns A new array containing first occurrences only.
  *
  * @example
- * uniq(arr)
+ * uniq(['a', 'b', 'a']) // ['a', 'b']
  */
 const uniq = (arr) => Array.from(new Set(arr));
 

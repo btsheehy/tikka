@@ -5,24 +5,25 @@ Object.defineProperty(exports, '__esModule', { value: true });
 var curryRight = require('./curryRight.cjs');
 
 /**
- * Returns first matching element or `undefined`.
- * @param arr - Input value for arr.
- * @param findFunc - Input value for findFunc.
- * @returns The computed result.
+ * Finds the first array element that satisfies a predicate.
+ * @param arr - Array to search.
+ * @param findFunc - Predicate used to test each element in order.
+ * @returns The first matching item, or `undefined` when no item matches.
  *
  * @example
- * find(arr, findFunc)
+ * find((user) => user.id === 42, users)
  */
 const find = (arr, findFunc) => {
     let i = 0;
-    while (i < arr.length) {
+    const length = arr.length;
+    while (i < length) {
         if (findFunc(arr[i]))
             return arr[i];
         i++;
     }
     return undefined;
 };
-var find$1 = /*#__PURE__*/ curryRight.default(find);
+var find$1 = curryRight.default(find);
 
 exports.default = find$1;
 //# sourceMappingURL=find.cjs.map

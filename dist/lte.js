@@ -1,13 +1,13 @@
 import curry from './curry.js';
 
 /**
- * lte utility function.
- * @param a - Input value for a.
- * @param b - Input value for b.
- * @returns The computed result.
+ * Compares numbers with `<=`.
+ * @param a - Left numeric operand.
+ * @param b - Right numeric operand.
+ * @returns `true` when `a` is less than or equal to `b`.
  *
  * @example
- * lt(a, b)
+ * lte(5, 5) // true
  */
 const lt = (a, b) => a <= b;
 var lte = /*#__PURE__*/ curry(lt);

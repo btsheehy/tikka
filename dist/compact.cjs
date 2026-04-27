@@ -5,12 +5,12 @@ Object.defineProperty(exports, '__esModule', { value: true });
 var filter = require('./filter.cjs');
 
 /**
- * Removes `null`, `undefined`, and `NaN` values from an array.
- * @param arr - Input value for arr.
- * @returns The computed result.
+ * Removes `null`, `undefined`, and `NaN` entries from an array.
+ * @param arr - Array that may contain empty values.
+ * @returns A new array containing only defined, non-`NaN` items.
  *
  * @example
- * compact(arr)
+ * compact([0, null, 2, undefined, Number.NaN, 4]) // [0, 2, 4]
  */
 const compact = (arr) => {
     const pred = (el) => {

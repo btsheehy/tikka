@@ -6,13 +6,13 @@ var curryRight = require('./curryRight.cjs');
 var filter = require('./filter.cjs');
 
 /**
- * Counts array elements matching `test`.
+ * Counts how many array items satisfy a predicate.
+ * @param arr - Items to test.
+ * @param test - Predicate used to include/exclude each item.
+ * @returns Number of elements for which `test` returns `true`.
  *
  * @example
- * countWhere((x) => x % 2 === 0, [1,2,3,4]) // 2
- * @param arr - Input value for arr.
- * @param test - Input value for test.
- * @returns The computed result.
+ * countWhere((n) => n % 2 === 0, [1, 2, 3, 4]) // 2
  */
 const countWhere = (arr, test) => {
     return filter.default(test, arr).length;

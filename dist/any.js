@@ -1,13 +1,13 @@
 import curryRight from './curryRight.js';
 
 /**
- * Returns true if at least one array element passes `test`.
- * @param arr - Input value for arr.
- * @param test - Input value for test.
- * @returns The computed result.
+ * Checks whether at least one array item satisfies a predicate.
+ * @param arr - Array to scan.
+ * @param test - Predicate run for each element until a match is found.
+ * @returns `true` as soon as one element passes `test`; otherwise `false`.
  *
  * @example
- * any(arr, test)
+ * any((n) => n > 10, [3, 8, 12]) // true
  */
 const any = (arr, test) => {
     let i = 0;

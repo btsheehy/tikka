@@ -5,13 +5,13 @@ Object.defineProperty(exports, '__esModule', { value: true });
 var curryRight = require('./curryRight.cjs');
 
 /**
- * pluck utility function.
- * @param collection - Input value for collection.
- * @param prop - Input value for prop.
- * @returns The computed result.
+ * Extracts one property from every object in a collection.
+ * @param collection - Array of source objects.
+ * @param prop - Property name to read from each item.
+ * @returns Array of values for `prop`, preserving item order.
  *
  * @example
- * pluckImpl(collection, prop)
+ * pluck('id', [{ id: 1 }, { id: 2 }]) // [1, 2]
  */
 const pluckImpl = (collection, prop) => collection.map((item) => item[prop]);
 const pluck = /*#__PURE__*/ curryRight.default(pluckImpl);

@@ -5,13 +5,13 @@ Object.defineProperty(exports, '__esModule', { value: true });
 var curryRight = require('./curryRight.cjs');
 
 /**
- * Gets property by key.
+ * Reads a property from an object by key.
+ * @param object - Object to read from.
+ * @param property - Property key to retrieve.
+ * @returns The value stored at `object[property]`.
  *
  * @example
- * get('a', { a: 1 }) // 1
- * @param object - Input value for object.
- * @param property - Input value for property.
- * @returns The computed result.
+ * get('name', { id: 1, name: 'Ada' }) // 'Ada'
  */
 const getImpl = (object, property) => object[property];
 const get = /*#__PURE__*/ curryRight.default(getImpl);

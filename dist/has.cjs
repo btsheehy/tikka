@@ -5,13 +5,13 @@ Object.defineProperty(exports, '__esModule', { value: true });
 var curryRight = require('./curryRight.cjs');
 
 /**
- * has utility function.
- * @param obj - Input value for obj.
- * @param prop - Input value for prop.
- * @returns The computed result.
+ * Checks whether an object owns a property key.
+ * @param obj - Object to inspect.
+ * @param prop - Property key to check.
+ * @returns `true` when `obj` has `prop` as its own property.
  *
  * @example
- * has(obj, prop)
+ * has('id', { id: 5, name: 'Ada' }) // true
  */
 const has = (obj, prop) => Object.hasOwn(obj, prop);
 var has$1 = /*#__PURE__*/ curryRight.default(has);

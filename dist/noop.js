@@ -1,7 +1,6 @@
 /**
- * No-op function.
- * @param _unused - This function takes no explicit parameters.
- * @returns The computed result.
+ * Function that intentionally does nothing.
+ * @returns `undefined`.
  *
  * @example
  * noop()

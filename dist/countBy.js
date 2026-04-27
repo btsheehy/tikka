@@ -1,13 +1,13 @@
 import curryRight from './curryRight.js';
 
 /**
- * Builds a frequency object keyed by `iteratee(value)`.
- * @param arr - Input value for arr.
- * @param iteratee - Input value for iteratee.
- * @returns The computed result.
+ * Counts items in an array by a derived key.
+ * @param arr - Items to count.
+ * @param iteratee - Function that maps each item to a bucket key.
+ * @returns An object where each key stores the number of matching items.
  *
  * @example
- * countBy(arr, iteratee)
+ * countBy((word) => word.length.toString(), ['a', 'to', 'cat'])
  */
 const countBy = (arr, iteratee) => {
     const counts = {};
