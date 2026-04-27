@@ -21,4 +21,11 @@ const map = <T, R>(arr: T[], fn: (x: T) => R): R[] => {
   return result
 }
 
-export default /*#__PURE__*/ curryRight(map)
+type Map = {
+  <T, R>(fn: (x: T) => R, arr: T[]): R[]
+  <T, R>(fn: (x: T) => R): (arr: T[]) => R[]
+}
+
+const mapCurried = /*#__PURE__*/ curryRight(map) as Map
+
+export default mapCurried

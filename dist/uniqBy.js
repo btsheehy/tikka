@@ -23,7 +23,7 @@ const uniqBy = (arr, uniqCond) => {
     }
     return newArr;
 };
-var uniqBy$1 = /*#__PURE__*/ curryRight(uniqBy);
+const uniqByCurried = /*#__PURE__*/ curryRight(uniqBy);
 
-export { uniqBy$1 as default };
+export { uniqByCurried as default };
 //# sourceMappingURL=uniqBy.js.map

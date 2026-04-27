@@ -1,6 +1,7 @@
-declare const _default: {
-    (b: unknown, a: unknown, ...extra: unknown[]): unknown[];
-    (b: unknown): (a: unknown, ...extra: unknown[]) => unknown[];
+type Take = {
+    <T>(num: number, arr: T[]): T[];
+    (num: number): <T>(arr: T[]) => T[];
 };
-export default _default;
+declare const takeCurried: Take;
+export default takeCurried;
 //# sourceMappingURL=take.d.ts.map

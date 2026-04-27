@@ -19,7 +19,7 @@ const forEach = (arr, func) => {
     });
     return arr;
 };
-var forEach$1 = /*#__PURE__*/ curryRight.default(forEach);
+const forEachCurried = /*#__PURE__*/ curryRight.default(forEach);
 
-exports.default = forEach$1;
+exports.default = forEachCurried;
 //# sourceMappingURL=forEach.cjs.map

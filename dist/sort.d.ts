@@ -1,6 +1,7 @@
-declare const _default: {
-    (b: unknown, a: unknown, ...extra: unknown[]): unknown[];
-    (b: unknown): (a: unknown, ...extra: unknown[]) => unknown[];
+type Sort = {
+    <T, U>(iteratee: (value: T) => U, arr: T[]): T[];
+    <T, U>(iteratee: (value: T) => U): (arr: T[]) => T[];
 };
-export default _default;
+declare const sortCurried: Sort;
+export default sortCurried;
 //# sourceMappingURL=sort.d.ts.map

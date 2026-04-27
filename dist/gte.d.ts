@@ -1,6 +1,7 @@
-declare const _default: {
-    (a: number, b: number, ...extra: unknown[]): boolean;
-    (a: number): (b: number, ...extra: unknown[]) => boolean;
+type Gte = {
+    (a: number, b: number): boolean;
+    (a: number): (b: number) => boolean;
 };
-export default _default;
+declare const gteCurried: Gte;
+export default gteCurried;
 //# sourceMappingURL=gte.d.ts.map

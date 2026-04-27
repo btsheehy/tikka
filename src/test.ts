@@ -11,4 +11,11 @@ import curryRight from './curryRight'
  */
 const test = (str: string, regex: RegExp) => regex.test(str)
 
-export default /*#__PURE__*/ curryRight(test)
+type Test = {
+  (regex: RegExp, str: string): boolean
+  (regex: RegExp): (str: string) => boolean
+}
+
+const testCurried = /*#__PURE__*/ curryRight(test) as Test
+
+export default testCurried

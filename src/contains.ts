@@ -16,4 +16,11 @@ export type IncludesTarget = {
 const contains = (searchTarget: IncludesTarget, value: unknown): boolean =>
   searchTarget.includes(value)
 
-export default /*#__PURE__*/ curryRight(contains)
+type Contains = {
+  (value: unknown, searchTarget: IncludesTarget): boolean
+  (value: unknown): (searchTarget: IncludesTarget) => boolean
+}
+
+const containsCurried = /*#__PURE__*/ curryRight(contains) as Contains
+
+export default containsCurried

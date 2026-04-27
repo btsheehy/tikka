@@ -1,6 +1,9 @@
-declare const _default: {
-    (b: (value: unknown) => unknown, a: object, ...extra: unknown[]): void;
-    (b: (value: unknown) => unknown): (a: object, ...extra: unknown[]) => void;
+type DeepForEach = {
+    <T>(func: (value: T) => unknown, data: Array<T>): void;
+    (func: (value: unknown) => unknown, data: object): void;
+    <T>(func: (value: T) => unknown): (data: Array<T>) => void;
+    (func: (value: unknown) => unknown): (data: object) => void;
 };
-export default _default;
+declare const deepForEachCurried: DeepForEach;
+export default deepForEachCurried;
 //# sourceMappingURL=deepForEach.d.ts.map

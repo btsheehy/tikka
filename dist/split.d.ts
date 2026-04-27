@@ -1,6 +1,7 @@
-declare const _default: {
-    (b: string | RegExp, a: string, ...extra: unknown[]): string[];
-    (b: string | RegExp): (a: string, ...extra: unknown[]) => string[];
+type Split = {
+    (separator: string | RegExp, str: string): string[];
+    (separator: string | RegExp): (str: string) => string[];
 };
-export default _default;
+declare const splitCurried: Split;
+export default splitCurried;
 //# sourceMappingURL=split.d.ts.map

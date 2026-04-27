@@ -1,6 +1,7 @@
-declare const _default: {
-    (b: unknown, a: unknown, ...extra: unknown[]): boolean;
-    (b: unknown): (a: unknown, ...extra: unknown[]) => boolean;
+type Any = {
+    <T>(test: (t: T) => boolean, arr: Array<T>): boolean;
+    <T>(test: (t: T) => boolean): (arr: Array<T>) => boolean;
 };
-export default _default;
+declare const anyCurried: Any;
+export default anyCurried;
 //# sourceMappingURL=any.d.ts.map

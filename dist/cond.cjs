@@ -29,7 +29,7 @@ const cond = (args, predicateArg) => {
     }
     return defaultValue;
 };
-var cond$1 = /*#__PURE__*/ curry.default(cond);
+const condCurried = /*#__PURE__*/ curry.default(cond);
 
-exports.default = cond$1;
+exports.default = condCurried;
 //# sourceMappingURL=cond.cjs.map

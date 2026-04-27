@@ -26,7 +26,7 @@ const every = (arr, test) => {
     }
     return allPass;
 };
-var every$1 = /*#__PURE__*/ curryRight.default(every);
+const everyCurried = /*#__PURE__*/ curryRight.default(every);
 
-exports.default = every$1;
+exports.default = everyCurried;
 //# sourceMappingURL=every.cjs.map

@@ -15,4 +15,11 @@ const debug = <T>(value: T, msg: string): T => {
   return value
 }
 
-export default /*#__PURE__*/ curryRight(debug)
+type Debug = {
+  <T>(msg: string, value: T): T
+  (msg: string): <T>(value: T) => T
+}
+
+const debugCurried = /*#__PURE__*/ curryRight(debug) as Debug
+
+export default debugCurried

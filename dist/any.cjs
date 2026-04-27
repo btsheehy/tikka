@@ -25,7 +25,7 @@ const any = (arr, test) => {
     }
     return false;
 };
-var any$1 = /*#__PURE__*/ curryRight.default(any);
+const anyCurried = /*#__PURE__*/ curryRight.default(any);
 
-exports.default = any$1;
+exports.default = anyCurried;
 //# sourceMappingURL=any.cjs.map

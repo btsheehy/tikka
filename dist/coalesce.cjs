@@ -14,7 +14,7 @@ var curryRight = require('./curryRight.cjs');
  * coalesce('Anonymous', profile.nickname)
  */
 const coalesce = (value, fallback) => value ?? fallback;
-var coalesce$1 = /*#__PURE__*/ curryRight.default(coalesce);
+const coalesceCurried = /*#__PURE__*/ curryRight.default(coalesce);
 
-exports.default = coalesce$1;
+exports.default = coalesceCurried;
 //# sourceMappingURL=coalesce.cjs.map

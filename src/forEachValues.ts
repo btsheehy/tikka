@@ -16,4 +16,11 @@ const forEachValues = (obj: {}, fn: (x: any) => any) => {
   return obj
 }
 
-export default /*#__PURE__*/ curryRight(forEachValues)
+type ForEachValues = {
+  (fn: (x: any) => any, obj: {}): {}
+  (fn: (x: any) => any): (obj: {}) => {}
+}
+
+const forEachValuesCurried = /*#__PURE__*/ curryRight(forEachValues) as ForEachValues
+
+export default forEachValuesCurried

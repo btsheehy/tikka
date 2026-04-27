@@ -17,7 +17,7 @@ const ifElse = (test, onTrue, onFalse) => {
         return onTrue();
     return onFalse();
 };
-var ifElse$1 = /*#__PURE__*/ curryRight(ifElse);
+const ifElseCurried = /*#__PURE__*/ curryRight(ifElse);
 
-export { ifElse$1 as default };
+export { ifElseCurried as default };
 //# sourceMappingURL=ifElse.js.map

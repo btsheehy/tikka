@@ -1,6 +1,7 @@
-declare const _default: {
-    (b: unknown, a: unknown, ...extra: unknown[]): Record<string, number>;
-    (b: unknown): (a: unknown, ...extra: unknown[]) => Record<string, number>;
+type CountBy = {
+    <T>(iteratee: (value: T) => string, arr: T[]): Record<string, number>;
+    <T>(iteratee: (value: T) => string): (arr: T[]) => Record<string, number>;
 };
-export default _default;
+declare const countByCurried: CountBy;
+export default countByCurried;
 //# sourceMappingURL=countBy.d.ts.map

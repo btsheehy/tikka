@@ -10,7 +10,7 @@ import curry from './curry.js';
  * plus(2)(3) // 5
  */
 const plus = (a, b) => a + b;
-var plus$1 = /*#__PURE__*/ curry(plus);
+const plusCurried = /*#__PURE__*/ curry(plus);
 
-export { plus$1 as default };
+export { plusCurried as default };
 //# sourceMappingURL=plus.js.map

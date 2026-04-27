@@ -12,4 +12,11 @@ import curryRight from './curryRight'
  */
 const identical = (a: unknown, b: unknown) => Object.is(a, b)
 
-export default /*#__PURE__*/ curryRight(identical)
+type Identical = {
+  (b: unknown, a: unknown): boolean
+  (b: unknown): (a: unknown) => boolean
+}
+
+const identicalCurried = /*#__PURE__*/ curryRight(identical) as Identical
+
+export default identicalCurried

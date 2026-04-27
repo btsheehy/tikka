@@ -18,7 +18,7 @@ const map = (arr, fn) => {
     }
     return result;
 };
-var map$1 = /*#__PURE__*/ curryRight(map);
+const mapCurried = /*#__PURE__*/ curryRight(map);
 
-export { map$1 as default };
+export { mapCurried as default };
 //# sourceMappingURL=map.js.map

@@ -14,7 +14,7 @@ var curry = require('./curry.cjs');
  * or(user.isAdmin, user.isOwner)
  */
 const or = (a, b) => !!(a || b);
-var or$1 = /*#__PURE__*/ curry.default(or);
+const orCurried = /*#__PURE__*/ curry.default(or);
 
-exports.default = or$1;
+exports.default = orCurried;
 //# sourceMappingURL=or.cjs.map

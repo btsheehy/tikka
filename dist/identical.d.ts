@@ -1,6 +1,7 @@
-declare const _default: {
-    (b: unknown, a: unknown, ...extra: unknown[]): boolean;
-    (b: unknown): (a: unknown, ...extra: unknown[]) => boolean;
+type Identical = {
+    (b: unknown, a: unknown): boolean;
+    (b: unknown): (a: unknown) => boolean;
 };
-export default _default;
+declare const identicalCurried: Identical;
+export default identicalCurried;
 //# sourceMappingURL=identical.d.ts.map

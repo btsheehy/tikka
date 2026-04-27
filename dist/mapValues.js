@@ -17,7 +17,7 @@ const mapValues = (obj, fn) => {
     }
     return newObj;
 };
-var mapValues$1 = /*#__PURE__*/ curryRight(mapValues);
+const mapValuesCurried = /*#__PURE__*/ curryRight(mapValues);
 
-export { mapValues$1 as default };
+export { mapValuesCurried as default };
 //# sourceMappingURL=mapValues.js.map

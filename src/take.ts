@@ -13,4 +13,11 @@ const take = <T>(arr: T[], num: number) => {
   return arr.slice(0, num)
 }
 
-export default /*#__PURE__*/ curryRight(take)
+type Take = {
+  <T>(num: number, arr: T[]): T[]
+  (num: number): <T>(arr: T[]) => T[]
+}
+
+const takeCurried = /*#__PURE__*/ curryRight(take) as Take
+
+export default takeCurried

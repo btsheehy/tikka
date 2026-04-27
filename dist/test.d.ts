@@ -1,6 +1,7 @@
-declare const _default: {
-    (b: RegExp, a: string, ...extra: unknown[]): boolean;
-    (b: RegExp): (a: string, ...extra: unknown[]) => boolean;
+type Test = {
+    (regex: RegExp, str: string): boolean;
+    (regex: RegExp): (str: string) => boolean;
 };
-export default _default;
+declare const testCurried: Test;
+export default testCurried;
 //# sourceMappingURL=test.d.ts.map

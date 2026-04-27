@@ -1,10 +1,9 @@
-declare const _default: {
-    (c: unknown, b: any, a: {}, ...extra: unknown[]): unknown;
-    (c: unknown, b: any): (a: {}, ...extra: unknown[]) => unknown;
-    (c: unknown): {
-        (b: any, a: {}, ...extra: unknown[]): unknown;
-        (b: any): (a: {}, ...extra: unknown[]) => unknown;
-    };
+type GetOr = {
+    <T, K extends keyof T, R>(defaultValue: R, prop: K, obj: T): T[K];
+    <R>(defaultValue: R, prop: PropertyKey, obj: {}): R;
+    <T, K extends keyof T, R>(defaultValue: R, prop: K): (obj: T) => T[K];
+    <R>(defaultValue: R, prop: PropertyKey): (obj: {}) => R;
 };
-export default _default;
+declare const getOrCurried: GetOr;
+export default getOrCurried;
 //# sourceMappingURL=getOr.d.ts.map

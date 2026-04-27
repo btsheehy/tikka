@@ -10,9 +10,10 @@
 export type IncludesTarget = {
     includes: (value: unknown) => boolean;
 };
-declare const _default: {
-    (b: unknown, a: IncludesTarget, ...extra: unknown[]): boolean;
-    (b: unknown): (a: IncludesTarget, ...extra: unknown[]) => boolean;
+type Contains = {
+    (value: unknown, searchTarget: IncludesTarget): boolean;
+    (value: unknown): (searchTarget: IncludesTarget) => boolean;
 };
-export default _default;
+declare const containsCurried: Contains;
+export default containsCurried;
 //# sourceMappingURL=contains.d.ts.map

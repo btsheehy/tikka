@@ -1,1 +1,1 @@
-{"version":3,"file":"forEach.d.ts","sourceRoot":"","sources":["../src/forEach.ts"],"names":[],"mappings":";;;;AAkBA,wBAAgD"}
+{"version":3,"file":"forEach.d.ts","sourceRoot":"","sources":["../src/forEach.ts"],"names":[],"mappings":"AAkBA,KAAK,OAAO,GAAG;IACb,CAAC,CAAC,EAAE,IAAI,EAAE,CAAC,CAAC,EAAE,CAAC,KAAK,OAAO,EAAE,GAAG,EAAE,CAAC,EAAE,GAAG,CAAC,EAAE,CAAA;IAC3C,CAAC,CAAC,EAAE,IAAI,EAAE,CAAC,CAAC,EAAE,CAAC,KAAK,OAAO,GAAG,CAAC,GAAG,EAAE,CAAC,EAAE,KAAK,CAAC,EAAE,CAAA;CAChD,CAAA;AAED,QAAA,MAAM,cAAc,EAAwC,OAAO,CAAA;AAEnE,eAAe,cAAc,CAAA"}

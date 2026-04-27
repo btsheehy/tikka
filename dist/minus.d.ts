@@ -1,6 +1,7 @@
-declare const _default: {
-    (b: number, a: number, ...extra: unknown[]): number;
-    (b: number): (a: number, ...extra: unknown[]) => number;
+type Minus = {
+    (b: number, a: number): number;
+    (b: number): (a: number) => number;
 };
-export default _default;
+declare const minusCurried: Minus;
+export default minusCurried;
 //# sourceMappingURL=minus.d.ts.map

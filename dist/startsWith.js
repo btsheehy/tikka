@@ -10,7 +10,7 @@ import curryRight from './curryRight.js';
  * startsWith('user:', 'user:42') // true
  */
 const startsWith = (str, prefix) => str.startsWith(prefix);
-var startsWith$1 = /*#__PURE__*/ curryRight(startsWith);
+const startsWithCurried = /*#__PURE__*/ curryRight(startsWith);
 
-export { startsWith$1 as default };
+export { startsWithCurried as default };
 //# sourceMappingURL=startsWith.js.map

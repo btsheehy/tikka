@@ -1,6 +1,7 @@
-declare const _default: {
-    (b: unknown, a: unknown, ...extra: unknown[]): unknown;
-    (b: unknown): (a: unknown, ...extra: unknown[]) => unknown;
+type Debug = {
+    <T>(msg: string, value: T): T;
+    (msg: string): <T>(value: T) => T;
 };
-export default _default;
+declare const debugCurried: Debug;
+export default debugCurried;
 //# sourceMappingURL=debug.d.ts.map

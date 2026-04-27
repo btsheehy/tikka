@@ -11,4 +11,11 @@ import curry from './curry'
  */
 const plus = (a: number, b: number) => a + b
 
-export default /*#__PURE__*/ curry(plus)
+type Plus = {
+  (a: number, b: number): number
+  (a: number): (b: number) => number
+}
+
+const plusCurried = /*#__PURE__*/ curry(plus) as Plus
+
+export default plusCurried

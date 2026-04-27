@@ -23,4 +23,11 @@ const filter = <T>(arr: Array<T>, filterFunc: (x: T) => boolean) => {
   return result
 }
 
-export default /*#__PURE__*/ curryRight(filter, filter.length)
+type Filter = {
+  <T>(filterFunc: (x: T) => boolean, arr: Array<T>): T[]
+  <T>(filterFunc: (x: T) => boolean): (arr: Array<T>) => T[]
+}
+
+const filterCurried = /*#__PURE__*/ curryRight(filter, filter.length) as Filter
+
+export default filterCurried

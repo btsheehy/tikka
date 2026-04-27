@@ -16,4 +16,11 @@ const forEach = <T>(arr: T[], func: (x: T) => unknown) => {
   return arr
 }
 
-export default /*#__PURE__*/ curryRight(forEach)
+type ForEach = {
+  <T>(func: (x: T) => unknown, arr: T[]): T[]
+  <T>(func: (x: T) => unknown): (arr: T[]) => T[]
+}
+
+const forEachCurried = /*#__PURE__*/ curryRight(forEach) as ForEach
+
+export default forEachCurried

@@ -19,7 +19,7 @@ function deepMap(data, func) {
     };
     return recurseFunc(data);
 }
-var deepMap$1 = /*#__PURE__*/ curryRight.default(deepMap);
+const deepMapCurried = /*#__PURE__*/ curryRight.default(deepMap);
 
-exports.default = deepMap$1;
+exports.default = deepMapCurried;
 //# sourceMappingURL=deepMap.cjs.map

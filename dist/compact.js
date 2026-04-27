@@ -1,4 +1,4 @@
-import filter from './filter.js';
+import filterCurried from './filter.js';
 
 /**
  * Removes `null`, `undefined`, and `NaN` entries from an array.
@@ -18,7 +18,7 @@ const compact = (arr) => {
             return false;
         return true;
     };
-    return filter(pred, arr);
+    return filterCurried(pred, arr);
 };
 
 export { compact as default };

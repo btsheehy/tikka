@@ -1,6 +1,9 @@
-declare const _default: {
-    (b: (x: unknown) => unknown, a: object, ...extra: unknown[]): object;
-    (b: (x: unknown) => unknown): (a: object, ...extra: unknown[]) => object;
+type DeepMap = {
+    <T, R>(func: (x: T) => R, data: Array<T>): Array<R>;
+    (func: (x: unknown) => unknown, data: object): object;
+    <T, R>(func: (x: T) => R): (data: Array<T>) => Array<R>;
+    (func: (x: unknown) => unknown): (data: object) => object;
 };
-export default _default;
+declare const deepMapCurried: DeepMap;
+export default deepMapCurried;
 //# sourceMappingURL=deepMap.d.ts.map

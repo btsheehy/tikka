@@ -11,4 +11,11 @@ import curry from './curry'
 
 const gt = (a: number, b: number) => a >= b
 
-export default /*#__PURE__*/ curry(gt)
+type Gte = {
+  (a: number, b: number): boolean
+  (a: number): (b: number) => boolean
+}
+
+const gteCurried = /*#__PURE__*/ curry(gt) as Gte
+
+export default gteCurried

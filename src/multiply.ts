@@ -11,4 +11,11 @@ import curry from './curry'
  */
 const multiply = (a: number, b: number) => a * b
 
-export default /*#__PURE__*/ curry(multiply)
+type Multiply = {
+  (a: number, b: number): number
+  (a: number): (b: number) => number
+}
+
+const multiplyCurried = /*#__PURE__*/ curry(multiply) as Multiply
+
+export default multiplyCurried

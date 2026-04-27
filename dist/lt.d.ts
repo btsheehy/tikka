@@ -1,6 +1,7 @@
-declare const _default: {
-    (a: number, b: number, ...extra: unknown[]): boolean;
-    (a: number): (b: number, ...extra: unknown[]) => boolean;
+type Lt = {
+    (a: number, b: number): boolean;
+    (a: number): (b: number) => boolean;
 };
-export default _default;
+declare const ltCurried: Lt;
+export default ltCurried;
 //# sourceMappingURL=lt.d.ts.map

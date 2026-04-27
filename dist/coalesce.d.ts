@@ -1,6 +1,7 @@
-declare const _default: {
-    (b: unknown, a: unknown, ...extra: unknown[]): unknown;
-    (b: unknown): (a: unknown, ...extra: unknown[]) => unknown;
+type Coalesce = {
+    <T>(fallback: T, value: T | null | undefined): T;
+    <T>(fallback: T): (value: T | null | undefined) => T;
 };
-export default _default;
+declare const coalesceCurried: Coalesce;
+export default coalesceCurried;
 //# sourceMappingURL=coalesce.d.ts.map

@@ -27,4 +27,11 @@ const sort = <T, U>(arr: T[], iteratee: (value: T) => U): T[] => {
   })
 }
 
-export default /*#__PURE__*/ curryRight(sort)
+type Sort = {
+  <T, U>(iteratee: (value: T) => U, arr: T[]): T[]
+  <T, U>(iteratee: (value: T) => U): (arr: T[]) => T[]
+}
+
+const sortCurried = /*#__PURE__*/ curryRight(sort) as Sort
+
+export default sortCurried

@@ -18,7 +18,7 @@ const sortBy = (arr, direction, fieldOrIteratee) => {
         return 0;
     });
 };
-var sortBy$1 = /*#__PURE__*/ curryRight(sortBy);
+const sortByCurried = /*#__PURE__*/ curryRight(sortBy);
 
-export { sortBy$1 as default };
+export { sortByCurried as default };
 //# sourceMappingURL=sortBy.js.map

@@ -14,7 +14,7 @@ var curry = require('./curry.cjs');
  * plus(2)(3) // 5
  */
 const plus = (a, b) => a + b;
-var plus$1 = /*#__PURE__*/ curry.default(plus);
+const plusCurried = /*#__PURE__*/ curry.default(plus);
 
-exports.default = plus$1;
+exports.default = plusCurried;
 //# sourceMappingURL=plus.cjs.map

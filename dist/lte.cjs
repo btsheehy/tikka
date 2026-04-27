@@ -14,7 +14,7 @@ var curry = require('./curry.cjs');
  * lte(5, 5) // true
  */
 const lt = (a, b) => a <= b;
-var lte = /*#__PURE__*/ curry.default(lt);
+const lteCurried = /*#__PURE__*/ curry.default(lt);
 
-exports.default = lte;
+exports.default = lteCurried;
 //# sourceMappingURL=lte.cjs.map

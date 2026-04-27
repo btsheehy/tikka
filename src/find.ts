@@ -19,4 +19,11 @@ const find = <T>(arr: Array<T>, findFunc: (x: T) => boolean) => {
   return undefined
 }
 
-export default curryRight(find)
+type Find = {
+  <T>(findFunc: (x: T) => boolean, arr: Array<T>): T | undefined
+  <T>(findFunc: (x: T) => boolean): (arr: Array<T>) => T | undefined
+}
+
+const findCurried = /*#__PURE__*/ curryRight(find) as Find
+
+export default findCurried

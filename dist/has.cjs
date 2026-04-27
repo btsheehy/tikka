@@ -14,7 +14,7 @@ var curryRight = require('./curryRight.cjs');
  * has('id', { id: 5, name: 'Ada' }) // true
  */
 const has = (obj, prop) => Object.hasOwn(obj, prop);
-var has$1 = /*#__PURE__*/ curryRight.default(has);
+const hasCurried = /*#__PURE__*/ curryRight.default(has);
 
-exports.default = has$1;
+exports.default = hasCurried;
 //# sourceMappingURL=has.cjs.map

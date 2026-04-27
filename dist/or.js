@@ -10,7 +10,7 @@ import curry from './curry.js';
  * or(user.isAdmin, user.isOwner)
  */
 const or = (a, b) => !!(a || b);
-var or$1 = /*#__PURE__*/ curry(or);
+const orCurried = /*#__PURE__*/ curry(or);
 
-export { or$1 as default };
+export { orCurried as default };
 //# sourceMappingURL=or.js.map

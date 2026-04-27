@@ -1,6 +1,7 @@
-declare const _default: {
-    (b: string, a: string, ...extra: unknown[]): boolean;
-    (b: string): (a: string, ...extra: unknown[]) => boolean;
+type StartsWith = {
+    (prefix: string, str: string): boolean;
+    (prefix: string): (str: string) => boolean;
 };
-export default _default;
+declare const startsWithCurried: StartsWith;
+export default startsWithCurried;
 //# sourceMappingURL=startsWith.d.ts.map

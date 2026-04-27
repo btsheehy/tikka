@@ -1,6 +1,7 @@
-declare const _default: {
-    (b: unknown, a: unknown, ...extra: unknown[]): number;
-    (b: unknown): (a: unknown, ...extra: unknown[]) => number;
+type CountWhere = {
+    <T>(test: (x: T) => boolean, arr: Array<T>): number;
+    <T>(test: (x: T) => boolean): (arr: Array<T>) => number;
 };
-export default _default;
+declare const countWhereCurried: CountWhere;
+export default countWhereCurried;
 //# sourceMappingURL=countWhere.d.ts.map

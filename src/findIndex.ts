@@ -19,4 +19,11 @@ const findIndex = <T>(arr: Array<T>, findFunc: (x: T) => boolean) => {
   return -1
 }
 
-export default /*#__PURE__*/ curryRight(findIndex)
+type FindIndex = {
+  <T>(findFunc: (x: T) => boolean, arr: Array<T>): number
+  <T>(findFunc: (x: T) => boolean): (arr: Array<T>) => number
+}
+
+const findIndexCurried = /*#__PURE__*/ curryRight(findIndex) as FindIndex
+
+export default findIndexCurried

@@ -11,4 +11,11 @@ import curryRight from './curryRight'
  */
 const minus = (a: number, b: number) => a - b
 
-export default /*#__PURE__*/ curryRight(minus)
+type Minus = {
+  (b: number, a: number): number
+  (b: number): (a: number) => number
+}
+
+const minusCurried = /*#__PURE__*/ curryRight(minus) as Minus
+
+export default minusCurried

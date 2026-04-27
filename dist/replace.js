@@ -1,6 +1,6 @@
 import curryRight from './curryRight.js';
-import identical from './identical.js';
-import map from './map.js';
+import identicalCurried from './identical.js';
+import mapCurried from './map.js';
 
 /**
  * Replaces values in an array or substrings in a string.
@@ -27,13 +27,13 @@ import map from './map.js';
 const replace = ((target, replacee, replacement) => {
     if (Array.isArray(target)) {
         const replacementFunc = (typeof replacement === 'function' ? replacement : () => replacement);
-        const replacementTestFunc = (typeof replacee === 'function' ? replacee : identical(replacee));
+        const replacementTestFunc = (typeof replacee === 'function' ? replacee : identicalCurried(replacee));
         const replaceFunc = (val) => {
             if (replacementTestFunc(val))
                 return replacementFunc(val);
             return val;
         };
-        return map(replaceFunc, target);
+        return mapCurried(replaceFunc, target);
     }
     return target.replaceAll(replacee, replacement);
 });

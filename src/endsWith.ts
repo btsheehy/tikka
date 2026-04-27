@@ -11,4 +11,11 @@ import curryRight from './curryRight'
  */
 const endsWith = (str: string, suffix: string) => str.endsWith(suffix)
 
-export default /*#__PURE__*/ curryRight(endsWith)
+type EndsWith = {
+  (suffix: string, str: string): boolean
+  (suffix: string): (str: string) => boolean
+}
+
+const endsWithCurried = /*#__PURE__*/ curryRight(endsWith) as EndsWith
+
+export default endsWithCurried

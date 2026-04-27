@@ -11,4 +11,11 @@ import curry from './curry'
 
 const or = (a: any, b: any) => !!(a || b)
 
-export default /*#__PURE__*/ curry(or)
+type Or = {
+  (a: any, b: any): boolean
+  (a: any): (b: any) => boolean
+}
+
+const orCurried = /*#__PURE__*/ curry(or) as Or
+
+export default orCurried

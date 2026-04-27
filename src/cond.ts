@@ -30,4 +30,11 @@ const cond = <T, P>(args: CondArgs<T, P>, predicateArg: P): T => {
   return defaultValue
 }
 
-export default /*#__PURE__*/ curry(cond)
+type Cond = {
+  <T, P>(args: CondArgs<T, P>, predicateArg: P): T
+  <T, P>(args: CondArgs<T, P>): (predicateArg: P) => T
+}
+
+const condCurried = /*#__PURE__*/ curry(cond) as Cond
+
+export default condCurried

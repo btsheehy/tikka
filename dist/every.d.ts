@@ -1,6 +1,7 @@
-declare const _default: {
-    (b: unknown, a: unknown, ...extra: unknown[]): boolean;
-    (b: unknown): (a: unknown, ...extra: unknown[]) => boolean;
+type Every = {
+    <T>(test: (x: T) => boolean, arr: Array<T>): boolean;
+    <T>(test: (x: T) => boolean): (arr: Array<T>) => boolean;
 };
-export default _default;
+declare const everyCurried: Every;
+export default everyCurried;
 //# sourceMappingURL=every.d.ts.map

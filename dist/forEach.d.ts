@@ -1,6 +1,7 @@
-declare const _default: {
-    (b: unknown, a: unknown, ...extra: unknown[]): unknown[];
-    (b: unknown): (a: unknown, ...extra: unknown[]) => unknown[];
+type ForEach = {
+    <T>(func: (x: T) => unknown, arr: T[]): T[];
+    <T>(func: (x: T) => unknown): (arr: T[]) => T[];
 };
-export default _default;
+declare const forEachCurried: ForEach;
+export default forEachCurried;
 //# sourceMappingURL=forEach.d.ts.map

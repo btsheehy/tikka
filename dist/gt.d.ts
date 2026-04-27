@@ -1,6 +1,7 @@
-declare const _default: {
-    (a: number, b: number, ...extra: unknown[]): boolean;
-    (a: number): (b: number, ...extra: unknown[]) => boolean;
+type Gt = {
+    (a: number, b: number): boolean;
+    (a: number): (b: number) => boolean;
 };
-export default _default;
+declare const gtCurried: Gt;
+export default gtCurried;
 //# sourceMappingURL=gt.d.ts.map

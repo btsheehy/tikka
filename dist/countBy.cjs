@@ -23,7 +23,7 @@ const countBy = (arr, iteratee) => {
     }
     return counts;
 };
-var countBy$1 = /*#__PURE__*/ curryRight.default(countBy);
+const countByCurried = /*#__PURE__*/ curryRight.default(countBy);
 
-exports.default = countBy$1;
+exports.default = countByCurried;
 //# sourceMappingURL=countBy.cjs.map

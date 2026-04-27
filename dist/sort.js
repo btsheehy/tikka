@@ -22,7 +22,7 @@ const sort = (arr, iteratee) => {
         return 0;
     });
 };
-var sort$1 = /*#__PURE__*/ curryRight(sort);
+const sortCurried = /*#__PURE__*/ curryRight(sort);
 
-export { sort$1 as default };
+export { sortCurried as default };
 //# sourceMappingURL=sort.js.map

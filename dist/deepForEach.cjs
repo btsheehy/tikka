@@ -21,7 +21,7 @@ function deepForEach(data, func) {
     };
     recurseFunc(data);
 }
-var deepForEach$1 = /*#__PURE__*/ curryRight.default(deepForEach);
+const deepForEachCurried = /*#__PURE__*/ curryRight.default(deepForEach);
 
-exports.default = deepForEach$1;
+exports.default = deepForEachCurried;
 //# sourceMappingURL=deepForEach.cjs.map

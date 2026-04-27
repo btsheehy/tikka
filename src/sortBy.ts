@@ -41,4 +41,18 @@ const sortBy = <T extends Record<string, unknown>, K extends keyof T>(
   })
 }
 
-export default /*#__PURE__*/ curryRight(sortBy)
+type SortBy = {
+  <T extends Record<string, unknown>, K extends keyof T>(
+    fieldOrIteratee: K | ((value: T) => unknown),
+    direction: SortDirection,
+    arr: T[]
+  ): T[]
+  <T extends Record<string, unknown>, K extends keyof T>(
+    fieldOrIteratee: K | ((value: T) => unknown),
+    direction: SortDirection
+  ): (arr: T[]) => T[]
+}
+
+const sortByCurried = /*#__PURE__*/ curryRight(sortBy) as SortBy
+
+export default sortByCurried

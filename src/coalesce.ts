@@ -11,4 +11,11 @@ import curryRight from './curryRight'
  */
 const coalesce = <T>(value: T | null | undefined, fallback: T) => value ?? fallback
 
-export default /*#__PURE__*/ curryRight(coalesce)
+type Coalesce = {
+  <T>(fallback: T, value: T | null | undefined): T
+  <T>(fallback: T): (value: T | null | undefined) => T
+}
+
+const coalesceCurried = /*#__PURE__*/ curryRight(coalesce) as Coalesce
+
+export default coalesceCurried

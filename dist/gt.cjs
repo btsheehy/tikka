@@ -14,7 +14,7 @@ var curry = require('./curry.cjs');
  * gt(10, 4) // true
  */
 const gt = (a, b) => a > b;
-var gt$1 = /*#__PURE__*/ curry.default(gt);
+const gtCurried = /*#__PURE__*/ curry.default(gt);
 
-exports.default = gt$1;
+exports.default = gtCurried;
 //# sourceMappingURL=gt.cjs.map

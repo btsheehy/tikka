@@ -1,10 +1,9 @@
-declare const _default: {
-    (c: Function, b: Function, a: () => boolean, ...extra: unknown[]): any;
-    (c: Function, b: Function): (a: () => boolean, ...extra: unknown[]) => any;
-    (c: Function): {
-        (b: Function, a: () => boolean, ...extra: unknown[]): any;
-        (b: Function): (a: () => boolean, ...extra: unknown[]) => any;
-    };
+type IfElse = {
+    <TR, FR>(onFalse: () => FR, onTrue: () => TR, test: () => boolean): TR | FR;
+    <TR, FR>(onFalse: () => FR, onTrue: () => TR): (test: () => boolean) => TR | FR;
+    <TR, FR>(onFalse: () => FR): (onTrue: () => TR, test: () => boolean) => TR | FR;
+    <TR, FR>(onFalse: () => FR): (onTrue: () => TR) => (test: () => boolean) => TR | FR;
 };
-export default _default;
+declare const ifElseCurried: IfElse;
+export default ifElseCurried;
 //# sourceMappingURL=ifElse.d.ts.map

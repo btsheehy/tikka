@@ -1,6 +1,7 @@
-declare const _default: {
-    (a: number, b: number, ...extra: unknown[]): number;
-    (a: number): (b: number, ...extra: unknown[]) => number;
+type Multiply = {
+    (a: number, b: number): number;
+    (a: number): (b: number) => number;
 };
-export default _default;
+declare const multiplyCurried: Multiply;
+export default multiplyCurried;
 //# sourceMappingURL=multiply.d.ts.map

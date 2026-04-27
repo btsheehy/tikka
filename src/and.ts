@@ -11,4 +11,11 @@ import curry from './curry'
  */
 const and = (a: any, b: any): boolean => !!(a && b)
 
-export default /*#__PURE__*/ curry(and)
+type And = {
+  (a: any, b: any): boolean
+  (a: any): (b: any) => boolean
+}
+
+const andCurried = /*#__PURE__*/ curry(and) as And
+
+export default andCurried

@@ -14,4 +14,11 @@ const countWhere = <T>(arr: Array<T>, test: (x: T) => boolean): number => {
   return filter(test, arr).length
 }
 
-export default /*#__PURE__*/ curryRight(countWhere)
+type CountWhere = {
+  <T>(test: (x: T) => boolean, arr: Array<T>): number
+  <T>(test: (x: T) => boolean): (arr: Array<T>) => number
+}
+
+const countWhereCurried = /*#__PURE__*/ curryRight(countWhere) as CountWhere
+
+export default countWhereCurried

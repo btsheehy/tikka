@@ -1,6 +1,9 @@
-declare const _default: {
-    (a: unknown, b: unknown, ...extra: unknown[]): unknown;
-    (a: unknown): (b: unknown, ...extra: unknown[]) => unknown;
+type CondPair<T, P> = [(args: P) => boolean, T];
+type CondArgs<T, P> = [...CondPair<T, P>[], T];
+type Cond = {
+    <T, P>(args: CondArgs<T, P>, predicateArg: P): T;
+    <T, P>(args: CondArgs<T, P>): (predicateArg: P) => T;
 };
-export default _default;
+declare const condCurried: Cond;
+export default condCurried;
 //# sourceMappingURL=cond.d.ts.map

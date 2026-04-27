@@ -23,7 +23,7 @@ const find = (arr, findFunc) => {
     }
     return undefined;
 };
-var find$1 = curryRight.default(find);
+const findCurried = /*#__PURE__*/ curryRight.default(find);
 
-exports.default = find$1;
+exports.default = findCurried;
 //# sourceMappingURL=find.cjs.map

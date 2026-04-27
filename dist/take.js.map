@@ -1,1 +1,1 @@
-{"version":3,"file":"take.js","sources":["../src/take.ts"],"sourcesContent":[null],"names":[],"mappings":";;AAEA;;;;;;;;AAQG;AACH,MAAM,IAAI,GAAG,CAAI,GAAQ,EAAE,GAAW,KAAI;IACxC,OAAO,GAAG,CAAC,KAAK,CAAC,CAAC,EAAE,GAAG,CAAC;AAC1B,CAAC;AAED,aAAe,cAAc,UAAU,CAAC,IAAI,CAAC;;;;"}
+{"version":3,"file":"take.js","sources":["../src/take.ts"],"sourcesContent":[null],"names":[],"mappings":";;AAEA;;;;;;;;AAQG;AACH,MAAM,IAAI,GAAG,CAAI,GAAQ,EAAE,GAAW,KAAI;IACxC,OAAO,GAAG,CAAC,KAAK,CAAC,CAAC,EAAE,GAAG,CAAC;AAC1B,CAAC;AAOD,MAAM,WAAW,iBAAiB,UAAU,CAAC,IAAI;;;;"}

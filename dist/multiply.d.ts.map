@@ -1,1 +1,1 @@
-{"version":3,"file":"multiply.d.ts","sourceRoot":"","sources":["../src/multiply.ts"],"names":[],"mappings":";;;;AAaA,wBAA4C"}
+{"version":3,"file":"multiply.d.ts","sourceRoot":"","sources":["../src/multiply.ts"],"names":[],"mappings":"AAaA,KAAK,QAAQ,GAAG;IACd,CAAC,CAAC,EAAE,MAAM,EAAE,CAAC,EAAE,MAAM,GAAG,MAAM,CAAA;IAC9B,CAAC,CAAC,EAAE,MAAM,GAAG,CAAC,CAAC,EAAE,MAAM,KAAK,MAAM,CAAA;CACnC,CAAA;AAED,QAAA,MAAM,eAAe,EAAoC,QAAQ,CAAA;AAEjE,eAAe,eAAe,CAAA"}

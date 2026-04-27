@@ -33,4 +33,13 @@ function deepForEach(data: unknown, func: (value: unknown) => unknown) {
   recurseFunc(data)
 }
 
-export default /*#__PURE__*/ curryRight(deepForEach)
+type DeepForEach = {
+  <T>(func: (value: T) => unknown, data: Array<T>): void
+  (func: (value: unknown) => unknown, data: object): void
+  <T>(func: (value: T) => unknown): (data: Array<T>) => void
+  (func: (value: unknown) => unknown): (data: object) => void
+}
+
+const deepForEachCurried = /*#__PURE__*/ curryRight(deepForEach) as DeepForEach
+
+export default deepForEachCurried

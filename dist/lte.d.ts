@@ -1,6 +1,7 @@
-declare const _default: {
-    (a: number, b: number, ...extra: unknown[]): boolean;
-    (a: number): (b: number, ...extra: unknown[]) => boolean;
+type Lte = {
+    (a: number, b: number): boolean;
+    (a: number): (b: number) => boolean;
 };
-export default _default;
+declare const lteCurried: Lte;
+export default lteCurried;
 //# sourceMappingURL=lte.d.ts.map

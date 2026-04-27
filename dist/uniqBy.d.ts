@@ -1,6 +1,7 @@
-declare const _default: {
-    (b: unknown, a: unknown, ...extra: unknown[]): unknown[];
-    (b: unknown): (a: unknown, ...extra: unknown[]) => unknown[];
+type UniqBy = {
+    <T, U>(uniqCond: (x: T) => U, arr: T[]): T[];
+    <T, U>(uniqCond: (x: T) => U): (arr: T[]) => T[];
 };
-export default _default;
+declare const uniqByCurried: UniqBy;
+export default uniqByCurried;
 //# sourceMappingURL=uniqBy.d.ts.map

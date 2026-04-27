@@ -14,7 +14,7 @@ var curryRight = require('./curryRight.cjs');
  * test(/^v\d+$/, 'v12') // true
  */
 const test = (str, regex) => regex.test(str);
-var test$1 = /*#__PURE__*/ curryRight.default(test);
+const testCurried = /*#__PURE__*/ curryRight.default(test);
 
-exports.default = test$1;
+exports.default = testCurried;
 //# sourceMappingURL=test.cjs.map

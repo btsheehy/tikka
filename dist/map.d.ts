@@ -1,6 +1,7 @@
-declare const _default: {
-    (b: unknown, a: unknown, ...extra: unknown[]): unknown[];
-    (b: unknown): (a: unknown, ...extra: unknown[]) => unknown[];
+type Map = {
+    <T, R>(fn: (x: T) => R, arr: T[]): R[];
+    <T, R>(fn: (x: T) => R): (arr: T[]) => R[];
 };
-export default _default;
+declare const mapCurried: Map;
+export default mapCurried;
 //# sourceMappingURL=map.d.ts.map

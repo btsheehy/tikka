@@ -21,7 +21,7 @@ const ifElse = (test, onTrue, onFalse) => {
         return onTrue();
     return onFalse();
 };
-var ifElse$1 = /*#__PURE__*/ curryRight.default(ifElse);
+const ifElseCurried = /*#__PURE__*/ curryRight.default(ifElse);
 
-exports.default = ifElse$1;
+exports.default = ifElseCurried;
 //# sourceMappingURL=ifElse.cjs.map

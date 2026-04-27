@@ -1,6 +1,7 @@
-declare const _default: {
-    (b: (x: any) => any, a: {}, ...extra: unknown[]): {};
-    (b: (x: any) => any): (a: {}, ...extra: unknown[]) => {};
+type ForEachValues = {
+    (fn: (x: any) => any, obj: {}): {};
+    (fn: (x: any) => any): (obj: {}) => {};
 };
-export default _default;
+declare const forEachValuesCurried: ForEachValues;
+export default forEachValuesCurried;
 //# sourceMappingURL=forEachValues.d.ts.map

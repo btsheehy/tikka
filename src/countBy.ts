@@ -23,4 +23,11 @@ const countBy = <T>(arr: T[], iteratee: (value: T) => string): Record<string, nu
   return counts
 }
 
-export default /*#__PURE__*/ curryRight(countBy)
+type CountBy = {
+  <T>(iteratee: (value: T) => string, arr: T[]): Record<string, number>
+  <T>(iteratee: (value: T) => string): (arr: T[]) => Record<string, number>
+}
+
+const countByCurried = /*#__PURE__*/ curryRight(countBy) as CountBy
+
+export default countByCurried

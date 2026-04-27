@@ -17,4 +17,13 @@ const ifElse = (test: () => boolean, onTrue: Function, onFalse: Function) => {
   return onFalse()
 }
 
-export default /*#__PURE__*/ curryRight(ifElse)
+type IfElse = {
+  <TR, FR>(onFalse: () => FR, onTrue: () => TR, test: () => boolean): TR | FR
+  <TR, FR>(onFalse: () => FR, onTrue: () => TR): (test: () => boolean) => TR | FR
+  <TR, FR>(onFalse: () => FR): (onTrue: () => TR, test: () => boolean) => TR | FR
+  <TR, FR>(onFalse: () => FR): (onTrue: () => TR) => (test: () => boolean) => TR | FR
+}
+
+const ifElseCurried = /*#__PURE__*/ curryRight(ifElse) as IfElse
+
+export default ifElseCurried

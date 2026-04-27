@@ -1,6 +1,7 @@
-declare const _default: {
-    (b: unknown, a: unknown, ...extra: unknown[]): unknown[];
-    (b: unknown): (a: unknown, ...extra: unknown[]) => unknown[];
+type Filter = {
+    <T>(filterFunc: (x: T) => boolean, arr: Array<T>): T[];
+    <T>(filterFunc: (x: T) => boolean): (arr: Array<T>) => T[];
 };
-export default _default;
+declare const filterCurried: Filter;
+export default filterCurried;
 //# sourceMappingURL=filter.d.ts.map

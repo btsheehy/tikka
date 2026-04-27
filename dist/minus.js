@@ -10,7 +10,7 @@ import curryRight from './curryRight.js';
  * minus(3, 10) // 7
  */
 const minus = (a, b) => a - b;
-var minus$1 = /*#__PURE__*/ curryRight(minus);
+const minusCurried = /*#__PURE__*/ curryRight(minus);
 
-export { minus$1 as default };
+export { minusCurried as default };
 //# sourceMappingURL=minus.js.map

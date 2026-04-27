@@ -24,4 +24,11 @@ const uniqBy = <T, U>(arr: T[], uniqCond: (x: T) => U): T[] => {
   return newArr
 }
 
-export default /*#__PURE__*/ curryRight(uniqBy)
+type UniqBy = {
+  <T, U>(uniqCond: (x: T) => U, arr: T[]): T[]
+  <T, U>(uniqCond: (x: T) => U): (arr: T[]) => T[]
+}
+
+const uniqByCurried = /*#__PURE__*/ curryRight(uniqBy) as UniqBy
+
+export default uniqByCurried

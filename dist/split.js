@@ -10,7 +10,7 @@ import curryRight from './curryRight.js';
  * split(',', 'a,b,c') // ['a', 'b', 'c']
  */
 const split = (str, separator) => str.split(separator);
-var split$1 = /*#__PURE__*/ curryRight(split);
+const splitCurried = /*#__PURE__*/ curryRight(split);
 
-export { split$1 as default };
+export { splitCurried as default };
 //# sourceMappingURL=split.js.map

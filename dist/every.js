@@ -22,7 +22,7 @@ const every = (arr, test) => {
     }
     return allPass;
 };
-var every$1 = /*#__PURE__*/ curryRight(every);
+const everyCurried = /*#__PURE__*/ curryRight(every);
 
-export { every$1 as default };
+export { everyCurried as default };
 //# sourceMappingURL=every.js.map

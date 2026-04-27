@@ -22,7 +22,7 @@ const map = (arr, fn) => {
     }
     return result;
 };
-var map$1 = /*#__PURE__*/ curryRight.default(map);
+const mapCurried = /*#__PURE__*/ curryRight.default(map);
 
-exports.default = map$1;
+exports.default = mapCurried;
 //# sourceMappingURL=map.cjs.map

@@ -26,7 +26,7 @@ const sort = (arr, iteratee) => {
         return 0;
     });
 };
-var sort$1 = /*#__PURE__*/ curryRight.default(sort);
+const sortCurried = /*#__PURE__*/ curryRight.default(sort);
 
-exports.default = sort$1;
+exports.default = sortCurried;
 //# sourceMappingURL=sort.cjs.map

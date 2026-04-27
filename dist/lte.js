@@ -10,7 +10,7 @@ import curry from './curry.js';
  * lte(5, 5) // true
  */
 const lt = (a, b) => a <= b;
-var lte = /*#__PURE__*/ curry(lt);
+const lteCurried = /*#__PURE__*/ curry(lt);
 
-export { lte as default };
+export { lteCurried as default };
 //# sourceMappingURL=lte.js.map

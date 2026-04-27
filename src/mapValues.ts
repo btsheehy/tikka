@@ -23,4 +23,13 @@ const mapValues = <T extends Record<string, unknown>, R>(
   return newObj as Record<keyof T, R>
 }
 
-export default /*#__PURE__*/ curryRight(mapValues)
+type MapValues = {
+  <T extends Record<string, unknown>, R>(fn: (x: T[keyof T]) => R, obj: T): Record<keyof T, R>
+  <T extends Record<string, unknown>, R>(
+    fn: (x: T[keyof T]) => R
+  ): (obj: T) => Record<keyof T, R>
+}
+
+const mapValuesCurried = /*#__PURE__*/ curryRight(mapValues) as MapValues
+
+export default mapValuesCurried

@@ -1,6 +1,7 @@
-declare const _default: {
-    (b: unknown, a: unknown, ...extra: unknown[]): number;
-    (b: unknown): (a: unknown, ...extra: unknown[]) => number;
+type FindIndex = {
+    <T>(findFunc: (x: T) => boolean, arr: Array<T>): number;
+    <T>(findFunc: (x: T) => boolean): (arr: Array<T>) => number;
 };
-export default _default;
+declare const findIndexCurried: FindIndex;
+export default findIndexCurried;
 //# sourceMappingURL=findIndex.d.ts.map

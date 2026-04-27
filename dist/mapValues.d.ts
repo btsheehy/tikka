@@ -1,6 +1,7 @@
-declare const _default: {
-    (b: unknown, a: unknown, ...extra: unknown[]): Record<string, unknown>;
-    (b: unknown): (a: unknown, ...extra: unknown[]) => Record<string, unknown>;
+type MapValues = {
+    <T extends Record<string, unknown>, R>(fn: (x: T[keyof T]) => R, obj: T): Record<keyof T, R>;
+    <T extends Record<string, unknown>, R>(fn: (x: T[keyof T]) => R): (obj: T) => Record<keyof T, R>;
 };
-export default _default;
+declare const mapValuesCurried: MapValues;
+export default mapValuesCurried;
 //# sourceMappingURL=mapValues.d.ts.map

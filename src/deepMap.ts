@@ -31,4 +31,13 @@ function deepMap(data: unknown, func: (x: unknown) => unknown) {
   return recurseFunc(data)
 }
 
-export default /*#__PURE__*/ curryRight(deepMap)
+type DeepMap = {
+  <T, R>(func: (x: T) => R, data: Array<T>): Array<R>
+  (func: (x: unknown) => unknown, data: object): object
+  <T, R>(func: (x: T) => R): (data: Array<T>) => Array<R>
+  (func: (x: unknown) => unknown): (data: object) => object
+}
+
+const deepMapCurried = /*#__PURE__*/ curryRight(deepMap) as DeepMap
+
+export default deepMapCurried

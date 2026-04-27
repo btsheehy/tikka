@@ -1,6 +1,7 @@
-declare const _default: {
-    (a: any, b: any, ...extra: unknown[]): boolean;
-    (a: any): (b: any, ...extra: unknown[]) => boolean;
+type Or = {
+    (a: any, b: any): boolean;
+    (a: any): (b: any) => boolean;
 };
-export default _default;
+declare const orCurried: Or;
+export default orCurried;
 //# sourceMappingURL=or.d.ts.map

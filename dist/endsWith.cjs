@@ -14,7 +14,7 @@ var curryRight = require('./curryRight.cjs');
  * endsWith('.ts', 'index.ts') // true
  */
 const endsWith = (str, suffix) => str.endsWith(suffix);
-var endsWith$1 = /*#__PURE__*/ curryRight.default(endsWith);
+const endsWithCurried = /*#__PURE__*/ curryRight.default(endsWith);
 
-exports.default = endsWith$1;
+exports.default = endsWithCurried;
 //# sourceMappingURL=endsWith.cjs.map

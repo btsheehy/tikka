@@ -20,7 +20,7 @@ const filter = (arr, filterFunc) => {
     }
     return result;
 };
-var filter$1 = /*#__PURE__*/ curryRight(filter, filter.length);
+const filterCurried = /*#__PURE__*/ curryRight(filter, filter.length);
 
-export { filter$1 as default };
+export { filterCurried as default };
 //# sourceMappingURL=filter.js.map

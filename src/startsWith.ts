@@ -11,4 +11,11 @@ import curryRight from './curryRight'
  */
 const startsWith = (str: string, prefix: string) => str.startsWith(prefix)
 
-export default /*#__PURE__*/ curryRight(startsWith)
+type StartsWith = {
+  (prefix: string, str: string): boolean
+  (prefix: string): (str: string) => boolean
+}
+
+const startsWithCurried = /*#__PURE__*/ curryRight(startsWith) as StartsWith
+
+export default startsWithCurried

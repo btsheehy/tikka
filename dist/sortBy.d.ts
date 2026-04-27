@@ -9,13 +9,10 @@
  * sortBy('age', 'desc', [{ age: 1 }, { age: 3 }, { age: 2 }])
  */
 export type SortDirection = 'asc' | 'desc';
-declare const _default: {
-    (c: unknown, b: unknown, a: unknown, ...extra: unknown[]): Record<string, unknown>[];
-    (c: unknown, b: unknown): (a: unknown, ...extra: unknown[]) => Record<string, unknown>[];
-    (c: unknown): {
-        (b: unknown, a: unknown, ...extra: unknown[]): Record<string, unknown>[];
-        (b: unknown): (a: unknown, ...extra: unknown[]) => Record<string, unknown>[];
-    };
+type SortBy = {
+    <T extends Record<string, unknown>, K extends keyof T>(fieldOrIteratee: K | ((value: T) => unknown), direction: SortDirection, arr: T[]): T[];
+    <T extends Record<string, unknown>, K extends keyof T>(fieldOrIteratee: K | ((value: T) => unknown), direction: SortDirection): (arr: T[]) => T[];
 };
-export default _default;
+declare const sortByCurried: SortBy;
+export default sortByCurried;
 //# sourceMappingURL=sortBy.d.ts.map

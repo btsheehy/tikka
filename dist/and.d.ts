@@ -1,6 +1,7 @@
-declare const _default: {
-    (a: any, b: any, ...extra: unknown[]): boolean;
-    (a: any): (b: any, ...extra: unknown[]) => boolean;
+type And = {
+    (a: any, b: any): boolean;
+    (a: any): (b: any) => boolean;
 };
-export default _default;
+declare const andCurried: And;
+export default andCurried;
 //# sourceMappingURL=and.d.ts.map

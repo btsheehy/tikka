@@ -1,6 +1,7 @@
-declare const _default: {
-    (b: string, a: {}, ...extra: unknown[]): boolean;
-    (b: string): (a: {}, ...extra: unknown[]) => boolean;
+type Has = {
+    (prop: string, obj: {}): boolean;
+    (prop: string): (obj: {}) => boolean;
 };
-export default _default;
+declare const hasCurried: Has;
+export default hasCurried;
 //# sourceMappingURL=has.d.ts.map

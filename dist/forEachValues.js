@@ -15,7 +15,7 @@ const forEachValues = (obj, fn) => {
     });
     return obj;
 };
-var forEachValues$1 = /*#__PURE__*/ curryRight(forEachValues);
+const forEachValuesCurried = /*#__PURE__*/ curryRight(forEachValues);
 
-export { forEachValues$1 as default };
+export { forEachValuesCurried as default };
 //# sourceMappingURL=forEachValues.js.map

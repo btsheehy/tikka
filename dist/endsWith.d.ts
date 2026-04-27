@@ -1,6 +1,7 @@
-declare const _default: {
-    (b: string, a: string, ...extra: unknown[]): boolean;
-    (b: string): (a: string, ...extra: unknown[]) => boolean;
+type EndsWith = {
+    (suffix: string, str: string): boolean;
+    (suffix: string): (str: string) => boolean;
 };
-export default _default;
+declare const endsWithCurried: EndsWith;
+export default endsWithCurried;
 //# sourceMappingURL=endsWith.d.ts.map

@@ -11,4 +11,11 @@ import curryRight from './curryRight'
 
 const has = (obj: {}, prop: string) => Object.hasOwn(obj, prop)
 
-export default /*#__PURE__*/ curryRight(has)
+type Has = {
+  (prop: string, obj: {}): boolean
+  (prop: string): (obj: {}) => boolean
+}
+
+const hasCurried = /*#__PURE__*/ curryRight(has) as Has
+
+export default hasCurried

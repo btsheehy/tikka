@@ -19,4 +19,13 @@ function getOr(obj: any, prop: any, defaultValue: any) {
   return defaultValue
 }
 
-export default /*#__PURE__*/ curryRight(getOr)
+type GetOr = {
+  <T, K extends keyof T, R>(defaultValue: R, prop: K, obj: T): T[K]
+  <R>(defaultValue: R, prop: PropertyKey, obj: {}): R
+  <T, K extends keyof T, R>(defaultValue: R, prop: K): (obj: T) => T[K]
+  <R>(defaultValue: R, prop: PropertyKey): (obj: {}) => R
+}
+
+const getOrCurried = /*#__PURE__*/ curryRight(getOr) as GetOr
+
+export default getOrCurried

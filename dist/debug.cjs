@@ -18,7 +18,7 @@ const debug = (value, msg) => {
     console.log(value);
     return value;
 };
-var debug$1 = /*#__PURE__*/ curryRight.default(debug);
+const debugCurried = /*#__PURE__*/ curryRight.default(debug);
 
-exports.default = debug$1;
+exports.default = debugCurried;
 //# sourceMappingURL=debug.cjs.map

@@ -17,7 +17,7 @@ var filter = require('./filter.cjs');
 const countWhere = (arr, test) => {
     return filter.default(test, arr).length;
 };
-var countWhere$1 = /*#__PURE__*/ curryRight.default(countWhere);
+const countWhereCurried = /*#__PURE__*/ curryRight.default(countWhere);
 
-exports.default = countWhere$1;
+exports.default = countWhereCurried;
 //# sourceMappingURL=countWhere.cjs.map

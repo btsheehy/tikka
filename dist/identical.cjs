@@ -15,7 +15,7 @@ var curryRight = require('./curryRight.cjs');
  * identical(NaN, NaN) // true
  */
 const identical = (a, b) => Object.is(a, b);
-var identical$1 = /*#__PURE__*/ curryRight.default(identical);
+const identicalCurried = /*#__PURE__*/ curryRight.default(identical);
 
-exports.default = identical$1;
+exports.default = identicalCurried;
 //# sourceMappingURL=identical.cjs.map

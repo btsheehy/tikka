@@ -19,7 +19,7 @@ const forEachValues = (obj, fn) => {
     });
     return obj;
 };
-var forEachValues$1 = /*#__PURE__*/ curryRight.default(forEachValues);
+const forEachValuesCurried = /*#__PURE__*/ curryRight.default(forEachValues);
 
-exports.default = forEachValues$1;
+exports.default = forEachValuesCurried;
 //# sourceMappingURL=forEachValues.cjs.map

@@ -22,4 +22,11 @@ const any = <T>(arr: Array<T>, test: (t: T) => boolean) => {
   return false
 }
 
-export default /*#__PURE__*/ curryRight(any)
+type Any = {
+  <T>(test: (t: T) => boolean, arr: Array<T>): boolean
+  <T>(test: (t: T) => boolean): (arr: Array<T>) => boolean
+}
+
+const anyCurried = /*#__PURE__*/ curryRight(any) as Any
+
+export default anyCurried

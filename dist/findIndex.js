@@ -19,7 +19,7 @@ const findIndex = (arr, findFunc) => {
     }
     return -1;
 };
-var findIndex$1 = /*#__PURE__*/ curryRight(findIndex);
+const findIndexCurried = /*#__PURE__*/ curryRight(findIndex);
 
-export { findIndex$1 as default };
+export { findIndexCurried as default };
 //# sourceMappingURL=findIndex.js.map

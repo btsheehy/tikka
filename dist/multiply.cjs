@@ -14,7 +14,7 @@ var curry = require('./curry.cjs');
  * multiply(6, 7) // 42
  */
 const multiply = (a, b) => a * b;
-var multiply$1 = /*#__PURE__*/ curry.default(multiply);
+const multiplyCurried = /*#__PURE__*/ curry.default(multiply);
 
-exports.default = multiply$1;
+exports.default = multiplyCurried;
 //# sourceMappingURL=multiply.cjs.map

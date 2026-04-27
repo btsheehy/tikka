@@ -20,7 +20,7 @@ function getOr(obj, prop, defaultValue) {
         return get.default(prop, obj);
     return defaultValue;
 }
-var getOr$1 = /*#__PURE__*/ curryRight.default(getOr);
+const getOrCurried = /*#__PURE__*/ curryRight.default(getOr);
 
-exports.default = getOr$1;
+exports.default = getOrCurried;
 //# sourceMappingURL=getOr.cjs.map

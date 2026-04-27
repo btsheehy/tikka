@@ -23,4 +23,11 @@ const every = <T>(arr: Array<T>, test: (x: T) => boolean) => {
   return allPass
 }
 
-export default /*#__PURE__*/ curryRight(every)
+type Every = {
+  <T>(test: (x: T) => boolean, arr: Array<T>): boolean
+  <T>(test: (x: T) => boolean): (arr: Array<T>) => boolean
+}
+
+const everyCurried = /*#__PURE__*/ curryRight(every) as Every
+
+export default everyCurried

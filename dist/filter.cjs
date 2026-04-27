@@ -24,7 +24,7 @@ const filter = (arr, filterFunc) => {
     }
     return result;
 };
-var filter$1 = /*#__PURE__*/ curryRight.default(filter, filter.length);
+const filterCurried = /*#__PURE__*/ curryRight.default(filter, filter.length);
 
-exports.default = filter$1;
+exports.default = filterCurried;
 //# sourceMappingURL=filter.cjs.map
