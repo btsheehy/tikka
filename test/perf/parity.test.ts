@@ -1,7 +1,7 @@
 import fp from 'lodash/fp'
 import * as R from 'ramda'
 import { describe, expect, it } from 'vitest'
-import { contains, filter, find, flatten, groupBy, map, pipe, sort, uniq, uniqBy } from '../../src/index'
+import { contains, filter, find, flatten, groupBy, map, pipe, sort, uniq, uniqBy } from '../../dist/index.js'
 import { LARGE_DATASET } from './fixtures'
 
 const LONG_TIMEOUT_MS = 120_000
