@@ -1,6 +1,11 @@
-declare const _default: {
-    (b: never[], a: unknown, ...extra: unknown[]): Partial<unknown>;
-    (b: never[]): (a: unknown, ...extra: unknown[]) => Partial<unknown>;
+type Grab = {
+    <T, K extends keyof T>(props: readonly K[], data: T): Partial<Pick<T, K>>;
+    <T, K extends keyof T>(props: readonly K[], data: T[]): Array<Partial<Pick<T, K>>>;
+    <K extends PropertyKey>(props: readonly K[]): {
+        <T extends Record<K, unknown>>(data: T): Partial<Pick<T, K>>;
+        <T extends Record<K, unknown>>(data: T[]): Array<Partial<Pick<T, K>>>;
+    };
 };
-export default _default;
+declare const grab: Grab;
+export default grab;
 //# sourceMappingURL=grab.d.ts.map

@@ -1,6 +1,6 @@
 {
-  "name": "tikka",
-  "version": "1.0.0",
+  "name": "@btsheehy/tikka",
+  "version": "1.0.1",
   "description": "Minimal dependency-free functional programming utilities for TypeScript and JavaScript",
   "sideEffects": false,
   "main": "dist/index.cjs",

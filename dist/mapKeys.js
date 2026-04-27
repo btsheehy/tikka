@@ -3,7 +3,7 @@ import curryRight from './curryRight.js';
 /**
  * mapKeys utility function.
  */
-const mapKeys = (obj, fn) => {
+const mapKeysImpl = (obj, fn) => {
     const keys = Object.keys(obj);
     const newObj = {};
     keys.forEach((k) => {
@@ -11,7 +11,7 @@ const mapKeys = (obj, fn) => {
     });
     return newObj;
 };
-var mapKeys$1 = /*#__PURE__*/ curryRight(mapKeys);
+const mapKeys = /*#__PURE__*/ curryRight(mapKeysImpl);
 
-export { mapKeys$1 as default };
+export { mapKeys as default };
 //# sourceMappingURL=mapKeys.js.map

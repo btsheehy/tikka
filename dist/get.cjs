@@ -10,8 +10,8 @@ var curryRight = require('./curryRight.cjs');
  * @example
  * get('a', { a: 1 }) // 1
  */
-const get = (object, property) => object[property];
-var get$1 = /*#__PURE__*/ curryRight.default(get);
+const getImpl = (object, property) => object[property];
+const get = /*#__PURE__*/ curryRight.default(getImpl);
 
-exports.default = get$1;
+exports.default = get;
 //# sourceMappingURL=get.cjs.map

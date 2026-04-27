@@ -3,4 +3,4 @@ const always =
   () =>
     arg
 
-export default /*#__PURE__*/ always
+export default always

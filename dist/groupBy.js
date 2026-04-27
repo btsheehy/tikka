@@ -6,7 +6,7 @@ const groupByImpl = (arr, grouper) => {
     const groups = {};
     let i = 0;
     while (i < arr.length) {
-        const group = groupingFunction(arr[i]);
+        const group = groupingFunction(arr[i]).toString();
         if (groups[group])
             groups[group].push(arr[i]);
         else

@@ -24,10 +24,10 @@ const groupByImpl = <T, K extends keyof T>(
 ): Record<string, T[]> => {
   const groupingFunction = typeof grouper === 'function' ? grouper : get(grouper)
 
-  const groups = {}
+  const groups = {} as Record<string, T[]>
   let i = 0
   while (i < arr.length) {
-    const group = groupingFunction(arr[i])
+    const group = groupingFunction(arr[i]).toString()
     if (groups[group]) groups[group].push(arr[i])
     else groups[group] = [arr[i]]
     i++

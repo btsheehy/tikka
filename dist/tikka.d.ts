@@ -83,8 +83,8 @@ declare const tikka: {
         (b: (x: any) => any): (a: {}, ...extra: unknown[]) => {};
     };
     get: {
-        (b: unknown, a: unknown, ...extra: unknown[]): never;
-        (b: unknown): (a: unknown, ...extra: unknown[]) => never;
+        <T, K extends keyof T>(property: K, object: T): T[K];
+        <K extends PropertyKey>(property: K): <T extends Record<K, unknown>>(object: T) => T[K];
     };
     getOr: {
         (c: unknown, b: any, a: {}, ...extra: unknown[]): unknown;
@@ -95,8 +95,12 @@ declare const tikka: {
         };
     };
     grab: {
-        (b: never[], a: unknown, ...extra: unknown[]): Partial<unknown>;
-        (b: never[]): (a: unknown, ...extra: unknown[]) => Partial<unknown>;
+        <T, K extends keyof T>(props: readonly K[], data: T): Partial<Pick<T, K>>;
+        <T, K extends keyof T>(props: readonly K[], data: T[]): Array<Partial<Pick<T, K>>>;
+        <K extends PropertyKey>(props: readonly K[]): {
+            <T extends Record<K, unknown>>(data: T): Partial<Pick<T, K>>;
+            <T extends Record<K, unknown>>(data: T[]): Array<Partial<Pick<T, K>>>;
+        };
     };
     groupBy: {
         <T>(grouper: (x: T) => string | number, arr: T[]): Record<string, T[]>;
@@ -146,8 +150,8 @@ declare const tikka: {
         (b: unknown): (a: unknown, ...extra: unknown[]) => unknown[];
     };
     mapKeys: {
-        (b: unknown, a: unknown, ...extra: unknown[]): Record<string, never>;
-        (b: unknown): (a: unknown, ...extra: unknown[]) => Record<string, never>;
+        <T extends object, K extends keyof T, R extends string>(fn: (x: K) => R, obj: T): Record<R, T[K]>;
+        <T extends object, K extends keyof T, R extends string>(fn: (x: K) => R): (obj: T) => Record<R, T[K]>;
     };
     mapValues: {
         (b: unknown, a: unknown, ...extra: unknown[]): Record<string, unknown>;
@@ -169,8 +173,8 @@ declare const tikka: {
     pipe: typeof pipe;
     placeholder: any;
     pluck: {
-        (b: unknown, a: unknown, ...extra: unknown[]): never[];
-        (b: unknown): (a: unknown, ...extra: unknown[]) => never[];
+        <T, K extends keyof T>(prop: K, collection: T[]): T[K][];
+        <K extends PropertyKey>(prop: K): <T extends Record<K, unknown>>(collection: T[]) => T[K][];
     };
     plus: {
         (a: number, b: number, ...extra: unknown[]): number;
@@ -185,8 +189,12 @@ declare const tikka: {
         };
     };
     select: {
-        (b: never[], a: unknown, ...extra: unknown[]): Partial<unknown>;
-        (b: never[]): (a: unknown, ...extra: unknown[]) => Partial<unknown>;
+        <T, K extends keyof T>(props: readonly K[], data: T): Partial<Pick<T, K>>;
+        <T, K extends keyof T>(props: readonly K[], data: T[]): Array<Partial<Pick<T, K>>>;
+        <K extends PropertyKey>(props: readonly K[]): {
+            <T extends Record<K, unknown>>(data: T): Partial<Pick<T, K>>;
+            <T extends Record<K, unknown>>(data: T[]): Array<Partial<Pick<T, K>>>;
+        };
     };
     self: <T>(a: T) => T;
     sortBy: {
@@ -427,16 +435,16 @@ declare const tikka: {
         (b: (x: any) => any): (a: {}, ...extra: unknown[]) => {};
     };
     prop: {
-        (b: unknown, a: unknown, ...extra: unknown[]): never;
-        (b: unknown): (a: unknown, ...extra: unknown[]) => never;
+        <T, K extends keyof T>(property: K, object: T): T[K];
+        <K extends PropertyKey>(property: K): <T extends Record<K, unknown>>(object: T) => T[K];
     };
     property: {
-        (b: unknown, a: unknown, ...extra: unknown[]): never;
-        (b: unknown): (a: unknown, ...extra: unknown[]) => never;
+        <T, K extends keyof T>(property: K, object: T): T[K];
+        <K extends PropertyKey>(property: K): <T extends Record<K, unknown>>(object: T) => T[K];
     };
     lookup: {
-        (b: unknown, a: unknown, ...extra: unknown[]): never;
-        (b: unknown): (a: unknown, ...extra: unknown[]) => never;
+        <T, K extends keyof T>(property: K, object: T): T[K];
+        <K extends PropertyKey>(property: K): <T extends Record<K, unknown>>(object: T) => T[K];
     };
     propOr: {
         (c: unknown, b: any, a: {}, ...extra: unknown[]): unknown;
@@ -463,16 +471,28 @@ declare const tikka: {
         };
     };
     pick: {
-        (b: never[], a: unknown, ...extra: unknown[]): Partial<unknown>;
-        (b: never[]): (a: unknown, ...extra: unknown[]) => Partial<unknown>;
+        <T, K extends keyof T>(props: readonly K[], data: T): Partial<Pick<T, K>>;
+        <T, K extends keyof T>(props: readonly K[], data: T[]): Array<Partial<Pick<T, K>>>;
+        <K extends PropertyKey>(props: readonly K[]): {
+            <T extends Record<K, unknown>>(data: T): Partial<Pick<T, K>>;
+            <T extends Record<K, unknown>>(data: T[]): Array<Partial<Pick<T, K>>>;
+        };
     };
     pickKeys: {
-        (b: never[], a: unknown, ...extra: unknown[]): Partial<unknown>;
-        (b: never[]): (a: unknown, ...extra: unknown[]) => Partial<unknown>;
+        <T, K extends keyof T>(props: readonly K[], data: T): Partial<Pick<T, K>>;
+        <T, K extends keyof T>(props: readonly K[], data: T[]): Array<Partial<Pick<T, K>>>;
+        <K extends PropertyKey>(props: readonly K[]): {
+            <T extends Record<K, unknown>>(data: T): Partial<Pick<T, K>>;
+            <T extends Record<K, unknown>>(data: T[]): Array<Partial<Pick<T, K>>>;
+        };
     };
     selectKeys: {
-        (b: never[], a: unknown, ...extra: unknown[]): Partial<unknown>;
-        (b: never[]): (a: unknown, ...extra: unknown[]) => Partial<unknown>;
+        <T, K extends keyof T>(props: readonly K[], data: T): Partial<Pick<T, K>>;
+        <T, K extends keyof T>(props: readonly K[], data: T[]): Array<Partial<Pick<T, K>>>;
+        <K extends PropertyKey>(props: readonly K[]): {
+            <T extends Record<K, unknown>>(data: T): Partial<Pick<T, K>>;
+            <T extends Record<K, unknown>>(data: T[]): Array<Partial<Pick<T, K>>>;
+        };
     };
     classify: {
         <T>(grouper: (x: T) => string | number, arr: T[]): Record<string, T[]>;
@@ -567,16 +587,16 @@ declare const tikka: {
         (a: number): (b: number, ...extra: unknown[]) => boolean;
     };
     transformKeys: {
-        (b: unknown, a: unknown, ...extra: unknown[]): Record<string, never>;
-        (b: unknown): (a: unknown, ...extra: unknown[]) => Record<string, never>;
+        <T extends object, K extends keyof T, R extends string>(fn: (x: K) => R, obj: T): Record<R, T[K]>;
+        <T extends object, K extends keyof T, R extends string>(fn: (x: K) => R): (obj: T) => Record<R, T[K]>;
     };
     renameKeys: {
-        (b: unknown, a: unknown, ...extra: unknown[]): Record<string, never>;
-        (b: unknown): (a: unknown, ...extra: unknown[]) => Record<string, never>;
+        <T extends object, K extends keyof T, R extends string>(fn: (x: K) => R, obj: T): Record<R, T[K]>;
+        <T extends object, K extends keyof T, R extends string>(fn: (x: K) => R): (obj: T) => Record<R, T[K]>;
     };
     mapObjectKeys: {
-        (b: unknown, a: unknown, ...extra: unknown[]): Record<string, never>;
-        (b: unknown): (a: unknown, ...extra: unknown[]) => Record<string, never>;
+        <T extends object, K extends keyof T, R extends string>(fn: (x: K) => R, obj: T): Record<R, T[K]>;
+        <T extends object, K extends keyof T, R extends string>(fn: (x: K) => R): (obj: T) => Record<R, T[K]>;
     };
     transformValues: {
         (b: unknown, a: unknown, ...extra: unknown[]): Record<string, unknown>;
@@ -616,20 +636,20 @@ declare const tikka: {
     hole: any;
     argPlaceholder: any;
     mapProp: {
-        (b: unknown, a: unknown, ...extra: unknown[]): never[];
-        (b: unknown): (a: unknown, ...extra: unknown[]) => never[];
+        <T, K extends keyof T>(prop: K, collection: T[]): T[K][];
+        <K extends PropertyKey>(prop: K): <T extends Record<K, unknown>>(collection: T[]) => T[K][];
     };
     projectProp: {
-        (b: unknown, a: unknown, ...extra: unknown[]): never[];
-        (b: unknown): (a: unknown, ...extra: unknown[]) => never[];
+        <T, K extends keyof T>(prop: K, collection: T[]): T[K][];
+        <K extends PropertyKey>(prop: K): <T extends Record<K, unknown>>(collection: T[]) => T[K][];
     };
     extractProp: {
-        (b: unknown, a: unknown, ...extra: unknown[]): never[];
-        (b: unknown): (a: unknown, ...extra: unknown[]) => never[];
+        <T, K extends keyof T>(prop: K, collection: T[]): T[K][];
+        <K extends PropertyKey>(prop: K): <T extends Record<K, unknown>>(collection: T[]) => T[K][];
     };
     propertyValues: {
-        (b: unknown, a: unknown, ...extra: unknown[]): never[];
-        (b: unknown): (a: unknown, ...extra: unknown[]) => never[];
+        <T, K extends keyof T>(prop: K, collection: T[]): T[K][];
+        <K extends PropertyKey>(prop: K): <T extends Record<K, unknown>>(collection: T[]) => T[K][];
     };
     add: {
         (a: number, b: number, ...extra: unknown[]): number;

@@ -1,6 +1,7 @@
-declare const _default: {
-    (b: unknown, a: unknown, ...extra: unknown[]): never;
-    (b: unknown): (a: unknown, ...extra: unknown[]) => never;
+type Get = {
+    <T, K extends keyof T>(property: K, object: T): T[K];
+    <K extends PropertyKey>(property: K): <T extends Record<K, unknown>>(object: T) => T[K];
 };
-export default _default;
+declare const get: Get;
+export default get;
 //# sourceMappingURL=get.d.ts.map

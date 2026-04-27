@@ -1,6 +1,7 @@
-declare const _default: {
-    (b: unknown, a: unknown, ...extra: unknown[]): never[];
-    (b: unknown): (a: unknown, ...extra: unknown[]) => never[];
+type Pluck = {
+    <T, K extends keyof T>(prop: K, collection: T[]): T[K][];
+    <K extends PropertyKey>(prop: K): <T extends Record<K, unknown>>(collection: T[]) => T[K][];
 };
-export default _default;
+declare const pluck: Pluck;
+export default pluck;
 //# sourceMappingURL=pluck.d.ts.map

@@ -6,8 +6,8 @@ import curryRight from './curryRight.js';
  * @example
  * get('a', { a: 1 }) // 1
  */
-const get = (object, property) => object[property];
-var get$1 = /*#__PURE__*/ curryRight(get);
+const getImpl = (object, property) => object[property];
+const get = /*#__PURE__*/ curryRight(getImpl);
 
-export { get$1 as default };
+export { get as default };
 //# sourceMappingURL=get.js.map
