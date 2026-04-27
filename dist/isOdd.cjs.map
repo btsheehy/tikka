@@ -1,1 +1,1 @@
-{"version":3,"file":"isOdd.cjs","sources":["../src/isOdd.ts"],"sourcesContent":[null],"names":["isEven"],"mappings":";;;;;;AAEA,MAAM,KAAK,GAAG,CAAC,MAAc,KAAK,CAACA,cAAM,CAAC,MAAM;;;;"}
+{"version":3,"file":"isOdd.cjs","sources":["../src/isOdd.ts"],"sourcesContent":[null],"names":["isEven"],"mappings":";;;;;;AAEA;;AAEG;AACH,MAAM,KAAK,GAAG,CAAC,MAAc,KAAK,CAACA,cAAM,CAAC,MAAM;;;;"}

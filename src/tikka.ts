@@ -1,7 +1,9 @@
+import always from './always'
 import and from './and'
 import any from './any'
 import compact from './compact'
 import concat from './concat'
+import cond from './cond'
 import contains from './contains'
 import countBy from './countBy'
 import countWhere from './countWhere'
@@ -40,12 +42,14 @@ import map from './map'
 import mapKeys from './mapKeys'
 import mapValues from './mapValues'
 import minus from './minus'
+import multiply from './multiply'
 import noop from './noop'
 import or from './or'
 import pipe from './pipe'
 import placeholder from './placeholder'
 import pluck from './pluck'
 import plus from './plus'
+import replace from './replace'
 import select from './select'
 import self from './self'
 import sortBy from './sortBy'
@@ -60,10 +64,12 @@ import uniq from './uniq'
 import uniqBy from './uniqBy'
 
 const tikka = {
+  always,
   and,
   any,
   compact,
   concat,
+  cond,
   contains,
   countBy,
   countWhere,
@@ -102,12 +108,14 @@ const tikka = {
   mapKeys,
   mapValues,
   minus,
+  multiply,
   noop,
   or,
   pipe,
   placeholder,
   pluck,
   plus,
+  replace,
   select,
   self,
   sortBy,
@@ -135,6 +143,8 @@ const tikka = {
 
   append: concat,
   conj: concat,
+
+  condition: cond,
 
   includesValue: contains,
   containsValue: contains,
@@ -241,7 +251,6 @@ const tikka = {
   same: identity,
   idValue: identity,
 
-  cond: ifElse,
   whenElse: ifElse,
   branch: ifElse,
 
@@ -338,7 +347,8 @@ const tikka = {
   uniqueBy: uniqBy,
   dedupeBy: uniqBy,
   nubBy: uniqBy,
+
+  replaceAll: replace,
 }
 
 export default tikka
-

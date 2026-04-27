@@ -1,1 +1,1 @@
-{"version":3,"file":"uniq.d.ts","sourceRoot":"","sources":["../src/uniq.ts"],"names":[],"mappings":"AAAA,QAAA,MAAM,IAAI,GAAI,CAAC,EAAE,KAAK,CAAC,EAAE,KAAG,CAAC,EAA8B,CAAA;AAE3D,eAAe,IAAI,CAAA"}
+{"version":3,"file":"uniq.d.ts","sourceRoot":"","sources":["../src/uniq.ts"],"names":[],"mappings":"AAAA;;GAEG;AACH,QAAA,MAAM,IAAI,GAAI,CAAC,EAAE,KAAK,CAAC,EAAE,KAAG,CAAC,EAA8B,CAAA;AAE3D,eAAe,IAAI,CAAA"}

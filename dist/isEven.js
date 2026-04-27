@@ -1,3 +1,6 @@
+/**
+ * Returns true for even numbers.
+ */
 const isEven = (num) => {
     return num % 2 === 0;
 };

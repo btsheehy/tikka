@@ -1,5 +1,8 @@
 import curryRight from './curryRight.js';
 
+/**
+ * Logs `msg` and `value`, then returns `value`.
+ */
 const debug = (value, msg) => {
     console.log(msg);
     console.log(value);

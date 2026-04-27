@@ -1,6 +1,12 @@
 import curryRight from './curryRight.js';
 import filter from './filter.js';
 
+/**
+ * Counts array elements matching `test`.
+ *
+ * @example
+ * countWhere((x) => x % 2 === 0, [1,2,3,4]) // 2
+ */
 const countWhere = (arr, test) => {
     return filter(test, arr).length;
 };

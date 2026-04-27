@@ -1,5 +1,8 @@
 import curryRight from './curryRight.js';
 
+/**
+ * pluck utility function.
+ */
 const pluck = (collection, prop) => collection.map((item) => item[prop]);
 var pluck$1 = /*#__PURE__*/ curryRight(pluck);
 

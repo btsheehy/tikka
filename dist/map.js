@@ -1,5 +1,11 @@
 import curryRight from './curryRight.js';
 
+/**
+ * Maps array values.
+ *
+ * @example
+ * map((x)=>x*2, [1,2,3]) // [2,4,6]
+ */
 const map = (arr, fn) => {
     const result = new Array(arr.length);
     let index = 0;

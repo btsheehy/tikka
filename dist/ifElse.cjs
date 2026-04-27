@@ -4,6 +4,9 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var curryRight = require('./curryRight.cjs');
 
+/**
+ * Runs `test()`, then executes `onTrue()` or `onFalse()`.
+ */
 // TODO: Needs work
 const ifElse = (test, onTrue, onFalse) => {
     const trueOrFalse = test();

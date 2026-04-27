@@ -4,6 +4,9 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var curryRight = require('./curryRight.cjs');
 
+/**
+ * Logs `msg` and `value`, then returns `value`.
+ */
 const debug = (value, msg) => {
     console.log(msg);
     console.log(value);

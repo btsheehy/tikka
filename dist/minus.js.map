@@ -1,1 +1,1 @@
-{"version":3,"file":"minus.js","sources":["../src/minus.ts"],"sourcesContent":[null],"names":[],"mappings":";;AAEA,MAAM,KAAK,GAAG,CAAC,CAAS,EAAE,CAAS,KAAK,CAAC,GAAG,CAAC;AAE7C,cAAe,cAAc,UAAU,CAAC,KAAK,CAAC;;;;"}
+{"version":3,"file":"minus.js","sources":["../src/minus.ts"],"sourcesContent":[null],"names":[],"mappings":";;AAEA;;AAEG;AACH,MAAM,KAAK,GAAG,CAAC,CAAS,EAAE,CAAS,KAAK,CAAC,GAAG,CAAC;AAE7C,cAAe,cAAc,UAAU,CAAC,KAAK,CAAC;;;;"}

@@ -1,18 +1,21 @@
 import curryRight from './curryRight.js';
+import get from './get.js';
 
-const groupBy = (arr, groupingFunction) => {
-    return arr.reduce((acc, val) => {
-        const group = groupingFunction(val);
-        if (acc[group]) {
-            acc[group].push(val);
-        }
-        else {
-            acc[group] = [val];
-        }
-        return acc;
-    }, {});
+const groupByImpl = (arr, grouper) => {
+    const groupingFunction = typeof grouper === 'function' ? grouper : get(grouper);
+    const groups = {};
+    let i = 0;
+    while (i < arr.length) {
+        const group = groupingFunction(arr[i]);
+        if (groups[group])
+            groups[group].push(arr[i]);
+        else
+            groups[group] = [arr[i]];
+        i++;
+    }
+    return groups;
 };
-var groupBy$1 = /*#__PURE__*/ curryRight(groupBy);
+const groupBy = /*#__PURE__*/ curryRight(groupByImpl);
 
-export { groupBy$1 as default };
+export { groupBy as default };
 //# sourceMappingURL=groupBy.js.map

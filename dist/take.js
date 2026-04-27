@@ -1,5 +1,8 @@
 import curryRight from './curryRight.js';
 
+/**
+ * Returns first `num` elements.
+ */
 const take = (arr, num) => {
     return arr.slice(0, num);
 };

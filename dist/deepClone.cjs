@@ -5,6 +5,9 @@ Object.defineProperty(exports, '__esModule', { value: true });
 var deepMap = require('./deepMap.cjs');
 var type = require('./type.cjs');
 
+/**
+ * Deep-clones arrays/objects recursively (supports Date and RegExp cloning).
+ */
 const cloneRegex = (regex) => {
     return new RegExp(regex.source, (regex.global ? 'g' : '') +
         (regex.ignoreCase ? 'i' : '') +

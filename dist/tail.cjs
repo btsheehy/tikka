@@ -2,9 +2,9 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var last = require('./last.cjs');
+function tail(value) {
+    return value.slice(1);
+}
 
-
-
-exports.default = last.default;
+exports.default = tail;
 //# sourceMappingURL=tail.cjs.map

@@ -1,5 +1,8 @@
 import curryRight from './curryRight.js';
 
+/**
+ * forEach utility function.
+ */
 const forEach = (arr, func) => {
     arr.forEach((val) => {
         func(val);
