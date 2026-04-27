@@ -1,0 +1,1 @@
+{"version":3,"file":"endsWith.cjs","sources":["../src/endsWith.ts"],"sourcesContent":[null],"names":["curryRight"],"mappings":";;;;;;AAEA;;AAEG;AACH,MAAM,QAAQ,GAAG,CAAC,GAAW,EAAE,MAAc,KAAK,GAAG,CAAC,QAAQ,CAAC,MAAM,CAAC;AAEtE,iBAAe,cAAcA,kBAAU,CAAC,QAAQ,CAAC;;;;"}

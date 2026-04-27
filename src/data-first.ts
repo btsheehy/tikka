@@ -9,6 +9,7 @@ import {
   and,
   any,
   compact,
+  coalesce,
   concat,
   contains,
   countBy,
@@ -56,7 +57,11 @@ import {
   plus,
   select,
   self,
+  slice,
   sortBy,
+  split,
+  startsWith,
+  endsWith,
   tail,
   take,
   test,
@@ -84,6 +89,7 @@ const dataFirst = <T extends (...args: any[]) => any>(fn: T) => {
 export const _and = dataFirst(and)
 export const _any = dataFirst(any)
 export const _compact = dataFirst(compact)
+export const _coalesce = dataFirst(coalesce)
 export const _concat = dataFirst(concat)
 export const _contains = dataFirst(contains)
 export const _countBy = dataFirst(countBy)
@@ -135,7 +141,11 @@ export const _pluck = dataFirst(pluck)
 export const _plus = dataFirst(plus)
 export const _select = dataFirst(select)
 export const _self = dataFirst(self)
+export const _slice = dataFirst(slice)
 export const _sortBy = dataFirst(sortBy)
+export const _split = dataFirst(split)
+export const _startsWith = dataFirst(startsWith)
+export const _endsWith = dataFirst(endsWith)
 export const _tail = dataFirst(tail)
 export const _take = dataFirst(take)
 export const _test = dataFirst(test)

@@ -6,6 +6,7 @@ var always = require('./always.cjs');
 var and = require('./and.cjs');
 var any = require('./any.cjs');
 var compact = require('./compact.cjs');
+var coalesce = require('./coalesce.cjs');
 var concat = require('./concat.cjs');
 var cond = require('./cond.cjs');
 var contains = require('./contains.cjs');
@@ -53,7 +54,11 @@ var pluck = require('./pluck.cjs');
 var plus = require('./plus.cjs');
 var replace = require('./replace.cjs');
 var self = require('./self.cjs');
+var slice = require('./slice.cjs');
 var sortBy = require('./sortBy.cjs');
+var split = require('./split.cjs');
+var startsWith = require('./startsWith.cjs');
+var endsWith = require('./endsWith.cjs');
 var tail = require('./tail.cjs');
 var take = require('./take.cjs');
 var test = require('./test.cjs');
@@ -69,6 +74,7 @@ const tikka = {
     and: and.default,
     any: any.default,
     compact: compact.default,
+    coalesce: coalesce.default,
     concat: concat.default,
     cond: cond.default,
     contains: contains.default,
@@ -119,7 +125,11 @@ const tikka = {
     replace: replace.default,
     select: grab.default,
     self: self.default,
+    slice: slice.default,
     sortBy: sortBy.default,
+    split: split.default,
+    startsWith: startsWith.default,
+    endsWith: endsWith.default,
     tail: tail.default,
     take: take.default,
     test: test.default,
