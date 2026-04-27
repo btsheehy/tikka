@@ -193,8 +193,10 @@ describe('tikka exports', () => {
   })
 
   it('find and findIndex', () => {
-    expect(find((x: number) => x > 1, [1, 2, 3])).toBe(2)
-    expect(findIndex((x: number) => x > 1, [1, 2, 3])).toBe(1)
+    const greaterThanOne = (x: number) => x > 1
+    expect(find(greaterThanOne, [1, 2, 3])).toBe(2)
+    expect(find(greaterThanOne)([1, 2, 3])).toBe(2)
+    expect(findIndex(greaterThanOne, [1, 2, 3])).toBe(1)
   })
 
   it('first head last tail', () => {
