@@ -1,1 +1,1 @@
-{"version":3,"file":"startsWith.cjs","sources":["../src/startsWith.ts"],"sourcesContent":[null],"names":["curryRight"],"mappings":";;;;;;AAEA;;AAEG;AACH,MAAM,UAAU,GAAG,CAAC,GAAW,EAAE,MAAc,KAAK,GAAG,CAAC,UAAU,CAAC,MAAM,CAAC;AAE1E,mBAAe,cAAcA,kBAAU,CAAC,UAAU,CAAC;;;;"}
+{"version":3,"file":"startsWith.cjs","sources":["../src/startsWith.ts"],"sourcesContent":[null],"names":["curryRight"],"mappings":";;;;;;AAEA;;;;;;;;AAQG;AACH,MAAM,UAAU,GAAG,CAAC,GAAW,EAAE,MAAc,KAAK,GAAG,CAAC,UAAU,CAAC,MAAM,CAAC;AAE1E,mBAAe,cAAcA,kBAAU,CAAC,UAAU,CAAC;;;;"}

@@ -4,7 +4,13 @@ import forEachValues from './forEachValues'
 import type from './type'
 
 /**
- * Recursively visits nested arrays/objects and runs `func` on leaf values.
+ * Walks nested arrays/objects and runs a callback for each leaf value.
+ * @param data - Nested structure to traverse.
+ * @param func - Callback called for each non-object/non-array leaf node.
+ * @returns Nothing.
+ *
+ * @example
+ * deepForEach((value) => console.log(value), { a: 1, b: [2, 3] })
  */
 function deepForEach<T>(data: Array<T>, func: (value: T) => unknown): void
 function deepForEach(data: object, func: (value: unknown) => unknown): void

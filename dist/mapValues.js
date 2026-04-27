@@ -2,6 +2,11 @@ import curryRight from './curryRight.js';
 
 /**
  * mapValues utility function.
+ * @param _unused - This function takes no explicit parameters.
+ * @returns The computed result.
+ *
+ * @example
+ * mapValues()
  */
 const mapValues = (obj, fn) => {
     const keys = Object.keys(obj);

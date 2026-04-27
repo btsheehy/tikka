@@ -1,5 +1,11 @@
 /**
- * Creates left-to-right function pipeline.
+ * Composes functions left-to-right.
+ * @param fns - Functions to run in sequence; each result feeds the next function.
+ * @returns A function that executes the pipeline, or identity when no functions are provided.
+ *
+ * @example
+ * const normalize = pipe(trim, toLower)
+ * normalize('  Hello  ') // 'hello'
  */
 type AnyFn = (...args: any[]) => any
 

@@ -1,10 +1,13 @@
 import curry from './curry'
 
 /**
- * Concatenates arrays or strings.
+ * Concatenates two arrays or two strings.
+ * @param left - First array/string segment.
+ * @param right - Second array/string segment.
+ * @returns A combined array/string; throws when argument types differ.
  *
  * @example
- * concat([1,2], [3,4]) // [1,2,3,4]
+ * concat('tikka-', 'js') // 'tikka-js'
  */
 function concatRaw<T>(left: T[], right: T[]): T[]
 function concatRaw(left: string, right: string): string

@@ -47,6 +47,7 @@ export declare const _pipe: (data: any, ...args: any[]) => any;
 export declare const _placeholder: any;
 export declare const _pluck: (data: any, ...args: any[]) => any;
 export declare const _plus: (data: any, ...args: any[]) => any;
+export declare const _reverse: (data: any, ...args: any[]) => any;
 export declare const _select: (data: any, ...args: any[]) => any;
 export declare const _self: (data: any, ...args: any[]) => any;
 export declare const _slice: (data: any, ...args: any[]) => any;

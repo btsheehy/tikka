@@ -2,10 +2,13 @@ import curryRight from './curryRight'
 import get from './get'
 
 /**
- * Groups array values by string key.
+ * Groups array items by a key function or object property.
+ * @param arr - Items to group.
+ * @param grouper - Property name or function that returns each item's group key.
+ * @returns An object whose keys are group names and values are grouped items.
  *
  * @example
- * groupBy((x)=>x%2?'odd':'even', [1,2,3])
+ * groupBy('status', [{ status: 'open' }, { status: 'closed' }, { status: 'open' }])
  */
 type Grouper<T, K extends keyof T = keyof T> = K | ((x: T) => string | number)
 

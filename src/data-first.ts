@@ -55,6 +55,7 @@ import {
   placeholder,
   pluck,
   plus,
+  reverse,
   select,
   self,
   slice,
@@ -139,6 +140,7 @@ export const _pipe = dataFirst(pipe)
 export const _placeholder = placeholder
 export const _pluck = dataFirst(pluck)
 export const _plus = dataFirst(plus)
+export const _reverse = dataFirst(reverse)
 export const _select = dataFirst(select)
 export const _self = dataFirst(self)
 export const _slice = dataFirst(slice)

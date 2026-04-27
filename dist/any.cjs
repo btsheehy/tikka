@@ -6,6 +6,12 @@ var curryRight = require('./curryRight.cjs');
 
 /**
  * Returns true if at least one array element passes `test`.
+ * @param arr - Input value for arr.
+ * @param test - Input value for test.
+ * @returns The computed result.
+ *
+ * @example
+ * any(arr, test)
  */
 const any = (arr, test) => {
     let i = 0;

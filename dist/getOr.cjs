@@ -7,6 +7,13 @@ var get = require('./get.cjs');
 
 /**
  * getOr utility function.
+ * @param obj - Input value for obj.
+ * @param prop - Input value for prop.
+ * @param defaultValue - Input value for defaultValue.
+ * @returns The computed result.
+ *
+ * @example
+ * getOr(obj, prop, defaultValue)
  */
 function getOr(obj, prop, defaultValue) {
     if (Object.hasOwn(obj, prop))

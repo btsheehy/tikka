@@ -1,5 +1,11 @@
 /**
- * pluck utility function.
+ * Extracts one property from every object in a collection.
+ * @param collection - Array of source objects.
+ * @param prop - Property name to read from each item.
+ * @returns Array of values for `prop`, preserving item order.
+ *
+ * @example
+ * pluck('id', [{ id: 1 }, { id: 2 }]) // [1, 2]
  */
 import curryRight from './curryRight'
 

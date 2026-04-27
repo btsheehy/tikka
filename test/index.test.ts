@@ -3,6 +3,7 @@ import {
   and,
   any,
   compact,
+  cond,
   concat,
   contains,
   countBy,
@@ -52,6 +53,8 @@ import {
   placeholder,
   pluck,
   plus,
+  replace,
+  reverse,
   sum,
   add,
   select,
@@ -109,6 +112,18 @@ describe('tikka exports', () => {
 
     expect(curriedArrayConcat([1, 2])([3, 4])).toEqual([1, 2, 3, 4])
     expect(curriedStringConcat('ab')('cd')).toBe('abcd')
+  })
+
+  it('cond', () => {
+    const classify = cond([
+      [(n: number) => n < 0, 'negative'],
+      [(n: number) => n === 0, 'zero'],
+      'positive',
+    ])
+
+    expect(classify(-3)).toBe('negative')
+    expect(classify(0)).toBe('zero')
+    expect(classify(7)).toBe('positive')
   })
 
   it('contains and includes', () => {
@@ -421,6 +436,26 @@ describe('tikka exports', () => {
     expect(type(null)).toBe('Null')
     expect(type(undefined)).toBe('Undefined')
     expect(type([])).toBe('Array')
+  })
+
+  it('replace', () => {
+    expect(replace(9, 2, [1, 2, 3, 2])).toEqual([1, 9, 3, 9])
+    expect(replace((x: number) => x * 10, (x: number) => x % 2 === 0, [1, 2, 3, 4])).toEqual([
+      1,
+      20,
+      3,
+      40,
+    ])
+    expect(replace('bar', 'foo', 'foo foo')).toBe('bar bar')
+    expect(replace('0', /o+/g, 'foo boo')).toBe('f0 b0')
+  })
+
+  it('reverse', () => {
+    const input = [1, 2, 3]
+    expect(reverse(input)).toEqual([3, 2, 1])
+    expect(input).toEqual([1, 2, 3])
+    expect(reverse('tikka')).toBe('akkit')
+    expect(reverse('')).toBe('')
   })
 
   it('uniq and uniqBy', () => {

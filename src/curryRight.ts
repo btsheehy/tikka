@@ -1,8 +1,12 @@
 /**
- * Right-to-left curry helper.
+ * Curries a function from right to left.
+ * @param fn - Function to curry.
+ * @param arity - Optional number of arguments required before invoking `fn`.
+ * @returns A function that collects arguments from the rightmost parameter first.
  *
  * @example
- * curryRight((a,b)=>a/b)(2,8) // 4
+ * const divide = curryRight((a: number, b: number) => a / b)
+ * divide(2, 8) // 4
  */
 type CurryRight2<A, B, R> = {
   (b: B, a: A, ...extra: unknown[]): R

@@ -4,7 +4,13 @@ import mapValues from './mapValues'
 import type from './type'
 
 /**
- * Recursively maps leaf values in nested arrays/objects.
+ * Recursively maps every leaf value in a nested array/object structure.
+ * @param data - Nested structure to transform.
+ * @param func - Mapper applied to each leaf value.
+ * @returns A new structure with the same shape and transformed leaves.
+ *
+ * @example
+ * deepMap((n) => n * 10, { a: 1, b: [2, 3] })
  */
 function deepMap<T, R>(data: Array<T>, func: (x: T) => R): Array<R>
 function deepMap(data: object, func: (x: unknown) => unknown): object

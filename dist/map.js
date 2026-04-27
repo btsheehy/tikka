@@ -5,6 +5,9 @@ import curryRight from './curryRight.js';
  *
  * @example
  * map((x)=>x*2, [1,2,3]) // [2,4,6]
+ * @param arr - Input value for arr.
+ * @param fn - Input value for fn.
+ * @returns The computed result.
  */
 const map = (arr, fn) => {
     const result = new Array(arr.length);

@@ -3,6 +3,8 @@
  *
  * @example
  * sortBy('age', 'desc', [{age:1},{age:3},{age:2}]) // [{age:3},{age:2},{age:1}]
+ * @param _unused - This function takes no explicit parameters.
+ * @returns The computed result.
  */
 export type SortDirection = 'asc' | 'desc';
 declare const _default: {

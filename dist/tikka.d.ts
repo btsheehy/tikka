@@ -186,13 +186,14 @@ declare const tikka: {
         (a: number): (b: number, ...extra: unknown[]) => number;
     };
     replace: {
-        (c: string, b: RegExp, a: string, ...extra: unknown[]): string;
-        (c: string, b: RegExp): (a: string, ...extra: unknown[]) => string;
-        (c: string): {
-            (b: RegExp, a: string, ...extra: unknown[]): string;
-            (b: RegExp): (a: string, ...extra: unknown[]) => string;
-        };
+        <T, U>(replacement: U, replacee: T, targetArray: T[]): (T | U)[];
+        <T, U>(replacement: (item: T) => U, replacee: T, targetArray: T[]): (T | U)[];
+        <T, U>(replacement: U, replacee: (arg0: T) => boolean, targetArray: T[]): (T | U)[];
+        <T, U>(replacement: (item: T) => U, replacee: (arg0: T) => boolean, targetArray: T[]): (T | U)[];
+        (replacement: string, substring: string, targetString: string): string;
+        (replacement: string, regex: RegExp, targetString: string): string;
     };
+    reverse: <T>(v: T[] | string) => string | any[];
     select: {
         <T, K extends keyof T>(props: readonly K[], data: T): Partial<Pick<T, K>>;
         <T, K extends keyof T>(props: readonly K[], data: T[]): Array<Partial<Pick<T, K>>>;
@@ -767,12 +768,12 @@ declare const tikka: {
         (b: unknown): (a: unknown, ...extra: unknown[]) => unknown[];
     };
     replaceAll: {
-        (c: string, b: RegExp, a: string, ...extra: unknown[]): string;
-        (c: string, b: RegExp): (a: string, ...extra: unknown[]) => string;
-        (c: string): {
-            (b: RegExp, a: string, ...extra: unknown[]): string;
-            (b: RegExp): (a: string, ...extra: unknown[]) => string;
-        };
+        <T, U>(replacement: U, replacee: T, targetArray: T[]): (T | U)[];
+        <T, U>(replacement: (item: T) => U, replacee: T, targetArray: T[]): (T | U)[];
+        <T, U>(replacement: U, replacee: (arg0: T) => boolean, targetArray: T[]): (T | U)[];
+        <T, U>(replacement: (item: T) => U, replacee: (arg0: T) => boolean, targetArray: T[]): (T | U)[];
+        (replacement: string, substring: string, targetString: string): string;
+        (replacement: string, regex: RegExp, targetString: string): string;
     };
 };
 export default tikka;

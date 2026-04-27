@@ -6,6 +6,12 @@ var curryRight = require('./curryRight.cjs');
 
 /**
  * Sorts an array by a computed key (non-mutating).
+ * @param arr - Input value for arr.
+ * @param iteratee - Input value for iteratee.
+ * @returns The computed result.
+ *
+ * @example
+ * sort(arr, iteratee)
  */
 const sort = (arr, iteratee) => {
     return [...arr].sort((left, right) => {

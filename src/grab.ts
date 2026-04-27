@@ -1,5 +1,11 @@
 /**
- * grab utility function.
+ * Picks a subset of keys from an object or each object in an array.
+ * @param data - Source object or array of objects.
+ * @param props - Keys to keep.
+ * @returns A partial object (or array of partial objects) containing only `props`.
+ *
+ * @example
+ * grab(['id', 'name'], [{ id: 1, name: 'Ada', admin: true }])
  */
 import curryRight from './curryRight'
 import get from './get'
@@ -16,7 +22,9 @@ const grabFromOne = <T, K extends keyof T>(obj: T, props: readonly K[]): Partial
 type Grab = {
   <T, K extends keyof T>(props: readonly K[], data: T): Partial<Pick<T, K>>
   <T, K extends keyof T>(props: readonly K[], data: T[]): Array<Partial<Pick<T, K>>>
-  <K extends PropertyKey>(props: readonly K[]): {
+  <K extends PropertyKey>(
+    props: readonly K[]
+  ): {
     <T extends Record<K, unknown>>(data: T): Partial<Pick<T, K>>
     <T extends Record<K, unknown>>(data: T[]): Array<Partial<Pick<T, K>>>
   }

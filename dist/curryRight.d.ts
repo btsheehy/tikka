@@ -3,6 +3,9 @@
  *
  * @example
  * curryRight((a,b)=>a/b)(2,8) // 4
+ * @param fn - Input value for fn.
+ * @param b - Input value for b.
+ * @returns The computed result.
  */
 type CurryRight2<A, B, R> = {
     (b: B, a: A, ...extra: unknown[]): R;

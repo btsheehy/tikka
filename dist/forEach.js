@@ -2,6 +2,12 @@ import curryRight from './curryRight.js';
 
 /**
  * forEach utility function.
+ * @param arr - Input value for arr.
+ * @param func - Input value for func.
+ * @returns The computed result.
+ *
+ * @example
+ * forEach(arr, func)
  */
 const forEach = (arr, func) => {
     arr.forEach((val) => {

@@ -7,6 +7,12 @@ var get = require('./get.cjs');
 
 /**
  * grab utility function.
+ * @param obj - Input value for obj.
+ * @param props - Input value for props.
+ * @returns The computed result.
+ *
+ * @example
+ * grabFromOne(obj, props)
  */
 const grabFromOne = (obj, props) => {
     const result = {};

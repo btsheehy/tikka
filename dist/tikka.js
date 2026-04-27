@@ -48,7 +48,8 @@ import pipe from './pipe.js';
 import placeholder from './placeholder.js';
 import pluck from './pluck.js';
 import plus from './plus.js';
-import replace from './replace.js';
+import replaceCurried from './replace.js';
+import reverse from './reverse.js';
 import self from './self.js';
 import slice from './slice.js';
 import sortBy from './sortBy.js';
@@ -118,7 +119,8 @@ const tikka = {
     placeholder,
     pluck,
     plus,
-    replace,
+    replace: replaceCurried,
+    reverse,
     select: grab,
     self,
     slice,
@@ -299,7 +301,7 @@ const tikka = {
     uniqueBy: uniqBy,
     dedupeBy: uniqBy,
     nubBy: uniqBy,
-    replaceAll: replace,
+    replaceAll: replaceCurried,
 };
 
 export { tikka as default };

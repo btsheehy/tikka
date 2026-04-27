@@ -1,5 +1,12 @@
 /**
- * curry utility function.
+ * Curries a function from left to right.
+ * @param fn - Function to curry.
+ * @param arity - Optional number of arguments required before invoking `fn`.
+ * @returns A function that accepts arguments incrementally, left-to-right.
+ *
+ * @example
+ * const add = curry((a: number, b: number) => a + b)
+ * add(2)(3) // 5
  */
 type Curry2<A, B, R> = {
   (a: A, b: B, ...extra: unknown[]): R

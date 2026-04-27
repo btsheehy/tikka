@@ -6,6 +6,12 @@ var curryRight = require('./curryRight.cjs');
 
 /**
  * filter utility function.
+ * @param arr - Input value for arr.
+ * @param filterFunc - Input value for filterFunc.
+ * @returns The computed result.
+ *
+ * @example
+ * filter(arr, filterFunc)
  */
 const filter = (arr, filterFunc) => {
     const result = [];

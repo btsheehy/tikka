@@ -1,7 +1,13 @@
 import curryRight from './curryRight'
 
 /**
- * Subtracts second arg from first in curried-right style.
+ * Subtracts one number from another.
+ * @param a - Minuend.
+ * @param b - Subtrahend.
+ * @returns Numeric difference `a - b`.
+ *
+ * @example
+ * minus(3, 10) // 7
  */
 const minus = (a: number, b: number) => a - b
 

@@ -1,5 +1,10 @@
 /**
  * Creates left-to-right function pipeline.
+ * @param _unused - This function takes no explicit parameters.
+ * @returns The computed result.
+ *
+ * @example
+ * pipe()
  */
 type AnyFn = (...args: any[]) => any;
 type UnaryFn<Input = any, Output = any> = (input: Input) => Output;
