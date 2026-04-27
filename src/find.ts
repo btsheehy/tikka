@@ -1,3 +1,5 @@
+import curryRight from './curryRight'
+
 /**
  * Finds the first array element that satisfies a predicate.
  * @param arr - Array to search.
@@ -7,7 +9,7 @@
  * @example
  * find((user) => user.id === 42, users)
  */
-const findImpl = <T>(arr: Array<T>, findFunc: (x: T) => boolean) => {
+const find = <T>(arr: Array<T>, findFunc: (x: T) => boolean) => {
   let i = 0
   const length = arr.length
   while (i < length) {
@@ -17,14 +19,4 @@ const findImpl = <T>(arr: Array<T>, findFunc: (x: T) => boolean) => {
   return undefined
 }
 
-function find<T>(findFunc: (x: T) => boolean, arr: Array<T>): T | undefined
-function find<T>(findFunc: (x: T) => boolean): (arr: Array<T>) => T | undefined
-function find<T>(findFunc?: (x: T) => boolean, arr?: Array<T>) {
-  if (arr !== undefined) {
-    return findImpl(arr, findFunc as (x: T) => boolean)
-  }
-  if (findFunc === undefined) return find
-  return (nextArr: Array<T>) => findImpl(nextArr, findFunc)
-}
-
-export default find
+export default curryRight(find)
