@@ -1,5 +1,6 @@
 import curryRight from './curryRight.js';
 
+const minus = (a, b) => a - b;
 /**
  * Subtracts one number from another.
  * @param a - Minuend.
@@ -9,7 +10,6 @@ import curryRight from './curryRight.js';
  * @example
  * minus(3, 10) // 7
  */
-const minus = (a, b) => a - b;
 const minusCurried = /*#__PURE__*/ curryRight(minus);
 
 export { minusCurried as default };

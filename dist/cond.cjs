@@ -4,6 +4,15 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var curry = require('./curry.cjs');
 
+const cond = (args, predicateArg) => {
+    const defaultValue = args[args.length - 1];
+    const pairs = args.slice(0, -1);
+    for (const [predicate, value] of pairs) {
+        if (predicate(predicateArg))
+            return value;
+    }
+    return defaultValue;
+};
 /**
  * Returns the value for the first matching predicate in a list of predicate/value pairs.
  *
@@ -20,15 +29,6 @@ var curry = require('./curry.cjs');
  *   'positive',
  * ], 0) // 'zero'
  */
-const cond = (args, predicateArg) => {
-    const defaultValue = args[args.length - 1];
-    const pairs = args.slice(0, -1);
-    for (const [predicate, value] of pairs) {
-        if (predicate(predicateArg))
-            return value;
-    }
-    return defaultValue;
-};
 const condCurried = /*#__PURE__*/ curry.default(cond);
 
 exports.default = condCurried;

@@ -4,6 +4,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var curry = require('./curry.cjs');
 
+const gt = (a, b) => a >= b;
 /**
  * Compares numbers with `>=`.
  * @param a - Left numeric operand.
@@ -13,7 +14,6 @@ var curry = require('./curry.cjs');
  * @example
  * gte(10, 10) // true
  */
-const gt = (a, b) => a >= b;
 const gteCurried = /*#__PURE__*/ curry.default(gt);
 
 exports.default = gteCurried;

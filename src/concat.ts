@@ -1,14 +1,5 @@
 import curry from './curry'
 
-/**
- * Concatenates two arrays or two strings.
- * @param left - First array/string segment.
- * @param right - Second array/string segment.
- * @returns A combined array/string; throws when argument types differ.
- *
- * @example
- * concat('tikka-', 'js') // 'tikka-js'
- */
 function concatRaw<T>(left: T[], right: T[]): T[]
 function concatRaw(left: string, right: string): string
 function concatRaw<T>(left: T[] | string, right: T[] | string) {
@@ -30,6 +21,15 @@ type Concat = {
   (left: string): (right: string) => string
 }
 
+/**
+ * Concatenates two arrays or two strings.
+ * @param left - First array/string segment.
+ * @param right - Second array/string segment.
+ * @returns A combined array/string; throws when argument types differ.
+ *
+ * @example
+ * concat('tikka-', 'js') // 'tikka-js'
+ */
 const concat = /*#__PURE__*/ curry(concatRaw) as Concat
 
 export default concat

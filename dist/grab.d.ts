@@ -6,6 +6,15 @@ type Grab = {
         <T extends Record<K, any>>(data: T[]): Array<Partial<Pick<T, K>>>;
     };
 };
+/**
+ * Picks a subset of keys from an object or each object in an array.
+ * @param data - Source object or array of objects.
+ * @param props - Keys to keep.
+ * @returns A partial object (or array of partial objects) containing only `props`.
+ *
+ * @example
+ * grab(['id', 'name'], [{ id: 1, name: 'Ada', admin: true }])
+ */
 declare const grab: Grab;
 export default grab;
 //# sourceMappingURL=grab.d.ts.map

@@ -1,5 +1,6 @@
 import curry from './curry.js';
 
+const or = (a, b) => !!(a || b);
 /**
  * Returns `true` when either value is truthy.
  * @param a - Left operand to evaluate.
@@ -9,7 +10,6 @@ import curry from './curry.js';
  * @example
  * or(user.isAdmin, user.isOwner)
  */
-const or = (a, b) => !!(a || b);
 const orCurried = /*#__PURE__*/ curry(or);
 
 export { orCurried as default };

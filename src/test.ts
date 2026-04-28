@@ -1,5 +1,12 @@
 import curryRight from './curryRight'
 
+const test = (str: string, regex: RegExp) => regex.test(str)
+
+type Test = {
+  (regex: RegExp, str: string): boolean
+  (regex: RegExp): (str: string) => boolean
+}
+
 /**
  * Tests whether a string matches a regular expression.
  * @param str - String to test.
@@ -9,13 +16,6 @@ import curryRight from './curryRight'
  * @example
  * test(/^v\d+$/, 'v12') // true
  */
-const test = (str: string, regex: RegExp) => regex.test(str)
-
-type Test = {
-  (regex: RegExp, str: string): boolean
-  (regex: RegExp): (str: string) => boolean
-}
-
 const testCurried = /*#__PURE__*/ curryRight(test) as Test
 
 export default testCurried

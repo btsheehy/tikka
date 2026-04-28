@@ -1,14 +1,6 @@
 import deepMapCurried from './deepMap.js';
 import type from './type.js';
 
-/**
- * Deeply clones arrays and plain objects, including `Date` and `RegExp` values.
- * @param data - Structure to clone.
- * @returns A new structure with recursively copied nested values.
- *
- * @example
- * const copy = deepClone({ createdAt: new Date(), tags: ['a'] })
- */
 const cloneRegex = (regex) => {
     return new RegExp(regex.source, (regex.global ? 'g' : '') +
         (regex.ignoreCase ? 'i' : '') +

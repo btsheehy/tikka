@@ -1,5 +1,6 @@
 import curry from './curry.js';
 
+const gt = (a, b) => a >= b;
 /**
  * Compares numbers with `>=`.
  * @param a - Left numeric operand.
@@ -9,7 +10,6 @@ import curry from './curry.js';
  * @example
  * gte(10, 10) // true
  */
-const gt = (a, b) => a >= b;
 const gteCurried = /*#__PURE__*/ curry(gt);
 
 export { gteCurried as default };

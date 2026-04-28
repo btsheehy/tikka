@@ -14,6 +14,27 @@ type Replace = {
   (replacement: string, regex: RegExp, targetString: string): string
 }
 
+const replace = (<T, U>(
+  target: Target<T>,
+  replacee: T | string | RegExp | ((arg0: T) => boolean),
+  replacement: Replacement<T, U>
+) => {
+  if (Array.isArray(target)) {
+    const replacementFunc = (
+      typeof replacement === 'function' ? replacement : () => replacement
+    ) as (v: T) => U
+    const replacementTestFunc = (
+      typeof replacee === 'function' ? replacee : identical(replacee)
+    ) as (v: T) => boolean
+    const replaceFunc = (val: T) => {
+      if (replacementTestFunc(val)) return replacementFunc(val)
+      return val
+    }
+    return map(replaceFunc, target as T[]) as (T | U)[]
+  }
+  return (target as string).replaceAll(replacee as string | RegExp, replacement as string)
+}) as unknown as Replace
+
 /**
  * Replaces values in an array or substrings in a string.
  *
@@ -36,27 +57,6 @@ type Replace = {
  * @example
  * replace('baz', 'foo', 'foo-bar-foo') // 'baz-bar-baz'
  */
-const replace = (<T, U>(
-  target: Target<T>,
-  replacee: T | string | RegExp | ((arg0: T) => boolean),
-  replacement: Replacement<T, U>
-) => {
-  if (Array.isArray(target)) {
-    const replacementFunc = (
-      typeof replacement === 'function' ? replacement : () => replacement
-    ) as (v: T) => U
-    const replacementTestFunc = (
-      typeof replacee === 'function' ? replacee : identical(replacee)
-    ) as (v: T) => boolean
-    const replaceFunc = (val: T) => {
-      if (replacementTestFunc(val)) return replacementFunc(val)
-      return val
-    }
-    return map(replaceFunc, target as T[]) as (T | U)[]
-  }
-  return (target as string).replaceAll(replacee as string | RegExp, replacement as string)
-}) as unknown as Replace
-
 const replaceCurried = /*#__PURE__*/ curryRight(
   replace as unknown as (...args: unknown[]) => unknown
 ) as Replace

@@ -4,6 +4,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var curry = require('./curry.cjs');
 
+const or = (a, b) => !!(a || b);
 /**
  * Returns `true` when either value is truthy.
  * @param a - Left operand to evaluate.
@@ -13,7 +14,6 @@ var curry = require('./curry.cjs');
  * @example
  * or(user.isAdmin, user.isOwner)
  */
-const or = (a, b) => !!(a || b);
 const orCurried = /*#__PURE__*/ curry.default(or);
 
 exports.default = orCurried;

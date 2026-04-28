@@ -4,6 +4,14 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var curryRight = require('./curryRight.cjs');
 
+const mapValues = (obj, fn) => {
+    const keys = Object.keys(obj);
+    const newObj = {};
+    for (const key of keys) {
+        newObj[key] = fn(obj[key]);
+    }
+    return newObj;
+};
 /**
  * Transforms object values while preserving keys.
  * @param obj - Object whose values will be mapped.
@@ -13,14 +21,6 @@ var curryRight = require('./curryRight.cjs');
  * @example
  * mapValues((n) => n * 10, { a: 1, b: 2 }) // { a: 10, b: 20 }
  */
-const mapValues = (obj, fn) => {
-    const keys = Object.keys(obj);
-    const newObj = {};
-    for (const key of keys) {
-        newObj[key] = fn(obj[key]);
-    }
-    return newObj;
-};
 const mapValuesCurried = /*#__PURE__*/ curryRight.default(mapValues);
 
 exports.default = mapValuesCurried;

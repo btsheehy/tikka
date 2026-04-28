@@ -1,5 +1,6 @@
 import curryRight from './curryRight.js';
 
+const coalesce = (value, fallback) => value ?? fallback;
 /**
  * Falls back when a value is `null` or `undefined`.
  * @param value - Preferred value.
@@ -9,7 +10,6 @@ import curryRight from './curryRight.js';
  * @example
  * coalesce('Anonymous', profile.nickname)
  */
-const coalesce = (value, fallback) => value ?? fallback;
 const coalesceCurried = /*#__PURE__*/ curryRight(coalesce);
 
 export { coalesceCurried as default };

@@ -1,5 +1,6 @@
 import curryRight from './curryRight.js';
 
+const test = (str, regex) => regex.test(str);
 /**
  * Tests whether a string matches a regular expression.
  * @param str - String to test.
@@ -9,7 +10,6 @@ import curryRight from './curryRight.js';
  * @example
  * test(/^v\d+$/, 'v12') // true
  */
-const test = (str, regex) => regex.test(str);
 const testCurried = /*#__PURE__*/ curryRight(test);
 
 export { testCurried as default };

@@ -1,14 +1,6 @@
 import deepMap from './deepMap'
 import type from './type'
 
-/**
- * Deeply clones arrays and plain objects, including `Date` and `RegExp` values.
- * @param data - Structure to clone.
- * @returns A new structure with recursively copied nested values.
- *
- * @example
- * const copy = deepClone({ createdAt: new Date(), tags: ['a'] })
- */
 const cloneRegex = (regex: RegExp) => {
   return new RegExp(
     regex.source,
@@ -26,6 +18,14 @@ function cloneValue(val: unknown) {
   return val
 }
 
+/**
+ * Deeply clones arrays and plain objects, including `Date` and `RegExp` values.
+ * @param data - Structure to clone.
+ * @returns A new structure with recursively copied nested values.
+ *
+ * @example
+ * const copy = deepClone({ createdAt: new Date(), tags: ['a'] })
+ */
 function deepClone<T>(data: Array<T>): Array<T>
 function deepClone<T extends object>(data: T): T
 function deepClone(data: unknown): unknown {

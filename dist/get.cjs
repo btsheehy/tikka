@@ -4,6 +4,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var curryRight = require('./curryRight.cjs');
 
+const getImpl = (object, property) => object[property];
 /**
  * Reads a property from an object by key.
  * @param object - Object to read from.
@@ -13,7 +14,6 @@ var curryRight = require('./curryRight.cjs');
  * @example
  * get('name', { id: 1, name: 'Ada' }) // 'Ada'
  */
-const getImpl = (object, property) => object[property];
 const get = /*#__PURE__*/ curryRight.default(getImpl);
 
 exports.default = get;

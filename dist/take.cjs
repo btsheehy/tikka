@@ -4,6 +4,9 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var curryRight = require('./curryRight.cjs');
 
+const take = (arr, num) => {
+    return arr.slice(0, num);
+};
 /**
  * Takes the first `num` elements from an array.
  * @param arr - Source array.
@@ -13,9 +16,6 @@ var curryRight = require('./curryRight.cjs');
  * @example
  * take(3, [10, 20, 30, 40]) // [10, 20, 30]
  */
-const take = (arr, num) => {
-    return arr.slice(0, num);
-};
 const takeCurried = /*#__PURE__*/ curryRight.default(take);
 
 exports.default = takeCurried;

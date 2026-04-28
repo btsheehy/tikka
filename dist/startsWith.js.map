@@ -1,1 +1,1 @@
-{"version":3,"file":"startsWith.js","sources":["../src/startsWith.ts"],"sourcesContent":[null],"names":[],"mappings":";;AAEA;;;;;;;;AAQG;AACH,MAAM,UAAU,GAAG,CAAC,GAAW,EAAE,MAAc,KAAK,GAAG,CAAC,UAAU,CAAC,MAAM,CAAC;AAO1E,MAAM,iBAAiB,iBAAiB,UAAU,CAAC,UAAU;;;;"}
+{"version":3,"file":"startsWith.js","sources":["../src/startsWith.ts"],"sourcesContent":[null],"names":[],"mappings":";;AAEA,MAAM,UAAU,GAAG,CAAC,GAAW,EAAE,MAAc,KAAK,GAAG,CAAC,UAAU,CAAC,MAAM,CAAC;AAO1E;;;;;;;;AAQG;AACH,MAAM,iBAAiB,iBAAiB,UAAU,CAAC,UAAU;;;;"}

@@ -1,5 +1,6 @@
 import curry from './curry.js';
 
+const lt = (a, b) => a <= b;
 /**
  * Compares numbers with `<=`.
  * @param a - Left numeric operand.
@@ -9,7 +10,6 @@ import curry from './curry.js';
  * @example
  * lte(5, 5) // true
  */
-const lt = (a, b) => a <= b;
 const lteCurried = /*#__PURE__*/ curry(lt);
 
 export { lteCurried as default };

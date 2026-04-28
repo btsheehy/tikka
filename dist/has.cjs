@@ -4,6 +4,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var curryRight = require('./curryRight.cjs');
 
+const has = (obj, prop) => Object.hasOwn(obj, prop);
 /**
  * Checks whether an object owns a property key.
  * @param obj - Object to inspect.
@@ -13,7 +14,6 @@ var curryRight = require('./curryRight.cjs');
  * @example
  * has('id', { id: 5, name: 'Ada' }) // true
  */
-const has = (obj, prop) => Object.hasOwn(obj, prop);
 const hasCurried = /*#__PURE__*/ curryRight.default(has);
 
 exports.default = hasCurried;

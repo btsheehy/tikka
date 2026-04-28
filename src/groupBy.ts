@@ -1,15 +1,6 @@
 import curryRight from './curryRight'
 import get from './get'
 
-/**
- * Groups array items by a key function or object property.
- * @param arr - Items to group.
- * @param grouper - Property name or function that returns each item's group key.
- * @returns An object whose keys are group names and values are grouped items.
- *
- * @example
- * groupBy('status', [{ status: 'open' }, { status: 'closed' }, { status: 'open' }])
- */
 type Grouper<T, K extends keyof T = keyof T> = K | ((x: T) => string | number)
 
 type GroupBy = {
@@ -38,6 +29,15 @@ const groupByImpl = <T, K extends keyof T>(
   return groups
 }
 
+/**
+ * Groups array items by a key function or object property.
+ * @param arr - Items to group.
+ * @param grouper - Property name or function that returns each item's group key.
+ * @returns An object whose keys are group names and values are grouped items.
+ *
+ * @example
+ * groupBy('status', [{ status: 'open' }, { status: 'closed' }, { status: 'open' }])
+ */
 const groupBy = /*#__PURE__*/ curryRight(groupByImpl) as GroupBy
 
 export default groupBy

@@ -4,6 +4,22 @@ type Cond = {
     <T, P>(args: CondArgs<T, P>, predicateArg: P): T;
     <T, P>(args: CondArgs<T, P>): (predicateArg: P) => T;
 };
+/**
+ * Returns the value for the first matching predicate in a list of predicate/value pairs.
+ *
+ * The final element of `args` acts as the default value when none of the predicates match.
+ *
+ * @param args - A list of `[predicate, value]` tuples followed by a required default value.
+ * @param predicateArg - The value passed to each predicate.
+ * @returns The value paired with the first predicate that returns `true`, or the default value.
+ *
+ * @example
+ * cond([
+ *   [(n: number) => n < 0, 'negative'],
+ *   [(n: number) => n === 0, 'zero'],
+ *   'positive',
+ * ], 0) // 'zero'
+ */
 declare const condCurried: Cond;
 export default condCurried;
 //# sourceMappingURL=cond.d.ts.map

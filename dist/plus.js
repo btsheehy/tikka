@@ -1,5 +1,6 @@
 import curry from './curry.js';
 
+const plus = (a, b) => a + b;
 /**
  * Adds two numbers.
  * @param a - Left addend.
@@ -9,7 +10,6 @@ import curry from './curry.js';
  * @example
  * plus(2)(3) // 5
  */
-const plus = (a, b) => a + b;
 const plusCurried = /*#__PURE__*/ curry(plus);
 
 export { plusCurried as default };

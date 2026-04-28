@@ -4,6 +4,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var curry = require('./curry.cjs');
 
+const multiply = (a, b) => a * b;
 /**
  * Multiplies two numbers.
  * @param a - Left factor.
@@ -13,7 +14,6 @@ var curry = require('./curry.cjs');
  * @example
  * multiply(6, 7) // 42
  */
-const multiply = (a, b) => a * b;
 const multiplyCurried = /*#__PURE__*/ curry.default(multiply);
 
 exports.default = multiplyCurried;

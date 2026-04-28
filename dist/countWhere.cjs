@@ -5,6 +5,9 @@ Object.defineProperty(exports, '__esModule', { value: true });
 var curryRight = require('./curryRight.cjs');
 var filter = require('./filter.cjs');
 
+const countWhere = (arr, test) => {
+    return filter.default(test, arr).length;
+};
 /**
  * Counts how many array items satisfy a predicate.
  * @param arr - Items to test.
@@ -14,9 +17,6 @@ var filter = require('./filter.cjs');
  * @example
  * countWhere((n) => n % 2 === 0, [1, 2, 3, 4]) // 2
  */
-const countWhere = (arr, test) => {
-    return filter.default(test, arr).length;
-};
 const countWhereCurried = /*#__PURE__*/ curryRight.default(countWhere);
 
 exports.default = countWhereCurried;

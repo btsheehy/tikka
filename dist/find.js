@@ -1,14 +1,5 @@
 import curryRight from './curryRight.js';
 
-/**
- * Finds the first array element that satisfies a predicate.
- * @param arr - Array to search.
- * @param findFunc - Predicate used to test each element in order.
- * @returns The first matching item, or `undefined` when no item matches.
- *
- * @example
- * find((user) => user.id === 42, users)
- */
 const find = (arr, findFunc) => {
     let i = 0;
     const length = arr.length;
@@ -19,6 +10,15 @@ const find = (arr, findFunc) => {
     }
     return undefined;
 };
+/**
+ * Finds the first array element that satisfies a predicate.
+ * @param arr - Array to search.
+ * @param findFunc - Predicate used to test each element in order.
+ * @returns The first matching item, or `undefined` when no item matches.
+ *
+ * @example
+ * find((user) => user.id === 42, users)
+ */
 const findCurried = /*#__PURE__*/ curryRight(find);
 
 export { findCurried as default };

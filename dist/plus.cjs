@@ -4,6 +4,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var curry = require('./curry.cjs');
 
+const plus = (a, b) => a + b;
 /**
  * Adds two numbers.
  * @param a - Left addend.
@@ -13,7 +14,6 @@ var curry = require('./curry.cjs');
  * @example
  * plus(2)(3) // 5
  */
-const plus = (a, b) => a + b;
 const plusCurried = /*#__PURE__*/ curry.default(plus);
 
 exports.default = plusCurried;

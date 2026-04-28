@@ -4,6 +4,14 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var curryRight = require('./curryRight.cjs');
 
+const mapKeysImpl = (obj, fn) => {
+    const keys = Object.keys(obj);
+    const newObj = {};
+    keys.forEach((k) => {
+        newObj[fn(k)] = obj[k];
+    });
+    return newObj;
+};
 /**
  * Renames object keys while keeping the original values.
  * @param obj - Object to transform.
@@ -13,14 +21,6 @@ var curryRight = require('./curryRight.cjs');
  * @example
  * mapKeys((key) => key.toUpperCase(), { first: 1, second: 2 })
  */
-const mapKeysImpl = (obj, fn) => {
-    const keys = Object.keys(obj);
-    const newObj = {};
-    keys.forEach((k) => {
-        newObj[fn(k)] = obj[k];
-    });
-    return newObj;
-};
 const mapKeys = /*#__PURE__*/ curryRight.default(mapKeysImpl);
 
 exports.default = mapKeys;

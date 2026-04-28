@@ -1,6 +1,11 @@
 import curryRight from './curryRight.js';
 import get from './get.js';
 
+function getOr(obj, prop, defaultValue) {
+    if (Object.hasOwn(obj, prop))
+        return get(prop, obj);
+    return defaultValue;
+}
 /**
  * Reads a property from an object, with a fallback when the key is missing.
  * @param obj - Object to inspect.
@@ -11,11 +16,6 @@ import get from './get.js';
  * @example
  * getOr('guest', 'role', { name: 'Lin' }) // 'guest'
  */
-function getOr(obj, prop, defaultValue) {
-    if (Object.hasOwn(obj, prop))
-        return get(prop, obj);
-    return defaultValue;
-}
 const getOrCurried = /*#__PURE__*/ curryRight(getOr);
 
 export { getOrCurried as default };

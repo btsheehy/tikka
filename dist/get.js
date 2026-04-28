@@ -1,5 +1,6 @@
 import curryRight from './curryRight.js';
 
+const getImpl = (object, property) => object[property];
 /**
  * Reads a property from an object by key.
  * @param object - Object to read from.
@@ -9,7 +10,6 @@ import curryRight from './curryRight.js';
  * @example
  * get('name', { id: 1, name: 'Ada' }) // 'Ada'
  */
-const getImpl = (object, property) => object[property];
 const get = /*#__PURE__*/ curryRight(getImpl);
 
 export { get as default };

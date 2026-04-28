@@ -1,5 +1,12 @@
 import curryRight from './curryRight'
 
+const coalesce = <T>(value: T | null | undefined, fallback: T) => value ?? fallback
+
+type Coalesce = {
+  <T>(fallback: T, value: T | null | undefined): T
+  <T>(fallback: T): (value: T | null | undefined) => T
+}
+
 /**
  * Falls back when a value is `null` or `undefined`.
  * @param value - Preferred value.
@@ -9,13 +16,6 @@ import curryRight from './curryRight'
  * @example
  * coalesce('Anonymous', profile.nickname)
  */
-const coalesce = <T>(value: T | null | undefined, fallback: T) => value ?? fallback
-
-type Coalesce = {
-  <T>(fallback: T, value: T | null | undefined): T
-  <T>(fallback: T): (value: T | null | undefined) => T
-}
-
 const coalesceCurried = /*#__PURE__*/ curryRight(coalesce) as Coalesce
 
 export default coalesceCurried

@@ -4,6 +4,12 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var curryRight = require('./curryRight.cjs');
 
+const forEach = (arr, func) => {
+    arr.forEach((val) => {
+        func(val);
+    });
+    return arr;
+};
 /**
  * Runs a callback for each array item and returns the original array.
  * @param arr - Array to iterate.
@@ -13,12 +19,6 @@ var curryRight = require('./curryRight.cjs');
  * @example
  * forEach((n) => console.log(n), [1, 2, 3])
  */
-const forEach = (arr, func) => {
-    arr.forEach((val) => {
-        func(val);
-    });
-    return arr;
-};
 const forEachCurried = /*#__PURE__*/ curryRight.default(forEach);
 
 exports.default = forEachCurried;

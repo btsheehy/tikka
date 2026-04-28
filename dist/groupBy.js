@@ -15,6 +15,15 @@ const groupByImpl = (arr, grouper) => {
     }
     return groups;
 };
+/**
+ * Groups array items by a key function or object property.
+ * @param arr - Items to group.
+ * @param grouper - Property name or function that returns each item's group key.
+ * @returns An object whose keys are group names and values are grouped items.
+ *
+ * @example
+ * groupBy('status', [{ status: 'open' }, { status: 'closed' }, { status: 'open' }])
+ */
 const groupBy = /*#__PURE__*/ curryRight(groupByImpl);
 
 export { groupBy as default };

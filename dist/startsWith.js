@@ -1,5 +1,6 @@
 import curryRight from './curryRight.js';
 
+const startsWith = (str, prefix) => str.startsWith(prefix);
 /**
  * Checks whether a string starts with a prefix.
  * @param str - Full string to inspect.
@@ -9,7 +10,6 @@ import curryRight from './curryRight.js';
  * @example
  * startsWith('user:', 'user:42') // true
  */
-const startsWith = (str, prefix) => str.startsWith(prefix);
 const startsWithCurried = /*#__PURE__*/ curryRight(startsWith);
 
 export { startsWithCurried as default };
