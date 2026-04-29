@@ -1,7 +1,17 @@
 import fp from 'lodash/fp'
 import * as R from 'ramda'
 import { bench, describe } from 'vitest'
-import { contains, filter, find, flatten, groupBy, map, uniq, uniqBy } from '../../dist/index.js'
+import {
+  contains,
+  filter,
+  find,
+  flatten,
+  groupBy,
+  map,
+  pipe,
+  uniq,
+  uniqBy,
+} from '../../dist/index.js'
 import { LARGE_DATASET } from './fixtures'
 
 const byScore = (user: (typeof LARGE_DATASET.users)[number]) => user.score
@@ -123,6 +133,41 @@ describe('large dataset perf: tikka vs lodash/fp vs ramda', () => {
 
     bench('ramda includes', () => {
       _sink = R.includes(sentinel, LARGE_DATASET.numbers)
+    })
+  })
+
+  describe('pipe composed collection pipeline (filter -> map -> uniq -> find)', () => {
+    const scorePipelineTikka = pipe(
+      filter((user: (typeof LARGE_DATASET.users)[number]) => user.isActive),
+      map((user: (typeof LARGE_DATASET.users)[number]) => user.score % 500),
+      uniq,
+      find((score: number) => score > 450)
+    )
+
+    const scorePipelineLodash = fp.pipe(
+      fp.filter((user: (typeof LARGE_DATASET.users)[number]) => user.isActive),
+      fp.map((user: (typeof LARGE_DATASET.users)[number]) => user.score % 500),
+      fp.uniq,
+      fp.find((score: number) => score > 450)
+    )
+
+    const scorePipelineRamda = R.pipe(
+      R.filter((user: (typeof LARGE_DATASET.users)[number]) => user.isActive),
+      R.map((user: (typeof LARGE_DATASET.users)[number]) => user.score % 500),
+      R.uniq,
+      R.find((score: number) => score > 450)
+    )
+
+    bench('tikka pipe collection pipeline', () => {
+      _sink = scorePipelineTikka(LARGE_DATASET.users)
+    })
+
+    bench('lodash/fp pipe collection pipeline', () => {
+      _sink = scorePipelineLodash(LARGE_DATASET.users)
+    })
+
+    bench('ramda pipe collection pipeline', () => {
+      _sink = scorePipelineRamda(LARGE_DATASET.users)
     })
   })
 })

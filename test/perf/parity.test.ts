@@ -1,7 +1,18 @@
 import fp from 'lodash/fp'
 import * as R from 'ramda'
 import { describe, expect, it } from 'vitest'
-import { contains, filter, find, flatten, groupBy, map, pipe, sort, uniq, uniqBy } from '../../dist/index.js'
+import {
+  contains,
+  filter,
+  find,
+  flatten,
+  groupBy,
+  map,
+  pipe,
+  sort,
+  uniq,
+  uniqBy,
+} from '../../dist/index.js'
 import { LARGE_DATASET } from './fixtures'
 
 const LONG_TIMEOUT_MS = 120_000
@@ -177,6 +188,40 @@ describe('large-dataset parity across tikka, lodash/fp, and ramda', () => {
       const tikkaResult = left.map((value, i) => tikkaPipe(value, right[i]))
       const lodashResult = left.map((value, i) => lodashPipe(value, right[i]))
       const ramdaResult = left.map((value, i) => ramdaPipe(value, right[i]))
+
+      expect(tikkaResult).toEqual(lodashResult)
+      expect(tikkaResult).toEqual(ramdaResult)
+    },
+    LONG_TIMEOUT_MS
+  )
+
+  it(
+    'pipe composed collection pipeline parity',
+    () => {
+      const tikkaPipe = pipe(
+        filter((user: (typeof LARGE_DATASET.users)[number]) => user.isActive),
+        map((user: (typeof LARGE_DATASET.users)[number]) => user.score % 500),
+        uniq,
+        find((score: number) => score > 450)
+      )
+
+      const lodashPipe = fp.pipe(
+        fp.filter((user: (typeof LARGE_DATASET.users)[number]) => user.isActive),
+        fp.map((user: (typeof LARGE_DATASET.users)[number]) => user.score % 500),
+        fp.uniq,
+        fp.find((score: number) => score > 450)
+      )
+
+      const ramdaPipe = R.pipe(
+        R.filter((user: (typeof LARGE_DATASET.users)[number]) => user.isActive),
+        R.map((user: (typeof LARGE_DATASET.users)[number]) => user.score % 500),
+        R.uniq,
+        R.find((score: number) => score > 450)
+      )
+
+      const tikkaResult = tikkaPipe(LARGE_DATASET.users)
+      const lodashResult = lodashPipe(LARGE_DATASET.users)
+      const ramdaResult = ramdaPipe(LARGE_DATASET.users)
 
       expect(tikkaResult).toEqual(lodashResult)
       expect(tikkaResult).toEqual(ramdaResult)

@@ -563,6 +563,7 @@ Benchmarked functions:
 - `uniqBy`
 - `flatten` / `flattenDeep`
 - `contains` / `includes`
+- Composed `pipe` collection pipeline (`filter -> map -> uniq -> find`)
 
 Dataset sizes (generated in `test/perf/fixtures.ts`):
 - `numbers`: 60,000 items
@@ -574,6 +575,7 @@ Commands:
 - Performance suite: `npm run perf`
 - Watch performance suite: `npm run perf:watch`
 - Run a specific benchmark group by test name pattern: `npm run perf:test -- map`
+- Run the composed pipeline benchmark group: `npm run perf:test -- "pipe collection pipeline"`
 
 ## Quality gates in this repo
 
