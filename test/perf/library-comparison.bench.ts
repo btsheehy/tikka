@@ -201,6 +201,56 @@ describe('large dataset perf: tikka vs lodash/fp vs ramda', () => {
       R.map(R.pipe(highestBy(R.prop('score')), R.prop('id')))
     )
 
+    const scorePipelineImperative = (users: PerfUser[]) => {
+      const highScores: Record<string, [number, number]> = {
+        teens: [0, 0],
+        '20s': [0, 0],
+        '30s': [0, 0],
+        '40s': [0, 0],
+        '50s': [0, 0],
+        senior: [0, 0],
+      }
+      let i = 0
+      while (i < users.length) {
+        const curr = users[i]
+        if (!curr.isActive) {
+          i++
+          continue
+        }
+        let ageGroup: string
+        switch (true) {
+          case curr.age < 20:
+            ageGroup = 'teens'
+            break
+          case curr.age < 30:
+            ageGroup = '20s'
+            break
+          case curr.age < 40:
+            ageGroup = '30s'
+            break
+          case curr.age < 50:
+            ageGroup = '40s'
+            break
+          case curr.age < 60:
+            ageGroup = '50s'
+            break
+          case curr.age >= 60:
+            ageGroup = 'senior'
+            break
+        }
+        if (curr.score > highScores[ageGroup][0]) highScores[ageGroup] = [curr.score, curr.id]
+        i++
+      }
+      return {
+        teens: highScores['teens'][1],
+        '20s': highScores['20s'][1],
+        '30s': highScores['30s'][1],
+        '40s': highScores['40s'][1],
+        '50s': highScores['50s'][1],
+        senior: highScores['senior'][1],
+      }
+    }
+
     bench('tikka pipe collection pipeline', () => {
       _sink = scorePipelineTikka(LARGE_DATASET.users)
     })
@@ -212,10 +262,9 @@ describe('large dataset perf: tikka vs lodash/fp vs ramda', () => {
     bench('ramda pipe collection pipeline', () => {
       _sink = scorePipelineRamda(LARGE_DATASET.users)
     })
-    console.log(
-      [scorePipelineTikka, scorePipelineLodash, scorePipelineRamda].map((f) =>
-        f(LARGE_DATASET.users)
-      )
-    )
+
+    bench('imperative pipe collection pipeline', () => {
+      _sink = scorePipelineImperative(LARGE_DATASET.users)
+    })
   })
 })
