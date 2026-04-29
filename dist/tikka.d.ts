@@ -15,11 +15,11 @@ declare const tikka: {
         <T>(test: (t: T) => boolean, arr: Array<T>): boolean;
         <T>(test: (t: T) => boolean): (arr: Array<T>) => boolean;
     };
-    compact: <T>(arr: Array<T | null | undefined>) => T[];
     coalesce: {
         <T>(fallback: T, value: T | null | undefined): T;
         <T>(fallback: T): (value: T | null | undefined) => T;
     };
+    compact: <T>(arr: Array<T | null | undefined>) => T[];
     concat: {
         <T>(left: T[], right: T[]): T[];
         <T>(left: T[]): (right: T[]) => T[];
@@ -49,10 +49,6 @@ declare const tikka: {
         (msg: string): <T>(value: T) => T;
     };
     deepClone: typeof deepClone;
-    sort: {
-        <T, U>(iteratee: (value: T) => U, arr: T[]): T[];
-        <T, U>(iteratee: (value: T) => U): (arr: T[]) => T[];
-    };
     deepForEach: {
         <T>(func: (value: T) => void, data: Array<T>): void;
         <T extends object>(func: (value: any) => void, data: T): void;
@@ -64,6 +60,10 @@ declare const tikka: {
         <T extends object, R>(func: (x: any) => R, data: T): object;
         <T, R>(func: (x: T) => R): (data: Array<T>) => Array<R>;
         <T extends object, R>(func: (x: any) => R): (data: T) => object;
+    };
+    endsWith: {
+        (suffix: string, str: string): boolean;
+        (suffix: string): (str: string) => boolean;
     };
     every: {
         <T>(test: (x: T) => boolean, arr: Array<T>): boolean;
@@ -128,6 +128,11 @@ declare const tikka: {
         (prop: string): (obj: {}) => boolean;
     };
     head: <T>(arr: [T]) => T;
+    highest: (nums: number[]) => number;
+    highestBy: {
+        (b: unknown, a: unknown, ...extra: unknown[]): unknown;
+        (b: unknown): (a: unknown, ...extra: unknown[]) => unknown;
+    };
     identity: <T>(a: T) => T;
     ifElse: {
         <TR, FR>(onFalse: () => FR, onTrue: () => TR, test: () => boolean): TR | FR;
@@ -142,6 +147,11 @@ declare const tikka: {
     isEven: (num: number) => boolean;
     isOdd: (number: number) => boolean;
     last: typeof last;
+    lowest: (nums: number[]) => number;
+    lowestBy: {
+        (b: unknown, a: unknown, ...extra: unknown[]): unknown;
+        (b: unknown): (a: unknown, ...extra: unknown[]) => unknown;
+    };
     lt: {
         (a: number, b: number): boolean;
         (a: number): (b: number) => boolean;
@@ -161,6 +171,14 @@ declare const tikka: {
     mapValues: {
         <T extends Record<string, any>, R>(fn: (x: T[keyof T]) => R, obj: T): Record<keyof T, R>;
         <T extends Record<string, any>, R>(fn: (x: T[keyof T]) => R): (obj: T) => Record<keyof T, R>;
+    };
+    max: {
+        (b: number, a: number, ...extra: unknown[]): number;
+        (b: number): (a: number, ...extra: unknown[]) => number;
+    };
+    min: {
+        (b: number, a: number, ...extra: unknown[]): number;
+        (b: number): (a: number, ...extra: unknown[]) => number;
     };
     minus: {
         (b: number, a: number): number;
@@ -204,6 +222,10 @@ declare const tikka: {
     };
     self: <T>(a: T) => T;
     slice: typeof slice;
+    sort: {
+        <T, U>(iteratee: (value: T) => U, arr: T[]): T[];
+        <T, U>(iteratee: (value: T) => U): (arr: T[]) => T[];
+    };
     sortBy: {
         <T extends Record<string, any>, K extends keyof T>(fieldOrIteratee: K | ((value: T) => any), direction: import("./sortBy").SortDirection, arr: T[]): T[];
         <T extends Record<string, any>, K extends keyof T>(fieldOrIteratee: K | ((value: T) => any), direction: import("./sortBy").SortDirection): (arr: T[]) => T[];
@@ -215,10 +237,6 @@ declare const tikka: {
     startsWith: {
         (prefix: string, str: string): boolean;
         (prefix: string): (str: string) => boolean;
-    };
-    endsWith: {
-        (suffix: string, str: string): boolean;
-        (suffix: string): (str: string) => boolean;
     };
     tail: typeof tail;
     take: {

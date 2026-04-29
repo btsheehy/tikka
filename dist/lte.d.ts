@@ -4,12 +4,13 @@ type Lte = {
 };
 /**
  * Compares numbers with `<=`.
- * @param a - Left numeric operand.
- * @param b - Right numeric operand.
- * @returns `true` when `a` is less than or equal to `b`.
+ * @param a - Right numeric operand.
+ * @param b - Left numeric operand.
+ * @returns `true` when `b` is less than or equal to `a`.
  *
  * @example
- * lte(5, 5) // true
+ * lte(5)(5) // true
+ * lte(9)(2) // true
  */
 declare const lteCurried: Lte;
 export default lteCurried;

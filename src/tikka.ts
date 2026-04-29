@@ -1,8 +1,8 @@
 import always from './always'
 import and from './and'
 import any from './any'
-import compact from './compact'
 import coalesce from './coalesce'
+import compact from './compact'
 import concat from './concat'
 import cond from './cond'
 import contains from './contains'
@@ -12,9 +12,9 @@ import curry from './curry'
 import curryRight from './curryRight'
 import debug from './debug'
 import deepClone from './deepClone'
-import sort from './sort'
 import deepForEach from './deepForEach'
 import deepMap from './deepMap'
+import endsWith from './endsWith'
 import every from './every'
 import filter from './filter'
 import find from './find'
@@ -31,17 +31,23 @@ import gt from './gt'
 import gte from './gte'
 import has from './has'
 import head from './head'
+import highest from './highest'
+import highestBy from './highestBy'
 import identity from './identity'
 import ifElse from './ifElse'
 import includes from './includes'
 import isEven from './isEven'
 import isOdd from './isOdd'
 import last from './last'
+import lowest from './lowest'
+import lowestBy from './lowestBy'
 import lt from './lt'
 import lte from './lte'
 import map from './map'
 import mapKeys from './mapKeys'
 import mapValues from './mapValues'
+import max from './max'
+import min from './min'
 import minus from './minus'
 import multiply from './multiply'
 import noop from './noop'
@@ -55,10 +61,10 @@ import reverse from './reverse'
 import select from './select'
 import self from './self'
 import slice from './slice'
+import sort from './sort'
 import sortBy from './sortBy'
 import split from './split'
 import startsWith from './startsWith'
-import endsWith from './endsWith'
 import tail from './tail'
 import take from './take'
 import test from './test'
@@ -73,8 +79,8 @@ const tikka = {
   always,
   and,
   any,
-  compact,
   coalesce,
+  compact,
   concat,
   cond,
   contains,
@@ -84,9 +90,9 @@ const tikka = {
   curryRight,
   debug,
   deepClone,
-  sort,
   deepForEach,
   deepMap,
+  endsWith,
   every,
   filter,
   find,
@@ -103,17 +109,23 @@ const tikka = {
   gte,
   has,
   head,
+  highest,
+  highestBy,
   identity,
   ifElse,
   includes,
   isEven,
   isOdd,
   last,
+  lowest,
+  lowestBy,
   lt,
   lte,
   map,
   mapKeys,
   mapValues,
+  max,
+  min,
   minus,
   multiply,
   noop,
@@ -127,10 +139,10 @@ const tikka = {
   select,
   self,
   slice,
+  sort,
   sortBy,
   split,
   startsWith,
-  endsWith,
   tail,
   take,
   test,

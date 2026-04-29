@@ -1,16 +1,16 @@
-import curry from './curry.js';
+import curryRight from './curryRight.js';
 
 const lt = (a, b) => a < b;
 /**
  * Compares numbers with `<`.
- * @param a - Left numeric operand.
- * @param b - Right numeric operand.
- * @returns `true` when `a` is less than `b`.
+ * @param a - Right numeric operand.
+ * @param b - Left numeric operand.
+ * @returns `true` when `b` is less than `a`.
  *
  * @example
- * lt(2, 5) // true
+ * lt(2)(5) // false
  */
-const ltCurried = /*#__PURE__*/ curry(lt);
+const ltCurried = /*#__PURE__*/ curryRight(lt);
 
 export { ltCurried as default };
 //# sourceMappingURL=lt.js.map

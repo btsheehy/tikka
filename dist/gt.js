@@ -1,16 +1,16 @@
-import curry from './curry.js';
+import curryRight from './curryRight.js';
 
 const gt = (a, b) => a > b;
 /**
  * Compares numbers with `>`.
- * @param a - Left numeric operand.
- * @param b - Right numeric operand.
- * @returns `true` when `a` is greater than `b`.
+ * @param a - Right numeric operand.
+ * @param b - Left numeric operand.
+ * @returns `true` when `b` is greater than `a`.
  *
  * @example
- * gt(10, 4) // true
+ * gt(10)(4) // false
  */
-const gtCurried = /*#__PURE__*/ curry(gt);
+const gtCurried = /*#__PURE__*/ curryRight(gt);
 
 export { gtCurried as default };
 //# sourceMappingURL=gt.js.map

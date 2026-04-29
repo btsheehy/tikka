@@ -4,12 +4,12 @@ type Lt = {
 };
 /**
  * Compares numbers with `<`.
- * @param a - Left numeric operand.
- * @param b - Right numeric operand.
- * @returns `true` when `a` is less than `b`.
+ * @param a - Right numeric operand.
+ * @param b - Left numeric operand.
+ * @returns `true` when `b` is less than `a`.
  *
  * @example
- * lt(2, 5) // true
+ * lt(2)(5) // false
  */
 declare const ltCurried: Lt;
 export default ltCurried;

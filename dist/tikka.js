@@ -1,8 +1,8 @@
 import always from './always.js';
 import andCurried from './and.js';
 import anyCurried from './any.js';
-import compact from './compact.js';
 import coalesceCurried from './coalesce.js';
+import compact from './compact.js';
 import concat from './concat.js';
 import condCurried from './cond.js';
 import containsCurried from './contains.js';
@@ -12,9 +12,9 @@ import curry from './curry.js';
 import curryRight from './curryRight.js';
 import debugCurried from './debug.js';
 import deepClone from './deepClone.js';
-import sortCurried from './sort.js';
 import deepForEachCurried from './deepForEach.js';
 import deepMapCurried from './deepMap.js';
+import endsWithCurried from './endsWith.js';
 import everyCurried from './every.js';
 import filterCurried from './filter.js';
 import findCurried from './find.js';
@@ -30,16 +30,22 @@ import groupBy from './groupBy.js';
 import gtCurried from './gt.js';
 import gteCurried from './gte.js';
 import hasCurried from './has.js';
+import highest from './highest.js';
+import highestBy from './highestBy.js';
 import identity from './identity.js';
 import ifElseCurried from './ifElse.js';
 import isEven from './isEven.js';
 import isOdd from './isOdd.js';
 import last from './last.js';
+import lowest from './lowest.js';
+import lowestBy from './lowestBy.js';
 import ltCurried from './lt.js';
 import lteCurried from './lte.js';
 import mapCurried from './map.js';
 import mapKeys from './mapKeys.js';
 import mapValuesCurried from './mapValues.js';
+import max from './max.js';
+import min from './min.js';
 import minusCurried from './minus.js';
 import multiplyCurried from './multiply.js';
 import noop from './noop.js';
@@ -52,10 +58,10 @@ import replaceCurried from './replace.js';
 import reverse from './reverse.js';
 import self from './self.js';
 import slice from './slice.js';
+import sortCurried from './sort.js';
 import sortByCurried from './sortBy.js';
 import splitCurried from './split.js';
 import startsWithCurried from './startsWith.js';
-import endsWithCurried from './endsWith.js';
 import tail from './tail.js';
 import takeCurried from './take.js';
 import testCurried from './test.js';
@@ -70,8 +76,8 @@ const tikka = {
     always,
     and: andCurried,
     any: anyCurried,
-    compact,
     coalesce: coalesceCurried,
+    compact,
     concat,
     cond: condCurried,
     contains: containsCurried,
@@ -81,9 +87,9 @@ const tikka = {
     curryRight,
     debug: debugCurried,
     deepClone,
-    sort: sortCurried,
     deepForEach: deepForEachCurried,
     deepMap: deepMapCurried,
+    endsWith: endsWithCurried,
     every: everyCurried,
     filter: filterCurried,
     find: findCurried,
@@ -100,17 +106,23 @@ const tikka = {
     gte: gteCurried,
     has: hasCurried,
     head,
+    highest,
+    highestBy,
     identity,
     ifElse: ifElseCurried,
     includes: containsCurried,
     isEven,
     isOdd,
     last,
+    lowest,
+    lowestBy,
     lt: ltCurried,
     lte: lteCurried,
     map: mapCurried,
     mapKeys,
     mapValues: mapValuesCurried,
+    max,
+    min,
     minus: minusCurried,
     multiply: multiplyCurried,
     noop,
@@ -124,10 +136,10 @@ const tikka = {
     select: grab,
     self,
     slice,
+    sort: sortCurried,
     sortBy: sortByCurried,
     split: splitCurried,
     startsWith: startsWithCurried,
-    endsWith: endsWithCurried,
     tail,
     take: takeCurried,
     test: testCurried,

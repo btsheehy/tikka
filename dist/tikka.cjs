@@ -5,8 +5,8 @@ Object.defineProperty(exports, '__esModule', { value: true });
 var always = require('./always.cjs');
 var and = require('./and.cjs');
 var any = require('./any.cjs');
-var compact = require('./compact.cjs');
 var coalesce = require('./coalesce.cjs');
+var compact = require('./compact.cjs');
 var concat = require('./concat.cjs');
 var cond = require('./cond.cjs');
 var contains = require('./contains.cjs');
@@ -16,9 +16,9 @@ var curry = require('./curry.cjs');
 var curryRight = require('./curryRight.cjs');
 var debug = require('./debug.cjs');
 var deepClone = require('./deepClone.cjs');
-var sort = require('./sort.cjs');
 var deepForEach = require('./deepForEach.cjs');
 var deepMap = require('./deepMap.cjs');
+var endsWith = require('./endsWith.cjs');
 var every = require('./every.cjs');
 var filter = require('./filter.cjs');
 var find = require('./find.cjs');
@@ -34,16 +34,22 @@ var groupBy = require('./groupBy.cjs');
 var gt = require('./gt.cjs');
 var gte = require('./gte.cjs');
 var has = require('./has.cjs');
+var highest = require('./highest.cjs');
+var highestBy = require('./highestBy.cjs');
 var identity = require('./identity.cjs');
 var ifElse = require('./ifElse.cjs');
 var isEven = require('./isEven.cjs');
 var isOdd = require('./isOdd.cjs');
 var last = require('./last.cjs');
+var lowest = require('./lowest.cjs');
+var lowestBy = require('./lowestBy.cjs');
 var lt = require('./lt.cjs');
 var lte = require('./lte.cjs');
 var map = require('./map.cjs');
 var mapKeys = require('./mapKeys.cjs');
 var mapValues = require('./mapValues.cjs');
+var max = require('./max.cjs');
+var min = require('./min.cjs');
 var minus = require('./minus.cjs');
 var multiply = require('./multiply.cjs');
 var noop = require('./noop.cjs');
@@ -56,10 +62,10 @@ var replace = require('./replace.cjs');
 var reverse = require('./reverse.cjs');
 var self = require('./self.cjs');
 var slice = require('./slice.cjs');
+var sort = require('./sort.cjs');
 var sortBy = require('./sortBy.cjs');
 var split = require('./split.cjs');
 var startsWith = require('./startsWith.cjs');
-var endsWith = require('./endsWith.cjs');
 var tail = require('./tail.cjs');
 var take = require('./take.cjs');
 var test = require('./test.cjs');
@@ -74,8 +80,8 @@ const tikka = {
     always: always.default,
     and: and.default,
     any: any.default,
-    compact: compact.default,
     coalesce: coalesce.default,
+    compact: compact.default,
     concat: concat.default,
     cond: cond.default,
     contains: contains.default,
@@ -85,9 +91,9 @@ const tikka = {
     curryRight: curryRight.default,
     debug: debug.default,
     deepClone: deepClone.default,
-    sort: sort.default,
     deepForEach: deepForEach.default,
     deepMap: deepMap.default,
+    endsWith: endsWith.default,
     every: every.default,
     filter: filter.default,
     find: find.default,
@@ -104,17 +110,23 @@ const tikka = {
     gte: gte.default,
     has: has.default,
     head: head.default,
+    highest: highest.default,
+    highestBy: highestBy.default,
     identity: identity.default,
     ifElse: ifElse.default,
     includes: contains.default,
     isEven: isEven.default,
     isOdd: isOdd.default,
     last: last.default,
+    lowest: lowest.default,
+    lowestBy: lowestBy.default,
     lt: lt.default,
     lte: lte.default,
     map: map.default,
     mapKeys: mapKeys.default,
     mapValues: mapValues.default,
+    max: max.default,
+    min: min.default,
     minus: minus.default,
     multiply: multiply.default,
     noop: noop.default,
@@ -128,10 +140,10 @@ const tikka = {
     select: grab.default,
     self: self.default,
     slice: slice.default,
+    sort: sort.default,
     sortBy: sortBy.default,
     split: split.default,
     startsWith: startsWith.default,
-    endsWith: endsWith.default,
     tail: tail.default,
     take: take.default,
     test: test.default,
