@@ -130,8 +130,8 @@ declare const tikka: {
     head: <T>(arr: [T]) => T;
     highest: (nums: number[]) => number;
     highestBy: {
-        (b: unknown, a: unknown, ...extra: unknown[]): unknown;
-        (b: unknown): (a: unknown, ...extra: unknown[]) => unknown;
+        <T>(fn: (value: T) => number, arr: T[]): T;
+        <T>(fn: (value: T) => number): (arr: T[]) => T;
     };
     identity: <T>(a: T) => T;
     ifElse: {
@@ -149,8 +149,8 @@ declare const tikka: {
     last: typeof last;
     lowest: (nums: number[]) => number;
     lowestBy: {
-        (b: unknown, a: unknown, ...extra: unknown[]): unknown;
-        (b: unknown): (a: unknown, ...extra: unknown[]) => unknown;
+        <T>(fn: (value: T) => number, arr: T[]): T;
+        <T>(fn: (value: T) => number): (arr: T[]) => T;
     };
     lt: {
         (a: number, b: number): boolean;
@@ -173,12 +173,12 @@ declare const tikka: {
         <T extends Record<string, any>, R>(fn: (x: T[keyof T]) => R): (obj: T) => Record<keyof T, R>;
     };
     max: {
-        (b: number, a: number, ...extra: unknown[]): number;
-        (b: number): (a: number, ...extra: unknown[]) => number;
+        (a: number, b: number): number;
+        (a: number): (b: number) => number;
     };
     min: {
-        (b: number, a: number, ...extra: unknown[]): number;
-        (b: number): (a: number, ...extra: unknown[]) => number;
+        (a: number, b: number): number;
+        (a: number): (b: number) => number;
     };
     minus: {
         (b: number, a: number): number;
@@ -210,6 +210,10 @@ declare const tikka: {
         <T, U>(replacement: (item: T) => U, replacee: (arg0: T) => boolean, targetArray: T[]): (T | U)[];
         (replacement: string, substring: string, targetString: string): string;
         (replacement: string, regex: RegExp, targetString: string): string;
+    };
+    remove: {
+        <T>(pred: (value: T) => boolean, arr: T[]): T[];
+        <T>(pred: (value: T) => boolean): (arr: T[]) => T[];
     };
     reverse: <T>(v: T[] | string) => string | any[];
     select: {

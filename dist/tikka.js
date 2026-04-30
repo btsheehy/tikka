@@ -31,21 +31,21 @@ import gtCurried from './gt.js';
 import gteCurried from './gte.js';
 import hasCurried from './has.js';
 import highest from './highest.js';
-import highestBy from './highestBy.js';
+import highestByCurried from './highestBy.js';
 import identity from './identity.js';
 import ifElseCurried from './ifElse.js';
 import isEven from './isEven.js';
 import isOdd from './isOdd.js';
 import last from './last.js';
 import lowest from './lowest.js';
-import lowestBy from './lowestBy.js';
+import lowestByCurried from './lowestBy.js';
 import ltCurried from './lt.js';
 import lteCurried from './lte.js';
 import mapCurried from './map.js';
 import mapKeys from './mapKeys.js';
 import mapValuesCurried from './mapValues.js';
-import max from './max.js';
-import min from './min.js';
+import maxCurried from './max.js';
+import minCurried from './min.js';
 import minusCurried from './minus.js';
 import multiplyCurried from './multiply.js';
 import noop from './noop.js';
@@ -54,6 +54,7 @@ import pipe from './pipe.js';
 import placeholder from './placeholder.js';
 import pluck from './pluck.js';
 import plusCurried from './plus.js';
+import removeCurried from './remove.js';
 import replaceCurried from './replace.js';
 import reverse from './reverse.js';
 import self from './self.js';
@@ -107,7 +108,7 @@ const tikka = {
     has: hasCurried,
     head,
     highest,
-    highestBy,
+    highestBy: highestByCurried,
     identity,
     ifElse: ifElseCurried,
     includes: containsCurried,
@@ -115,14 +116,14 @@ const tikka = {
     isOdd,
     last,
     lowest,
-    lowestBy,
+    lowestBy: lowestByCurried,
     lt: ltCurried,
     lte: lteCurried,
     map: mapCurried,
     mapKeys,
     mapValues: mapValuesCurried,
-    max,
-    min,
+    max: maxCurried,
+    min: minCurried,
     minus: minusCurried,
     multiply: multiplyCurried,
     noop,
@@ -132,6 +133,7 @@ const tikka = {
     pluck,
     plus: plusCurried,
     replace: replaceCurried,
+    remove: removeCurried,
     reverse,
     select: grab,
     self,

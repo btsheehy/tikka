@@ -1,6 +1,6 @@
 import curryRight from './curryRight'
 
-const highestBy = <T>(arr: T[], fn: (arg0: T) => number): T => {
+const highestBy = <T>(arr: T[], fn: (value: T) => number): T => {
   let hi = 0
   let h = fn(arr[0])
   let i = 1
@@ -15,4 +15,21 @@ const highestBy = <T>(arr: T[], fn: (arg0: T) => number): T => {
   return arr[hi]
 }
 
-export default curryRight(highestBy)
+type HighestBy = {
+  <T>(fn: (value: T) => number, arr: T[]): T
+  <T>(fn: (value: T) => number): (arr: T[]) => T
+}
+
+/**
+ * Returns the element with the highest derived numeric score.
+ * @param arr - Source array.
+ * @param fn - Selector that computes each element's score.
+ * @returns The element whose score is greatest.
+ *
+ * @example
+ * highestBy((user) => user.score, [{ name: 'Ari', score: 12 }, { name: 'Bea', score: 21 }])
+ * // { name: 'Bea', score: 21 }
+ */
+const highestByCurried = /*#__PURE__*/ curryRight(highestBy) as HighestBy
+
+export default highestByCurried

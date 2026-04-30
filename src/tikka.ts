@@ -56,6 +56,7 @@ import pipe from './pipe'
 import placeholder from './placeholder'
 import pluck from './pluck'
 import plus from './plus'
+import remove from './remove'
 import replace from './replace'
 import reverse from './reverse'
 import select from './select'
@@ -135,6 +136,7 @@ const tikka = {
   pluck,
   plus,
   replace,
+  remove,
   reverse,
   select,
   self,

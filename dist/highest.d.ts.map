@@ -1,1 +1,1 @@
-{"version":3,"file":"highest.d.ts","sourceRoot":"","sources":["../src/highest.ts"],"names":[],"mappings":"AAAA,QAAA,MAAM,OAAO,GAAI,MAAM,MAAM,EAAE,KAAG,MAA2B,CAAA;AAE7D,eAAe,OAAO,CAAA"}
+{"version":3,"file":"highest.d.ts","sourceRoot":"","sources":["../src/highest.ts"],"names":[],"mappings":"AAAA;;;;;;;GAOG;AACH,QAAA,MAAM,OAAO,GAAI,MAAM,MAAM,EAAE,KAAG,MAA2B,CAAA;AAE7D,eAAe,OAAO,CAAA"}

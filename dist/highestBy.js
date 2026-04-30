@@ -14,7 +14,17 @@ const highestBy = (arr, fn) => {
     }
     return arr[hi];
 };
-var highestBy$1 = curryRight(highestBy);
+/**
+ * Returns the element with the highest derived numeric score.
+ * @param arr - Source array.
+ * @param fn - Selector that computes each element's score.
+ * @returns The element whose score is greatest.
+ *
+ * @example
+ * highestBy((user) => user.score, [{ name: 'Ari', score: 12 }, { name: 'Bea', score: 21 }])
+ * // { name: 'Bea', score: 21 }
+ */
+const highestByCurried = /*#__PURE__*/ curryRight(highestBy);
 
-export { highestBy$1 as default };
+export { highestByCurried as default };
 //# sourceMappingURL=highestBy.js.map

@@ -18,7 +18,17 @@ const lowestBy = (arr, fn) => {
     }
     return arr[li];
 };
-var lowestBy$1 = curryRight.default(lowestBy);
+/**
+ * Returns the element with the lowest derived numeric score.
+ * @param arr - Source array.
+ * @param fn - Selector that computes each element's score.
+ * @returns The element whose score is smallest.
+ *
+ * @example
+ * lowestBy((user) => user.score, [{ name: 'Ari', score: 12 }, { name: 'Bea', score: 21 }])
+ * // { name: 'Ari', score: 12 }
+ */
+const lowestByCurried = /*#__PURE__*/ curryRight.default(lowestBy);
 
-exports.default = lowestBy$1;
+exports.default = lowestByCurried;
 //# sourceMappingURL=lowestBy.cjs.map
