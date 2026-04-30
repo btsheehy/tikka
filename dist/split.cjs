@@ -4,6 +4,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var curryRight = require('./curryRight.cjs');
 
+const split = (str, separator) => str.split(separator);
 /**
  * Splits a string using a separator string or regex.
  * @param str - String to split.
@@ -13,8 +14,7 @@ var curryRight = require('./curryRight.cjs');
  * @example
  * split(',', 'a,b,c') // ['a', 'b', 'c']
  */
-const split = (str, separator) => str.split(separator);
-var split$1 = /*#__PURE__*/ curryRight.default(split);
+const splitCurried = /*#__PURE__*/ curryRight.default(split);
 
-exports.default = split$1;
+exports.default = splitCurried;
 //# sourceMappingURL=split.cjs.map

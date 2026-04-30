@@ -1,1 +1,1 @@
-{"version":3,"file":"coalesce.js","sources":["../src/coalesce.ts"],"sourcesContent":[null],"names":[],"mappings":";;AAEA;;;;;;;;AAQG;AACH,MAAM,QAAQ,GAAG,CAAI,KAA2B,EAAE,QAAW,KAAK,KAAK,IAAI,QAAQ;AAEnF,iBAAe,cAAc,UAAU,CAAC,QAAQ,CAAC;;;;"}
+{"version":3,"file":"coalesce.js","sources":["../src/coalesce.ts"],"sourcesContent":[null],"names":[],"mappings":";;AAEA,MAAM,QAAQ,GAAG,CAAI,KAA2B,EAAE,QAAW,KAAK,KAAK,IAAI,QAAQ;AAOnF;;;;;;;;AAQG;AACH,MAAM,eAAe,iBAAiB,UAAU,CAAC,QAAQ;;;;"}

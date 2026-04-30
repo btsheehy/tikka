@@ -4,6 +4,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var curryRight = require('./curryRight.cjs');
 
+const startsWith = (str, prefix) => str.startsWith(prefix);
 /**
  * Checks whether a string starts with a prefix.
  * @param str - Full string to inspect.
@@ -13,8 +14,7 @@ var curryRight = require('./curryRight.cjs');
  * @example
  * startsWith('user:', 'user:42') // true
  */
-const startsWith = (str, prefix) => str.startsWith(prefix);
-var startsWith$1 = /*#__PURE__*/ curryRight.default(startsWith);
+const startsWithCurried = /*#__PURE__*/ curryRight.default(startsWith);
 
-exports.default = startsWith$1;
+exports.default = startsWithCurried;
 //# sourceMappingURL=startsWith.cjs.map

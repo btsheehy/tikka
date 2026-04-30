@@ -1,3 +1,12 @@
+import curryRight from './curryRight'
+
+const has = (obj: {}, prop: string) => Object.hasOwn(obj, prop)
+
+type Has = {
+  (prop: string, obj: {}): boolean
+  (prop: string): (obj: {}) => boolean
+}
+
 /**
  * Checks whether an object owns a property key.
  * @param obj - Object to inspect.
@@ -7,8 +16,6 @@
  * @example
  * has('id', { id: 5, name: 'Ada' }) // true
  */
-import curryRight from './curryRight'
+const hasCurried = /*#__PURE__*/ curryRight(has) as Has
 
-const has = (obj: {}, prop: string) => Object.hasOwn(obj, prop)
-
-export default /*#__PURE__*/ curryRight(has)
+export default hasCurried

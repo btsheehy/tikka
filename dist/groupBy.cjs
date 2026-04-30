@@ -10,7 +10,7 @@ const groupByImpl = (arr, grouper) => {
     const groups = {};
     let i = 0;
     while (i < arr.length) {
-        const group = groupingFunction(arr[i]).toString();
+        const group = String(groupingFunction(arr[i]));
         if (groups[group])
             groups[group].push(arr[i]);
         else
@@ -19,6 +19,15 @@ const groupByImpl = (arr, grouper) => {
     }
     return groups;
 };
+/**
+ * Groups array items by a key function or object property.
+ * @param arr - Items to group.
+ * @param grouper - Property name or function that returns each item's group key.
+ * @returns An object whose keys are group names and values are grouped items.
+ *
+ * @example
+ * groupBy('status', [{ status: 'open' }, { status: 'closed' }, { status: 'open' }])
+ */
 const groupBy = /*#__PURE__*/ curryRight.default(groupByImpl);
 
 exports.default = groupBy;

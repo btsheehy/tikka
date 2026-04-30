@@ -7,32 +7,83 @@
  * const normalize = pipe(trim, toLower)
  * normalize('  Hello  ') // 'hello'
  */
+
 type AnyFn = (...args: any[]) => any
 
-type UnaryFn<Input = any, Output = any> = (input: Input) => Output
-
-type Last<T extends readonly unknown[]> = T extends readonly [...infer _, infer Tail] ? Tail : never
-
-type ValidPipeChain<Fns extends readonly AnyFn[]> = Fns extends readonly [AnyFn]
-  ? Fns
-  : Fns extends readonly [infer Head, infer Next, ...infer Rest]
-    ? Head extends AnyFn
-      ? Next extends UnaryFn
-        ? ReturnType<Head> extends Parameters<Next>[0]
-          ? readonly [Head, ...ValidPipeChain<[Next, ...(Rest extends AnyFn[] ? Rest : never)]>]
-          : never
-        : never
-      : never
-    : never
-
-type PipeResult<Fns extends readonly [AnyFn, ...AnyFn[]]> = (
-  ...args: Parameters<Fns[0]>
-) => ReturnType<Last<Fns> & AnyFn>
-
+// Overloads: explicit arities enable contextual type inference through generic fns
 function pipe(): <T>(value: T) => T
-function pipe<const Fns extends readonly [AnyFn, ...AnyFn[]]>(
-  ...fns: ValidPipeChain<Fns> extends never ? never : Fns
-): PipeResult<Fns>
+function pipe<A extends any[], B>(f1: (...args: A) => B): (...args: A) => B
+function pipe<A extends any[], B, C>(f1: (...args: A) => B, f2: (b: B) => C): (...args: A) => C
+function pipe<A extends any[], B, C, D>(
+  f1: (...args: A) => B,
+  f2: (b: B) => C,
+  f3: (c: C) => D
+): (...args: A) => D
+function pipe<A extends any[], B, C, D, E>(
+  f1: (...args: A) => B,
+  f2: (b: B) => C,
+  f3: (c: C) => D,
+  f4: (d: D) => E
+): (...args: A) => E
+function pipe<A extends any[], B, C, D, E, F>(
+  f1: (...args: A) => B,
+  f2: (b: B) => C,
+  f3: (c: C) => D,
+  f4: (d: D) => E,
+  f5: (e: E) => F
+): (...args: A) => F
+function pipe<A extends any[], B, C, D, E, F, G>(
+  f1: (...args: A) => B,
+  f2: (b: B) => C,
+  f3: (c: C) => D,
+  f4: (d: D) => E,
+  f5: (e: E) => F,
+  f6: (f: F) => G
+): (...args: A) => G
+function pipe<A extends any[], B, C, D, E, F, G, H>(
+  f1: (...args: A) => B,
+  f2: (b: B) => C,
+  f3: (c: C) => D,
+  f4: (d: D) => E,
+  f5: (e: E) => F,
+  f6: (f: F) => G,
+  f7: (g: G) => H
+): (...args: A) => H
+function pipe<A extends any[], B, C, D, E, F, G, H, I>(
+  f1: (...args: A) => B,
+  f2: (b: B) => C,
+  f3: (c: C) => D,
+  f4: (d: D) => E,
+  f5: (e: E) => F,
+  f6: (f: F) => G,
+  f7: (g: G) => H,
+  f8: (h: H) => I
+): (...args: A) => I
+function pipe<A extends any[], B, C, D, E, F, G, H, I, J>(
+  f1: (...args: A) => B,
+  f2: (b: B) => C,
+  f3: (c: C) => D,
+  f4: (d: D) => E,
+  f5: (e: E) => F,
+  f6: (f: F) => G,
+  f7: (g: G) => H,
+  f8: (h: H) => I,
+  f9: (i: I) => J
+): (...args: A) => J
+function pipe<A extends any[], B, C, D, E, F, G, H, I, J, K>(
+  f1: (...args: A) => B,
+  f2: (b: B) => C,
+  f3: (c: C) => D,
+  f4: (d: D) => E,
+  f5: (e: E) => F,
+  f6: (f: F) => G,
+  f7: (g: G) => H,
+  f8: (h: H) => I,
+  f9: (i: I) => J,
+  f10: (j: J) => K
+): (...args: A) => K
+// Fallback: more than 10 functions — no strict type checking beyond the 10th
+function pipe(...fns: AnyFn[]): AnyFn
 function pipe(...fns: AnyFn[]) {
   if (fns.length === 0) {
     return <T>(value: T) => value

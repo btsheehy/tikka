@@ -1,14 +1,22 @@
+import curryRight from './curryRight'
+
+const lte = (a: number, b: number) => a <= b
+
+type Lte = {
+  (a: number, b: number): boolean
+  (a: number): (b: number) => boolean
+}
+
 /**
  * Compares numbers with `<=`.
- * @param a - Left numeric operand.
- * @param b - Right numeric operand.
- * @returns `true` when `a` is less than or equal to `b`.
+ * @param a - Right numeric operand.
+ * @param b - Left numeric operand.
+ * @returns `true` when `b` is less than or equal to `a`.
  *
  * @example
- * lte(5, 5) // true
+ * lte(5)(5) // true
+ * lte(9)(2) // true
  */
-import curry from './curry'
+const lteCurried = /*#__PURE__*/ curryRight(lte) as Lte
 
-const lt = (a: number, b: number) => a <= b
-
-export default /*#__PURE__*/ curry(lt)
+export default lteCurried

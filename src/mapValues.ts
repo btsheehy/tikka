@@ -1,15 +1,6 @@
-/**
- * Transforms object values while preserving keys.
- * @param obj - Object whose values will be mapped.
- * @param fn - Mapper run for each value.
- * @returns A new object with the same keys and mapped values.
- *
- * @example
- * mapValues((n) => n * 10, { a: 1, b: 2 }) // { a: 10, b: 20 }
- */
 import curryRight from './curryRight'
 
-const mapValues = <T extends Record<string, unknown>, R>(
+const mapValues = <T extends Record<string, any>, R>(
   obj: T,
   fn: (x: T[keyof T]) => R
 ): Record<keyof T, R> => {
@@ -23,4 +14,22 @@ const mapValues = <T extends Record<string, unknown>, R>(
   return newObj as Record<keyof T, R>
 }
 
-export default /*#__PURE__*/ curryRight(mapValues)
+type MapValues = {
+  <T extends Record<string, any>, R>(fn: (x: T[keyof T]) => R, obj: T): Record<keyof T, R>
+  <T extends Record<string, any>, R>(
+    fn: (x: T[keyof T]) => R
+  ): (obj: T) => Record<keyof T, R>
+}
+
+/**
+ * Transforms object values while preserving keys.
+ * @param obj - Object whose values will be mapped.
+ * @param fn - Mapper run for each value.
+ * @returns A new object with the same keys and mapped values.
+ *
+ * @example
+ * mapValues((n) => n * 10, { a: 1, b: 2 }) // { a: 10, b: 20 }
+ */
+const mapValuesCurried = /*#__PURE__*/ curryRight(mapValues) as MapValues
+
+export default mapValuesCurried

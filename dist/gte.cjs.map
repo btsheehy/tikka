@@ -1,1 +1,1 @@
-{"version":3,"file":"gte.cjs","sources":["../src/gte.ts"],"sourcesContent":[null],"names":["curry"],"mappings":";;;;;;AAAA;;;;;;;;AAQG;AAGH,MAAM,EAAE,GAAG,CAAC,CAAS,EAAE,CAAS,KAAK,CAAC,IAAI,CAAC;AAE3C,UAAe,cAAcA,aAAK,CAAC,EAAE,CAAC;;;;"}
+{"version":3,"file":"gte.cjs","sources":["../src/gte.ts"],"sourcesContent":[null],"names":["curryRight"],"mappings":";;;;;;AAEA,MAAM,EAAE,GAAG,CAAC,CAAS,EAAE,CAAS,KAAK,CAAC,IAAI,CAAC;AAO3C;;;;;;;;;AASG;AACH,MAAM,UAAU,iBAAiBA,kBAAU,CAAC,EAAE;;;;"}

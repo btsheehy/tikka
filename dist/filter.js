@@ -1,14 +1,5 @@
 import curryRight from './curryRight.js';
 
-/**
- * Filters an array by predicate.
- * @param arr - Source array.
- * @param filterFunc - Predicate that decides which items to keep.
- * @returns A new array containing only elements where `filterFunc` returned `true`.
- *
- * @example
- * filter((user) => user.active, users)
- */
 const filter = (arr, filterFunc) => {
     const result = [];
     let i = 0;
@@ -20,7 +11,16 @@ const filter = (arr, filterFunc) => {
     }
     return result;
 };
-var filter$1 = /*#__PURE__*/ curryRight(filter, filter.length);
+/**
+ * Filters an array by predicate.
+ * @param arr - Source array.
+ * @param filterFunc - Predicate that decides which items to keep.
+ * @returns A new array containing only elements where `filterFunc` returned `true`.
+ *
+ * @example
+ * filter((user) => user.active, users)
+ */
+const filterCurried = /*#__PURE__*/ curryRight(filter, filter.length);
 
-export { filter$1 as default };
+export { filterCurried as default };
 //# sourceMappingURL=filter.js.map

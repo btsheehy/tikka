@@ -4,15 +4,6 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var curryRight = require('./curryRight.cjs');
 
-/**
- * Filters an array by predicate.
- * @param arr - Source array.
- * @param filterFunc - Predicate that decides which items to keep.
- * @returns A new array containing only elements where `filterFunc` returned `true`.
- *
- * @example
- * filter((user) => user.active, users)
- */
 const filter = (arr, filterFunc) => {
     const result = [];
     let i = 0;
@@ -24,7 +15,16 @@ const filter = (arr, filterFunc) => {
     }
     return result;
 };
-var filter$1 = /*#__PURE__*/ curryRight.default(filter, filter.length);
+/**
+ * Filters an array by predicate.
+ * @param arr - Source array.
+ * @param filterFunc - Predicate that decides which items to keep.
+ * @returns A new array containing only elements where `filterFunc` returned `true`.
+ *
+ * @example
+ * filter((user) => user.active, users)
+ */
+const filterCurried = /*#__PURE__*/ curryRight.default(filter, filter.length);
 
-exports.default = filter$1;
+exports.default = filterCurried;
 //# sourceMappingURL=filter.cjs.map

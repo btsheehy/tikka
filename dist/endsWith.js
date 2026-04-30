@@ -1,5 +1,6 @@
 import curryRight from './curryRight.js';
 
+const endsWith = (str, suffix) => str.endsWith(suffix);
 /**
  * Checks whether a string ends with a suffix.
  * @param str - Full string to inspect.
@@ -9,8 +10,7 @@ import curryRight from './curryRight.js';
  * @example
  * endsWith('.ts', 'index.ts') // true
  */
-const endsWith = (str, suffix) => str.endsWith(suffix);
-var endsWith$1 = /*#__PURE__*/ curryRight(endsWith);
+const endsWithCurried = /*#__PURE__*/ curryRight(endsWith);
 
-export { endsWith$1 as default };
+export { endsWithCurried as default };
 //# sourceMappingURL=endsWith.js.map

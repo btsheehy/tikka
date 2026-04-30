@@ -1,3 +1,17 @@
+import curryRight from './curryRight'
+
+const forEach = <T>(arr: T[], func: (x: T) => void) => {
+  arr.forEach((val) => {
+    func(val)
+  })
+  return arr
+}
+
+type ForEach = {
+  <T>(func: (x: T) => void, arr: T[]): T[]
+  <T>(func: (x: T) => void): (arr: T[]) => T[]
+}
+
 /**
  * Runs a callback for each array item and returns the original array.
  * @param arr - Array to iterate.
@@ -7,13 +21,6 @@
  * @example
  * forEach((n) => console.log(n), [1, 2, 3])
  */
-import curryRight from './curryRight'
+const forEachCurried = /*#__PURE__*/ curryRight(forEach) as ForEach
 
-const forEach = <T>(arr: T[], func: (x: T) => unknown) => {
-  arr.forEach((val) => {
-    func(val)
-  })
-  return arr
-}
-
-export default /*#__PURE__*/ curryRight(forEach)
+export default forEachCurried

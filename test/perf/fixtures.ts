@@ -32,7 +32,7 @@ const makeUsers = (size: number): PerfUser[] => {
     return {
       id,
       age: 18 + randomInt(rng, 60),
-      score: randomInt(rng, 10_000),
+      score: randomInt(rng, 10_000_000_000),
       city: cities[randomInt(rng, cities.length)],
       isActive: randomInt(rng, 2) === 0,
     }

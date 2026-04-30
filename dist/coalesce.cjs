@@ -4,6 +4,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var curryRight = require('./curryRight.cjs');
 
+const coalesce = (value, fallback) => value ?? fallback;
 /**
  * Falls back when a value is `null` or `undefined`.
  * @param value - Preferred value.
@@ -13,8 +14,7 @@ var curryRight = require('./curryRight.cjs');
  * @example
  * coalesce('Anonymous', profile.nickname)
  */
-const coalesce = (value, fallback) => value ?? fallback;
-var coalesce$1 = /*#__PURE__*/ curryRight.default(coalesce);
+const coalesceCurried = /*#__PURE__*/ curryRight.default(coalesce);
 
-exports.default = coalesce$1;
+exports.default = coalesceCurried;
 //# sourceMappingURL=coalesce.cjs.map

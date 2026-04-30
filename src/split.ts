@@ -1,5 +1,12 @@
 import curryRight from './curryRight'
 
+const split = (str: string, separator: string | RegExp) => str.split(separator)
+
+type Split = {
+  (separator: string | RegExp, str: string): string[]
+  (separator: string | RegExp): (str: string) => string[]
+}
+
 /**
  * Splits a string using a separator string or regex.
  * @param str - String to split.
@@ -9,6 +16,6 @@ import curryRight from './curryRight'
  * @example
  * split(',', 'a,b,c') // ['a', 'b', 'c']
  */
-const split = (str: string, separator: string | RegExp) => str.split(separator)
+const splitCurried = /*#__PURE__*/ curryRight(split) as Split
 
-export default /*#__PURE__*/ curryRight(split)
+export default splitCurried

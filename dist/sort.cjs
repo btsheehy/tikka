@@ -4,15 +4,6 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var curryRight = require('./curryRight.cjs');
 
-/**
- * Sorts an array by a computed key without mutating the input.
- * @param arr - Array to sort.
- * @param iteratee - Function that computes the sortable value for each item.
- * @returns A new array sorted ascending by `iteratee(item)`.
- *
- * @example
- * sort((user) => user.age, users)
- */
 const sort = (arr, iteratee) => {
     return [...arr].sort((left, right) => {
         const leftValue = iteratee(left);
@@ -26,7 +17,16 @@ const sort = (arr, iteratee) => {
         return 0;
     });
 };
-var sort$1 = /*#__PURE__*/ curryRight.default(sort);
+/**
+ * Sorts an array by a computed key without mutating the input.
+ * @param arr - Array to sort.
+ * @param iteratee - Function that computes the sortable value for each item.
+ * @returns A new array sorted ascending by `iteratee(item)`.
+ *
+ * @example
+ * sort((user) => user.age, users)
+ */
+const sortCurried = /*#__PURE__*/ curryRight.default(sort);
 
-exports.default = sort$1;
+exports.default = sortCurried;
 //# sourceMappingURL=sort.cjs.map

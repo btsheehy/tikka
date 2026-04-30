@@ -1,195 +1,209 @@
 import always from './always.js';
-import and from './and.js';
-import any from './any.js';
+import andCurried from './and.js';
+import anyCurried from './any.js';
+import coalesceCurried from './coalesce.js';
 import compact from './compact.js';
-import coalesce from './coalesce.js';
 import concat from './concat.js';
-import cond from './cond.js';
-import contains from './contains.js';
-import countBy from './countBy.js';
-import countWhere from './countWhere.js';
+import condCurried from './cond.js';
+import containsCurried from './contains.js';
+import countByCurried from './countBy.js';
+import countWhereCurried from './countWhere.js';
 import curry from './curry.js';
 import curryRight from './curryRight.js';
-import debug from './debug.js';
+import debugCurried from './debug.js';
 import deepClone from './deepClone.js';
-import sort from './sort.js';
-import deepForEach from './deepForEach.js';
-import deepMap from './deepMap.js';
-import every from './every.js';
-import filter from './filter.js';
-import find from './find.js';
-import findIndex from './findIndex.js';
+import deepForEachCurried from './deepForEach.js';
+import deepMapCurried from './deepMap.js';
+import endsWithCurried from './endsWith.js';
+import everyCurried from './every.js';
+import filterCurried from './filter.js';
+import findCurried from './find.js';
+import findIndexCurried from './findIndex.js';
 import head from './head.js';
 import flatten from './flatten.js';
-import forEach from './forEach.js';
-import forEachValues from './forEachValues.js';
+import forEachCurried from './forEach.js';
+import forEachValuesCurried from './forEachValues.js';
 import get from './get.js';
-import getOr from './getOr.js';
+import getOrCurried from './getOr.js';
 import grab from './grab.js';
 import groupBy from './groupBy.js';
-import gt from './gt.js';
-import gte from './gte.js';
-import has from './has.js';
+import gtCurried from './gt.js';
+import gteCurried from './gte.js';
+import hasCurried from './has.js';
+import highest from './highest.js';
+import highestByCurried from './highestBy.js';
 import identity from './identity.js';
-import ifElse from './ifElse.js';
+import ifElseCurried from './ifElse.js';
 import isEven from './isEven.js';
 import isOdd from './isOdd.js';
 import last from './last.js';
-import lt from './lt.js';
-import lte from './lte.js';
-import map from './map.js';
+import lowest from './lowest.js';
+import lowestByCurried from './lowestBy.js';
+import ltCurried from './lt.js';
+import lteCurried from './lte.js';
+import mapCurried from './map.js';
 import mapKeys from './mapKeys.js';
-import mapValues from './mapValues.js';
-import minus from './minus.js';
-import multiply from './multiply.js';
+import mapValuesCurried from './mapValues.js';
+import maxCurried from './max.js';
+import minCurried from './min.js';
+import minusCurried from './minus.js';
+import multiplyCurried from './multiply.js';
 import noop from './noop.js';
-import or from './or.js';
+import orCurried from './or.js';
 import pipe from './pipe.js';
 import placeholder from './placeholder.js';
 import pluck from './pluck.js';
-import plus from './plus.js';
+import plusCurried from './plus.js';
+import removeCurried from './remove.js';
 import replaceCurried from './replace.js';
 import reverse from './reverse.js';
 import self from './self.js';
 import slice from './slice.js';
-import sortBy from './sortBy.js';
-import split from './split.js';
-import startsWith from './startsWith.js';
-import endsWith from './endsWith.js';
+import sortCurried from './sort.js';
+import sortByCurried from './sortBy.js';
+import splitCurried from './split.js';
+import startsWithCurried from './startsWith.js';
 import tail from './tail.js';
-import take from './take.js';
-import test from './test.js';
+import takeCurried from './take.js';
+import testCurried from './test.js';
 import toLower from './toLower.js';
 import toUpper from './toUpper.js';
 import trim from './trim.js';
 import type from './type.js';
 import uniq from './uniq.js';
-import uniqBy from './uniqBy.js';
+import uniqByCurried from './uniqBy.js';
 
 const tikka = {
     always,
-    and,
-    any,
+    and: andCurried,
+    any: anyCurried,
+    coalesce: coalesceCurried,
     compact,
-    coalesce,
     concat,
-    cond,
-    contains,
-    countBy,
-    countWhere,
+    cond: condCurried,
+    contains: containsCurried,
+    countBy: countByCurried,
+    countWhere: countWhereCurried,
     curry,
     curryRight,
-    debug,
+    debug: debugCurried,
     deepClone,
-    sort,
-    deepForEach,
-    deepMap,
-    every,
-    filter,
-    find,
-    findIndex,
+    deepForEach: deepForEachCurried,
+    deepMap: deepMapCurried,
+    endsWith: endsWithCurried,
+    every: everyCurried,
+    filter: filterCurried,
+    find: findCurried,
+    findIndex: findIndexCurried,
     first: head,
     flatten,
-    forEach,
-    forEachValues,
+    forEach: forEachCurried,
+    forEachValues: forEachValuesCurried,
     get,
-    getOr,
+    getOr: getOrCurried,
     grab,
     groupBy,
-    gt,
-    gte,
-    has,
+    gt: gtCurried,
+    gte: gteCurried,
+    has: hasCurried,
     head,
+    highest,
+    highestBy: highestByCurried,
     identity,
-    ifElse,
-    includes: contains,
+    ifElse: ifElseCurried,
+    includes: containsCurried,
     isEven,
     isOdd,
     last,
-    lt,
-    lte,
-    map,
+    lowest,
+    lowestBy: lowestByCurried,
+    lt: ltCurried,
+    lte: lteCurried,
+    map: mapCurried,
     mapKeys,
-    mapValues,
-    minus,
-    multiply,
+    mapValues: mapValuesCurried,
+    max: maxCurried,
+    min: minCurried,
+    minus: minusCurried,
+    multiply: multiplyCurried,
     noop,
-    or,
+    or: orCurried,
     pipe,
     placeholder,
     pluck,
-    plus,
+    plus: plusCurried,
     replace: replaceCurried,
+    remove: removeCurried,
     reverse,
     select: grab,
     self,
     slice,
-    sortBy,
-    split,
-    startsWith,
-    endsWith,
+    sort: sortCurried,
+    sortBy: sortByCurried,
+    split: splitCurried,
+    startsWith: startsWithCurried,
     tail,
-    take,
-    test,
+    take: takeCurried,
+    test: testCurried,
     toLower,
     toUpper,
     trim,
     type,
     uniq,
-    uniqBy,
+    uniqBy: uniqByCurried,
     // Alias properties
-    both: and,
-    conjunction: and,
-    some: any,
-    anyPass: any,
+    both: andCurried,
+    conjunction: andCurried,
+    some: anyCurried,
+    anyPass: anyCurried,
     compactNil: compact,
     removeNil: compact,
     filterNil: compact,
     nonNil: compact,
     append: concat,
     conj: concat,
-    condition: cond,
-    includesValue: contains,
-    containsValue: contains,
-    member: contains,
-    memberOf: contains,
-    inList: contains,
-    countIf: countWhere,
-    tallyWhere: countWhere,
+    condition: condCurried,
+    includesValue: containsCurried,
+    containsValue: containsCurried,
+    member: containsCurried,
+    memberOf: containsCurried,
+    inList: containsCurried,
+    countIf: countWhereCurried,
+    tallyWhere: countWhereCurried,
     autoCurry: curry,
     curryR: curryRight,
     rightCurry: curryRight,
     reverseCurry: curryRight,
-    trace: debug,
-    inspect: debug,
-    peek: debug,
+    trace: debugCurried,
+    inspect: debugCurried,
+    peek: debugCurried,
     cloneDeep: deepClone,
     copyDeep: deepClone,
     deepCopy: deepClone,
-    sortWith: sort,
-    sortOn: sort,
-    orderWith: sort,
-    order: sort,
-    orderOn: sort,
-    forEachDeep: deepForEach,
-    eachDeep: deepForEach,
-    walkDeep: deepForEach,
-    mapDeep: deepMap,
-    deepTransform: deepMap,
-    all: every,
-    allPass: every,
-    eachPasses: every,
-    where: filter,
-    selectWhere: filter,
-    keep: filter,
-    keepIf: filter,
-    keepWhere: filter,
-    selectIf: filter,
-    findFirst: find,
-    firstWhere: find,
-    indexWhere: findIndex,
-    findPosition: findIndex,
-    positionWhere: findIndex,
+    sortWith: sortCurried,
+    sortOn: sortCurried,
+    orderWith: sortCurried,
+    order: sortCurried,
+    orderOn: sortCurried,
+    forEachDeep: deepForEachCurried,
+    eachDeep: deepForEachCurried,
+    walkDeep: deepForEachCurried,
+    mapDeep: deepMapCurried,
+    deepTransform: deepMapCurried,
+    all: everyCurried,
+    allPass: everyCurried,
+    eachPasses: everyCurried,
+    where: filterCurried,
+    selectWhere: filterCurried,
+    keep: filterCurried,
+    keepIf: filterCurried,
+    keepWhere: filterCurried,
+    selectIf: filterCurried,
+    findFirst: findCurried,
+    firstWhere: findCurried,
+    indexWhere: findIndexCurried,
+    findPosition: findIndexCurried,
+    positionWhere: findIndexCurried,
     headValue: head,
     firstItem: head,
     firstValue: head,
@@ -198,39 +212,39 @@ const tikka = {
     concatAll: flatten,
     smoosh: flatten,
     flat: flatten,
-    each: forEach,
-    forEachItem: forEach,
-    walk: forEach,
-    eachValue: forEachValues,
-    forEachValue: forEachValues,
-    walkValues: forEachValues,
+    each: forEachCurried,
+    forEachItem: forEachCurried,
+    walk: forEachCurried,
+    eachValue: forEachValuesCurried,
+    forEachValue: forEachValuesCurried,
+    walkValues: forEachValuesCurried,
     prop: get,
     property: get,
     lookup: get,
-    propOr: getOr,
-    getDefault: getOr,
-    getWithDefault: getOr,
+    propOr: getOrCurried,
+    getDefault: getOrCurried,
+    getWithDefault: getOrCurried,
     pick: grab,
     pickKeys: grab,
     selectKeys: grab,
     classify: groupBy,
     bucketBy: groupBy,
     partitionByKey: groupBy,
-    greaterThan: gt,
-    isGreaterThan: gt,
-    greaterThanOrEqual: gte,
-    isAtLeast: gte,
-    hasKey: has,
-    hasProp: has,
-    hasOwnKey: has,
+    greaterThan: gtCurried,
+    isGreaterThan: gtCurried,
+    greaterThanOrEqual: gteCurried,
+    isAtLeast: gteCurried,
+    hasKey: hasCurried,
+    hasProp: hasCurried,
+    hasOwnKey: hasCurried,
     id: identity,
     selfRef: identity,
     noopValue: identity,
     identityValue: identity,
     same: identity,
     idValue: identity,
-    whenElse: ifElse,
-    branch: ifElse,
+    whenElse: ifElseCurried,
+    branch: ifElseCurried,
     even: isEven,
     isDivisibleBy2: isEven,
     odd: isOdd,
@@ -239,23 +253,23 @@ const tikka = {
     end: last,
     lastValue: last,
     endValue: last,
-    lessThan: lt,
-    isLessThan: lt,
-    lessThanOrEqual: lte,
-    isAtMost: lte,
+    lessThan: ltCurried,
+    isLessThan: ltCurried,
+    lessThanOrEqual: lteCurried,
+    isAtMost: lteCurried,
     transformKeys: mapKeys,
     renameKeys: mapKeys,
     mapObjectKeys: mapKeys,
-    transformValues: mapValues,
-    mapObjectValues: mapValues,
-    subtract: minus,
-    sub: minus,
-    difference: minus,
+    transformValues: mapValuesCurried,
+    mapObjectValues: mapValuesCurried,
+    subtract: minusCurried,
+    sub: minusCurried,
+    difference: minusCurried,
     doNothing: noop,
     noopFn: noop,
     pass: noop,
-    either: or,
-    disjunction: or,
+    either: orCurried,
+    disjunction: orCurried,
     flow: pipe,
     composeLeft: pipe,
     chain: pipe,
@@ -266,22 +280,22 @@ const tikka = {
     projectProp: pluck,
     extractProp: pluck,
     propertyValues: pluck,
-    add: plus,
-    sum2: plus,
-    add2: plus,
-    sum: plus,
-    orderBy: sortBy,
-    sortByKey: sortBy,
+    add: plusCurried,
+    sum2: plusCurried,
+    add2: plusCurried,
+    sum: plusCurried,
+    orderBy: sortByCurried,
+    sortByKey: sortByCurried,
     rest: tail,
     dropFirst: tail,
-    takeLeft: take,
-    firstN: take,
-    headN: take,
-    takeN: take,
-    matches: test,
-    regexTest: test,
-    isMatch: test,
-    testRegex: test,
+    takeLeft: takeCurried,
+    firstN: takeCurried,
+    headN: takeCurried,
+    takeN: takeCurried,
+    matches: testCurried,
+    regexTest: testCurried,
+    isMatch: testCurried,
+    testRegex: testCurried,
     lower: toLower,
     lowerCase: toLower,
     downcase: toLower,
@@ -297,10 +311,10 @@ const tikka = {
     unique: uniq,
     dedupe: uniq,
     nub: uniq,
-    distinctBy: uniqBy,
-    uniqueBy: uniqBy,
-    dedupeBy: uniqBy,
-    nubBy: uniqBy,
+    distinctBy: uniqByCurried,
+    uniqueBy: uniqByCurried,
+    dedupeBy: uniqByCurried,
+    nubBy: uniqByCurried,
     replaceAll: replaceCurried,
 };
 

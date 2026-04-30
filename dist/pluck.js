@@ -1,5 +1,6 @@
 import curryRight from './curryRight.js';
 
+const pluckImpl = (collection, prop) => collection.map((item) => item[prop]);
 /**
  * Extracts one property from every object in a collection.
  * @param collection - Array of source objects.
@@ -9,7 +10,6 @@ import curryRight from './curryRight.js';
  * @example
  * pluck('id', [{ id: 1 }, { id: 2 }]) // [1, 2]
  */
-const pluckImpl = (collection, prop) => collection.map((item) => item[prop]);
 const pluck = /*#__PURE__*/ curryRight(pluckImpl);
 
 export { pluck as default };

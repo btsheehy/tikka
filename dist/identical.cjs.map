@@ -1,1 +1,1 @@
-{"version":3,"file":"identical.cjs","sources":["../src/identical.ts"],"sourcesContent":[null],"names":["curryRight"],"mappings":";;;;;;AAEA;;;;;;;;;AASG;AACH,MAAM,SAAS,GAAG,CAAC,CAAU,EAAE,CAAU,KAAK,MAAM,CAAC,EAAE,CAAC,CAAC,EAAE,CAAC,CAAC;AAE7D,kBAAe,cAAcA,kBAAU,CAAC,SAAS,CAAC;;;;"}
+{"version":3,"file":"identical.cjs","sources":["../src/identical.ts"],"sourcesContent":[null],"names":["curryRight"],"mappings":";;;;;;AAEA,MAAM,SAAS,GAAG,CAAI,CAAI,EAAE,CAAI,KAAK,MAAM,CAAC,EAAE,CAAC,CAAC,EAAE,CAAC,CAAC;AAOpD;;;;;;;;;AASG;AACH,MAAM,gBAAgB,iBAAiBA,kBAAU,CAAC,SAAS;;;;"}

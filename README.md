@@ -302,6 +302,21 @@ Example:
 head([1, 2, 3]) // 1
 ```
 
+### highest(nums)
+Returns the largest number in an array.
+Example:
+```ts
+highest([4, 1, 9, 3]) // 9
+```
+
+### highestBy(fn, arr)
+Returns the element with the highest score from `fn`.
+Example:
+```ts
+highestBy((user) => user.score, [{ name: 'Ari', score: 12 }, { name: 'Bea', score: 21 }])
+// { name: 'Bea', score: 21 }
+```
+
 ### identity(value)
 Alias of `self`; returns input unchanged.
 Example:
@@ -348,6 +363,21 @@ Example:
 last([1, 2, 3]) // 3
 ```
 
+### lowest(nums)
+Returns the smallest number in an array.
+Example:
+```ts
+lowest([4, 1, 9, 3]) // 1
+```
+
+### lowestBy(fn, arr)
+Returns the element with the lowest score from `fn`.
+Example:
+```ts
+lowestBy((user) => user.score, [{ name: 'Ari', score: 12 }, { name: 'Bea', score: 21 }])
+// { name: 'Ari', score: 12 }
+```
+
 ### lt(a, b)
 Less-than comparison.
 Example:
@@ -381,6 +411,20 @@ Transforms object values, preserving keys.
 Example:
 ```ts
 mapValues((v) => v * 2, { a: 1 }) // { a: 2 }
+```
+
+### max(a, b)
+Returns the larger of two numbers.
+Example:
+```ts
+max(4, 9) // 9
+```
+
+### min(a, b)
+Returns the smaller of two numbers.
+Example:
+```ts
+min(4, 9) // 4
 ```
 
 ### minus(b, a)
@@ -455,6 +499,13 @@ Adds two numbers.
 Example:
 ```ts
 plus(2, 3) // 5
+```
+
+### remove(pred, arr)
+Returns a new array with items removed when `pred(item)` is `true`.
+Example:
+```ts
+remove((n) => n % 2 === 0, [1, 2, 3, 4]) // [1, 3]
 ```
 
 ### select(props, data)

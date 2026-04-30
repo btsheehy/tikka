@@ -1,5 +1,17 @@
 import curryRight from './curryRight'
 
+const forEachValues = (obj: {}, fn: (x: any) => any) => {
+  Object.entries(obj).forEach(([_key, value]) => {
+    fn(value)
+  })
+  return obj
+}
+
+type ForEachValues = {
+  (fn: (x: any) => any, obj: {}): {}
+  (fn: (x: any) => any): (obj: {}) => {}
+}
+
 /**
  * Runs a callback for each own enumerable value in an object.
  * @param obj - Object whose values will be visited.
@@ -9,11 +21,6 @@ import curryRight from './curryRight'
  * @example
  * forEachValues((value) => console.log(value), { a: 1, b: 2 })
  */
-const forEachValues = (obj: {}, fn: (x: any) => any) => {
-  Object.entries(obj).forEach(([_key, value]) => {
-    fn(value)
-  })
-  return obj
-}
+const forEachValuesCurried = /*#__PURE__*/ curryRight(forEachValues) as ForEachValues
 
-export default /*#__PURE__*/ curryRight(forEachValues)
+export default forEachValuesCurried

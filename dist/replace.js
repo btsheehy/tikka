@@ -1,7 +1,20 @@
 import curryRight from './curryRight.js';
-import identical from './identical.js';
-import map from './map.js';
+import identicalCurried from './identical.js';
+import mapCurried from './map.js';
 
+const replace = ((target, replacee, replacement) => {
+    if (Array.isArray(target)) {
+        const replacementFunc = (typeof replacement === 'function' ? replacement : () => replacement);
+        const replacementTestFunc = (typeof replacee === 'function' ? replacee : identicalCurried(replacee));
+        const replaceFunc = (val) => {
+            if (replacementTestFunc(val))
+                return replacementFunc(val);
+            return val;
+        };
+        return mapCurried(replaceFunc, target);
+    }
+    return target.replaceAll(replacee, replacement);
+});
 /**
  * Replaces values in an array or substrings in a string.
  *
@@ -24,19 +37,6 @@ import map from './map.js';
  * @example
  * replace('baz', 'foo', 'foo-bar-foo') // 'baz-bar-baz'
  */
-const replace = ((target, replacee, replacement) => {
-    if (Array.isArray(target)) {
-        const replacementFunc = (typeof replacement === 'function' ? replacement : () => replacement);
-        const replacementTestFunc = (typeof replacee === 'function' ? replacee : identical(replacee));
-        const replaceFunc = (val) => {
-            if (replacementTestFunc(val))
-                return replacementFunc(val);
-            return val;
-        };
-        return map(replaceFunc, target);
-    }
-    return target.replaceAll(replacee, replacement);
-});
 const replaceCurried = /*#__PURE__*/ curryRight(replace);
 
 export { replaceCurried as default };

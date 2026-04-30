@@ -1,5 +1,12 @@
 import curryRight from './curryRight'
 
+const endsWith = (str: string, suffix: string) => str.endsWith(suffix)
+
+type EndsWith = {
+  (suffix: string, str: string): boolean
+  (suffix: string): (str: string) => boolean
+}
+
 /**
  * Checks whether a string ends with a suffix.
  * @param str - Full string to inspect.
@@ -9,6 +16,6 @@ import curryRight from './curryRight'
  * @example
  * endsWith('.ts', 'index.ts') // true
  */
-const endsWith = (str: string, suffix: string) => str.endsWith(suffix)
+const endsWithCurried = /*#__PURE__*/ curryRight(endsWith) as EndsWith
 
-export default /*#__PURE__*/ curryRight(endsWith)
+export default endsWithCurried

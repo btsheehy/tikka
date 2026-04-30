@@ -1,6 +1,16 @@
-declare const _default: {
-    (a: number, b: number, ...extra: unknown[]): boolean;
-    (a: number): (b: number, ...extra: unknown[]) => boolean;
+type Lt = {
+    (a: number, b: number): boolean;
+    (a: number): (b: number) => boolean;
 };
-export default _default;
+/**
+ * Compares numbers with `<`.
+ * @param a - Right numeric operand.
+ * @param b - Left numeric operand.
+ * @returns `true` when `b` is less than `a`.
+ *
+ * @example
+ * lt(2)(5) // false
+ */
+declare const ltCurried: Lt;
+export default ltCurried;
 //# sourceMappingURL=lt.d.ts.map

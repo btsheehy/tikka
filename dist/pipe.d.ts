@@ -8,11 +8,17 @@
  * normalize('  Hello  ') // 'hello'
  */
 type AnyFn = (...args: any[]) => any;
-type UnaryFn<Input = any, Output = any> = (input: Input) => Output;
-type Last<T extends readonly unknown[]> = T extends readonly [...infer _, infer Tail] ? Tail : never;
-type ValidPipeChain<Fns extends readonly AnyFn[]> = Fns extends readonly [AnyFn] ? Fns : Fns extends readonly [infer Head, infer Next, ...infer Rest] ? Head extends AnyFn ? Next extends UnaryFn ? ReturnType<Head> extends Parameters<Next>[0] ? readonly [Head, ...ValidPipeChain<[Next, ...(Rest extends AnyFn[] ? Rest : never)]>] : never : never : never : never;
-type PipeResult<Fns extends readonly [AnyFn, ...AnyFn[]]> = (...args: Parameters<Fns[0]>) => ReturnType<Last<Fns> & AnyFn>;
 declare function pipe(): <T>(value: T) => T;
-declare function pipe<const Fns extends readonly [AnyFn, ...AnyFn[]]>(...fns: ValidPipeChain<Fns> extends never ? never : Fns): PipeResult<Fns>;
+declare function pipe<A extends any[], B>(f1: (...args: A) => B): (...args: A) => B;
+declare function pipe<A extends any[], B, C>(f1: (...args: A) => B, f2: (b: B) => C): (...args: A) => C;
+declare function pipe<A extends any[], B, C, D>(f1: (...args: A) => B, f2: (b: B) => C, f3: (c: C) => D): (...args: A) => D;
+declare function pipe<A extends any[], B, C, D, E>(f1: (...args: A) => B, f2: (b: B) => C, f3: (c: C) => D, f4: (d: D) => E): (...args: A) => E;
+declare function pipe<A extends any[], B, C, D, E, F>(f1: (...args: A) => B, f2: (b: B) => C, f3: (c: C) => D, f4: (d: D) => E, f5: (e: E) => F): (...args: A) => F;
+declare function pipe<A extends any[], B, C, D, E, F, G>(f1: (...args: A) => B, f2: (b: B) => C, f3: (c: C) => D, f4: (d: D) => E, f5: (e: E) => F, f6: (f: F) => G): (...args: A) => G;
+declare function pipe<A extends any[], B, C, D, E, F, G, H>(f1: (...args: A) => B, f2: (b: B) => C, f3: (c: C) => D, f4: (d: D) => E, f5: (e: E) => F, f6: (f: F) => G, f7: (g: G) => H): (...args: A) => H;
+declare function pipe<A extends any[], B, C, D, E, F, G, H, I>(f1: (...args: A) => B, f2: (b: B) => C, f3: (c: C) => D, f4: (d: D) => E, f5: (e: E) => F, f6: (f: F) => G, f7: (g: G) => H, f8: (h: H) => I): (...args: A) => I;
+declare function pipe<A extends any[], B, C, D, E, F, G, H, I, J>(f1: (...args: A) => B, f2: (b: B) => C, f3: (c: C) => D, f4: (d: D) => E, f5: (e: E) => F, f6: (f: F) => G, f7: (g: G) => H, f8: (h: H) => I, f9: (i: I) => J): (...args: A) => J;
+declare function pipe<A extends any[], B, C, D, E, F, G, H, I, J, K>(f1: (...args: A) => B, f2: (b: B) => C, f3: (c: C) => D, f4: (d: D) => E, f5: (e: E) => F, f6: (f: F) => G, f7: (g: G) => H, f8: (h: H) => I, f9: (i: I) => J, f10: (j: J) => K): (...args: A) => K;
+declare function pipe(...fns: AnyFn[]): AnyFn;
 export default pipe;
 //# sourceMappingURL=pipe.d.ts.map

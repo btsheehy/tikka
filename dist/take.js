@@ -1,5 +1,8 @@
 import curryRight from './curryRight.js';
 
+const take = (arr, num) => {
+    return arr.slice(0, num);
+};
 /**
  * Takes the first `num` elements from an array.
  * @param arr - Source array.
@@ -9,10 +12,7 @@ import curryRight from './curryRight.js';
  * @example
  * take(3, [10, 20, 30, 40]) // [10, 20, 30]
  */
-const take = (arr, num) => {
-    return arr.slice(0, num);
-};
-var take$1 = /*#__PURE__*/ curryRight(take);
+const takeCurried = /*#__PURE__*/ curryRight(take);
 
-export { take$1 as default };
+export { takeCurried as default };
 //# sourceMappingURL=take.js.map

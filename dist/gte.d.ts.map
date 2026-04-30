@@ -1,1 +1,1 @@
-{"version":3,"file":"gte.d.ts","sourceRoot":"","sources":["../src/gte.ts"],"names":[],"mappings":";;;;AAaA,wBAAsC"}
+{"version":3,"file":"gte.d.ts","sourceRoot":"","sources":["../src/gte.ts"],"names":[],"mappings":"AAIA,KAAK,GAAG,GAAG;IACT,CAAC,CAAC,EAAE,MAAM,EAAE,CAAC,EAAE,MAAM,GAAG,OAAO,CAAA;IAC/B,CAAC,CAAC,EAAE,MAAM,GAAG,CAAC,CAAC,EAAE,MAAM,KAAK,OAAO,CAAA;CACpC,CAAA;AAED;;;;;;;;;GASG;AACH,QAAA,MAAM,UAAU,EAAmC,GAAG,CAAA;AAEtD,eAAe,UAAU,CAAA"}

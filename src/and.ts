@@ -1,5 +1,12 @@
 import curry from './curry'
 
+const and = (a: any, b: any): boolean => !!(a && b)
+
+type And = {
+  (a: any, b: any): boolean
+  (a: any): (b: any) => boolean
+}
+
 /**
  * Returns `true` when both values are truthy.
  * @param a - Left operand to evaluate.
@@ -9,6 +16,6 @@ import curry from './curry'
  * @example
  * and(user.isActive, user.isVerified)
  */
-const and = (a: any, b: any): boolean => !!(a && b)
+const andCurried = /*#__PURE__*/ curry(and) as And
 
-export default /*#__PURE__*/ curry(and)
+export default andCurried

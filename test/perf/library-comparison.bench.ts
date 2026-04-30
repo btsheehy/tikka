@@ -2,17 +2,27 @@ import fp from 'lodash/fp'
 import * as R from 'ramda'
 import { bench, describe } from 'vitest'
 import {
+  cond,
   contains,
+  debug,
   filter,
   find,
+  first,
   flatten,
+  get,
   groupBy,
+  gt,
+  highestBy,
+  lt,
   map,
+  mapValues,
   pipe,
   uniq,
   uniqBy,
+  uniqueBy,
 } from '../../dist/index.js'
-import { LARGE_DATASET } from './fixtures'
+import { LARGE_DATASET, PerfUser } from './fixtures'
+import { sortBy } from '../../src/index.js'
 
 const byScore = (user: (typeof LARGE_DATASET.users)[number]) => user.score
 const isActive = (user: (typeof LARGE_DATASET.users)[number]) => user.isActive
@@ -136,27 +146,110 @@ describe('large dataset perf: tikka vs lodash/fp vs ramda', () => {
     })
   })
 
-  describe('pipe composed collection pipeline (filter -> map -> uniq -> find)', () => {
+  describe('pipe composed collection pipeline (filter -> groupBy (pipe get -> cond(lt)) -> mapValues(pipe -> highestBy -> get) -> get)', () => {
     const scorePipelineTikka = pipe(
-      filter((user: (typeof LARGE_DATASET.users)[number]) => user.isActive),
-      map((user: (typeof LARGE_DATASET.users)[number]) => user.score % 500),
-      uniq,
-      find((score: number) => score > 450)
+      filter(get('isActive')),
+      groupBy(
+        pipe(
+          get('age'),
+          cond([
+            [lt(20), 'teens'],
+            [lt(30), '20s'],
+            [lt(40), '30s'],
+            [lt(50), '40s'],
+            [lt(60), '50s'],
+            'senior',
+          ])
+        )
+      ),
+      mapValues(pipe(highestBy(get('score')), get('id')))
     )
 
     const scorePipelineLodash = fp.pipe(
-      fp.filter((user: (typeof LARGE_DATASET.users)[number]) => user.isActive),
-      fp.map((user: (typeof LARGE_DATASET.users)[number]) => user.score % 500),
-      fp.uniq,
-      fp.find((score: number) => score > 450)
+      fp.filter(fp.get('isActive')),
+      fp.groupBy(
+        fp.flow(
+          fp.get('age'),
+          fp.cond([
+            [fp.gt(20), fp.constant('teens')],
+            [fp.gt(30), fp.constant('20s')],
+            [fp.gt(40), fp.constant('30s')],
+            [fp.gt(50), fp.constant('40s')],
+            [fp.gt(60), fp.constant('50s')],
+            [fp.constant(true), fp.constant('senior')],
+          ])
+        )
+      ),
+      fp.mapValues(fp.flow(highestBy(fp.get('score')), fp.get('id')))
     )
 
     const scorePipelineRamda = R.pipe(
-      R.filter((user: (typeof LARGE_DATASET.users)[number]) => user.isActive),
-      R.map((user: (typeof LARGE_DATASET.users)[number]) => user.score % 500),
-      R.uniq,
-      R.find((score: number) => score > 450)
+      R.filter(R.prop('isActive')),
+      R.groupBy(
+        R.pipe(
+          R.prop('age'),
+          R.cond([
+            [R.gt(20), R.always('teens')],
+            [R.gt(30), R.always('20s')],
+            [R.gt(40), R.always('30s')],
+            [R.gt(50), R.always('40s')],
+            [R.gt(60), R.always('50s')],
+            [R.always(true), R.always('senior')],
+          ])
+        )
+      ),
+      R.map(R.pipe(highestBy(R.prop('score')), R.prop('id')))
     )
+
+    const scorePipelineImperative = (users: PerfUser[]) => {
+      const highScores: Record<string, [number, number]> = {
+        teens: [0, 0],
+        '20s': [0, 0],
+        '30s': [0, 0],
+        '40s': [0, 0],
+        '50s': [0, 0],
+        senior: [0, 0],
+      }
+      let i = 0
+      while (i < users.length) {
+        const curr = users[i]
+        if (!curr.isActive) {
+          i++
+          continue
+        }
+        let ageGroup: string
+        switch (true) {
+          case curr.age < 20:
+            ageGroup = 'teens'
+            break
+          case curr.age < 30:
+            ageGroup = '20s'
+            break
+          case curr.age < 40:
+            ageGroup = '30s'
+            break
+          case curr.age < 50:
+            ageGroup = '40s'
+            break
+          case curr.age < 60:
+            ageGroup = '50s'
+            break
+          case curr.age >= 60:
+            ageGroup = 'senior'
+            break
+        }
+        if (curr.score > highScores[ageGroup][0]) highScores[ageGroup] = [curr.score, curr.id]
+        i++
+      }
+      return {
+        teens: highScores['teens'][1],
+        '20s': highScores['20s'][1],
+        '30s': highScores['30s'][1],
+        '40s': highScores['40s'][1],
+        '50s': highScores['50s'][1],
+        senior: highScores['senior'][1],
+      }
+    }
 
     bench('tikka pipe collection pipeline', () => {
       _sink = scorePipelineTikka(LARGE_DATASET.users)
@@ -168,6 +261,10 @@ describe('large dataset perf: tikka vs lodash/fp vs ramda', () => {
 
     bench('ramda pipe collection pipeline', () => {
       _sink = scorePipelineRamda(LARGE_DATASET.users)
+    })
+
+    bench('imperative pipe collection pipeline', () => {
+      _sink = scorePipelineImperative(LARGE_DATASET.users)
     })
   })
 })

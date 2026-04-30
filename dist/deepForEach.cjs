@@ -21,7 +21,16 @@ function deepForEach(data, func) {
     };
     recurseFunc(data);
 }
-var deepForEach$1 = /*#__PURE__*/ curryRight.default(deepForEach);
+/**
+ * Walks nested arrays/objects and runs a callback for each leaf value.
+ * @param data - Nested structure to traverse.
+ * @param func - Callback called for each non-object/non-array leaf node.
+ * @returns Nothing.
+ *
+ * @example
+ * deepForEach((value) => console.log(value), { a: 1, b: [2, 3] })
+ */
+const deepForEachCurried = /*#__PURE__*/ curryRight.default(deepForEach);
 
-exports.default = deepForEach$1;
+exports.default = deepForEachCurried;
 //# sourceMappingURL=deepForEach.cjs.map

@@ -4,6 +4,13 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var curryRight = require('./curryRight.cjs');
 
+// TODO: Needs work
+const ifElse = (test, onTrue, onFalse) => {
+    const trueOrFalse = test();
+    if (trueOrFalse)
+        return onTrue();
+    return onFalse();
+};
 /**
  * Executes one of two callbacks based on a predicate callback.
  * @param test - Function whose boolean result chooses the branch.
@@ -14,14 +21,7 @@ var curryRight = require('./curryRight.cjs');
  * @example
  * ifElse(() => env === 'prod', () => 'minified', () => 'debug')
  */
-// TODO: Needs work
-const ifElse = (test, onTrue, onFalse) => {
-    const trueOrFalse = test();
-    if (trueOrFalse)
-        return onTrue();
-    return onFalse();
-};
-var ifElse$1 = /*#__PURE__*/ curryRight.default(ifElse);
+const ifElseCurried = /*#__PURE__*/ curryRight.default(ifElse);
 
-exports.default = ifElse$1;
+exports.default = ifElseCurried;
 //# sourceMappingURL=ifElse.cjs.map

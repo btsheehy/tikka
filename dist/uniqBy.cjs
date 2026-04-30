@@ -4,15 +4,6 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var curryRight = require('./curryRight.cjs');
 
-/**
- * Removes duplicates based on a derived key function.
- * @param arr - Source array.
- * @param uniqCond - Function that computes each item's uniqueness key.
- * @returns A new array containing the first item seen for each key.
- *
- * @example
- * uniqBy((user) => user.id, [{ id: 1 }, { id: 1 }, { id: 2 }])
- */
 const uniqBy = (arr, uniqCond) => {
     const uniqBy = new Set();
     const newArr = [];
@@ -27,7 +18,16 @@ const uniqBy = (arr, uniqCond) => {
     }
     return newArr;
 };
-var uniqBy$1 = /*#__PURE__*/ curryRight.default(uniqBy);
+/**
+ * Removes duplicates based on a derived key function.
+ * @param arr - Source array.
+ * @param uniqCond - Function that computes each item's uniqueness key.
+ * @returns A new array containing the first item seen for each key.
+ *
+ * @example
+ * uniqBy((user) => user.id, [{ id: 1 }, { id: 1 }, { id: 2 }])
+ */
+const uniqByCurried = /*#__PURE__*/ curryRight.default(uniqBy);
 
-exports.default = uniqBy$1;
+exports.default = uniqByCurried;
 //# sourceMappingURL=uniqBy.cjs.map

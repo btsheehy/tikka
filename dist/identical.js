@@ -1,5 +1,6 @@
 import curryRight from './curryRight.js';
 
+const identical = (a, b) => Object.is(a, b);
 /**
  * Compares two values using `Object.is` semantics.
  *
@@ -10,8 +11,7 @@ import curryRight from './curryRight.js';
  * @example
  * identical(NaN, NaN) // true
  */
-const identical = (a, b) => Object.is(a, b);
-var identical$1 = /*#__PURE__*/ curryRight(identical);
+const identicalCurried = /*#__PURE__*/ curryRight(identical);
 
-export { identical$1 as default };
+export { identicalCurried as default };
 //# sourceMappingURL=identical.js.map

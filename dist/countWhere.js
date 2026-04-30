@@ -1,6 +1,9 @@
 import curryRight from './curryRight.js';
-import filter from './filter.js';
+import filterCurried from './filter.js';
 
+const countWhere = (arr, test) => {
+    return filterCurried(test, arr).length;
+};
 /**
  * Counts how many array items satisfy a predicate.
  * @param arr - Items to test.
@@ -10,10 +13,7 @@ import filter from './filter.js';
  * @example
  * countWhere((n) => n % 2 === 0, [1, 2, 3, 4]) // 2
  */
-const countWhere = (arr, test) => {
-    return filter(test, arr).length;
-};
-var countWhere$1 = /*#__PURE__*/ curryRight(countWhere);
+const countWhereCurried = /*#__PURE__*/ curryRight(countWhere);
 
-export { countWhere$1 as default };
+export { countWhereCurried as default };
 //# sourceMappingURL=countWhere.js.map

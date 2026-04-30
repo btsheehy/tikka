@@ -1,5 +1,6 @@
 import curryRight from './curryRight.js';
 
+const has = (obj, prop) => Object.hasOwn(obj, prop);
 /**
  * Checks whether an object owns a property key.
  * @param obj - Object to inspect.
@@ -9,8 +10,7 @@ import curryRight from './curryRight.js';
  * @example
  * has('id', { id: 5, name: 'Ada' }) // true
  */
-const has = (obj, prop) => Object.hasOwn(obj, prop);
-var has$1 = /*#__PURE__*/ curryRight(has);
+const hasCurried = /*#__PURE__*/ curryRight(has);
 
-export { has$1 as default };
+export { hasCurried as default };
 //# sourceMappingURL=has.js.map

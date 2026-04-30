@@ -1,15 +1,6 @@
 import curryRight from './curryRight.js';
 import get from './get.js';
 
-/**
- * Picks a subset of keys from an object or each object in an array.
- * @param data - Source object or array of objects.
- * @param props - Keys to keep.
- * @returns A partial object (or array of partial objects) containing only `props`.
- *
- * @example
- * grab(['id', 'name'], [{ id: 1, name: 'Ada', admin: true }])
- */
 const grabFromOne = (obj, props) => {
     const result = {};
     return props.reduce((acc, p) => {
@@ -23,6 +14,15 @@ function grabImpl(data, props) {
     }
     return grabFromOne(data, props);
 }
+/**
+ * Picks a subset of keys from an object or each object in an array.
+ * @param data - Source object or array of objects.
+ * @param props - Keys to keep.
+ * @returns A partial object (or array of partial objects) containing only `props`.
+ *
+ * @example
+ * grab(['id', 'name'], [{ id: 1, name: 'Ada', admin: true }])
+ */
 const grab = /*#__PURE__*/ curryRight(grabImpl);
 
 export { grab as default };

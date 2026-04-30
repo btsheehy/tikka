@@ -1,1 +1,1 @@
-{"version":3,"file":"endsWith.cjs","sources":["../src/endsWith.ts"],"sourcesContent":[null],"names":["curryRight"],"mappings":";;;;;;AAEA;;;;;;;;AAQG;AACH,MAAM,QAAQ,GAAG,CAAC,GAAW,EAAE,MAAc,KAAK,GAAG,CAAC,QAAQ,CAAC,MAAM,CAAC;AAEtE,iBAAe,cAAcA,kBAAU,CAAC,QAAQ,CAAC;;;;"}
+{"version":3,"file":"endsWith.cjs","sources":["../src/endsWith.ts"],"sourcesContent":[null],"names":["curryRight"],"mappings":";;;;;;AAEA,MAAM,QAAQ,GAAG,CAAC,GAAW,EAAE,MAAc,KAAK,GAAG,CAAC,QAAQ,CAAC,MAAM,CAAC;AAOtE;;;;;;;;AAQG;AACH,MAAM,eAAe,iBAAiBA,kBAAU,CAAC,QAAQ;;;;"}

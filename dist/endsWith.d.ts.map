@@ -1,1 +1,1 @@
-{"version":3,"file":"endsWith.d.ts","sourceRoot":"","sources":["../src/endsWith.ts"],"names":[],"mappings":";;;;AAaA,wBAAiD"}
+{"version":3,"file":"endsWith.d.ts","sourceRoot":"","sources":["../src/endsWith.ts"],"names":[],"mappings":"AAIA,KAAK,QAAQ,GAAG;IACd,CAAC,MAAM,EAAE,MAAM,EAAE,GAAG,EAAE,MAAM,GAAG,OAAO,CAAA;IACtC,CAAC,MAAM,EAAE,MAAM,GAAG,CAAC,GAAG,EAAE,MAAM,KAAK,OAAO,CAAA;CAC3C,CAAA;AAED;;;;;;;;GAQG;AACH,QAAA,MAAM,eAAe,EAAyC,QAAQ,CAAA;AAEtE,eAAe,eAAe,CAAA"}

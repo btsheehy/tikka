@@ -4,6 +4,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var curryRight = require('./curryRight.cjs');
 
+const minus = (a, b) => a - b;
 /**
  * Subtracts one number from another.
  * @param a - Minuend.
@@ -13,8 +14,7 @@ var curryRight = require('./curryRight.cjs');
  * @example
  * minus(3, 10) // 7
  */
-const minus = (a, b) => a - b;
-var minus$1 = /*#__PURE__*/ curryRight.default(minus);
+const minusCurried = /*#__PURE__*/ curryRight.default(minus);
 
-exports.default = minus$1;
+exports.default = minusCurried;
 //# sourceMappingURL=minus.cjs.map

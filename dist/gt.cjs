@@ -2,19 +2,19 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var curry = require('./curry.cjs');
+var curryRight = require('./curryRight.cjs');
 
+const gt = (a, b) => a > b;
 /**
  * Compares numbers with `>`.
- * @param a - Left numeric operand.
- * @param b - Right numeric operand.
- * @returns `true` when `a` is greater than `b`.
+ * @param a - Right numeric operand.
+ * @param b - Left numeric operand.
+ * @returns `true` when `b` is greater than `a`.
  *
  * @example
- * gt(10, 4) // true
+ * gt(10)(4) // false
  */
-const gt = (a, b) => a > b;
-var gt$1 = /*#__PURE__*/ curry.default(gt);
+const gtCurried = /*#__PURE__*/ curryRight.default(gt);
 
-exports.default = gt$1;
+exports.default = gtCurried;
 //# sourceMappingURL=gt.cjs.map

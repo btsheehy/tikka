@@ -1,5 +1,10 @@
 import curryRight from './curryRight.js';
 
+const debug = (value, msg) => {
+    console.log(msg);
+    console.log(value);
+    return value;
+};
 /**
  * Logs a label and value, then returns the original value.
  * @param value - Value to pass through unchanged.
@@ -9,12 +14,7 @@ import curryRight from './curryRight.js';
  * @example
  * debug('after parse', record)
  */
-const debug = (value, msg) => {
-    console.log(msg);
-    console.log(value);
-    return value;
-};
-var debug$1 = /*#__PURE__*/ curryRight(debug);
+const debugCurried = /*#__PURE__*/ curryRight(debug);
 
-export { debug$1 as default };
+export { debugCurried as default };
 //# sourceMappingURL=debug.js.map

@@ -8,18 +8,18 @@ import tail from './tail';
 declare const tikka: {
     always: <T>(arg: T) => () => T;
     and: {
-        (a: any, b: any, ...extra: unknown[]): boolean;
-        (a: any): (b: any, ...extra: unknown[]) => boolean;
+        (a: any, b: any): boolean;
+        (a: any): (b: any) => boolean;
     };
     any: {
-        (b: unknown, a: unknown, ...extra: unknown[]): boolean;
-        (b: unknown): (a: unknown, ...extra: unknown[]) => boolean;
+        <T>(test: (t: T) => boolean, arr: Array<T>): boolean;
+        <T>(test: (t: T) => boolean): (arr: Array<T>) => boolean;
+    };
+    coalesce: {
+        <T>(fallback: T, value: T | null | undefined): T;
+        <T>(fallback: T): (value: T | null | undefined) => T;
     };
     compact: <T>(arr: Array<T | null | undefined>) => T[];
-    coalesce: {
-        (b: unknown, a: unknown, ...extra: unknown[]): unknown;
-        (b: unknown): (a: unknown, ...extra: unknown[]) => unknown;
-    };
     concat: {
         <T>(left: T[], right: T[]): T[];
         <T>(left: T[]): (right: T[]) => T[];
@@ -27,84 +27,86 @@ declare const tikka: {
         (left: string): (right: string) => string;
     };
     cond: {
-        (a: unknown, b: unknown, ...extra: unknown[]): unknown;
-        (a: unknown): (b: unknown, ...extra: unknown[]) => unknown;
+        <T, P>(args: [...[(args: P) => boolean, T][], T], predicateArg: P): T;
+        <T, P>(args: [...[(args: P) => boolean, T][], T]): (predicateArg: P) => T;
     };
     contains: {
-        (b: unknown, a: import("./contains").IncludesTarget, ...extra: unknown[]): boolean;
-        (b: unknown): (a: import("./contains").IncludesTarget, ...extra: unknown[]) => boolean;
+        <T>(value: T, searchTarget: import("./contains").IncludesTarget<T>): boolean;
+        <T>(value: T): (searchTarget: import("./contains").IncludesTarget<T>) => boolean;
     };
     countBy: {
-        (b: unknown, a: unknown, ...extra: unknown[]): Record<string, number>;
-        (b: unknown): (a: unknown, ...extra: unknown[]) => Record<string, number>;
+        <T>(iteratee: (value: T) => string, arr: T[]): Record<string, number>;
+        <T>(iteratee: (value: T) => string): (arr: T[]) => Record<string, number>;
     };
     countWhere: {
-        (b: unknown, a: unknown, ...extra: unknown[]): number;
-        (b: unknown): (a: unknown, ...extra: unknown[]) => number;
+        <T>(test: (x: T) => boolean, arr: Array<T>): number;
+        <T>(test: (x: T) => boolean): (arr: Array<T>) => number;
     };
     curry: typeof curry;
     curryRight: typeof curryRight;
     debug: {
-        (b: unknown, a: unknown, ...extra: unknown[]): unknown;
-        (b: unknown): (a: unknown, ...extra: unknown[]) => unknown;
+        <T>(msg: string, value: T): T;
+        (msg: string): <T>(value: T) => T;
     };
     deepClone: typeof deepClone;
-    sort: {
-        (b: unknown, a: unknown, ...extra: unknown[]): unknown[];
-        (b: unknown): (a: unknown, ...extra: unknown[]) => unknown[];
-    };
     deepForEach: {
-        (b: (value: unknown) => unknown, a: object, ...extra: unknown[]): void;
-        (b: (value: unknown) => unknown): (a: object, ...extra: unknown[]) => void;
+        <T>(func: (value: T) => void, data: Array<T>): void;
+        <T extends object>(func: (value: any) => void, data: T): void;
+        <T>(func: (value: T) => void): (data: Array<T>) => void;
+        <T extends object>(func: (value: any) => void): (data: T) => void;
     };
     deepMap: {
-        (b: (x: unknown) => unknown, a: object, ...extra: unknown[]): object;
-        (b: (x: unknown) => unknown): (a: object, ...extra: unknown[]) => object;
+        <T, R>(func: (x: T) => R, data: Array<T>): Array<R>;
+        <T extends object, R>(func: (x: any) => R, data: T): object;
+        <T, R>(func: (x: T) => R): (data: Array<T>) => Array<R>;
+        <T extends object, R>(func: (x: any) => R): (data: T) => object;
+    };
+    endsWith: {
+        (suffix: string, str: string): boolean;
+        (suffix: string): (str: string) => boolean;
     };
     every: {
-        (b: unknown, a: unknown, ...extra: unknown[]): boolean;
-        (b: unknown): (a: unknown, ...extra: unknown[]) => boolean;
+        <T>(test: (x: T) => boolean, arr: Array<T>): boolean;
+        <T>(test: (x: T) => boolean): (arr: Array<T>) => boolean;
     };
     filter: {
-        (b: unknown, a: unknown, ...extra: unknown[]): unknown[];
-        (b: unknown): (a: unknown, ...extra: unknown[]) => unknown[];
+        <T>(filterFunc: (x: T) => boolean, arr: Array<T>): T[];
+        <T>(filterFunc: (x: T) => boolean): (arr: Array<T>) => T[];
     };
     find: {
-        (b: unknown, a: unknown, ...extra: unknown[]): unknown;
-        (b: unknown): (a: unknown, ...extra: unknown[]) => unknown;
+        <T>(findFunc: (x: T) => boolean, arr: Array<T>): T | undefined;
+        <T>(findFunc: (x: T) => boolean): (arr: Array<T>) => T | undefined;
     };
     findIndex: {
-        (b: unknown, a: unknown, ...extra: unknown[]): number;
-        (b: unknown): (a: unknown, ...extra: unknown[]) => number;
+        <T>(findFunc: (x: T) => boolean, arr: Array<T>): number;
+        <T>(findFunc: (x: T) => boolean): (arr: Array<T>) => number;
     };
     first: <T>(arr: [T]) => T;
     flatten: <T>(arr: T[]) => any[];
     forEach: {
-        (b: unknown, a: unknown, ...extra: unknown[]): unknown[];
-        (b: unknown): (a: unknown, ...extra: unknown[]) => unknown[];
+        <T>(func: (x: T) => void, arr: T[]): T[];
+        <T>(func: (x: T) => void): (arr: T[]) => T[];
     };
     forEachValues: {
-        (b: (x: any) => any, a: {}, ...extra: unknown[]): {};
-        (b: (x: any) => any): (a: {}, ...extra: unknown[]) => {};
+        (fn: (x: any) => any, obj: {}): {};
+        (fn: (x: any) => any): (obj: {}) => {};
     };
     get: {
         <T, K extends keyof T>(property: K, object: T): T[K];
-        <K extends PropertyKey>(property: K): <T extends Record<K, unknown>>(object: T) => T[K];
+        <K extends PropertyKey>(property: K): <T extends Record<K, any>>(object: T) => T[K];
     };
     getOr: {
-        (c: unknown, b: any, a: {}, ...extra: unknown[]): unknown;
-        (c: unknown, b: any): (a: {}, ...extra: unknown[]) => unknown;
-        (c: unknown): {
-            (b: any, a: {}, ...extra: unknown[]): unknown;
-            (b: any): (a: {}, ...extra: unknown[]) => unknown;
-        };
+        <T, K extends keyof T, R>(defaultValue: R, prop: K, obj: T): T[K];
+        <R>(defaultValue: R, prop: PropertyKey, obj: {}): R;
+        <T, K extends keyof T, R>(defaultValue: R, prop: K): (obj: T) => T[K];
+        <R>(defaultValue: R, prop: PropertyKey): (obj: {}) => R;
     };
     grab: {
         <T, K extends keyof T>(props: readonly K[], data: T): Partial<Pick<T, K>>;
         <T, K extends keyof T>(props: readonly K[], data: T[]): Array<Partial<Pick<T, K>>>;
         <K extends PropertyKey>(props: readonly K[]): {
-            <T extends Record<K, unknown>>(data: T): Partial<Pick<T, K>>;
-            <T extends Record<K, unknown>>(data: T[]): Array<Partial<Pick<T, K>>>;
+            <T extends Record<K, any>>(data: T): Partial<Pick<T, K>>;
+            <T extends Record<K, any>>(data: T[]): Array<Partial<Pick<T, K>>>;
         };
     };
     groupBy: {
@@ -114,76 +116,92 @@ declare const tikka: {
         <K extends string | number>(grouper: K): <T extends Record<K, string | number>>(arr: T[]) => Record<string, T[]>;
     };
     gt: {
-        (a: number, b: number, ...extra: unknown[]): boolean;
-        (a: number): (b: number, ...extra: unknown[]) => boolean;
+        (a: number, b: number): boolean;
+        (a: number): (b: number) => boolean;
     };
     gte: {
-        (a: number, b: number, ...extra: unknown[]): boolean;
-        (a: number): (b: number, ...extra: unknown[]) => boolean;
+        (a: number, b: number): boolean;
+        (a: number): (b: number) => boolean;
     };
     has: {
-        (b: string, a: {}, ...extra: unknown[]): boolean;
-        (b: string): (a: {}, ...extra: unknown[]) => boolean;
+        (prop: string, obj: {}): boolean;
+        (prop: string): (obj: {}) => boolean;
     };
     head: <T>(arr: [T]) => T;
+    highest: (nums: number[]) => number;
+    highestBy: {
+        <T>(fn: (value: T) => number, arr: T[]): T;
+        <T>(fn: (value: T) => number): (arr: T[]) => T;
+    };
     identity: <T>(a: T) => T;
     ifElse: {
-        (c: Function, b: Function, a: () => boolean, ...extra: unknown[]): any;
-        (c: Function, b: Function): (a: () => boolean, ...extra: unknown[]) => any;
-        (c: Function): {
-            (b: Function, a: () => boolean, ...extra: unknown[]): any;
-            (b: Function): (a: () => boolean, ...extra: unknown[]) => any;
-        };
+        <TR, FR>(onFalse: () => FR, onTrue: () => TR, test: () => boolean): TR | FR;
+        <TR, FR>(onFalse: () => FR, onTrue: () => TR): (test: () => boolean) => TR | FR;
+        <TR, FR>(onFalse: () => FR): (onTrue: () => TR, test: () => boolean) => TR | FR;
+        <TR, FR>(onFalse: () => FR): (onTrue: () => TR) => (test: () => boolean) => TR | FR;
     };
     includes: {
-        (b: unknown, a: import("./contains").IncludesTarget, ...extra: unknown[]): boolean;
-        (b: unknown): (a: import("./contains").IncludesTarget, ...extra: unknown[]) => boolean;
+        <T>(value: T, searchTarget: import("./contains").IncludesTarget<T>): boolean;
+        <T>(value: T): (searchTarget: import("./contains").IncludesTarget<T>) => boolean;
     };
     isEven: (num: number) => boolean;
     isOdd: (number: number) => boolean;
     last: typeof last;
+    lowest: (nums: number[]) => number;
+    lowestBy: {
+        <T>(fn: (value: T) => number, arr: T[]): T;
+        <T>(fn: (value: T) => number): (arr: T[]) => T;
+    };
     lt: {
-        (a: number, b: number, ...extra: unknown[]): boolean;
-        (a: number): (b: number, ...extra: unknown[]) => boolean;
+        (a: number, b: number): boolean;
+        (a: number): (b: number) => boolean;
     };
     lte: {
-        (a: number, b: number, ...extra: unknown[]): boolean;
-        (a: number): (b: number, ...extra: unknown[]) => boolean;
+        (a: number, b: number): boolean;
+        (a: number): (b: number) => boolean;
     };
     map: {
-        (b: unknown, a: unknown, ...extra: unknown[]): unknown[];
-        (b: unknown): (a: unknown, ...extra: unknown[]) => unknown[];
+        <T, R>(fn: (x: T) => R, arr: T[]): R[];
+        <T, R>(fn: (x: T) => R): (arr: T[]) => R[];
     };
     mapKeys: {
         <T extends object, K extends keyof T, R extends string>(fn: (x: K) => R, obj: T): Record<R, T[K]>;
         <T extends object, K extends keyof T, R extends string>(fn: (x: K) => R): (obj: T) => Record<R, T[K]>;
     };
     mapValues: {
-        (b: unknown, a: unknown, ...extra: unknown[]): Record<string, unknown>;
-        (b: unknown): (a: unknown, ...extra: unknown[]) => Record<string, unknown>;
+        <T extends Record<string, any>, R>(fn: (x: T[keyof T]) => R, obj: T): Record<keyof T, R>;
+        <T extends Record<string, any>, R>(fn: (x: T[keyof T]) => R): (obj: T) => Record<keyof T, R>;
+    };
+    max: {
+        (a: number, b: number): number;
+        (a: number): (b: number) => number;
+    };
+    min: {
+        (a: number, b: number): number;
+        (a: number): (b: number) => number;
     };
     minus: {
-        (b: number, a: number, ...extra: unknown[]): number;
-        (b: number): (a: number, ...extra: unknown[]) => number;
+        (b: number, a: number): number;
+        (b: number): (a: number) => number;
     };
     multiply: {
-        (a: number, b: number, ...extra: unknown[]): number;
-        (a: number): (b: number, ...extra: unknown[]) => number;
+        (a: number, b: number): number;
+        (a: number): (b: number) => number;
     };
     noop: () => void;
     or: {
-        (a: any, b: any, ...extra: unknown[]): boolean;
-        (a: any): (b: any, ...extra: unknown[]) => boolean;
+        (a: any, b: any): boolean;
+        (a: any): (b: any) => boolean;
     };
     pipe: typeof pipe;
     placeholder: any;
     pluck: {
         <T, K extends keyof T>(prop: K, collection: T[]): T[K][];
-        <K extends PropertyKey>(prop: K): <T extends Record<K, unknown>>(collection: T[]) => T[K][];
+        <K extends PropertyKey>(prop: K): <T extends Record<K, any>>(collection: T[]) => T[K][];
     };
     plus: {
-        (a: number, b: number, ...extra: unknown[]): number;
-        (a: number): (b: number, ...extra: unknown[]) => number;
+        (a: number, b: number): number;
+        (a: number): (b: number) => number;
     };
     replace: {
         <T, U>(replacement: U, replacee: T, targetArray: T[]): (T | U)[];
@@ -193,45 +211,45 @@ declare const tikka: {
         (replacement: string, substring: string, targetString: string): string;
         (replacement: string, regex: RegExp, targetString: string): string;
     };
+    remove: {
+        <T>(pred: (value: T) => boolean, arr: T[]): T[];
+        <T>(pred: (value: T) => boolean): (arr: T[]) => T[];
+    };
     reverse: <T>(v: T[] | string) => string | any[];
     select: {
         <T, K extends keyof T>(props: readonly K[], data: T): Partial<Pick<T, K>>;
         <T, K extends keyof T>(props: readonly K[], data: T[]): Array<Partial<Pick<T, K>>>;
         <K extends PropertyKey>(props: readonly K[]): {
-            <T extends Record<K, unknown>>(data: T): Partial<Pick<T, K>>;
-            <T extends Record<K, unknown>>(data: T[]): Array<Partial<Pick<T, K>>>;
+            <T extends Record<K, any>>(data: T): Partial<Pick<T, K>>;
+            <T extends Record<K, any>>(data: T[]): Array<Partial<Pick<T, K>>>;
         };
     };
     self: <T>(a: T) => T;
     slice: typeof slice;
+    sort: {
+        <T, U>(iteratee: (value: T) => U, arr: T[]): T[];
+        <T, U>(iteratee: (value: T) => U): (arr: T[]) => T[];
+    };
     sortBy: {
-        (c: unknown, b: unknown, a: unknown, ...extra: unknown[]): Record<string, unknown>[];
-        (c: unknown, b: unknown): (a: unknown, ...extra: unknown[]) => Record<string, unknown>[];
-        (c: unknown): {
-            (b: unknown, a: unknown, ...extra: unknown[]): Record<string, unknown>[];
-            (b: unknown): (a: unknown, ...extra: unknown[]) => Record<string, unknown>[];
-        };
+        <T extends Record<string, any>, K extends keyof T>(fieldOrIteratee: K | ((value: T) => any), direction: import("./sortBy").SortDirection, arr: T[]): T[];
+        <T extends Record<string, any>, K extends keyof T>(fieldOrIteratee: K | ((value: T) => any), direction: import("./sortBy").SortDirection): (arr: T[]) => T[];
     };
     split: {
-        (b: string | RegExp, a: string, ...extra: unknown[]): string[];
-        (b: string | RegExp): (a: string, ...extra: unknown[]) => string[];
+        (separator: string | RegExp, str: string): string[];
+        (separator: string | RegExp): (str: string) => string[];
     };
     startsWith: {
-        (b: string, a: string, ...extra: unknown[]): boolean;
-        (b: string): (a: string, ...extra: unknown[]) => boolean;
-    };
-    endsWith: {
-        (b: string, a: string, ...extra: unknown[]): boolean;
-        (b: string): (a: string, ...extra: unknown[]) => boolean;
+        (prefix: string, str: string): boolean;
+        (prefix: string): (str: string) => boolean;
     };
     tail: typeof tail;
     take: {
-        (b: unknown, a: unknown, ...extra: unknown[]): unknown[];
-        (b: unknown): (a: unknown, ...extra: unknown[]) => unknown[];
+        <T>(num: number, arr: T[]): T[];
+        (num: number): <T>(arr: T[]) => T[];
     };
     test: {
-        (b: RegExp, a: string, ...extra: unknown[]): boolean;
-        (b: RegExp): (a: string, ...extra: unknown[]) => boolean;
+        (regex: RegExp, str: string): boolean;
+        (regex: RegExp): (str: string) => boolean;
     };
     toLower: (str: string) => string;
     toUpper: (str: string) => string;
@@ -239,24 +257,24 @@ declare const tikka: {
     type: (val: any) => string;
     uniq: <T>(arr: T[]) => T[];
     uniqBy: {
-        (b: unknown, a: unknown, ...extra: unknown[]): unknown[];
-        (b: unknown): (a: unknown, ...extra: unknown[]) => unknown[];
+        <T, U>(uniqCond: (x: T) => U, arr: T[]): T[];
+        <T, U>(uniqCond: (x: T) => U): (arr: T[]) => T[];
     };
     both: {
-        (a: any, b: any, ...extra: unknown[]): boolean;
-        (a: any): (b: any, ...extra: unknown[]) => boolean;
+        (a: any, b: any): boolean;
+        (a: any): (b: any) => boolean;
     };
     conjunction: {
-        (a: any, b: any, ...extra: unknown[]): boolean;
-        (a: any): (b: any, ...extra: unknown[]) => boolean;
+        (a: any, b: any): boolean;
+        (a: any): (b: any) => boolean;
     };
     some: {
-        (b: unknown, a: unknown, ...extra: unknown[]): boolean;
-        (b: unknown): (a: unknown, ...extra: unknown[]) => boolean;
+        <T>(test: (t: T) => boolean, arr: Array<T>): boolean;
+        <T>(test: (t: T) => boolean): (arr: Array<T>) => boolean;
     };
     anyPass: {
-        (b: unknown, a: unknown, ...extra: unknown[]): boolean;
-        (b: unknown): (a: unknown, ...extra: unknown[]) => boolean;
+        <T>(test: (t: T) => boolean, arr: Array<T>): boolean;
+        <T>(test: (t: T) => boolean): (arr: Array<T>) => boolean;
     };
     compactNil: <T>(arr: Array<T | null | undefined>) => T[];
     removeNil: <T>(arr: Array<T | null | undefined>) => T[];
@@ -275,151 +293,161 @@ declare const tikka: {
         (left: string): (right: string) => string;
     };
     condition: {
-        (a: unknown, b: unknown, ...extra: unknown[]): unknown;
-        (a: unknown): (b: unknown, ...extra: unknown[]) => unknown;
+        <T, P>(args: [...[(args: P) => boolean, T][], T], predicateArg: P): T;
+        <T, P>(args: [...[(args: P) => boolean, T][], T]): (predicateArg: P) => T;
     };
     includesValue: {
-        (b: unknown, a: import("./contains").IncludesTarget, ...extra: unknown[]): boolean;
-        (b: unknown): (a: import("./contains").IncludesTarget, ...extra: unknown[]) => boolean;
+        <T>(value: T, searchTarget: import("./contains").IncludesTarget<T>): boolean;
+        <T>(value: T): (searchTarget: import("./contains").IncludesTarget<T>) => boolean;
     };
     containsValue: {
-        (b: unknown, a: import("./contains").IncludesTarget, ...extra: unknown[]): boolean;
-        (b: unknown): (a: import("./contains").IncludesTarget, ...extra: unknown[]) => boolean;
+        <T>(value: T, searchTarget: import("./contains").IncludesTarget<T>): boolean;
+        <T>(value: T): (searchTarget: import("./contains").IncludesTarget<T>) => boolean;
     };
     member: {
-        (b: unknown, a: import("./contains").IncludesTarget, ...extra: unknown[]): boolean;
-        (b: unknown): (a: import("./contains").IncludesTarget, ...extra: unknown[]) => boolean;
+        <T>(value: T, searchTarget: import("./contains").IncludesTarget<T>): boolean;
+        <T>(value: T): (searchTarget: import("./contains").IncludesTarget<T>) => boolean;
     };
     memberOf: {
-        (b: unknown, a: import("./contains").IncludesTarget, ...extra: unknown[]): boolean;
-        (b: unknown): (a: import("./contains").IncludesTarget, ...extra: unknown[]) => boolean;
+        <T>(value: T, searchTarget: import("./contains").IncludesTarget<T>): boolean;
+        <T>(value: T): (searchTarget: import("./contains").IncludesTarget<T>) => boolean;
     };
     inList: {
-        (b: unknown, a: import("./contains").IncludesTarget, ...extra: unknown[]): boolean;
-        (b: unknown): (a: import("./contains").IncludesTarget, ...extra: unknown[]) => boolean;
+        <T>(value: T, searchTarget: import("./contains").IncludesTarget<T>): boolean;
+        <T>(value: T): (searchTarget: import("./contains").IncludesTarget<T>) => boolean;
     };
     countIf: {
-        (b: unknown, a: unknown, ...extra: unknown[]): number;
-        (b: unknown): (a: unknown, ...extra: unknown[]) => number;
+        <T>(test: (x: T) => boolean, arr: Array<T>): number;
+        <T>(test: (x: T) => boolean): (arr: Array<T>) => number;
     };
     tallyWhere: {
-        (b: unknown, a: unknown, ...extra: unknown[]): number;
-        (b: unknown): (a: unknown, ...extra: unknown[]) => number;
+        <T>(test: (x: T) => boolean, arr: Array<T>): number;
+        <T>(test: (x: T) => boolean): (arr: Array<T>) => number;
     };
     autoCurry: typeof curry;
     curryR: typeof curryRight;
     rightCurry: typeof curryRight;
     reverseCurry: typeof curryRight;
     trace: {
-        (b: unknown, a: unknown, ...extra: unknown[]): unknown;
-        (b: unknown): (a: unknown, ...extra: unknown[]) => unknown;
+        <T>(msg: string, value: T): T;
+        (msg: string): <T>(value: T) => T;
     };
     inspect: {
-        (b: unknown, a: unknown, ...extra: unknown[]): unknown;
-        (b: unknown): (a: unknown, ...extra: unknown[]) => unknown;
+        <T>(msg: string, value: T): T;
+        (msg: string): <T>(value: T) => T;
     };
     peek: {
-        (b: unknown, a: unknown, ...extra: unknown[]): unknown;
-        (b: unknown): (a: unknown, ...extra: unknown[]) => unknown;
+        <T>(msg: string, value: T): T;
+        (msg: string): <T>(value: T) => T;
     };
     cloneDeep: typeof deepClone;
     copyDeep: typeof deepClone;
     deepCopy: typeof deepClone;
     sortWith: {
-        (b: unknown, a: unknown, ...extra: unknown[]): unknown[];
-        (b: unknown): (a: unknown, ...extra: unknown[]) => unknown[];
+        <T, U>(iteratee: (value: T) => U, arr: T[]): T[];
+        <T, U>(iteratee: (value: T) => U): (arr: T[]) => T[];
     };
     sortOn: {
-        (b: unknown, a: unknown, ...extra: unknown[]): unknown[];
-        (b: unknown): (a: unknown, ...extra: unknown[]) => unknown[];
+        <T, U>(iteratee: (value: T) => U, arr: T[]): T[];
+        <T, U>(iteratee: (value: T) => U): (arr: T[]) => T[];
     };
     orderWith: {
-        (b: unknown, a: unknown, ...extra: unknown[]): unknown[];
-        (b: unknown): (a: unknown, ...extra: unknown[]) => unknown[];
+        <T, U>(iteratee: (value: T) => U, arr: T[]): T[];
+        <T, U>(iteratee: (value: T) => U): (arr: T[]) => T[];
     };
     order: {
-        (b: unknown, a: unknown, ...extra: unknown[]): unknown[];
-        (b: unknown): (a: unknown, ...extra: unknown[]) => unknown[];
+        <T, U>(iteratee: (value: T) => U, arr: T[]): T[];
+        <T, U>(iteratee: (value: T) => U): (arr: T[]) => T[];
     };
     orderOn: {
-        (b: unknown, a: unknown, ...extra: unknown[]): unknown[];
-        (b: unknown): (a: unknown, ...extra: unknown[]) => unknown[];
+        <T, U>(iteratee: (value: T) => U, arr: T[]): T[];
+        <T, U>(iteratee: (value: T) => U): (arr: T[]) => T[];
     };
     forEachDeep: {
-        (b: (value: unknown) => unknown, a: object, ...extra: unknown[]): void;
-        (b: (value: unknown) => unknown): (a: object, ...extra: unknown[]) => void;
+        <T>(func: (value: T) => void, data: Array<T>): void;
+        <T extends object>(func: (value: any) => void, data: T): void;
+        <T>(func: (value: T) => void): (data: Array<T>) => void;
+        <T extends object>(func: (value: any) => void): (data: T) => void;
     };
     eachDeep: {
-        (b: (value: unknown) => unknown, a: object, ...extra: unknown[]): void;
-        (b: (value: unknown) => unknown): (a: object, ...extra: unknown[]) => void;
+        <T>(func: (value: T) => void, data: Array<T>): void;
+        <T extends object>(func: (value: any) => void, data: T): void;
+        <T>(func: (value: T) => void): (data: Array<T>) => void;
+        <T extends object>(func: (value: any) => void): (data: T) => void;
     };
     walkDeep: {
-        (b: (value: unknown) => unknown, a: object, ...extra: unknown[]): void;
-        (b: (value: unknown) => unknown): (a: object, ...extra: unknown[]) => void;
+        <T>(func: (value: T) => void, data: Array<T>): void;
+        <T extends object>(func: (value: any) => void, data: T): void;
+        <T>(func: (value: T) => void): (data: Array<T>) => void;
+        <T extends object>(func: (value: any) => void): (data: T) => void;
     };
     mapDeep: {
-        (b: (x: unknown) => unknown, a: object, ...extra: unknown[]): object;
-        (b: (x: unknown) => unknown): (a: object, ...extra: unknown[]) => object;
+        <T, R>(func: (x: T) => R, data: Array<T>): Array<R>;
+        <T extends object, R>(func: (x: any) => R, data: T): object;
+        <T, R>(func: (x: T) => R): (data: Array<T>) => Array<R>;
+        <T extends object, R>(func: (x: any) => R): (data: T) => object;
     };
     deepTransform: {
-        (b: (x: unknown) => unknown, a: object, ...extra: unknown[]): object;
-        (b: (x: unknown) => unknown): (a: object, ...extra: unknown[]) => object;
+        <T, R>(func: (x: T) => R, data: Array<T>): Array<R>;
+        <T extends object, R>(func: (x: any) => R, data: T): object;
+        <T, R>(func: (x: T) => R): (data: Array<T>) => Array<R>;
+        <T extends object, R>(func: (x: any) => R): (data: T) => object;
     };
     all: {
-        (b: unknown, a: unknown, ...extra: unknown[]): boolean;
-        (b: unknown): (a: unknown, ...extra: unknown[]) => boolean;
+        <T>(test: (x: T) => boolean, arr: Array<T>): boolean;
+        <T>(test: (x: T) => boolean): (arr: Array<T>) => boolean;
     };
     allPass: {
-        (b: unknown, a: unknown, ...extra: unknown[]): boolean;
-        (b: unknown): (a: unknown, ...extra: unknown[]) => boolean;
+        <T>(test: (x: T) => boolean, arr: Array<T>): boolean;
+        <T>(test: (x: T) => boolean): (arr: Array<T>) => boolean;
     };
     eachPasses: {
-        (b: unknown, a: unknown, ...extra: unknown[]): boolean;
-        (b: unknown): (a: unknown, ...extra: unknown[]) => boolean;
+        <T>(test: (x: T) => boolean, arr: Array<T>): boolean;
+        <T>(test: (x: T) => boolean): (arr: Array<T>) => boolean;
     };
     where: {
-        (b: unknown, a: unknown, ...extra: unknown[]): unknown[];
-        (b: unknown): (a: unknown, ...extra: unknown[]) => unknown[];
+        <T>(filterFunc: (x: T) => boolean, arr: Array<T>): T[];
+        <T>(filterFunc: (x: T) => boolean): (arr: Array<T>) => T[];
     };
     selectWhere: {
-        (b: unknown, a: unknown, ...extra: unknown[]): unknown[];
-        (b: unknown): (a: unknown, ...extra: unknown[]) => unknown[];
+        <T>(filterFunc: (x: T) => boolean, arr: Array<T>): T[];
+        <T>(filterFunc: (x: T) => boolean): (arr: Array<T>) => T[];
     };
     keep: {
-        (b: unknown, a: unknown, ...extra: unknown[]): unknown[];
-        (b: unknown): (a: unknown, ...extra: unknown[]) => unknown[];
+        <T>(filterFunc: (x: T) => boolean, arr: Array<T>): T[];
+        <T>(filterFunc: (x: T) => boolean): (arr: Array<T>) => T[];
     };
     keepIf: {
-        (b: unknown, a: unknown, ...extra: unknown[]): unknown[];
-        (b: unknown): (a: unknown, ...extra: unknown[]) => unknown[];
+        <T>(filterFunc: (x: T) => boolean, arr: Array<T>): T[];
+        <T>(filterFunc: (x: T) => boolean): (arr: Array<T>) => T[];
     };
     keepWhere: {
-        (b: unknown, a: unknown, ...extra: unknown[]): unknown[];
-        (b: unknown): (a: unknown, ...extra: unknown[]) => unknown[];
+        <T>(filterFunc: (x: T) => boolean, arr: Array<T>): T[];
+        <T>(filterFunc: (x: T) => boolean): (arr: Array<T>) => T[];
     };
     selectIf: {
-        (b: unknown, a: unknown, ...extra: unknown[]): unknown[];
-        (b: unknown): (a: unknown, ...extra: unknown[]) => unknown[];
+        <T>(filterFunc: (x: T) => boolean, arr: Array<T>): T[];
+        <T>(filterFunc: (x: T) => boolean): (arr: Array<T>) => T[];
     };
     findFirst: {
-        (b: unknown, a: unknown, ...extra: unknown[]): unknown;
-        (b: unknown): (a: unknown, ...extra: unknown[]) => unknown;
+        <T>(findFunc: (x: T) => boolean, arr: Array<T>): T | undefined;
+        <T>(findFunc: (x: T) => boolean): (arr: Array<T>) => T | undefined;
     };
     firstWhere: {
-        (b: unknown, a: unknown, ...extra: unknown[]): unknown;
-        (b: unknown): (a: unknown, ...extra: unknown[]) => unknown;
+        <T>(findFunc: (x: T) => boolean, arr: Array<T>): T | undefined;
+        <T>(findFunc: (x: T) => boolean): (arr: Array<T>) => T | undefined;
     };
     indexWhere: {
-        (b: unknown, a: unknown, ...extra: unknown[]): number;
-        (b: unknown): (a: unknown, ...extra: unknown[]) => number;
+        <T>(findFunc: (x: T) => boolean, arr: Array<T>): number;
+        <T>(findFunc: (x: T) => boolean): (arr: Array<T>) => number;
     };
     findPosition: {
-        (b: unknown, a: unknown, ...extra: unknown[]): number;
-        (b: unknown): (a: unknown, ...extra: unknown[]) => number;
+        <T>(findFunc: (x: T) => boolean, arr: Array<T>): number;
+        <T>(findFunc: (x: T) => boolean): (arr: Array<T>) => number;
     };
     positionWhere: {
-        (b: unknown, a: unknown, ...extra: unknown[]): number;
-        (b: unknown): (a: unknown, ...extra: unknown[]) => number;
+        <T>(findFunc: (x: T) => boolean, arr: Array<T>): number;
+        <T>(findFunc: (x: T) => boolean): (arr: Array<T>) => number;
     };
     headValue: <T>(arr: [T]) => T;
     firstItem: <T>(arr: [T]) => T;
@@ -430,87 +458,81 @@ declare const tikka: {
     smoosh: <T>(arr: T[]) => any[];
     flat: <T>(arr: T[]) => any[];
     each: {
-        (b: unknown, a: unknown, ...extra: unknown[]): unknown[];
-        (b: unknown): (a: unknown, ...extra: unknown[]) => unknown[];
+        <T>(func: (x: T) => void, arr: T[]): T[];
+        <T>(func: (x: T) => void): (arr: T[]) => T[];
     };
     forEachItem: {
-        (b: unknown, a: unknown, ...extra: unknown[]): unknown[];
-        (b: unknown): (a: unknown, ...extra: unknown[]) => unknown[];
+        <T>(func: (x: T) => void, arr: T[]): T[];
+        <T>(func: (x: T) => void): (arr: T[]) => T[];
     };
     walk: {
-        (b: unknown, a: unknown, ...extra: unknown[]): unknown[];
-        (b: unknown): (a: unknown, ...extra: unknown[]) => unknown[];
+        <T>(func: (x: T) => void, arr: T[]): T[];
+        <T>(func: (x: T) => void): (arr: T[]) => T[];
     };
     eachValue: {
-        (b: (x: any) => any, a: {}, ...extra: unknown[]): {};
-        (b: (x: any) => any): (a: {}, ...extra: unknown[]) => {};
+        (fn: (x: any) => any, obj: {}): {};
+        (fn: (x: any) => any): (obj: {}) => {};
     };
     forEachValue: {
-        (b: (x: any) => any, a: {}, ...extra: unknown[]): {};
-        (b: (x: any) => any): (a: {}, ...extra: unknown[]) => {};
+        (fn: (x: any) => any, obj: {}): {};
+        (fn: (x: any) => any): (obj: {}) => {};
     };
     walkValues: {
-        (b: (x: any) => any, a: {}, ...extra: unknown[]): {};
-        (b: (x: any) => any): (a: {}, ...extra: unknown[]) => {};
+        (fn: (x: any) => any, obj: {}): {};
+        (fn: (x: any) => any): (obj: {}) => {};
     };
     prop: {
         <T, K extends keyof T>(property: K, object: T): T[K];
-        <K extends PropertyKey>(property: K): <T extends Record<K, unknown>>(object: T) => T[K];
+        <K extends PropertyKey>(property: K): <T extends Record<K, any>>(object: T) => T[K];
     };
     property: {
         <T, K extends keyof T>(property: K, object: T): T[K];
-        <K extends PropertyKey>(property: K): <T extends Record<K, unknown>>(object: T) => T[K];
+        <K extends PropertyKey>(property: K): <T extends Record<K, any>>(object: T) => T[K];
     };
     lookup: {
         <T, K extends keyof T>(property: K, object: T): T[K];
-        <K extends PropertyKey>(property: K): <T extends Record<K, unknown>>(object: T) => T[K];
+        <K extends PropertyKey>(property: K): <T extends Record<K, any>>(object: T) => T[K];
     };
     propOr: {
-        (c: unknown, b: any, a: {}, ...extra: unknown[]): unknown;
-        (c: unknown, b: any): (a: {}, ...extra: unknown[]) => unknown;
-        (c: unknown): {
-            (b: any, a: {}, ...extra: unknown[]): unknown;
-            (b: any): (a: {}, ...extra: unknown[]) => unknown;
-        };
+        <T, K extends keyof T, R>(defaultValue: R, prop: K, obj: T): T[K];
+        <R>(defaultValue: R, prop: PropertyKey, obj: {}): R;
+        <T, K extends keyof T, R>(defaultValue: R, prop: K): (obj: T) => T[K];
+        <R>(defaultValue: R, prop: PropertyKey): (obj: {}) => R;
     };
     getDefault: {
-        (c: unknown, b: any, a: {}, ...extra: unknown[]): unknown;
-        (c: unknown, b: any): (a: {}, ...extra: unknown[]) => unknown;
-        (c: unknown): {
-            (b: any, a: {}, ...extra: unknown[]): unknown;
-            (b: any): (a: {}, ...extra: unknown[]) => unknown;
-        };
+        <T, K extends keyof T, R>(defaultValue: R, prop: K, obj: T): T[K];
+        <R>(defaultValue: R, prop: PropertyKey, obj: {}): R;
+        <T, K extends keyof T, R>(defaultValue: R, prop: K): (obj: T) => T[K];
+        <R>(defaultValue: R, prop: PropertyKey): (obj: {}) => R;
     };
     getWithDefault: {
-        (c: unknown, b: any, a: {}, ...extra: unknown[]): unknown;
-        (c: unknown, b: any): (a: {}, ...extra: unknown[]) => unknown;
-        (c: unknown): {
-            (b: any, a: {}, ...extra: unknown[]): unknown;
-            (b: any): (a: {}, ...extra: unknown[]) => unknown;
-        };
+        <T, K extends keyof T, R>(defaultValue: R, prop: K, obj: T): T[K];
+        <R>(defaultValue: R, prop: PropertyKey, obj: {}): R;
+        <T, K extends keyof T, R>(defaultValue: R, prop: K): (obj: T) => T[K];
+        <R>(defaultValue: R, prop: PropertyKey): (obj: {}) => R;
     };
     pick: {
         <T, K extends keyof T>(props: readonly K[], data: T): Partial<Pick<T, K>>;
         <T, K extends keyof T>(props: readonly K[], data: T[]): Array<Partial<Pick<T, K>>>;
         <K extends PropertyKey>(props: readonly K[]): {
-            <T extends Record<K, unknown>>(data: T): Partial<Pick<T, K>>;
-            <T extends Record<K, unknown>>(data: T[]): Array<Partial<Pick<T, K>>>;
+            <T extends Record<K, any>>(data: T): Partial<Pick<T, K>>;
+            <T extends Record<K, any>>(data: T[]): Array<Partial<Pick<T, K>>>;
         };
     };
     pickKeys: {
         <T, K extends keyof T>(props: readonly K[], data: T): Partial<Pick<T, K>>;
         <T, K extends keyof T>(props: readonly K[], data: T[]): Array<Partial<Pick<T, K>>>;
         <K extends PropertyKey>(props: readonly K[]): {
-            <T extends Record<K, unknown>>(data: T): Partial<Pick<T, K>>;
-            <T extends Record<K, unknown>>(data: T[]): Array<Partial<Pick<T, K>>>;
+            <T extends Record<K, any>>(data: T): Partial<Pick<T, K>>;
+            <T extends Record<K, any>>(data: T[]): Array<Partial<Pick<T, K>>>;
         };
     };
     selectKeys: {
         <T, K extends keyof T>(props: readonly K[], data: T): Partial<Pick<T, K>>;
         <T, K extends keyof T>(props: readonly K[], data: T[]): Array<Partial<Pick<T, K>>>;
         <K extends PropertyKey>(props: readonly K[]): {
-            <T extends Record<K, unknown>>(data: T): Partial<Pick<T, K>>;
-            <T extends Record<K, unknown>>(data: T[]): Array<Partial<Pick<T, K>>>;
+            <T extends Record<K, any>>(data: T): Partial<Pick<T, K>>;
+            <T extends Record<K, any>>(data: T[]): Array<Partial<Pick<T, K>>>;
         };
     };
     classify: {
@@ -532,32 +554,32 @@ declare const tikka: {
         <K extends string | number>(grouper: K): <T extends Record<K, string | number>>(arr: T[]) => Record<string, T[]>;
     };
     greaterThan: {
-        (a: number, b: number, ...extra: unknown[]): boolean;
-        (a: number): (b: number, ...extra: unknown[]) => boolean;
+        (a: number, b: number): boolean;
+        (a: number): (b: number) => boolean;
     };
     isGreaterThan: {
-        (a: number, b: number, ...extra: unknown[]): boolean;
-        (a: number): (b: number, ...extra: unknown[]) => boolean;
+        (a: number, b: number): boolean;
+        (a: number): (b: number) => boolean;
     };
     greaterThanOrEqual: {
-        (a: number, b: number, ...extra: unknown[]): boolean;
-        (a: number): (b: number, ...extra: unknown[]) => boolean;
+        (a: number, b: number): boolean;
+        (a: number): (b: number) => boolean;
     };
     isAtLeast: {
-        (a: number, b: number, ...extra: unknown[]): boolean;
-        (a: number): (b: number, ...extra: unknown[]) => boolean;
+        (a: number, b: number): boolean;
+        (a: number): (b: number) => boolean;
     };
     hasKey: {
-        (b: string, a: {}, ...extra: unknown[]): boolean;
-        (b: string): (a: {}, ...extra: unknown[]) => boolean;
+        (prop: string, obj: {}): boolean;
+        (prop: string): (obj: {}) => boolean;
     };
     hasProp: {
-        (b: string, a: {}, ...extra: unknown[]): boolean;
-        (b: string): (a: {}, ...extra: unknown[]) => boolean;
+        (prop: string, obj: {}): boolean;
+        (prop: string): (obj: {}) => boolean;
     };
     hasOwnKey: {
-        (b: string, a: {}, ...extra: unknown[]): boolean;
-        (b: string): (a: {}, ...extra: unknown[]) => boolean;
+        (prop: string, obj: {}): boolean;
+        (prop: string): (obj: {}) => boolean;
     };
     id: <T>(a: T) => T;
     selfRef: <T>(a: T) => T;
@@ -566,20 +588,16 @@ declare const tikka: {
     same: <T>(a: T) => T;
     idValue: <T>(a: T) => T;
     whenElse: {
-        (c: Function, b: Function, a: () => boolean, ...extra: unknown[]): any;
-        (c: Function, b: Function): (a: () => boolean, ...extra: unknown[]) => any;
-        (c: Function): {
-            (b: Function, a: () => boolean, ...extra: unknown[]): any;
-            (b: Function): (a: () => boolean, ...extra: unknown[]) => any;
-        };
+        <TR, FR>(onFalse: () => FR, onTrue: () => TR, test: () => boolean): TR | FR;
+        <TR, FR>(onFalse: () => FR, onTrue: () => TR): (test: () => boolean) => TR | FR;
+        <TR, FR>(onFalse: () => FR): (onTrue: () => TR, test: () => boolean) => TR | FR;
+        <TR, FR>(onFalse: () => FR): (onTrue: () => TR) => (test: () => boolean) => TR | FR;
     };
     branch: {
-        (c: Function, b: Function, a: () => boolean, ...extra: unknown[]): any;
-        (c: Function, b: Function): (a: () => boolean, ...extra: unknown[]) => any;
-        (c: Function): {
-            (b: Function, a: () => boolean, ...extra: unknown[]): any;
-            (b: Function): (a: () => boolean, ...extra: unknown[]) => any;
-        };
+        <TR, FR>(onFalse: () => FR, onTrue: () => TR, test: () => boolean): TR | FR;
+        <TR, FR>(onFalse: () => FR, onTrue: () => TR): (test: () => boolean) => TR | FR;
+        <TR, FR>(onFalse: () => FR): (onTrue: () => TR, test: () => boolean) => TR | FR;
+        <TR, FR>(onFalse: () => FR): (onTrue: () => TR) => (test: () => boolean) => TR | FR;
     };
     even: (num: number) => boolean;
     isDivisibleBy2: (num: number) => boolean;
@@ -590,20 +608,20 @@ declare const tikka: {
     lastValue: typeof last;
     endValue: typeof last;
     lessThan: {
-        (a: number, b: number, ...extra: unknown[]): boolean;
-        (a: number): (b: number, ...extra: unknown[]) => boolean;
+        (a: number, b: number): boolean;
+        (a: number): (b: number) => boolean;
     };
     isLessThan: {
-        (a: number, b: number, ...extra: unknown[]): boolean;
-        (a: number): (b: number, ...extra: unknown[]) => boolean;
+        (a: number, b: number): boolean;
+        (a: number): (b: number) => boolean;
     };
     lessThanOrEqual: {
-        (a: number, b: number, ...extra: unknown[]): boolean;
-        (a: number): (b: number, ...extra: unknown[]) => boolean;
+        (a: number, b: number): boolean;
+        (a: number): (b: number) => boolean;
     };
     isAtMost: {
-        (a: number, b: number, ...extra: unknown[]): boolean;
-        (a: number): (b: number, ...extra: unknown[]) => boolean;
+        (a: number, b: number): boolean;
+        (a: number): (b: number) => boolean;
     };
     transformKeys: {
         <T extends object, K extends keyof T, R extends string>(fn: (x: K) => R, obj: T): Record<R, T[K]>;
@@ -618,35 +636,35 @@ declare const tikka: {
         <T extends object, K extends keyof T, R extends string>(fn: (x: K) => R): (obj: T) => Record<R, T[K]>;
     };
     transformValues: {
-        (b: unknown, a: unknown, ...extra: unknown[]): Record<string, unknown>;
-        (b: unknown): (a: unknown, ...extra: unknown[]) => Record<string, unknown>;
+        <T extends Record<string, any>, R>(fn: (x: T[keyof T]) => R, obj: T): Record<keyof T, R>;
+        <T extends Record<string, any>, R>(fn: (x: T[keyof T]) => R): (obj: T) => Record<keyof T, R>;
     };
     mapObjectValues: {
-        (b: unknown, a: unknown, ...extra: unknown[]): Record<string, unknown>;
-        (b: unknown): (a: unknown, ...extra: unknown[]) => Record<string, unknown>;
+        <T extends Record<string, any>, R>(fn: (x: T[keyof T]) => R, obj: T): Record<keyof T, R>;
+        <T extends Record<string, any>, R>(fn: (x: T[keyof T]) => R): (obj: T) => Record<keyof T, R>;
     };
     subtract: {
-        (b: number, a: number, ...extra: unknown[]): number;
-        (b: number): (a: number, ...extra: unknown[]) => number;
+        (b: number, a: number): number;
+        (b: number): (a: number) => number;
     };
     sub: {
-        (b: number, a: number, ...extra: unknown[]): number;
-        (b: number): (a: number, ...extra: unknown[]) => number;
+        (b: number, a: number): number;
+        (b: number): (a: number) => number;
     };
     difference: {
-        (b: number, a: number, ...extra: unknown[]): number;
-        (b: number): (a: number, ...extra: unknown[]) => number;
+        (b: number, a: number): number;
+        (b: number): (a: number) => number;
     };
     doNothing: () => void;
     noopFn: () => void;
     pass: () => void;
     either: {
-        (a: any, b: any, ...extra: unknown[]): boolean;
-        (a: any): (b: any, ...extra: unknown[]) => boolean;
+        (a: any, b: any): boolean;
+        (a: any): (b: any) => boolean;
     };
     disjunction: {
-        (a: any, b: any, ...extra: unknown[]): boolean;
-        (a: any): (b: any, ...extra: unknown[]) => boolean;
+        (a: any, b: any): boolean;
+        (a: any): (b: any) => boolean;
     };
     flow: typeof pipe;
     composeLeft: typeof pipe;
@@ -656,85 +674,77 @@ declare const tikka: {
     argPlaceholder: any;
     mapProp: {
         <T, K extends keyof T>(prop: K, collection: T[]): T[K][];
-        <K extends PropertyKey>(prop: K): <T extends Record<K, unknown>>(collection: T[]) => T[K][];
+        <K extends PropertyKey>(prop: K): <T extends Record<K, any>>(collection: T[]) => T[K][];
     };
     projectProp: {
         <T, K extends keyof T>(prop: K, collection: T[]): T[K][];
-        <K extends PropertyKey>(prop: K): <T extends Record<K, unknown>>(collection: T[]) => T[K][];
+        <K extends PropertyKey>(prop: K): <T extends Record<K, any>>(collection: T[]) => T[K][];
     };
     extractProp: {
         <T, K extends keyof T>(prop: K, collection: T[]): T[K][];
-        <K extends PropertyKey>(prop: K): <T extends Record<K, unknown>>(collection: T[]) => T[K][];
+        <K extends PropertyKey>(prop: K): <T extends Record<K, any>>(collection: T[]) => T[K][];
     };
     propertyValues: {
         <T, K extends keyof T>(prop: K, collection: T[]): T[K][];
-        <K extends PropertyKey>(prop: K): <T extends Record<K, unknown>>(collection: T[]) => T[K][];
+        <K extends PropertyKey>(prop: K): <T extends Record<K, any>>(collection: T[]) => T[K][];
     };
     add: {
-        (a: number, b: number, ...extra: unknown[]): number;
-        (a: number): (b: number, ...extra: unknown[]) => number;
+        (a: number, b: number): number;
+        (a: number): (b: number) => number;
     };
     sum2: {
-        (a: number, b: number, ...extra: unknown[]): number;
-        (a: number): (b: number, ...extra: unknown[]) => number;
+        (a: number, b: number): number;
+        (a: number): (b: number) => number;
     };
     add2: {
-        (a: number, b: number, ...extra: unknown[]): number;
-        (a: number): (b: number, ...extra: unknown[]) => number;
+        (a: number, b: number): number;
+        (a: number): (b: number) => number;
     };
     sum: {
-        (a: number, b: number, ...extra: unknown[]): number;
-        (a: number): (b: number, ...extra: unknown[]) => number;
+        (a: number, b: number): number;
+        (a: number): (b: number) => number;
     };
     orderBy: {
-        (c: unknown, b: unknown, a: unknown, ...extra: unknown[]): Record<string, unknown>[];
-        (c: unknown, b: unknown): (a: unknown, ...extra: unknown[]) => Record<string, unknown>[];
-        (c: unknown): {
-            (b: unknown, a: unknown, ...extra: unknown[]): Record<string, unknown>[];
-            (b: unknown): (a: unknown, ...extra: unknown[]) => Record<string, unknown>[];
-        };
+        <T extends Record<string, any>, K extends keyof T>(fieldOrIteratee: K | ((value: T) => any), direction: import("./sortBy").SortDirection, arr: T[]): T[];
+        <T extends Record<string, any>, K extends keyof T>(fieldOrIteratee: K | ((value: T) => any), direction: import("./sortBy").SortDirection): (arr: T[]) => T[];
     };
     sortByKey: {
-        (c: unknown, b: unknown, a: unknown, ...extra: unknown[]): Record<string, unknown>[];
-        (c: unknown, b: unknown): (a: unknown, ...extra: unknown[]) => Record<string, unknown>[];
-        (c: unknown): {
-            (b: unknown, a: unknown, ...extra: unknown[]): Record<string, unknown>[];
-            (b: unknown): (a: unknown, ...extra: unknown[]) => Record<string, unknown>[];
-        };
+        <T extends Record<string, any>, K extends keyof T>(fieldOrIteratee: K | ((value: T) => any), direction: import("./sortBy").SortDirection, arr: T[]): T[];
+        <T extends Record<string, any>, K extends keyof T>(fieldOrIteratee: K | ((value: T) => any), direction: import("./sortBy").SortDirection): (arr: T[]) => T[];
     };
     rest: typeof tail;
     dropFirst: typeof tail;
     takeLeft: {
-        (b: unknown, a: unknown, ...extra: unknown[]): unknown[];
-        (b: unknown): (a: unknown, ...extra: unknown[]) => unknown[];
+        <T>(num: number, arr: T[]): T[];
+        (num: number): <T>(arr: T[]) => T[];
     };
     firstN: {
-        (b: unknown, a: unknown, ...extra: unknown[]): unknown[];
-        (b: unknown): (a: unknown, ...extra: unknown[]) => unknown[];
+        <T>(num: number, arr: T[]): T[];
+        (num: number): <T>(arr: T[]) => T[];
     };
     headN: {
-        (b: unknown, a: unknown, ...extra: unknown[]): unknown[];
-        (b: unknown): (a: unknown, ...extra: unknown[]) => unknown[];
+        <T>(num: number, arr: T[]): T[];
+        (num: number): <T>(arr: T[]) => T[];
     };
     takeN: {
-        (b: unknown, a: unknown, ...extra: unknown[]): unknown[];
-        (b: unknown): (a: unknown, ...extra: unknown[]) => unknown[];
+        <T>(num: number, arr: T[]): T[];
+        (num: number): <T>(arr: T[]) => T[];
     };
     matches: {
-        (b: RegExp, a: string, ...extra: unknown[]): boolean;
-        (b: RegExp): (a: string, ...extra: unknown[]) => boolean;
+        (regex: RegExp, str: string): boolean;
+        (regex: RegExp): (str: string) => boolean;
     };
     regexTest: {
-        (b: RegExp, a: string, ...extra: unknown[]): boolean;
-        (b: RegExp): (a: string, ...extra: unknown[]) => boolean;
+        (regex: RegExp, str: string): boolean;
+        (regex: RegExp): (str: string) => boolean;
     };
     isMatch: {
-        (b: RegExp, a: string, ...extra: unknown[]): boolean;
-        (b: RegExp): (a: string, ...extra: unknown[]) => boolean;
+        (regex: RegExp, str: string): boolean;
+        (regex: RegExp): (str: string) => boolean;
     };
     testRegex: {
-        (b: RegExp, a: string, ...extra: unknown[]): boolean;
-        (b: RegExp): (a: string, ...extra: unknown[]) => boolean;
+        (regex: RegExp, str: string): boolean;
+        (regex: RegExp): (str: string) => boolean;
     };
     lower: (str: string) => string;
     lowerCase: (str: string) => string;
@@ -752,20 +762,20 @@ declare const tikka: {
     dedupe: <T>(arr: T[]) => T[];
     nub: <T>(arr: T[]) => T[];
     distinctBy: {
-        (b: unknown, a: unknown, ...extra: unknown[]): unknown[];
-        (b: unknown): (a: unknown, ...extra: unknown[]) => unknown[];
+        <T, U>(uniqCond: (x: T) => U, arr: T[]): T[];
+        <T, U>(uniqCond: (x: T) => U): (arr: T[]) => T[];
     };
     uniqueBy: {
-        (b: unknown, a: unknown, ...extra: unknown[]): unknown[];
-        (b: unknown): (a: unknown, ...extra: unknown[]) => unknown[];
+        <T, U>(uniqCond: (x: T) => U, arr: T[]): T[];
+        <T, U>(uniqCond: (x: T) => U): (arr: T[]) => T[];
     };
     dedupeBy: {
-        (b: unknown, a: unknown, ...extra: unknown[]): unknown[];
-        (b: unknown): (a: unknown, ...extra: unknown[]) => unknown[];
+        <T, U>(uniqCond: (x: T) => U, arr: T[]): T[];
+        <T, U>(uniqCond: (x: T) => U): (arr: T[]) => T[];
     };
     nubBy: {
-        (b: unknown, a: unknown, ...extra: unknown[]): unknown[];
-        (b: unknown): (a: unknown, ...extra: unknown[]) => unknown[];
+        <T, U>(uniqCond: (x: T) => U, arr: T[]): T[];
+        <T, U>(uniqCond: (x: T) => U): (arr: T[]) => T[];
     };
     replaceAll: {
         <T, U>(replacement: U, replacee: T, targetArray: T[]): (T | U)[];

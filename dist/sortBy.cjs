@@ -22,7 +22,7 @@ const sortBy = (arr, direction, fieldOrIteratee) => {
         return 0;
     });
 };
-var sortBy$1 = /*#__PURE__*/ curryRight.default(sortBy);
+const sortByCurried = /*#__PURE__*/ curryRight.default(sortBy);
 
-exports.default = sortBy$1;
+exports.default = sortByCurried;
 //# sourceMappingURL=sortBy.cjs.map

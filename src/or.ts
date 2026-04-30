@@ -1,3 +1,12 @@
+import curry from './curry'
+
+const or = (a: any, b: any) => !!(a || b)
+
+type Or = {
+  (a: any, b: any): boolean
+  (a: any): (b: any) => boolean
+}
+
 /**
  * Returns `true` when either value is truthy.
  * @param a - Left operand to evaluate.
@@ -7,8 +16,6 @@
  * @example
  * or(user.isAdmin, user.isOwner)
  */
-import curry from './curry'
+const orCurried = /*#__PURE__*/ curry(or) as Or
 
-const or = (a: any, b: any) => !!(a || b)
-
-export default /*#__PURE__*/ curry(or)
+export default orCurried

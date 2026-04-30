@@ -14,10 +14,10 @@ import get from './get'
 
 export type SortDirection = 'asc' | 'desc'
 
-const sortBy = <T extends Record<string, unknown>, K extends keyof T>(
+const sortBy = <T extends Record<string, any>, K extends keyof T>(
   arr: T[],
   direction: SortDirection,
-  fieldOrIteratee: K | ((value: T) => unknown)
+  fieldOrIteratee: K | ((value: T) => any)
 ): T[] => {
   const directionMultiplier = direction === 'desc' ? -1 : 1
   const accessor =
@@ -41,4 +41,18 @@ const sortBy = <T extends Record<string, unknown>, K extends keyof T>(
   })
 }
 
-export default /*#__PURE__*/ curryRight(sortBy)
+type SortBy = {
+  <T extends Record<string, any>, K extends keyof T>(
+    fieldOrIteratee: K | ((value: T) => any),
+    direction: SortDirection,
+    arr: T[]
+  ): T[]
+  <T extends Record<string, any>, K extends keyof T>(
+    fieldOrIteratee: K | ((value: T) => any),
+    direction: SortDirection
+  ): (arr: T[]) => T[]
+}
+
+const sortByCurried = /*#__PURE__*/ curryRight(sortBy) as SortBy
+
+export default sortByCurried

@@ -1,5 +1,12 @@
 import curry from './curry'
 
+const plus = (a: number, b: number) => a + b
+
+type Plus = {
+  (a: number, b: number): number
+  (a: number): (b: number) => number
+}
+
 /**
  * Adds two numbers.
  * @param a - Left addend.
@@ -9,6 +16,6 @@ import curry from './curry'
  * @example
  * plus(2)(3) // 5
  */
-const plus = (a: number, b: number) => a + b
+const plusCurried = /*#__PURE__*/ curry(plus) as Plus
 
-export default /*#__PURE__*/ curry(plus)
+export default plusCurried

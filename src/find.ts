@@ -1,14 +1,5 @@
 import curryRight from './curryRight'
 
-/**
- * Finds the first array element that satisfies a predicate.
- * @param arr - Array to search.
- * @param findFunc - Predicate used to test each element in order.
- * @returns The first matching item, or `undefined` when no item matches.
- *
- * @example
- * find((user) => user.id === 42, users)
- */
 const find = <T>(arr: Array<T>, findFunc: (x: T) => boolean) => {
   let i = 0
   const length = arr.length
@@ -19,4 +10,20 @@ const find = <T>(arr: Array<T>, findFunc: (x: T) => boolean) => {
   return undefined
 }
 
-export default curryRight(find)
+type Find = {
+  <T>(findFunc: (x: T) => boolean, arr: Array<T>): T | undefined
+  <T>(findFunc: (x: T) => boolean): (arr: Array<T>) => T | undefined
+}
+
+/**
+ * Finds the first array element that satisfies a predicate.
+ * @param arr - Array to search.
+ * @param findFunc - Predicate used to test each element in order.
+ * @returns The first matching item, or `undefined` when no item matches.
+ *
+ * @example
+ * find((user) => user.id === 42, users)
+ */
+const findCurried = /*#__PURE__*/ curryRight(find) as Find
+
+export default findCurried

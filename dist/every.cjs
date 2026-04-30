@@ -4,15 +4,6 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var curryRight = require('./curryRight.cjs');
 
-/**
- * Checks whether all items in an array satisfy a predicate.
- * @param arr - Array to validate.
- * @param test - Predicate run for each element until a failure is found.
- * @returns `true` when every element passes `test`; otherwise `false`.
- *
- * @example
- * every((n) => n > 0, [1, 3, 5]) // true
- */
 const every = (arr, test) => {
     let allPass = true;
     let i = 0;
@@ -26,7 +17,16 @@ const every = (arr, test) => {
     }
     return allPass;
 };
-var every$1 = /*#__PURE__*/ curryRight.default(every);
+/**
+ * Checks whether all items in an array satisfy a predicate.
+ * @param arr - Array to validate.
+ * @param test - Predicate run for each element until a failure is found.
+ * @returns `true` when every element passes `test`; otherwise `false`.
+ *
+ * @example
+ * every((n) => n > 0, [1, 3, 5]) // true
+ */
+const everyCurried = /*#__PURE__*/ curryRight.default(every);
 
-exports.default = every$1;
+exports.default = everyCurried;
 //# sourceMappingURL=every.cjs.map

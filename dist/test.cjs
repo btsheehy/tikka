@@ -4,6 +4,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var curryRight = require('./curryRight.cjs');
 
+const test = (str, regex) => regex.test(str);
 /**
  * Tests whether a string matches a regular expression.
  * @param str - String to test.
@@ -13,8 +14,7 @@ var curryRight = require('./curryRight.cjs');
  * @example
  * test(/^v\d+$/, 'v12') // true
  */
-const test = (str, regex) => regex.test(str);
-var test$1 = /*#__PURE__*/ curryRight.default(test);
+const testCurried = /*#__PURE__*/ curryRight.default(test);
 
-exports.default = test$1;
+exports.default = testCurried;
 //# sourceMappingURL=test.cjs.map

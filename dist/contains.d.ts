@@ -7,12 +7,13 @@
  * @example
  * contains('berry', ['apple', 'berry', 'citrus']) // true
  */
-export type IncludesTarget = {
-    includes: (value: unknown) => boolean;
+export type IncludesTarget<T> = {
+    includes: (value: T) => boolean;
 };
-declare const _default: {
-    (b: unknown, a: IncludesTarget, ...extra: unknown[]): boolean;
-    (b: unknown): (a: IncludesTarget, ...extra: unknown[]) => boolean;
+type Contains = {
+    <T>(value: T, searchTarget: IncludesTarget<T>): boolean;
+    <T>(value: T): (searchTarget: IncludesTarget<T>) => boolean;
 };
-export default _default;
+declare const containsCurried: Contains;
+export default containsCurried;
 //# sourceMappingURL=contains.d.ts.map

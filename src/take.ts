@@ -1,5 +1,14 @@
 import curryRight from './curryRight'
 
+const take = <T>(arr: T[], num: number) => {
+  return arr.slice(0, num)
+}
+
+type Take = {
+  <T>(num: number, arr: T[]): T[]
+  (num: number): <T>(arr: T[]) => T[]
+}
+
 /**
  * Takes the first `num` elements from an array.
  * @param arr - Source array.
@@ -9,8 +18,6 @@ import curryRight from './curryRight'
  * @example
  * take(3, [10, 20, 30, 40]) // [10, 20, 30]
  */
-const take = <T>(arr: T[], num: number) => {
-  return arr.slice(0, num)
-}
+const takeCurried = /*#__PURE__*/ curryRight(take) as Take
 
-export default /*#__PURE__*/ curryRight(take)
+export default takeCurried
