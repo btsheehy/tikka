@@ -1,18 +1,29 @@
 import curryRight from './curryRight.js';
 
 const uniqBy = (arr, uniqCond) => {
-    const uniqResult = arr.reduce((acc, val) => {
-        const uniqByVal = uniqCond(val);
-        const isUnique = !acc.uniqBy.includes(uniqByVal);
-        if (isUnique) {
-            acc.newArr.push(val);
-            acc.uniqBy.push(uniqByVal);
+    const uniqBy = new Set();
+    const newArr = [];
+    let i = 0;
+    while (i < arr.length) {
+        const uniqByVal = uniqCond(arr[i]);
+        if (!uniqBy.has(uniqByVal)) {
+            newArr.push(arr[i]);
+            uniqBy.add(uniqByVal);
         }
-        return acc;
-    }, { uniqBy: [], newArr: [] });
-    return uniqResult.newArr;
+        i++;
+    }
+    return newArr;
 };
-var uniqBy$1 = /*#__PURE__*/ curryRight(uniqBy);
+/**
+ * Removes duplicates based on a derived key function.
+ * @param arr - Source array.
+ * @param uniqCond - Function that computes each item's uniqueness key.
+ * @returns A new array containing the first item seen for each key.
+ *
+ * @example
+ * uniqBy((user) => user.id, [{ id: 1 }, { id: 1 }, { id: 2 }])
+ */
+const uniqByCurried = /*#__PURE__*/ curryRight(uniqBy);
 
-export { uniqBy$1 as default };
+export { uniqByCurried as default };
 //# sourceMappingURL=uniqBy.js.map

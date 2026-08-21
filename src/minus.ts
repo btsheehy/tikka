@@ -1,8 +1,21 @@
 import curryRight from './curryRight'
 
-/**
- * Subtracts second arg from first in curried-right style.
- */
 const minus = (a: number, b: number) => a - b
 
-export default /*#__PURE__*/ curryRight(minus)
+type Minus = {
+  (b: number, a: number): number
+  (b: number): (a: number) => number
+}
+
+/**
+ * Subtracts one number from another.
+ * @param a - Minuend.
+ * @param b - Subtrahend.
+ * @returns Numeric difference `a - b`.
+ *
+ * @example
+ * minus(3, 10) // 7
+ */
+const minusCurried = /*#__PURE__*/ curryRight(minus) as Minus
+
+export default minusCurried

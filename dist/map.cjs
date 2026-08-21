@@ -13,7 +13,16 @@ const map = (arr, fn) => {
     }
     return result;
 };
-var map$1 = /*#__PURE__*/ curryRight.default(map);
+/**
+ * Maps each array item to a new value.
+ * @param arr - Source array.
+ * @param fn - Mapper applied to each element.
+ * @returns A new array with transformed values.
+ *
+ * @example
+ * map((n) => n * 2, [1, 2, 3]) // [2, 4, 6]
+ */
+const mapCurried = /*#__PURE__*/ curryRight.default(map);
 
-exports.default = map$1;
+exports.default = mapCurried;
 //# sourceMappingURL=map.cjs.map

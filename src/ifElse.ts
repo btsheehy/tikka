@@ -1,6 +1,3 @@
-/**
- * Runs `test()`, then executes `onTrue()` or `onFalse()`.
- */
 // TODO: Needs work
 import curryRight from './curryRight'
 
@@ -10,4 +7,23 @@ const ifElse = (test: () => boolean, onTrue: Function, onFalse: Function) => {
   return onFalse()
 }
 
-export default /*#__PURE__*/ curryRight(ifElse)
+type IfElse = {
+  <TR, FR>(onFalse: () => FR, onTrue: () => TR, test: () => boolean): TR | FR
+  <TR, FR>(onFalse: () => FR, onTrue: () => TR): (test: () => boolean) => TR | FR
+  <TR, FR>(onFalse: () => FR): (onTrue: () => TR, test: () => boolean) => TR | FR
+  <TR, FR>(onFalse: () => FR): (onTrue: () => TR) => (test: () => boolean) => TR | FR
+}
+
+/**
+ * Executes one of two callbacks based on a predicate callback.
+ * @param test - Function whose boolean result chooses the branch.
+ * @param onTrue - Callback invoked when `test()` returns `true`.
+ * @param onFalse - Callback invoked when `test()` returns `false`.
+ * @returns Result of `onTrue()` or `onFalse()`.
+ *
+ * @example
+ * ifElse(() => env === 'prod', () => 'minified', () => 'debug')
+ */
+const ifElseCurried = /*#__PURE__*/ curryRight(ifElse) as IfElse
+
+export default ifElseCurried

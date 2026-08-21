@@ -12,7 +12,16 @@ const mapValues = (obj, fn) => {
     }
     return newObj;
 };
-var mapValues$1 = /*#__PURE__*/ curryRight.default(mapValues);
+/**
+ * Transforms object values while preserving keys.
+ * @param obj - Object whose values will be mapped.
+ * @param fn - Mapper run for each value.
+ * @returns A new object with the same keys and mapped values.
+ *
+ * @example
+ * mapValues((n) => n * 10, { a: 1, b: 2 }) // { a: 10, b: 20 }
+ */
+const mapValuesCurried = /*#__PURE__*/ curryRight.default(mapValues);
 
-exports.default = mapValues$1;
+exports.default = mapValuesCurried;
 //# sourceMappingURL=mapValues.cjs.map

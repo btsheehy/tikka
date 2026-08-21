@@ -1,11 +1,21 @@
 import curryRight from './curryRight'
 
+const getImpl = <T, K extends keyof T>(object: T, property: K): T[K] => object[property]
+
+type Get = {
+  <T, K extends keyof T>(property: K, object: T): T[K]
+  <K extends PropertyKey>(property: K): <T extends Record<K, any>>(object: T) => T[K]
+}
+
 /**
- * Gets property by key.
+ * Reads a property from an object by key.
+ * @param object - Object to read from.
+ * @param property - Property key to retrieve.
+ * @returns The value stored at `object[property]`.
  *
  * @example
- * get('a', { a: 1 }) // 1
+ * get('name', { id: 1, name: 'Ada' }) // 'Ada'
  */
-const get = <T, K extends keyof T>(object: T, property: K) => object[property]
+const get = /*#__PURE__*/ curryRight(getImpl) as Get
 
-export default /*#__PURE__*/ curryRight(get)
+export default get

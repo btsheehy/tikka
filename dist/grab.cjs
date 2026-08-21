@@ -12,13 +12,22 @@ const grabFromOne = (obj, props) => {
         return acc;
     }, result);
 };
-function grab(data, props) {
-    if (Array.isArray(data))
-        return data.map((x) => grabFromOne(x, props));
-    else
-        return grabFromOne(data, props);
+function grabImpl(data, props) {
+    if (Array.isArray(data)) {
+        return data.map((item) => grabFromOne(item, props));
+    }
+    return grabFromOne(data, props);
 }
-var grab$1 = /*#__PURE__*/ curryRight.default(grab);
+/**
+ * Picks a subset of keys from an object or each object in an array.
+ * @param data - Source object or array of objects.
+ * @param props - Keys to keep.
+ * @returns A partial object (or array of partial objects) containing only `props`.
+ *
+ * @example
+ * grab(['id', 'name'], [{ id: 1, name: 'Ada', admin: true }])
+ */
+const grab = /*#__PURE__*/ curryRight.default(grabImpl);
 
-exports.default = grab$1;
+exports.default = grab;
 //# sourceMappingURL=grab.cjs.map

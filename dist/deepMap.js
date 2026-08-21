@@ -1,21 +1,30 @@
 import curryRight from './curryRight.js';
-import map from './map.js';
-import mapValues from './mapValues.js';
+import mapCurried from './map.js';
+import mapValuesCurried from './mapValues.js';
 import type from './type.js';
 
 function deepMap(data, func) {
     const recurseFunc = (value) => {
         if (type(value) === 'Array') {
-            return map((entry) => recurseFunc(entry), value);
+            return mapCurried((entry) => recurseFunc(entry), value);
         }
         if (type(value) === 'Object') {
-            return mapValues((entry) => recurseFunc(entry), value);
+            return mapValuesCurried((entry) => recurseFunc(entry), value);
         }
         return func(value);
     };
     return recurseFunc(data);
 }
-var deepMap$1 = /*#__PURE__*/ curryRight(deepMap);
+/**
+ * Recursively maps every leaf value in a nested array/object structure.
+ * @param data - Nested structure to transform.
+ * @param func - Mapper applied to each leaf value.
+ * @returns A new structure with the same shape and transformed leaves.
+ *
+ * @example
+ * deepMap((n) => n * 10, { a: 1, b: [2, 3] })
+ */
+const deepMapCurried = /*#__PURE__*/ curryRight(deepMap);
 
-export { deepMap$1 as default };
+export { deepMapCurried as default };
 //# sourceMappingURL=deepMap.js.map

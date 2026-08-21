@@ -3,6 +3,7 @@ import {
   and,
   any,
   compact,
+  cond,
   concat,
   contains,
   countBy,
@@ -33,25 +34,36 @@ import {
   gte,
   has,
   head,
+  highest,
+  highestBy,
   identity,
   ifElse,
   includes,
   isEven,
   isOdd,
   last,
+  lowest,
+  lowestBy,
   lt,
   lte,
   map,
   mapKeys,
   mapValues,
+  max,
+  min,
   minus,
+  subtract,
   noop,
   or,
   pipe,
   placeholder,
   pluck,
   plus,
+  replace,
+  remove,
+  reverse,
   sum,
+  add,
   select,
   self,
   sortBy,
@@ -64,6 +76,11 @@ import {
   toLower,
   toUpper,
   trim,
+  split,
+  startsWith,
+  endsWith,
+  slice,
+  coalesce,
   type,
   uniq,
   uniqBy,
@@ -96,6 +113,24 @@ describe('tikka exports', () => {
   it('concat', () => {
     expect(concat([1, 2], [3, 4])).toEqual([1, 2, 3, 4])
     expect(concat('ab', 'cd')).toBe('abcd')
+
+    const curriedArrayConcat = concat as <T>(left: T[]) => (right: T[]) => T[]
+    const curriedStringConcat = concat as (left: string) => (right: string) => string
+
+    expect(curriedArrayConcat([1, 2])([3, 4])).toEqual([1, 2, 3, 4])
+    expect(curriedStringConcat('ab')('cd')).toBe('abcd')
+  })
+
+  it('cond', () => {
+    const classify = cond([
+      [(n: number) => n < 0, 'negative'],
+      [(n: number) => n === 0, 'zero'],
+      'positive',
+    ])
+
+    expect(classify(-3)).toBe('negative')
+    expect(classify(0)).toBe('zero')
+    expect(classify(7)).toBe('positive')
   })
 
   it('contains and includes', () => {
@@ -165,8 +200,10 @@ describe('tikka exports', () => {
   })
 
   it('find and findIndex', () => {
-    expect(find((x: number) => x > 1, [1, 2, 3])).toBe(2)
-    expect(findIndex((x: number) => x > 1, [1, 2, 3])).toBe(1)
+    const greaterThanOne = (x: number) => x > 1
+    expect(find(greaterThanOne, [1, 2, 3])).toBe(2)
+    expect(find(greaterThanOne)([1, 2, 3])).toBe(2)
+    expect(findIndex(greaterThanOne, [1, 2, 3])).toBe(1)
   })
 
   it('first head last tail', () => {
@@ -215,18 +252,61 @@ describe('tikka exports', () => {
   it('groupBy', () => {
     const grouped = groupBy((x: number) => (x % 2 === 0 ? 'even' : 'odd'), [1, 2, 3, 4])
     expect(grouped).toEqual({ odd: [1, 3], even: [2, 4] })
+
+    const users = [
+      { id: 1, role: 'admin' },
+      { id: 2, role: 'user' },
+      { id: 3, role: 'admin' },
+    ]
+
+    expect(groupBy('role', users)).toEqual({
+      admin: [
+        { id: 1, role: 'admin' },
+        { id: 3, role: 'admin' },
+      ],
+      user: [{ id: 2, role: 'user' }],
+    })
+
+    const groupByRole = groupBy('role')
+    expect(groupByRole(users)).toEqual({
+      admin: [
+        { id: 1, role: 'admin' },
+        { id: 3, role: 'admin' },
+      ],
+      user: [{ id: 2, role: 'user' }],
+    })
   })
 
   it('comparison helpers', () => {
-    expect(gt(3, 2)).toBe(true)
+    expect(gt(2, 3)).toBe(true)
     expect(gte(3, 3)).toBe(true)
-    expect(lt(2, 3)).toBe(true)
+    expect(lt(3, 2)).toBe(true)
     expect(lte(3, 3)).toBe(true)
   })
 
   it('has', () => {
     expect(has('a', { a: 1 })).toBe(true)
     expect(has('b', { a: 1 })).toBe(false)
+  })
+
+  it('highest/lowest and highestBy/lowestBy', () => {
+    expect(highest([4, 1, 9, 3])).toBe(9)
+    expect(lowest([4, 1, 9, 3])).toBe(1)
+
+    const users = [
+      { name: 'Ari', score: 12 },
+      { name: 'Bea', score: 21 },
+      { name: 'Cal', score: 17 },
+    ]
+
+    expect(highestBy((user: { name: string; score: number }) => user.score, users)).toEqual({
+      name: 'Bea',
+      score: 21,
+    })
+    expect(lowestBy((user: { name: string; score: number }) => user.score, users)).toEqual({
+      name: 'Ari',
+      score: 12,
+    })
   })
 
   it('identity and self', () => {
@@ -260,10 +340,26 @@ describe('tikka exports', () => {
     expect(mapValues((value: number) => value * 2, { a: 1, b: 2 })).toEqual({ a: 2, b: 4 })
   })
 
-  it('minus and plus', () => {
+  it('minus/plus and min/max', () => {
     expect(plus(2, 3)).toBe(5)
     expect(sum(2, 3)).toBe(5)
+    expect(add(2, 3)).toBe(5)
+
     expect(minus(3, 10)).toBe(7)
+    expect(subtract(3, 10)).toBe(7)
+
+    expect(min(4, 9)).toBe(4)
+    expect(max(4, 9)).toBe(9)
+
+    const curriedPlus = plus as (a: number) => (b: number) => number
+    const curriedSum = sum as (a: number) => (b: number) => number
+    const curriedMin = min as (a: number) => (b: number) => number
+    const curriedMax = max as (a: number) => (b: number) => number
+
+    expect(curriedPlus(2)(3)).toBe(5)
+    expect(curriedSum(2)(3)).toBe(5)
+    expect(curriedMin(4)(9)).toBe(4)
+    expect(curriedMax(4)(9)).toBe(9)
   })
 
   it('noop', () => {
@@ -351,12 +447,56 @@ describe('tikka exports', () => {
     expect(toLower('AbC')).toBe('abc')
     expect(toUpper('AbC')).toBe('ABC')
     expect(trim('  x  ')).toBe('x')
+    expect(split(',', 'a,b,c')).toEqual(['a', 'b', 'c'])
+    expect(startsWith('tik', 'tikka')).toBe(true)
+    expect(endsWith('kka', 'tikka')).toBe(true)
+    expect(slice(1, 'tikka')).toBe('ikka')
+    expect(slice(1, 4, 'tikka')).toBe('ikk')
+    expect(coalesce('fallback', null)).toBe('fallback')
+    expect(coalesce('fallback', undefined)).toBe('fallback')
+    expect(coalesce('fallback', 'value')).toBe('value')
+
+    const splitOnComma = split(',')
+    const startsWithTik = startsWith('tik')
+    const endsWithKka = endsWith('kka')
+    const withFallback = coalesce('fallback')
+
+    expect(splitOnComma('d,e')).toEqual(['d', 'e'])
+    expect(startsWithTik('tikka')).toBe(true)
+    expect(endsWithKka('tikka')).toBe(true)
+    expect(withFallback(null)).toBe('fallback')
+    expect(withFallback('value')).toBe('value')
   })
 
   it('type', () => {
     expect(type(null)).toBe('Null')
     expect(type(undefined)).toBe('Undefined')
     expect(type([])).toBe('Array')
+  })
+
+  it('replace and remove', () => {
+    expect(replace(9, 2, [1, 2, 3, 2])).toEqual([1, 9, 3, 9])
+    expect(replace((x: number) => x * 10, (x: number) => x % 2 === 0, [1, 2, 3, 4])).toEqual([
+      1,
+      20,
+      3,
+      40,
+    ])
+    expect(replace('bar', 'foo', 'foo foo')).toBe('bar bar')
+    expect(replace('0', /o+/g, 'foo boo')).toBe('f0 b0')
+
+    expect(remove((x: number) => x % 2 === 0, [1, 2, 3, 4, 5, 6])).toEqual([1, 3, 5])
+    expect(remove((value: string) => value.startsWith('a'), ['alpha', 'beta', 'amber'])).toEqual([
+      'beta',
+    ])
+  })
+
+  it('reverse', () => {
+    const input = [1, 2, 3]
+    expect(reverse(input)).toEqual([3, 2, 1])
+    expect(input).toEqual([1, 2, 3])
+    expect(reverse('tikka')).toBe('akkit')
+    expect(reverse('')).toBe('')
   })
 
   it('uniq and uniqBy', () => {

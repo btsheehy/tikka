@@ -1,5 +1,7 @@
 /**
- * Exported placeholder value used in APIs that need an explicit placeholder sentinel.
+ * Placeholder sentinel export (`__` / `hole` aliases in the public API).
+ *
+ * @example
+ * import { __ } from './index'
  */
-// TODO
 export default null

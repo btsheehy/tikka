@@ -1,23 +1,32 @@
 import curryRight from './curryRight.js';
-import forEach from './forEach.js';
-import forEachValues from './forEachValues.js';
+import forEachCurried from './forEach.js';
+import forEachValuesCurried from './forEachValues.js';
 import type from './type.js';
 
 function deepForEach(data, func) {
     const recurseFunc = (value) => {
         if (type(value) === 'Array') {
-            forEach((entry) => recurseFunc(entry), value);
+            forEachCurried((entry) => recurseFunc(entry), value);
             return;
         }
         if (type(value) === 'Object') {
-            forEachValues((entry) => recurseFunc(entry), value);
+            forEachValuesCurried((entry) => recurseFunc(entry), value);
             return;
         }
         func(value);
     };
     recurseFunc(data);
 }
-var deepForEach$1 = /*#__PURE__*/ curryRight(deepForEach);
+/**
+ * Walks nested arrays/objects and runs a callback for each leaf value.
+ * @param data - Nested structure to traverse.
+ * @param func - Callback called for each non-object/non-array leaf node.
+ * @returns Nothing.
+ *
+ * @example
+ * deepForEach((value) => console.log(value), { a: 1, b: [2, 3] })
+ */
+const deepForEachCurried = /*#__PURE__*/ curryRight(deepForEach);
 
-export { deepForEach$1 as default };
+export { deepForEachCurried as default };
 //# sourceMappingURL=deepForEach.js.map

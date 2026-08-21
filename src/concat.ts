@@ -1,14 +1,35 @@
+import curry from './curry'
+
+function concatRaw<T>(left: T[], right: T[]): T[]
+function concatRaw(left: string, right: string): string
+function concatRaw<T>(left: T[] | string, right: T[] | string) {
+  if (typeof left === 'string' && typeof right === 'string') {
+    return left.concat(right)
+  }
+
+  if (Array.isArray(left) && Array.isArray(right)) {
+    return left.concat(right)
+  }
+
+  throw new TypeError('concat expects both arguments to be arrays or both to be strings')
+}
+
+type Concat = {
+  <T>(left: T[], right: T[]): T[]
+  <T>(left: T[]): (right: T[]) => T[]
+  (left: string, right: string): string
+  (left: string): (right: string) => string
+}
+
 /**
- * Concatenates arrays or strings.
+ * Concatenates two arrays or two strings.
+ * @param left - First array/string segment.
+ * @param right - Second array/string segment.
+ * @returns A combined array/string; throws when argument types differ.
  *
  * @example
- * concat([1,2], [3,4]) // [1,2,3,4]
+ * concat('tikka-', 'js') // 'tikka-js'
  */
-function concat<T>(left: T[], right: T[]): T[]
-function concat(left: string, right: string): string
-
-function concat(left: any, right: any) {
-  return left.concat(right)
-}
+const concat = /*#__PURE__*/ curry(concatRaw) as Concat
 
 export default concat

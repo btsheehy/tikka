@@ -9,7 +9,16 @@ const debug = (value, msg) => {
     console.log(value);
     return value;
 };
-var debug$1 = /*#__PURE__*/ curryRight.default(debug);
+/**
+ * Logs a label and value, then returns the original value.
+ * @param value - Value to pass through unchanged.
+ * @param msg - Label printed before the value.
+ * @returns The same `value`, enabling debug taps in pipelines.
+ *
+ * @example
+ * debug('after parse', record)
+ */
+const debugCurried = /*#__PURE__*/ curryRight.default(debug);
 
-exports.default = debug$1;
+exports.default = debugCurried;
 //# sourceMappingURL=debug.cjs.map

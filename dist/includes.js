@@ -1,6 +1,6 @@
-import contains from './contains.js';
+import containsCurried from './contains.js';
 
 
 
-export { contains as default };
+export { containsCurried as default };
 //# sourceMappingURL=includes.js.map

@@ -1,6 +1,6 @@
 import curryRight from './curryRight.js';
 
-const mapKeys = (obj, fn) => {
+const mapKeysImpl = (obj, fn) => {
     const keys = Object.keys(obj);
     const newObj = {};
     keys.forEach((k) => {
@@ -8,7 +8,16 @@ const mapKeys = (obj, fn) => {
     });
     return newObj;
 };
-var mapKeys$1 = /*#__PURE__*/ curryRight(mapKeys);
+/**
+ * Renames object keys while keeping the original values.
+ * @param obj - Object to transform.
+ * @param fn - Function that maps each original key to a new key.
+ * @returns A new object keyed by `fn(key)` with original values preserved.
+ *
+ * @example
+ * mapKeys((key) => key.toUpperCase(), { first: 1, second: 2 })
+ */
+const mapKeys = /*#__PURE__*/ curryRight(mapKeysImpl);
 
-export { mapKeys$1 as default };
+export { mapKeys as default };
 //# sourceMappingURL=mapKeys.js.map

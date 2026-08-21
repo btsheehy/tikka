@@ -2,18 +2,22 @@ import curryRight from './curryRight'
 import get from './get'
 
 /**
- * Sorts an array of objects by either a field name or a value-selector function, using `'asc'` or `'desc'` direction.
+ * Sorts object arrays by a property key or accessor in ascending/descending order.
+ * @param arr - Array of objects to sort.
+ * @param direction - Sort order: `'asc'` or `'desc'`.
+ * @param fieldOrIteratee - Property key or accessor used to compute sort values.
+ * @returns A new sorted array; original input array is unchanged.
  *
  * @example
- * sortBy('age', 'desc', [{age:1},{age:3},{age:2}]) // [{age:3},{age:2},{age:1}]
+ * sortBy('age', 'desc', [{ age: 1 }, { age: 3 }, { age: 2 }])
  */
 
 export type SortDirection = 'asc' | 'desc'
 
-const sortBy = <T extends Record<string, unknown>, K extends keyof T>(
+const sortBy = <T extends Record<string, any>, K extends keyof T>(
   arr: T[],
   direction: SortDirection,
-  fieldOrIteratee: K | ((value: T) => unknown)
+  fieldOrIteratee: K | ((value: T) => any)
 ): T[] => {
   const directionMultiplier = direction === 'desc' ? -1 : 1
   const accessor =
@@ -37,4 +41,18 @@ const sortBy = <T extends Record<string, unknown>, K extends keyof T>(
   })
 }
 
-export default /*#__PURE__*/ curryRight(sortBy)
+type SortBy = {
+  <T extends Record<string, any>, K extends keyof T>(
+    fieldOrIteratee: K | ((value: T) => any),
+    direction: SortDirection,
+    arr: T[]
+  ): T[]
+  <T extends Record<string, any>, K extends keyof T>(
+    fieldOrIteratee: K | ((value: T) => any),
+    direction: SortDirection
+  ): (arr: T[]) => T[]
+}
+
+const sortByCurried = /*#__PURE__*/ curryRight(sortBy) as SortBy
+
+export default sortByCurried

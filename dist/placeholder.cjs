@@ -2,7 +2,12 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-// TODO
+/**
+ * Placeholder sentinel export (`__` / `hole` aliases in the public API).
+ *
+ * @example
+ * import { __ } from './index'
+ */
 var placeholder = null;
 
 exports.default = placeholder;

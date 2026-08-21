@@ -1,4 +1,4 @@
-import deepMap from './deepMap.js';
+import deepMapCurried from './deepMap.js';
 import type from './type.js';
 
 const cloneRegex = (regex) => {
@@ -16,7 +16,7 @@ function cloneValue(val) {
     return val;
 }
 function deepClone(data) {
-    return deepMap(cloneValue, data);
+    return deepMapCurried(cloneValue, data);
 }
 
 export { deepClone as default };

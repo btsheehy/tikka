@@ -1,6 +1,6 @@
-import last from './last.js';
+function tail(value) {
+    return value.slice(1);
+}
 
-
-
-export { last as default };
+export { tail as default };
 //# sourceMappingURL=tail.js.map

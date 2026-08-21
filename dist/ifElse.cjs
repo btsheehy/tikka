@@ -11,7 +11,17 @@ const ifElse = (test, onTrue, onFalse) => {
         return onTrue();
     return onFalse();
 };
-var ifElse$1 = /*#__PURE__*/ curryRight.default(ifElse);
+/**
+ * Executes one of two callbacks based on a predicate callback.
+ * @param test - Function whose boolean result chooses the branch.
+ * @param onTrue - Callback invoked when `test()` returns `true`.
+ * @param onFalse - Callback invoked when `test()` returns `false`.
+ * @returns Result of `onTrue()` or `onFalse()`.
+ *
+ * @example
+ * ifElse(() => env === 'prod', () => 'minified', () => 'debug')
+ */
+const ifElseCurried = /*#__PURE__*/ curryRight.default(ifElse);
 
-exports.default = ifElse$1;
+exports.default = ifElseCurried;
 //# sourceMappingURL=ifElse.cjs.map

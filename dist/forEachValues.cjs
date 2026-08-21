@@ -10,7 +10,16 @@ const forEachValues = (obj, fn) => {
     });
     return obj;
 };
-var forEachValues$1 = /*#__PURE__*/ curryRight.default(forEachValues);
+/**
+ * Runs a callback for each own enumerable value in an object.
+ * @param obj - Object whose values will be visited.
+ * @param fn - Callback invoked for each value.
+ * @returns The original `obj`.
+ *
+ * @example
+ * forEachValues((value) => console.log(value), { a: 1, b: 2 })
+ */
+const forEachValuesCurried = /*#__PURE__*/ curryRight.default(forEachValues);
 
-exports.default = forEachValues$1;
+exports.default = forEachValuesCurried;
 //# sourceMappingURL=forEachValues.cjs.map

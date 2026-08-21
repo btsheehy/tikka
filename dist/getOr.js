@@ -6,7 +6,17 @@ function getOr(obj, prop, defaultValue) {
         return get(prop, obj);
     return defaultValue;
 }
-var getOr$1 = /*#__PURE__*/ curryRight(getOr);
+/**
+ * Reads a property from an object, with a fallback when the key is missing.
+ * @param obj - Object to inspect.
+ * @param prop - Property key to read.
+ * @param defaultValue - Value returned when `obj` does not own `prop`.
+ * @returns Existing property value, or `defaultValue` when absent.
+ *
+ * @example
+ * getOr('guest', 'role', { name: 'Lin' }) // 'guest'
+ */
+const getOrCurried = /*#__PURE__*/ curryRight(getOr);
 
-export { getOr$1 as default };
+export { getOrCurried as default };
 //# sourceMappingURL=getOr.js.map

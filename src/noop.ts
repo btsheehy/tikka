@@ -1,5 +1,9 @@
 /**
- * No-op function.
+ * Function that intentionally does nothing.
+ * @returns `undefined`.
+ *
+ * @example
+ * noop()
  */
 const noop = () => {}
 

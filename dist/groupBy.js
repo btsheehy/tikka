@@ -1,18 +1,30 @@
 import curryRight from './curryRight.js';
+import get from './get.js';
 
-const groupBy = (arr, groupingFunction) => {
-    return arr.reduce((acc, val) => {
-        const group = groupingFunction(val);
-        if (acc[group]) {
-            acc[group].push(val);
-        }
-        else {
-            acc[group] = [val];
-        }
-        return acc;
-    }, {});
+const groupByImpl = (arr, grouper) => {
+    const groupingFunction = typeof grouper === 'function' ? grouper : get(grouper);
+    const groups = {};
+    let i = 0;
+    while (i < arr.length) {
+        const group = String(groupingFunction(arr[i]));
+        if (groups[group])
+            groups[group].push(arr[i]);
+        else
+            groups[group] = [arr[i]];
+        i++;
+    }
+    return groups;
 };
-var groupBy$1 = /*#__PURE__*/ curryRight(groupBy);
+/**
+ * Groups array items by a key function or object property.
+ * @param arr - Items to group.
+ * @param grouper - Property name or function that returns each item's group key.
+ * @returns An object whose keys are group names and values are grouped items.
+ *
+ * @example
+ * groupBy('status', [{ status: 'open' }, { status: 'closed' }, { status: 'open' }])
+ */
+const groupBy = /*#__PURE__*/ curryRight(groupByImpl);
 
-export { groupBy$1 as default };
+export { groupBy as default };
 //# sourceMappingURL=groupBy.js.map

@@ -19,7 +19,16 @@ function deepMap(data, func) {
     };
     return recurseFunc(data);
 }
-var deepMap$1 = /*#__PURE__*/ curryRight.default(deepMap);
+/**
+ * Recursively maps every leaf value in a nested array/object structure.
+ * @param data - Nested structure to transform.
+ * @param func - Mapper applied to each leaf value.
+ * @returns A new structure with the same shape and transformed leaves.
+ *
+ * @example
+ * deepMap((n) => n * 10, { a: 1, b: [2, 3] })
+ */
+const deepMapCurried = /*#__PURE__*/ curryRight.default(deepMap);
 
-exports.default = deepMap$1;
+exports.default = deepMapCurried;
 //# sourceMappingURL=deepMap.cjs.map
