@@ -39,7 +39,10 @@ Named imports (recommended for tree-shaking):
 ```ts
 import { filter, isEven, map, pipe, plus } from 'tikka'
 
-const result = pipe(filter(isEven), map(plus(1)))([1, 2, 3, 4])
+const result = pipe(
+  filter(isEven),
+  map(plus(1)),
+)([1, 2, 3, 4])
 // [3, 5]
 ```
 
@@ -450,6 +453,49 @@ or(false, true) // true
 
 ### pipe(...fns)
 Creates a left-to-right function pipeline. This is the core composition primitive in tikka.
+
+Example:
+```ts
+import { pipe } from 'tikka'
+
+const transform = pipe(
+  (value: number) => value + 1,
+  (value) => value * 2,
+)
+
+transform(2)
+// 6
+```
+
+Common tikka composition pattern:
+```ts
+import { filter, isEven, map, pipe, plus, take } from 'tikka'
+
+const firstThreeIncrementedEvens = pipe(
+  filter(isEven),
+  map(plus(1)),
+  take(3),
+)
+
+firstThreeIncrementedEvens([1, 2, 3, 4, 5, 6, 7, 8])
+// [3, 5, 7]
+```
+
+Pipeline with object helpers:
+```ts
+import { grab, map, pipe, sortBy } from 'tikka'
+
+const selectLeaderboardFields = pipe(
+  sortBy('score', 'desc'),
+  map(grab(['name', 'score'])),
+)
+
+selectLeaderboardFields([
+  { name: 'Ari', score: 12, email: 'ari@example.com' },
+  { name: 'Bea', score: 19, email: 'bea@example.com' },
+])
+// [{ name: 'Bea', score: 19 }, { name: 'Ari', score: 12 }]
+```
 
 Example:
 ```ts
